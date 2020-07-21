@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+   <!-- <color name="colorPrimary">#1D3E73</color>-->
+    <color name="colorPrimary">#4a485f</color>
+   <!-- <color name="colorPrimaryDark">#1D3E73</color>-->
+    <color name="colorPrimaryDark">#4a485f</color>
+    <color name="colorAccent">#000000</color>
+    <color name="white">#000000</color>
+    <color name="grey">#7A7A7A</color>
+    <color name="White">#FFFFFF</color>
+    <color name="Black">#000000</color>
+    <color name="myborderdarkbg">#4a485f</color>
+    <color name="myborderbrd">#545454</color>
+    <color name="transparent_black_percent_60">#99000000</color>
+ <color name="appbarTitleTVtextColor">@android:color/holo_orange_dark</color>
+ <color name="Transparent">#00000000</color>
+
+ <color name="list_selected">#94d4f9</color>
+ <color name="list_unselected">#94d4f9</color>
+ <color name="actionbar_control">#007499</color>
+ <color name="list_pressed">#999999</color>
+ <color name="button_pressed">#555555</color>
+ <color name="button_unpressed">#00A2E8</color>
+
+</resources>

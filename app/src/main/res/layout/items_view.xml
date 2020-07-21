@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<com.score3s.android.fontStyle.TextViewMedium xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:id="@+id/text1"
+    android:textColor="@color/Black"
+    android:padding="@dimen/_8sdp"
+    android:textSize="@dimen/_10sdp"
+    android:gravity="center|left">
+
+</com.score3s.android.fontStyle.TextViewMedium>

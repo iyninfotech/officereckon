@@ -1,0 +1,198 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:background="@color/White"
+    android:layout_height="wrap_content"
+    app:layout_behavior="@string/appbar_scrolling_view_behavior"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+
+    <!--<RelativeLayout
+        android:background="@color/colorPrimary"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/toolbar"
+        android:orientation="horizontal">
+
+
+
+        <ImageView
+            android:layout_centerVertical="true"
+            android:layout_width="@dimen/_30sdp"
+            android:layout_height="@dimen/_30sdp"
+            android:tint="@android:color/white"
+            android:id="@+id/btnBack"
+            android:src="@drawable/avd_pathmorph_drawer_arrow_to_hamburger"
+            android:layout_margin="@dimen/_5sdp"/>
+        <com.score3s.android.fontStyle.TextViewBlack
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerHorizontal="true"
+            android:textStyle="bold"
+            android:textSize="@dimen/_14sdp"
+            android:textColor="@android:color/white"
+            android:layout_centerVertical="true"
+            android:id="@+id/title"
+            android:layout_marginLeft="@dimen/_30sdp"
+            android:layout_marginRight="@dimen/_30sdp"
+            android:layout_gravity="center"
+            android:gravity="center"
+            android:text="Settings"/>
+
+    </RelativeLayout>-->
+
+
+    <ScrollView
+        android:layout_below="@+id/toolbar"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <LinearLayout
+            android:id="@+id/f_layout"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_marginLeft="@dimen/_8sdp"
+            android:layout_marginTop="@dimen/_8sdp"
+            android:layout_marginRight="@dimen/_8sdp"
+            android:layout_marginBottom="@dimen/_5sdp"
+            android:orientation="vertical">
+
+            <RelativeLayout
+                android:id="@+id/layoutDivision"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
+                <com.score3s.android.fontStyle.TextViewMedium
+                    android:textSize="@dimen/_10sdp"
+                    android:id="@+id/tvDivision"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="Select Division"
+                    android:padding="@dimen/_8sdp"
+                    android:textColor="@color/colorAccent"
+                    />
+
+                <ImageView
+                    android:layout_centerVertical="true"
+                    android:tint="@color/Black"
+                    android:layout_alignParentEnd="true"
+                    android:id="@+id/imageDivision"
+                    android:src="@drawable/ic_keyboard_arrow_down_24dp_searchable"
+                    android:layout_width="@dimen/_20sdp"
+                    android:layout_height="@dimen/_20sdp"
+                    />
+            </RelativeLayout>
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:background="#C8C8C8" />
+
+            <RelativeLayout
+                android:id="@+id/layoutRoute"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
+                <com.score3s.android.fontStyle.TextViewMedium
+                    android:textSize="@dimen/_10sdp"
+                    android:id="@+id/tvRoute"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="Select Route"
+                    android:padding="@dimen/_8sdp"
+                    android:textColor="@color/colorAccent"
+                    />
+
+                <ImageView
+                    android:layout_centerVertical="true"
+                    android:tint="@color/Black"
+                    android:layout_alignParentEnd="true"
+                    android:id="@+id/imageRoute"
+                    android:src="@drawable/ic_keyboard_arrow_down_24dp_searchable"
+                    android:layout_width="@dimen/_20sdp"
+                    android:layout_height="@dimen/_20sdp"
+                    />
+            </RelativeLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:background="#C8C8C8" />
+            <RelativeLayout
+                android:id="@+id/layoutSaleman"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
+                <com.score3s.android.fontStyle.TextViewMedium
+                    android:textSize="@dimen/_10sdp"
+                    android:id="@+id/tvSaleman"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="Select Saleman"
+                    android:padding="@dimen/_8sdp"
+                    android:textColor="@color/colorAccent"
+                    />
+
+                <ImageView
+                    android:layout_centerVertical="true"
+                    android:tint="@color/Black"
+                    android:layout_alignParentEnd="true"
+                    android:id="@+id/imageSaleman"
+                    android:src="@drawable/ic_keyboard_arrow_down_24dp_searchable"
+                    android:layout_width="@dimen/_20sdp"
+                    android:layout_height="@dimen/_20sdp"
+                    />
+            </RelativeLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:background="#C8C8C8" />
+            <RelativeLayout
+                android:id="@+id/layoutGodown"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
+                <com.score3s.android.fontStyle.TextViewMedium
+                    android:textSize="@dimen/_10sdp"
+                    android:id="@+id/tvGodown"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="Select Godwon"
+                    android:padding="@dimen/_8sdp"
+                    android:textColor="@color/colorAccent"
+                    />
+
+                <ImageView
+                    android:layout_centerVertical="true"
+                    android:tint="@color/Black"
+                    android:layout_alignParentEnd="true"
+                    android:id="@+id/imageGodown"
+                    android:src="@drawable/ic_keyboard_arrow_down_24dp_searchable"
+                    android:layout_width="@dimen/_20sdp"
+                    android:layout_height="@dimen/_20sdp"
+                    />
+            </RelativeLayout>
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:background="#C8C8C8" />
+
+
+            <com.score3s.android.fontStyle.ButtonBold
+                android:id="@+id/btnSubmit"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:text="Submit"
+                android:textAllCaps="false"
+                android:background="@drawable/background_outlet_list"
+                android:textColor="@color/White"
+                android:textSize="@dimen/_14sdp"
+                android:layout_marginLeft="@dimen/_50sdp"
+                android:layout_marginRight="@dimen/_50sdp"
+                android:layout_marginTop="@dimen/_10sdp"/>
+
+
+        </LinearLayout>
+    </ScrollView>
+</RelativeLayout>

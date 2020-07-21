@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout android:id="@+id/mainLayout"
+    android:background="@drawable/background_outlet_cell"
+    android:weightSum="3"
+    android:orientation="horizontal"
+    android:layout_width="match_parent"
+    android:layout_marginTop="@dimen/_4sdp"
+    android:layout_marginLeft="@dimen/_8sdp"
+    android:layout_marginRight="@dimen/_8sdp"
+    android:layout_height="@dimen/_40sdp"
+    xmlns:android="http://schemas.android.com/apk/res/android">
+
+        <com.score3s.android.fontStyle.TextViewMedium
+            android:layout_width="match_parent"
+            android:layout_weight="1"
+            android:text="ID"
+            android:id="@+id/tvOutletID"
+            android:textColor="@color/Black"
+            android:textSize="@dimen/_8sdp"
+            android:layout_gravity="center"
+            android:gravity="center"
+            android:layout_height="wrap_content" />
+
+
+        <com.score3s.android.fontStyle.TextViewMedium
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:id="@+id/tvOutletName"
+            android:text="Outlet Name"
+            android:textColor="@color/Black"
+            android:textSize="@dimen/_8sdp"
+            android:layout_gravity="center"
+            android:gravity="center" />
+
+
+        <com.score3s.android.fontStyle.TextViewMedium
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="Area"
+            android:id="@+id/tvOutletArea"
+            android:textColor="@color/Black"
+            android:textSize="@dimen/_8sdp"
+            android:layout_gravity="center"
+            android:gravity="center"/>
+
+    </LinearLayout>
+

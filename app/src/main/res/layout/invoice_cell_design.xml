@@ -1,0 +1,74 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout android:id="@+id/mainLayout"
+    android:background="@drawable/background_outlet_cell"
+    android:weightSum="4"
+    android:orientation="horizontal"
+    android:layout_width="match_parent"
+    android:layout_marginTop="@dimen/_4sdp"
+    android:layout_marginLeft="@dimen/_8sdp"
+    android:layout_marginRight="@dimen/_8sdp"
+    android:layout_height="@dimen/_40sdp"
+    xmlns:android="http://schemas.android.com/apk/res/android">
+
+        <com.score3s.android.fontStyle.TextViewMedium
+            android:id="@+id/tvInvoiceID"
+            android:layout_width="match_parent"
+            android:layout_weight="1"
+            android:text="Sr"
+            android:textColor="@color/Black"
+            android:textSize="@dimen/_8sdp"
+            android:layout_gravity="center"
+            android:gravity="center"
+            android:layout_height="wrap_content" />
+
+
+        <com.score3s.android.fontStyle.TextViewMedium
+            android:id="@+id/tvOrderNumber"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="Order No"
+            android:textColor="@color/Black"
+            android:textSize="@dimen/_8sdp"
+            android:layout_gravity="center"
+            android:gravity="center" />
+
+
+        <com.score3s.android.fontStyle.TextViewMedium
+
+            android:id="@+id/tvClientName"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="Client Name"
+            android:textColor="@color/Black"
+            android:textSize="@dimen/_8sdp"
+            android:layout_gravity="center"
+            android:gravity="center"/>
+
+    <com.score3s.android.fontStyle.TextViewMedium
+        android:layout_width="match_parent"
+        android:id="@+id/tvAmount"
+        android:layout_height="wrap_content"
+        android:layout_weight="1"
+        android:text="Amount"
+        android:textColor="@color/Black"
+        android:textSize="@dimen/_8sdp"
+        android:layout_gravity="center"
+        android:gravity="center"/>
+
+    <TextView
+        android:id="@+id/textViewOptions"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentRight="true"
+        android:layout_alignParentTop="true"
+        android:textColor="@color/colorPrimary"
+        android:paddingTop="@dimen/_2sdp"
+        android:paddingRight="@dimen/_5sdp"
+        android:textStyle="bold"
+        android:paddingLeft="@dimen/activity_horizontal_margin"
+        android:text="&#8942;"
+        android:textAppearance="?android:textAppearanceLarge" />
+    </LinearLayout>
+

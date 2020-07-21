@@ -1,0 +1,146 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+    android:layout_marginTop="@dimen/_5sdp"
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="1000dp"
+    android:layout_height="wrap_content">
+
+    <LinearLayout
+        android:layout_width="1000dp"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:layout_gravity="center"
+        android:gravity="center"
+        android:paddingTop="@dimen/_5sdp"
+        android:weightSum="14.0">
+
+        <com.score3s.android.fontStyle.TextViewMedium
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:layout_weight="1.0"
+            android:padding="@dimen/_5sdp"
+            android:text="NO"
+            android:textColor="@color/white"
+            android:textSize="@dimen/_10sdp" />
+        <com.score3s.android.fontStyle.TextViewMedium
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:layout_weight="1.0"
+            android:padding="@dimen/_5sdp"
+            android:text="ITEM"
+            android:textColor="@color/white"
+            android:textSize="@dimen/_10sdp" />
+        <com.score3s.android.fontStyle.TextViewMedium
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:layout_weight="1.0"
+            android:padding="@dimen/_5sdp"
+            android:text="HSN/SAC"
+            android:textColor="@color/white"
+            android:textSize="@dimen/_10sdp" />
+        <com.score3s.android.fontStyle.TextViewMedium
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:layout_weight="1.0"
+            android:padding="@dimen/_5sdp"
+            android:text="UNIT"
+            android:textColor="@color/white"
+            android:textSize="@dimen/_10sdp" />
+        <com.score3s.android.fontStyle.TextViewMedium
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:layout_weight="1.0"
+            android:padding="@dimen/_5sdp"
+            android:text="QTY"
+            android:textColor="@color/white"
+            android:textSize="@dimen/_10sdp" />
+        <com.score3s.android.fontStyle.TextViewMedium
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:layout_weight="1.0"
+            android:padding="@dimen/_5sdp"
+            android:text="RATE"
+            android:textColor="@color/white"
+            android:textSize="@dimen/_10sdp" />
+        <com.score3s.android.fontStyle.TextViewMedium
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:layout_weight="1.0"
+            android:padding="@dimen/_5sdp"
+            android:text="GROSS"
+            android:textColor="@color/white"
+            android:textSize="@dimen/_10sdp" />
+        <com.score3s.android.fontStyle.TextViewMedium
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:layout_weight="1.0"
+            android:padding="@dimen/_5sdp"
+            android:text="CGST %"
+            android:textColor="@color/white"
+            android:textSize="@dimen/_10sdp" />
+        <com.score3s.android.fontStyle.TextViewMedium
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:layout_weight="1.0"
+            android:padding="@dimen/_5sdp"
+            android:text="CGST"
+            android:textColor="@color/white"
+            android:textSize="@dimen/_10sdp" />
+        <com.score3s.android.fontStyle.TextViewMedium
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:layout_weight="1.0"
+            android:padding="@dimen/_5sdp"
+            android:text="SGST %"
+            android:textColor="@color/white"
+            android:textSize="@dimen/_10sdp" />
+        <com.score3s.android.fontStyle.TextViewMedium
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:layout_weight="1.0"
+            android:padding="@dimen/_5sdp"
+            android:text="SGST"
+            android:textColor="@color/white"
+            android:textSize="@dimen/_10sdp" />
+        <com.score3s.android.fontStyle.TextViewMedium
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:layout_weight="1.0"
+            android:padding="@dimen/_5sdp"
+            android:text="IGST %"
+            android:textColor="@color/white"
+            android:textSize="@dimen/_10sdp" />
+        <com.score3s.android.fontStyle.TextViewMedium
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:layout_weight="1.0"
+            android:padding="@dimen/_5sdp"
+            android:text="IGST"
+            android:textColor="@color/white"
+            android:textSize="@dimen/_10sdp" />
+
+        <com.score3s.android.fontStyle.TextViewMedium
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:layout_weight="1.0"
+            android:padding="@dimen/_5sdp"
+            android:text="TOTAL"
+            android:textColor="@color/white"
+            android:textSize="@dimen/_10sdp" />
+
+    </LinearLayout>
+</RelativeLayout>

@@ -1,0 +1,19 @@
+<vector
+  xmlns:android="http://schemas.android.com/apk/res/android"
+  android:width="@dimen/_25sdp"
+  android:height="@dimen/_25sdp"
+  android:tint="?attr/colorControlNormal"
+  android:viewportHeight="24"
+  android:viewportWidth="24">
+
+  <group
+    android:name="rotationGroup"
+    android:pivotX="12"
+    android:pivotY="12">
+
+    <path
+      android:name="iconPath"
+      android:fillColor="@android:color/white"
+      android:pathData="@string/path_drawer"/>
+  </group>
+</vector>

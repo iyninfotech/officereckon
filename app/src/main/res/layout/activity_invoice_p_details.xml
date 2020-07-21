@@ -1,0 +1,596 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+    android:layout_marginTop="@dimen/_5sdp"
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content">
+
+    <RelativeLayout
+        android:background="@drawable/myborder"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:paddingTop="@dimen/_2sdp"
+        android:id="@+id/toolbar"
+        android:orientation="horizontal">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:padding="@dimen/_3sdp"
+            android:weightSum="6.0">
+
+
+        <com.score3s.android.fontStyle.TextViewBlack
+
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:textStyle="normal"
+            android:textSize="@dimen/_10sdp"
+            android:textColor="@android:color/white"
+            android:paddingRight="@dimen/_5sdp"
+            android:paddingLeft="@dimen/_5sdp"
+            android:id="@+id/title"
+            android:layout_gravity="center"
+            android:layout_weight="0.8"
+            android:text="1"/>
+
+       <!-- <com.score3s.android.fontStyle.TextViewBold
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:layout_weight="0.5"
+            android:text="Item"
+            android:paddingRight="@dimen/_1sdp"
+            android:paddingLeft="@dimen/_1sdp"
+            android:textColor="@color/White"
+            android:textSize="@dimen/_10sdp" />-->
+
+
+            <com.score3s.android.fontStyle.TextViewBold
+                android:id="@+id/tvItem"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:layout_centerVertical="true"
+                android:layout_weight="3.2"
+                android:text="LUX PINK 100 GM"
+                android:textColor="@color/White"
+                android:textSize="@dimen/_10sdp" />
+
+            <com.score3s.android.fontStyle.TextViewBold
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:layout_alignParentEnd="true"
+                android:layout_weight="0.5"
+                android:text="MRP"
+                android:textColor="@color/White"
+                android:textSize="@dimen/_10sdp" />
+
+
+            <com.score3s.android.fontStyle.TextViewBold
+                android:id="@+id/tvMRP"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:layout_alignParentEnd="true"
+                android:layout_weight="1.0"
+                android:text="0"
+                android:textColor="@color/White"
+                android:textSize="@dimen/_10sdp" />
+
+        </LinearLayout>
+    </RelativeLayout>
+
+        <LinearLayout
+            android:layout_below="@+id/toolbar"
+            android:layout_gravity="center"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:padding="@dimen/_3sdp"
+                android:weightSum="6.0">
+
+                <com.score3s.android.fontStyle.TextViewBold
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:layout_weight="0.8"
+                    android:text="AQty"
+                    android:textColor="@color/colorPrimary"
+                    android:textSize="@dimen/_10sdp" />
+
+
+                <com.score3s.android.fontStyle.TextViewBold
+                    android:id="@+id/tvAlternetQtyUnit"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:layout_weight="0.7"
+                    android:text="0"
+                    android:textColor="@color/Black"
+                    android:textSize="@dimen/_10sdp" />
+
+                <com.score3s.android.fontStyle.TextViewBold
+                    android:id="@+id/tvAlternetQty"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:layout_weight="1.5"
+                    android:text="0"
+                    android:textColor="@color/Black"
+                    android:textSize="@dimen/_10sdp" />
+
+                <com.score3s.android.fontStyle.TextViewBold
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:layout_weight="0.8"
+                    android:text="PQty"
+                    android:textColor="@color/colorPrimary"
+                    android:textSize="@dimen/_10sdp" />
+
+
+                <com.score3s.android.fontStyle.TextViewBold
+                    android:id="@+id/tvPrimaryQtyUnit"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:layout_weight="0.7"
+                    android:text="0"
+                    android:textColor="@color/Black"
+                    android:textSize="@dimen/_10sdp" />
+
+                <com.score3s.android.fontStyle.TextViewBold
+                    android:id="@+id/tvPrimaryQty"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:layout_weight="1.5"
+                    android:text="0"
+                    android:textColor="@color/Black"
+                    android:textSize="@dimen/_10sdp" />
+
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:padding="@dimen/_3sdp"
+                android:weightSum="6.0">
+
+                <com.score3s.android.fontStyle.TextViewBold
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:layout_weight="0.8"
+                    android:text="TQty"
+                    android:textColor="@color/colorPrimary"
+                    android:textSize="@dimen/_10sdp" />
+
+
+                <com.score3s.android.fontStyle.TextViewBold
+                    android:id="@+id/tvTotalQty"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:layout_weight="2.2"
+                    android:text="0"
+                    android:textColor="@color/Black"
+                    android:textSize="@dimen/_10sdp" />
+
+                <com.score3s.android.fontStyle.TextViewBold
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:layout_weight="0.5"
+                    android:text="Free"
+                    android:textColor="@color/colorPrimary"
+                    android:textSize="@dimen/_10sdp" />
+
+
+                <com.score3s.android.fontStyle.TextViewBold
+                    android:id="@+id/tvFreeQty"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:layout_weight="0.8"
+                    android:text="0"
+                    android:textColor="@color/Black"
+                    android:textSize="@dimen/_10sdp" />
+
+                <com.score3s.android.fontStyle.TextViewBold
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:layout_weight="0.5"
+                    android:text="Rate"
+                    android:textColor="@color/colorPrimary"
+                    android:textSize="@dimen/_10sdp" />
+
+
+                <com.score3s.android.fontStyle.TextViewBold
+                    android:id="@+id/tvRate"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:layout_weight="1.2"
+                    android:text="0"
+                    android:textColor="@color/Black"
+                    android:textSize="@dimen/_10sdp" />
+
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:padding="@dimen/_3sdp"
+                android:weightSum="6.0">
+
+                <com.score3s.android.fontStyle.TextViewBold
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:layout_weight="0.8"
+                    android:text="Gross"
+                    android:textColor="@color/colorPrimary"
+                    android:textSize="@dimen/_10sdp" />
+
+
+
+                <com.score3s.android.fontStyle.TextViewBold
+                    android:id="@+id/tvGross"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:layout_weight="2.2"
+                    android:text="0"
+                    android:textColor="@color/Black"
+                    android:textSize="@dimen/_10sdp" />
+
+
+                <com.score3s.android.fontStyle.TextViewBold
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:layout_weight="0.8"
+                    android:text="QPS"
+                    android:textColor="@color/colorPrimary"
+                    android:textSize="@dimen/_10sdp" />
+
+                <com.score3s.android.fontStyle.TextViewBold
+                    android:id="@+id/tvDiscPer"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:layout_weight="0.5"
+                    android:text="0"
+                    android:textColor="@color/Black"
+                    android:textSize="@dimen/_10sdp" />
+
+
+                <com.score3s.android.fontStyle.TextViewBold
+                    android:id="@+id/tvDisc"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:layout_weight="1.7"
+                    android:text="0"
+                    android:textColor="@color/Black"
+                    android:textSize="@dimen/_10sdp" />
+
+            </LinearLayout>
+
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:padding="@dimen/_3sdp"
+                android:weightSum="6.0">
+
+                <com.score3s.android.fontStyle.TextViewBold
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:layout_weight="0.8"
+                    android:text="SCM"
+                    android:textColor="@color/colorPrimary"
+                    android:textSize="@dimen/_10sdp" />
+
+                <com.score3s.android.fontStyle.TextViewBold
+                    android:id="@+id/tvDiscIIPer"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:layout_weight="0.5"
+                    android:text="0"
+                    android:textColor="@color/Black"
+                    android:textSize="@dimen/_10sdp" />
+
+
+                <com.score3s.android.fontStyle.TextViewBold
+                    android:id="@+id/tvDiscII"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:layout_weight="1.7"
+                    android:text="0"
+                    android:textColor="@color/Black"
+                    android:textSize="@dimen/_10sdp" />
+
+                <com.score3s.android.fontStyle.TextViewBold
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:layout_weight="0.8"
+                    android:text="Disc."
+                    android:textColor="@color/colorPrimary"
+                    android:textSize="@dimen/_10sdp" />
+
+                <com.score3s.android.fontStyle.TextViewBold
+                    android:id="@+id/tvDiscIIIPer"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:layout_weight="0.5"
+                    android:text="0"
+                    android:textColor="@color/Black"
+                    android:textSize="@dimen/_10sdp" />
+
+
+                <com.score3s.android.fontStyle.TextViewBold
+                    android:id="@+id/tvDiscIII"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:layout_weight="1.7"
+                    android:text="0"
+                    android:textColor="@color/Black"
+                    android:textSize="@dimen/_10sdp" />
+
+
+            </LinearLayout>
+
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:padding="@dimen/_3sdp"
+                android:weightSum="6.0">
+
+                <com.score3s.android.fontStyle.TextViewBold
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:layout_weight="0.8"
+                    android:text="OtherI"
+                    android:textColor="@color/colorPrimary"
+                    android:textSize="@dimen/_10sdp" />
+
+                <com.score3s.android.fontStyle.TextViewBold
+                    android:id="@+id/tvOtherPer"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:layout_weight="0.5"
+                    android:text="0"
+                    android:textColor="@color/Black"
+                    android:textSize="@dimen/_10sdp" />
+
+
+                <com.score3s.android.fontStyle.TextViewBold
+                    android:id="@+id/tvOther"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:layout_weight="1.7"
+                    android:text="0"
+                    android:textColor="@color/Black"
+                    android:textSize="@dimen/_10sdp" />
+
+                <com.score3s.android.fontStyle.TextViewBold
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:layout_weight="0.8"
+                    android:text="Other II"
+                    android:textColor="@color/colorPrimary"
+                    android:textSize="@dimen/_10sdp" />
+
+                <com.score3s.android.fontStyle.TextViewBold
+                    android:id="@+id/tvOtherIIPer"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:layout_weight="0.5"
+                    android:text="0"
+                    android:textColor="@color/Black"
+                    android:textSize="@dimen/_10sdp" />
+
+
+                <com.score3s.android.fontStyle.TextViewBold
+                    android:id="@+id/tvOtherII"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:layout_weight="1.7"
+                    android:text="0"
+                    android:textColor="@color/Black"
+                    android:textSize="@dimen/_10sdp" />
+
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:padding="@dimen/_3sdp"
+                android:weightSum="6.0">
+
+                <com.score3s.android.fontStyle.TextViewBold
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:layout_weight="0.8"
+                    android:text="CGST"
+                    android:textColor="@color/colorPrimary"
+                    android:textSize="@dimen/_10sdp" />
+
+                <com.score3s.android.fontStyle.TextViewBold
+                    android:id="@+id/tvCGSTACID"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:visibility = "gone"
+                    android:text="0"
+                    android:enabled="false"
+                    android:textColor="@color/Black"
+                    android:textSize="@dimen/_10sdp" />
+
+                <com.score3s.android.fontStyle.TextViewBold
+                    android:id="@+id/tvCGSTP"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:layout_weight="0.5"
+                    android:text="0"
+                    android:textColor="@color/Black"
+                    android:textSize="@dimen/_10sdp" />
+
+                <com.score3s.android.fontStyle.TextViewBold
+                    android:id="@+id/tvCGST"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:layout_weight="1.7"
+                    android:text="0"
+                    android:textColor="@color/Black"
+                    android:textSize="@dimen/_10sdp" />
+
+                <com.score3s.android.fontStyle.TextViewBold
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:layout_weight="0.8"
+                    android:text="SGST"
+                    android:textColor="@color/colorPrimary"
+                    android:textSize="@dimen/_10sdp" />
+
+                <com.score3s.android.fontStyle.TextViewBold
+                    android:id="@+id/tvSGSTACID"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:visibility = "gone"
+                    android:enabled="false"
+                    android:text="0"
+                    android:textColor="@color/Black"
+                    android:textSize="@dimen/_10sdp" />
+
+                <com.score3s.android.fontStyle.TextViewBold
+                    android:id="@+id/tvSGSTP"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:layout_weight="0.5"
+                    android:text="0"
+                    android:textColor="@color/Black"
+                    android:textSize="@dimen/_10sdp" />
+
+                <com.score3s.android.fontStyle.TextViewBold
+                    android:id="@+id/tvSGST"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:layout_weight="1.7"
+                    android:text="0"
+                    android:textColor="@color/Black"
+                    android:textSize="@dimen/_10sdp" />
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:padding="@dimen/_3sdp"
+                android:weightSum="6.0">
+
+                <com.score3s.android.fontStyle.TextViewBold
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:layout_weight="0.8"
+                    android:text="IGST"
+                    android:textColor="@color/colorPrimary"
+                    android:textSize="@dimen/_10sdp" />
+
+                <com.score3s.android.fontStyle.TextViewBold
+                    android:id="@+id/tvIGSTACID"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:visibility = "gone"
+                    android:enabled="false"
+                    android:text="0"
+                    android:textColor="@color/Black"
+                    android:textSize="@dimen/_10sdp" />
+
+                <com.score3s.android.fontStyle.TextViewBold
+                    android:id="@+id/tvIGSTP"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:layout_weight="0.5"
+                    android:text="0"
+                    android:textColor="@color/Black"
+                    android:textSize="@dimen/_10sdp" />
+
+                <com.score3s.android.fontStyle.TextViewBold
+                    android:id="@+id/tvIGST"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:layout_weight="1.7"
+                    android:text="0"
+                    android:textColor="@color/Black"
+                    android:textSize="@dimen/_10sdp" />
+
+                <com.score3s.android.fontStyle.TextViewBold
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:layout_weight="1.0"
+                    android:text="Amount"
+                    android:textColor="@color/colorPrimary"
+                    android:textSize="@dimen/_10sdp" />
+
+
+                <com.score3s.android.fontStyle.TextViewBold
+                    android:id="@+id/tvAmount"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:layout_weight="2.0"
+                    android:text="0"
+                    android:textColor="@color/Black"
+                    android:textSize="@dimen/_10sdp" />
+
+            </LinearLayout>
+
+           <!-- <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:background="#C8C8C8" />-->
+        </LinearLayout>
+</RelativeLayout>
