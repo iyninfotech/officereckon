@@ -3,18 +3,8 @@
    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".AboutusFragment"
-    android:background="#FFF">
+    tools:context=".AboutusFragment">
 
-    <RelativeLayout
-        android:orientation="vertical"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent">
-
-        <ScrollView
-            android:layout_centerInParent="true"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content">
 
             <LinearLayout
                 android:layout_width="match_parent"
@@ -27,6 +17,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="@dimen/_100sdp"
                     android:layout_gravity="center"
+                    android:contentDescription="@string/software_name"
                     android:src="@drawable/logo" />
 
 
@@ -36,7 +27,7 @@
                     android:layout_gravity="center"
                     android:layout_marginBottom="@dimen/_15sdp"
                     android:gravity="center"
-                    android:text="Score 3S Cloud"
+                    android:text="@string/software_name"
                     android:textColor="@color/colorPrimary"
                     android:textSize="@dimen/_25sdp" />
 
@@ -51,7 +42,7 @@
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:padding="@dimen/_2sdp"
-                        android:text="Version Details:"
+                        android:text="@string/version_details"
                         android:textAlignment="gravity"
                         android:textSize="@dimen/_11sdp"
                         android:textColor="@color/white" />
@@ -91,7 +82,7 @@
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:padding="@dimen/_2sdp"
-                        android:text="Contact us:"
+                        android:text="@string/contact_us"
                         android:textAlignment="gravity"
                         android:textSize="@dimen/_11sdp"
                         android:textColor="@color/white" />
@@ -101,7 +92,7 @@
                         android:layout_height="wrap_content"
                         android:textAlignment="gravity"
                         android:padding="@dimen/_2sdp"
-                        android:text="Infozeal eSolutions Private Limited"
+                        android:text="@string/company_name"
                         android:textSize="@dimen/_11sdp"
                         android:textColor="@color/white" />
 
@@ -131,6 +122,5 @@
 
             </LinearLayout>
 
-        </ScrollView>
-    </RelativeLayout>
+
 </RelativeLayout>

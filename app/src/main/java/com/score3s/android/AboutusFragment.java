@@ -26,7 +26,7 @@ public class AboutusFragment extends Fragment {
 
         tvVersionDetails = view.findViewById(R.id.tvVersionDetails);
         tvCompanyDetails = view.findViewById(R.id.tvCompanyDetails);
-        tvCompanyDetails.setText(String.format("Phone No. = +91 (79) 268-80901 \nEmail Id = support@infozeal.co.in \nWebsite = www.infozeal.co.in"));
+        tvCompanyDetails.setText(String.format("Phone No. = +91 (79) 49117200 \nEmail Id = support@infozeal.co.in \nWebsite = www.infozeal.co.in"));
         getVersionInfo();
 
         //End of code Return View
@@ -35,7 +35,7 @@ public class AboutusFragment extends Fragment {
 
     //get the current version number and name
     private void getVersionInfo() {
-        String versionName = "";
+        String versionName = null;
         int versionCode = -1;
         try {
             PackageInfo packageInfo = getActivity().getPackageManager().getPackageInfo(getActivity().getPackageName(), 0);

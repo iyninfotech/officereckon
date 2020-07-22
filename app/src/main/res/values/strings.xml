@@ -1,5 +1,11 @@
 <resources>
     <string name="app_name">Score3S</string>
+    <string name="company_name">Infozeal eSolutions Private Limited</string>
+    <string name="software_name">Score 3S Cloud .net</string>
+    <string name="version_details">Version Details:</string>
+    <string name="contact_us">Contact us:</string>
+
+
     <string name="title_activity_dash_board">DashboardActivity</string>
     <string name="navigation_drawer_open">Open navigation drawer</string>
     <string name="navigation_drawer_close">Close navigation drawer</string>
