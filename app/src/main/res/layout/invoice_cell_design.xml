@@ -57,17 +57,15 @@
         android:layout_gravity="center"
         android:gravity="center"/>
 
-    <TextView
+    <com.score3s.android.fontStyle.TextViewBold
         android:id="@+id/textViewOptions"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_alignParentRight="true"
-        android:layout_alignParentTop="true"
         android:textColor="@color/colorPrimary"
-        android:paddingTop="@dimen/_2sdp"
-        android:paddingRight="@dimen/_5sdp"
+        android:layout_gravity="center"
         android:textStyle="bold"
-        android:paddingLeft="@dimen/activity_horizontal_margin"
+        android:paddingRight="@dimen/_5sdp"
+        android:tooltipText="click here for more option"
         android:text="&#8942;"
         android:textAppearance="?android:textAppearanceLarge" />
     </LinearLayout>

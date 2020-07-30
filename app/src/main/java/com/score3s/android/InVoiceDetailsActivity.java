@@ -262,6 +262,7 @@ public class InVoiceDetailsActivity extends Activity {
                     edtFreeQty.setText("");
 
                     TextView title = mView.findViewById(R.id.titlePopup);
+
                     final TextView SelectedItem = mView.findViewById(R.id.selectItem);
                     SelectedItem.setText("Select Item");
 
@@ -271,8 +272,11 @@ public class InVoiceDetailsActivity extends Activity {
                     final TextView SelectedPrimaryUnit = mView.findViewById(R.id.selectPrimaryUnit);
                     SelectedPrimaryUnit.setText("PCS");
 
+                    final TextView  txtSetMRPTitle = mView.findViewById(R.id.txtSetMRPTitle);
+
                     final TextView SelectedMRP = mView.findViewById(R.id.selectMRP);
                     final SpinnerDialog spMRP;
+
                     final ArrayList<String> ITEMIDARRAY = new ArrayList<>();
                     final ArrayList<String> ALTUNITARRAY = new ArrayList<>();
 
@@ -390,9 +394,20 @@ public class InVoiceDetailsActivity extends Activity {
                                     try {
                                         if (jsonArrayMRP.getJSONObject(i).getString("ItemId").equals(ITEMID) && CheckValidate.checkemptyDouble(jsonArrayMRP.getJSONObject(i).getString("Stock")) > 0) {
 
-                                            if(!jsonArrayMRP.getJSONObject(i).getString("ItemMRP").isEmpty() || !jsonArrayMRP.getJSONObject(i).getString("ItemMRP").equals("null"))
+                                            if(jsonArrayMRP.getJSONObject(i).getString("ItemType").equals("Batch"))
                                             {
-                                                ITEMIDARRAY.add(jsonArrayMRP.getJSONObject(i).getString("ItemMRP"));
+                                                if(!jsonArrayMRP.getJSONObject(i).getString("ItemBATCH").isEmpty() || !jsonArrayMRP.getJSONObject(i).getString("ItemBATCH").equals("null"))
+                                                {
+                                                    ITEMIDARRAY.add(jsonArrayMRP.getJSONObject(i).getString("ItemBATCH"));
+                                                    txtSetMRPTitle.setText("Batch");
+                                                }
+                                            }else
+                                            {
+                                                if(!jsonArrayMRP.getJSONObject(i).getString("ItemMRP").isEmpty() || !jsonArrayMRP.getJSONObject(i).getString("ItemMRP").equals("null"))
+                                                {
+                                                    ITEMIDARRAY.add(jsonArrayMRP.getJSONObject(i).getString("ItemMRP"));
+                                                    txtSetMRPTitle.setText("MRP");
+                                                }
                                             }
 
                                         }
@@ -430,13 +445,19 @@ public class InVoiceDetailsActivity extends Activity {
 
                                 try {
                                     for (int i = 0; i < jsonArrayMRP.length(); i++) {
-
-                                        if (jsonArrayMRP.getJSONObject(i).getString("ItemMRP").equals(SelectedMRP.getText().toString()) && jsonArrayMRP.getJSONObject(i).getString("ItemName").equals(SelectedItem.getText().toString())) {
-                                            getMRPDetails(jsonArrayMRP.getJSONObject(i).getString("ItemId"),jsonArrayMRP.getJSONObject(i).getString("MRPId"));
-                                            break;
+                                        if (jsonArrayMRP.getJSONObject(i).getString("ItemName").equals(SelectedItem.getText().toString()) && jsonArrayMRP.getJSONObject(i).getString("ItemType").equals("Batch")) {
+                                            if (jsonArrayMRP.getJSONObject(i).getString("ItemBATCH").equals(SelectedMRP.getText().toString()) && jsonArrayMRP.getJSONObject(i).getString("ItemName").equals(SelectedItem.getText().toString())) {
+                                                getMRPDetails(jsonArrayMRP.getJSONObject(i).getString("ItemId"),jsonArrayMRP.getJSONObject(i).getString("MRPId"));
+                                                break;
+                                            }
                                         }
-
-
+                                        else
+                                        {
+                                            if (jsonArrayMRP.getJSONObject(i).getString("ItemMRP").equals(SelectedMRP.getText().toString()) && jsonArrayMRP.getJSONObject(i).getString("ItemName").equals(SelectedItem.getText().toString())) {
+                                                getMRPDetails(jsonArrayMRP.getJSONObject(i).getString("ItemId"),jsonArrayMRP.getJSONObject(i).getString("MRPId"));
+                                                break;
+                                            }
+                                        }
                                     }
                                 } catch (JSONException e) {
                                     e.printStackTrace();
@@ -563,9 +584,20 @@ public class InVoiceDetailsActivity extends Activity {
                                 try {
                                     if (jsonArrayMRP.getJSONObject(i).getString("ItemId").equals(ITEMID) && CheckValidate.checkemptyDouble(jsonArrayMRP.getJSONObject(i).getString("Stock")) > 0) {
 
-                                        if(!jsonArrayMRP.getJSONObject(i).getString("ItemMRP").isEmpty() || !jsonArrayMRP.getJSONObject(i).getString("ItemMRP").equals("null"))
+                                        if(jsonArrayMRP.getJSONObject(i).getString("ItemType").equals("Batch"))
                                         {
-                                            ITEMIDARRAY.add(jsonArrayMRP.getJSONObject(i).getString("ItemMRP"));
+                                            if(!jsonArrayMRP.getJSONObject(i).getString("ItemBATCH").isEmpty() || !jsonArrayMRP.getJSONObject(i).getString("ItemBATCH").equals("null"))
+                                            {
+                                                ITEMIDARRAY.add(jsonArrayMRP.getJSONObject(i).getString("ItemBATCH"));
+                                                txtSetMRPTitle.setText("Batch");
+                                            }
+                                        }else
+                                        {
+                                            if(!jsonArrayMRP.getJSONObject(i).getString("ItemMRP").isEmpty() || !jsonArrayMRP.getJSONObject(i).getString("ItemMRP").equals("null"))
+                                            {
+                                                ITEMIDARRAY.add(jsonArrayMRP.getJSONObject(i).getString("ItemMRP"));
+                                                txtSetMRPTitle.setText("MRP");
+                                            }
                                         }
 
                                     }
@@ -603,13 +635,19 @@ public class InVoiceDetailsActivity extends Activity {
 
                             try {
                                 for (int i = 0; i < jsonArrayMRP.length(); i++) {
-
-                                    if (jsonArrayMRP.getJSONObject(i).getString("ItemMRP").equals(SelectedMRP.getText().toString()) && jsonArrayMRP.getJSONObject(i).getString("ItemName").equals(SelectedItem.getText().toString())) {
-                                        getMRPDetails(jsonArrayMRP.getJSONObject(i).getString("ItemId"),jsonArrayMRP.getJSONObject(i).getString("MRPId"));
-                                        break;
+                                    if (jsonArrayMRP.getJSONObject(i).getString("ItemName").equals(SelectedItem.getText().toString()) && jsonArrayMRP.getJSONObject(i).getString("ItemType").equals("Batch")) {
+                                        if (jsonArrayMRP.getJSONObject(i).getString("ItemBATCH").equals(SelectedMRP.getText().toString()) && jsonArrayMRP.getJSONObject(i).getString("ItemName").equals(SelectedItem.getText().toString())) {
+                                            getMRPDetails(jsonArrayMRP.getJSONObject(i).getString("ItemId"),jsonArrayMRP.getJSONObject(i).getString("MRPId"));
+                                            break;
+                                        }
                                     }
-
-
+                                    else
+                                    {
+                                        if (jsonArrayMRP.getJSONObject(i).getString("ItemMRP").equals(SelectedMRP.getText().toString()) && jsonArrayMRP.getJSONObject(i).getString("ItemName").equals(SelectedItem.getText().toString())) {
+                                            getMRPDetails(jsonArrayMRP.getJSONObject(i).getString("ItemId"),jsonArrayMRP.getJSONObject(i).getString("MRPId"));
+                                            break;
+                                        }
+                                    }
                                 }
                             } catch (JSONException e) {
                                 e.printStackTrace();
@@ -673,13 +711,19 @@ public class InVoiceDetailsActivity extends Activity {
 
                             try {
                                 for (int i = 0; i < jsonArrayMRP.length(); i++) {
-
-                                    if (jsonArrayMRP.getJSONObject(i).getString("ItemMRP").equals(SelectedMRP.getText().toString()) && jsonArrayMRP.getJSONObject(i).getString("ItemName").equals(SelectedItem.getText().toString())) {
-                                        getMRPDetails(jsonArrayMRP.getJSONObject(i).getString("ItemId"),jsonArrayMRP.getJSONObject(i).getString("MRPId"));
-                                        break;
+                                    if (jsonArrayMRP.getJSONObject(i).getString("ItemName").equals(SelectedItem.getText().toString()) && jsonArrayMRP.getJSONObject(i).getString("ItemType").equals("Batch")) {
+                                        if (jsonArrayMRP.getJSONObject(i).getString("ItemBATCH").equals(SelectedMRP.getText().toString()) && jsonArrayMRP.getJSONObject(i).getString("ItemName").equals(SelectedItem.getText().toString())) {
+                                            getMRPDetails(jsonArrayMRP.getJSONObject(i).getString("ItemId"),jsonArrayMRP.getJSONObject(i).getString("MRPId"));
+                                            break;
+                                        }
                                     }
-
-
+                                    else
+                                    {
+                                        if (jsonArrayMRP.getJSONObject(i).getString("ItemMRP").equals(SelectedMRP.getText().toString()) && jsonArrayMRP.getJSONObject(i).getString("ItemName").equals(SelectedItem.getText().toString())) {
+                                            getMRPDetails(jsonArrayMRP.getJSONObject(i).getString("ItemId"),jsonArrayMRP.getJSONObject(i).getString("MRPId"));
+                                            break;
+                                        }
+                                    }
                                 }
                             } catch (JSONException e) {
                                 e.printStackTrace();
@@ -2762,7 +2806,7 @@ public class InVoiceDetailsActivity extends Activity {
                                 if (SelectedItem.getText().toString().trim().length() == 0 || SelectedItem.getText().toString().trim().equals("Select Item") ) {
                                     ShowAlert.ShowAlert(InVoiceDetailsActivity.this,"Alert...","Must select item.");
                                     return;
-                                }else if(CheckValidate.checkemptyDouble(SelectedMRP.getText().toString().trim()) <= 0 || SelectedItem.getText().toString().trim().equals("Select MRP")){
+                                }else if(SelectedMRP.getText().toString().length() <= 0 || SelectedItem.getText().toString().trim().equals("Select MRP")){
                                     ShowAlert.ShowAlert(InVoiceDetailsActivity.this,"Alert...","MRP zero not allow.");
                                     return;
                                 }else if(CheckValidate.checkemptyDouble(edtTotalQty.getText().toString().trim()) <= 0 && CheckValidate.checkemptyDouble(edtFreeQty.getText().toString().trim()) <= 0 ) {
@@ -2781,7 +2825,7 @@ public class InVoiceDetailsActivity extends Activity {
                                 }
                                 else{
 
-                                    String ItemID = null, MRPID = null, strPrimaryUnitId = null, strAltUnitId = null;
+                                    String ItemID = null, MRPID = null, ITEMMRP=null, strPrimaryUnitId = null, strAltUnitId = null;
                                     for (int i = 0; i < jsonArrayItem.length(); i++) {
                                         try {
                                             if (jsonArrayItem.getJSONObject(i).getString("ItemName").equals(SelectedItem.getText().toString().trim())) {
@@ -2820,22 +2864,35 @@ public class InVoiceDetailsActivity extends Activity {
 
                                     for (int i = 0; i < jsonArrayMRP.length(); i++) {
                                         try {
-                                            if (jsonArrayMRP.getJSONObject(i).getString("ItemName").equals(SelectedItem.getText().toString().trim()) && jsonArrayMRP.getJSONObject(i).getString("ItemMRP").equals(SelectedMRP.getText().toString().trim())) {
+                                            if (jsonArrayMRP.getJSONObject(i).getString("ItemName").equals(SelectedItem.getText().toString().trim()) && jsonArrayMRP.getJSONObject(i).getString("ItemType").equals("Batch")) {
 
-                                                MRPID = jsonArrayMRP.getJSONObject(i).getString("MRPId");
+                                                if (jsonArrayMRP.getJSONObject(i).getString("ItemName").equals(SelectedItem.getText().toString().trim()) && jsonArrayMRP.getJSONObject(i).getString("ItemBATCH").equals(SelectedMRP.getText().toString().trim())) {
 
+                                                    MRPID = jsonArrayMRP.getJSONObject(i).getString("MRPId");
+                                                    ITEMMRP = jsonArrayMRP.getJSONObject(i).getString("ItemMRP");
+
+                                                }
+                                            }else{
+                                                if (jsonArrayMRP.getJSONObject(i).getString("ItemName").equals(SelectedItem.getText().toString().trim()) && jsonArrayMRP.getJSONObject(i).getString("ItemMRP").equals(SelectedMRP.getText().toString().trim())) {
+
+                                                    MRPID = jsonArrayMRP.getJSONObject(i).getString("MRPId");
+                                                    ITEMMRP = jsonArrayMRP.getJSONObject(i).getString("ItemMRP");
+                                                }
                                             }
+
+
                                         } catch (JSONException e) {
                                             e.printStackTrace();
                                         }
                                     }
+
                                     try {
                                         JSONObject jsonObject = new JSONObject();
 
                                         jsonObject.put("ItemId", ItemID);
                                         jsonObject.put("MRPId", MRPID);
                                         jsonObject.put("ItemName", SelectedItem.getText().toString().trim());
-                                        jsonObject.put("ItemMRP", SelectedMRP.getText().toString().trim());
+                                        jsonObject.put("ItemMRP", ITEMMRP);
                                         jsonObject.put("AlternetUnitID", strAltUnitId);
                                         jsonObject.put("AlternetUnit", SelectedAltUnit.getText().toString().trim());
                                         jsonObject.put("AlternetUnitQty", edtAltUnitQty.getText().toString().trim());
@@ -3217,6 +3274,8 @@ public class InVoiceDetailsActivity extends Activity {
                     final TextView SelectedPrimaryUnit = mView.findViewById(R.id.selectPrimaryUnit);
                     SelectedPrimaryUnit.setText(tvPrimaryQtyUnit.getText().toString());
 
+                    final TextView txtSetMRPTitle = mView.findViewById(R.id.txtSetMRPTitle);
+
                     final TextView SelectedMRP = mView.findViewById(R.id.selectMRP);
                     final SpinnerDialog spMRP;
 
@@ -3286,17 +3345,42 @@ public class InVoiceDetailsActivity extends Activity {
                         }
                     }
 
+                    String TMPSETMRP = null;
                     for (int i = 0; i < jsonArrayMRP.length(); i++) {
                         try {
-                            if (jsonArrayMRP.getJSONObject(i).getString("ItemId").equals(ITEMID)) {
-                                ITEMIDARRAY.add(jsonArrayMRP.getJSONObject(i).getString("ItemMRP"));
+                            if (jsonArrayMRP.getJSONObject(i).getString("ItemId").equals(ITEMID) && CheckValidate.checkemptyDouble(jsonArrayMRP.getJSONObject(i).getString("Stock")) > 0) {
+
+                                if(jsonArrayMRP.getJSONObject(i).getString("ItemType").equals("Batch"))
+                                {
+                                    if(!jsonArrayMRP.getJSONObject(i).getString("ItemBATCH").isEmpty() || !jsonArrayMRP.getJSONObject(i).getString("ItemBATCH").equals("null"))
+                                    {
+                                        ITEMIDARRAY.add(jsonArrayMRP.getJSONObject(i).getString("ItemBATCH"));
+                                        txtSetMRPTitle.setText("Batch");
+                                    }
+                                    if(jsonArrayMRP.getJSONObject(i).getString("ItemMRP").equals(tvMRP.getText().toString()))
+                                    {
+                                        TMPSETMRP = jsonArrayMRP.getJSONObject(i).getString("ItemBATCH");
+                                    }
+
+                                }else
+                                {
+                                    if(!jsonArrayMRP.getJSONObject(i).getString("ItemMRP").isEmpty() || !jsonArrayMRP.getJSONObject(i).getString("ItemMRP").equals("null"))
+                                    {
+                                        ITEMIDARRAY.add(jsonArrayMRP.getJSONObject(i).getString("ItemMRP"));
+                                        txtSetMRPTitle.setText("MRP");
+                                    }
+                                    if(jsonArrayMRP.getJSONObject(i).getString("ItemMRP").equals(tvMRP.getText().toString()))
+                                    {
+                                        TMPSETMRP = jsonArrayMRP.getJSONObject(i).getString("ItemMRP");
+                                    }
+                                }
 
                             }
                         } catch (JSONException e) {
                             e.printStackTrace();
                         }
                     }
-                    SelectedMRP.setText(tvMRP.getText().toString());
+                    SelectedMRP.setText(TMPSETMRP);
 
                     if(SelectedPrimaryUnit.getText().toString().trim().length() > 0)
                     {
@@ -3315,13 +3399,19 @@ public class InVoiceDetailsActivity extends Activity {
 
                     try {
                         for (int i = 0; i < jsonArrayMRP.length(); i++) {
-
-                            if (jsonArrayMRP.getJSONObject(i).getString("ItemMRP").equals(SelectedMRP.getText().toString()) && jsonArrayMRP.getJSONObject(i).getString("ItemName").equals(SelectedItem.getText().toString())) {
-                                getMRPDetails(jsonArrayMRP.getJSONObject(i).getString("ItemId"),jsonArrayMRP.getJSONObject(i).getString("MRPId"));
-                                break;
+                            if (jsonArrayMRP.getJSONObject(i).getString("ItemName").equals(SelectedItem.getText().toString()) && jsonArrayMRP.getJSONObject(i).getString("ItemType").equals("Batch")) {
+                                if (jsonArrayMRP.getJSONObject(i).getString("ItemBATCH").equals(SelectedMRP.getText().toString()) && jsonArrayMRP.getJSONObject(i).getString("ItemName").equals(SelectedItem.getText().toString())) {
+                                    getMRPDetails(jsonArrayMRP.getJSONObject(i).getString("ItemId"),jsonArrayMRP.getJSONObject(i).getString("MRPId"));
+                                    break;
+                                }
                             }
-
-
+                            else
+                            {
+                                if (jsonArrayMRP.getJSONObject(i).getString("ItemMRP").equals(SelectedMRP.getText().toString()) && jsonArrayMRP.getJSONObject(i).getString("ItemName").equals(SelectedItem.getText().toString())) {
+                                    getMRPDetails(jsonArrayMRP.getJSONObject(i).getString("ItemId"),jsonArrayMRP.getJSONObject(i).getString("MRPId"));
+                                    break;
+                                }
+                            }
                         }
                     } catch (JSONException e) {
                         e.printStackTrace();
@@ -3452,9 +3542,20 @@ public class InVoiceDetailsActivity extends Activity {
                                 try {
                                     if (jsonArrayMRP.getJSONObject(i).getString("ItemId").equals(ITEMID) && CheckValidate.checkemptyDouble(jsonArrayMRP.getJSONObject(i).getString("Stock")) > 0) {
 
-                                        if(!jsonArrayMRP.getJSONObject(i).getString("ItemMRP").isEmpty() || !jsonArrayMRP.getJSONObject(i).getString("ItemMRP").equals("null"))
+                                        if(jsonArrayMRP.getJSONObject(i).getString("ItemType").equals("Batch"))
                                         {
-                                            ITEMIDARRAY.add(jsonArrayMRP.getJSONObject(i).getString("ItemMRP"));
+                                            if(!jsonArrayMRP.getJSONObject(i).getString("ItemBATCH").isEmpty() || !jsonArrayMRP.getJSONObject(i).getString("ItemBATCH").equals("null"))
+                                            {
+                                                ITEMIDARRAY.add(jsonArrayMRP.getJSONObject(i).getString("ItemBATCH"));
+                                                txtSetMRPTitle.setText("Batch");
+                                            }
+                                        }else
+                                        {
+                                            if(!jsonArrayMRP.getJSONObject(i).getString("ItemMRP").isEmpty() || !jsonArrayMRP.getJSONObject(i).getString("ItemMRP").equals("null"))
+                                            {
+                                                ITEMIDARRAY.add(jsonArrayMRP.getJSONObject(i).getString("ItemMRP"));
+                                                txtSetMRPTitle.setText("MRP");
+                                            }
                                         }
 
                                     }
@@ -3493,13 +3594,19 @@ public class InVoiceDetailsActivity extends Activity {
 
                             try {
                                 for (int i = 0; i < jsonArrayMRP.length(); i++) {
-
-                                    if (jsonArrayMRP.getJSONObject(i).getString("ItemMRP").equals(SelectedMRP.getText().toString()) && jsonArrayMRP.getJSONObject(i).getString("ItemName").equals(SelectedItem.getText().toString())) {
-                                        getMRPDetails(jsonArrayMRP.getJSONObject(i).getString("ItemId"),jsonArrayMRP.getJSONObject(i).getString("MRPId"));
-                                        break;
+                                    if (jsonArrayMRP.getJSONObject(i).getString("ItemName").equals(SelectedItem.getText().toString()) && jsonArrayMRP.getJSONObject(i).getString("ItemType").equals("Batch")) {
+                                        if (jsonArrayMRP.getJSONObject(i).getString("ItemBATCH").equals(SelectedMRP.getText().toString()) && jsonArrayMRP.getJSONObject(i).getString("ItemName").equals(SelectedItem.getText().toString())) {
+                                            getMRPDetails(jsonArrayMRP.getJSONObject(i).getString("ItemId"),jsonArrayMRP.getJSONObject(i).getString("MRPId"));
+                                            break;
+                                        }
                                     }
-
-
+                                    else
+                                    {
+                                        if (jsonArrayMRP.getJSONObject(i).getString("ItemMRP").equals(SelectedMRP.getText().toString()) && jsonArrayMRP.getJSONObject(i).getString("ItemName").equals(SelectedItem.getText().toString())) {
+                                            getMRPDetails(jsonArrayMRP.getJSONObject(i).getString("ItemId"),jsonArrayMRP.getJSONObject(i).getString("MRPId"));
+                                            break;
+                                        }
+                                    }
                                 }
                             } catch (JSONException e) {
                                 e.printStackTrace();
@@ -3637,9 +3744,20 @@ public class InVoiceDetailsActivity extends Activity {
                                 try {
                                     if (jsonArrayMRP.getJSONObject(i).getString("ItemId").equals(ITEMID) && CheckValidate.checkemptyDouble(jsonArrayMRP.getJSONObject(i).getString("Stock")) > 0) {
 
-                                        if(!jsonArrayMRP.getJSONObject(i).getString("ItemMRP").isEmpty() || !jsonArrayMRP.getJSONObject(i).getString("ItemMRP").equals("null"))
+                                        if(jsonArrayMRP.getJSONObject(i).getString("ItemType").equals("Batch"))
                                         {
-                                            ITEMIDARRAY.add(jsonArrayMRP.getJSONObject(i).getString("ItemMRP"));
+                                            if(!jsonArrayMRP.getJSONObject(i).getString("ItemBATCH").isEmpty() || !jsonArrayMRP.getJSONObject(i).getString("ItemBATCH").equals("null"))
+                                            {
+                                                ITEMIDARRAY.add(jsonArrayMRP.getJSONObject(i).getString("ItemBATCH"));
+                                                txtSetMRPTitle.setText("Batch");
+                                            }
+                                        }else
+                                        {
+                                            if(!jsonArrayMRP.getJSONObject(i).getString("ItemMRP").isEmpty() || !jsonArrayMRP.getJSONObject(i).getString("ItemMRP").equals("null"))
+                                            {
+                                                ITEMIDARRAY.add(jsonArrayMRP.getJSONObject(i).getString("ItemMRP"));
+                                                txtSetMRPTitle.setText("MRP");
+                                            }
                                         }
 
                                     }
@@ -3678,13 +3796,19 @@ public class InVoiceDetailsActivity extends Activity {
 
                             try {
                                 for (int i = 0; i < jsonArrayMRP.length(); i++) {
-
-                                    if (jsonArrayMRP.getJSONObject(i).getString("ItemMRP").equals(SelectedMRP.getText().toString()) && jsonArrayMRP.getJSONObject(i).getString("ItemName").equals(SelectedItem.getText().toString())) {
-                                        getMRPDetails(jsonArrayMRP.getJSONObject(i).getString("ItemId"),jsonArrayMRP.getJSONObject(i).getString("MRPId"));
-                                        break;
+                                    if (jsonArrayMRP.getJSONObject(i).getString("ItemName").equals(SelectedItem.getText().toString()) && jsonArrayMRP.getJSONObject(i).getString("ItemType").equals("Batch")) {
+                                        if (jsonArrayMRP.getJSONObject(i).getString("ItemBATCH").equals(SelectedMRP.getText().toString()) && jsonArrayMRP.getJSONObject(i).getString("ItemName").equals(SelectedItem.getText().toString())) {
+                                            getMRPDetails(jsonArrayMRP.getJSONObject(i).getString("ItemId"),jsonArrayMRP.getJSONObject(i).getString("MRPId"));
+                                            break;
+                                        }
                                     }
-
-
+                                    else
+                                    {
+                                        if (jsonArrayMRP.getJSONObject(i).getString("ItemMRP").equals(SelectedMRP.getText().toString()) && jsonArrayMRP.getJSONObject(i).getString("ItemName").equals(SelectedItem.getText().toString())) {
+                                            getMRPDetails(jsonArrayMRP.getJSONObject(i).getString("ItemId"),jsonArrayMRP.getJSONObject(i).getString("MRPId"));
+                                            break;
+                                        }
+                                    }
                                 }
                             } catch (JSONException e) {
                                 e.printStackTrace();
@@ -3745,10 +3869,18 @@ public class InVoiceDetailsActivity extends Activity {
 
                             try {
                                 for (int i = 0; i < jsonArrayMRP.length(); i++) {
-
-                                    if (jsonArrayMRP.getJSONObject(i).getString("ItemMRP").equals(SelectedMRP.getText().toString()) && jsonArrayMRP.getJSONObject(i).getString("ItemName").equals(SelectedItem.getText().toString())) {
-                                        getMRPDetails(jsonArrayMRP.getJSONObject(i).getString("ItemId"),jsonArrayMRP.getJSONObject(i).getString("MRPId"));
-                                        break;
+                                    if (jsonArrayMRP.getJSONObject(i).getString("ItemName").equals(SelectedItem.getText().toString()) && jsonArrayMRP.getJSONObject(i).getString("ItemType").equals("Batch")) {
+                                        if (jsonArrayMRP.getJSONObject(i).getString("ItemBATCH").equals(SelectedMRP.getText().toString()) && jsonArrayMRP.getJSONObject(i).getString("ItemName").equals(SelectedItem.getText().toString())) {
+                                            getMRPDetails(jsonArrayMRP.getJSONObject(i).getString("ItemId"),jsonArrayMRP.getJSONObject(i).getString("MRPId"));
+                                            break;
+                                        }
+                                    }
+                                    else
+                                    {
+                                        if (jsonArrayMRP.getJSONObject(i).getString("ItemMRP").equals(SelectedMRP.getText().toString()) && jsonArrayMRP.getJSONObject(i).getString("ItemName").equals(SelectedItem.getText().toString())) {
+                                            getMRPDetails(jsonArrayMRP.getJSONObject(i).getString("ItemId"),jsonArrayMRP.getJSONObject(i).getString("MRPId"));
+                                            break;
+                                        }
                                     }
                                 }
                             } catch (JSONException e) {
@@ -5806,7 +5938,7 @@ public class InVoiceDetailsActivity extends Activity {
                             if (SelectedItem.getText().toString().trim().length() == 0 || SelectedItem.getText().toString().trim().equals("Select Item") ) {
                                 ShowAlert.ShowAlert(InVoiceDetailsActivity.this,"Alert...","Must select item.");
                                 return;
-                            }else if(CheckValidate.checkemptyDouble(SelectedMRP.getText().toString().trim()) <= 0 || SelectedItem.getText().toString().trim().equals("Select MRP")){
+                            }else if(SelectedMRP.getText().toString().length() <= 0 || SelectedItem.getText().toString().trim().equals("Select MRP")){
                                 ShowAlert.ShowAlert(InVoiceDetailsActivity.this,"Alert...","MRP zero not allow.");
                                 return;
                             }else if(CheckValidate.checkemptyDouble(edtTotalQty.getText().toString().trim()) <= 0 && CheckValidate.checkemptyDouble(edtFreeQty.getText().toString().trim()) <= 0 ) {
@@ -5821,7 +5953,7 @@ public class InVoiceDetailsActivity extends Activity {
                                 return;
                             }
                             else{
-                                String ItemID = null, MRPID = null, strPrimaryUnitId = null, strAltUnitId = null;
+                                String ItemID = null, MRPID = null, ITEMMRP=null, strPrimaryUnitId = null, strAltUnitId = null;
                                 for (int i = 0; i < jsonArrayItem.length(); i++) {
                                     try {
                                         if (jsonArrayItem.getJSONObject(i).getString("ItemName").equals(SelectedItem.getText().toString().trim())) {
@@ -5860,11 +5992,24 @@ public class InVoiceDetailsActivity extends Activity {
 
                                 for (int i = 0; i < jsonArrayMRP.length(); i++) {
                                     try {
-                                        if (jsonArrayMRP.getJSONObject(i).getString("ItemName").equals(SelectedItem.getText().toString().trim()) && jsonArrayMRP.getJSONObject(i).getString("ItemMRP").equals(SelectedMRP.getText().toString().trim())) {
+                                        if (jsonArrayMRP.getJSONObject(i).getString("ItemName").equals(SelectedItem.getText().toString().trim()) && jsonArrayMRP.getJSONObject(i).getString("ItemType").equals("Batch")) {
 
-                                            MRPID = jsonArrayMRP.getJSONObject(i).getString("MRPId");
+                                            if (jsonArrayMRP.getJSONObject(i).getString("ItemName").equals(SelectedItem.getText().toString().trim()) && jsonArrayMRP.getJSONObject(i).getString("ItemBATCH").equals(SelectedMRP.getText().toString().trim())) {
 
+                                                MRPID = jsonArrayMRP.getJSONObject(i).getString("MRPId");
+                                                ITEMMRP = jsonArrayMRP.getJSONObject(i).getString("ItemMRP");
+
+                                            }
+                                        }else{
+                                            if (jsonArrayMRP.getJSONObject(i).getString("ItemName").equals(SelectedItem.getText().toString().trim()) && jsonArrayMRP.getJSONObject(i).getString("ItemMRP").equals(SelectedMRP.getText().toString().trim())) {
+
+                                                MRPID = jsonArrayMRP.getJSONObject(i).getString("MRPId");
+                                                ITEMMRP = jsonArrayMRP.getJSONObject(i).getString("ItemMRP");
+
+                                            }
                                         }
+
+
                                     } catch (JSONException e) {
                                         e.printStackTrace();
                                     }
@@ -5876,7 +6021,7 @@ public class InVoiceDetailsActivity extends Activity {
                                     jobjPerticularPosition.put("ItemId", ItemID);
                                     jobjPerticularPosition.put("ItemName", SelectedItem.getText().toString());
                                     jobjPerticularPosition.put("MRPId", MRPID);
-                                    jobjPerticularPosition.put("ItemMRP", SelectedMRP.getText().toString());
+                                    jobjPerticularPosition.put("ItemMRP", ITEMMRP);
                                     jobjPerticularPosition.put("AlternetUnitID", strAltUnitId);
                                     jobjPerticularPosition.put("AlternetUnit", SelectedAltUnit.getText().toString().trim());
                                     jobjPerticularPosition.put("AlternetUnitQty", edtAltUnitQty.getText().toString().trim());
