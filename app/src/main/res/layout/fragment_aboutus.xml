@@ -63,6 +63,7 @@
                         android:textAlignment="gravity"
                         android:padding="@dimen/_2sdp"
                         android:ellipsize="end"
+                        android:autoLink="web"
                         android:textColor="@color/colorPrimary"
                         android:textColorHint="@color/grey" />
 
