@@ -1,36 +1,79 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:tools="http://schemas.android.com/tools"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:background="@color/White"
+xmlns:tools="http://schemas.android.com/tools"
+android:layout_width="match_parent"
+android:layout_height="match_parent"
+android:background="@color/colorPrimary"
+android:orientation="vertical"
+xmlns:app="http://schemas.android.com/apk/res-auto">
+
+
+<LinearLayout
+    android:layout_marginTop="@dimen/_8sdp"
+    android:layout_marginBottom="@dimen/_8sdp"
+    android:weightSum="3"
     android:orientation="vertical"
-    xmlns:app="http://schemas.android.com/apk/res-auto">
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
 
     <LinearLayout
-        android:background="@color/White"
+        android:layout_weight="1"
         android:layout_width="match_parent"
-        android:layout_height="@dimen/_1sdp"/>
+        android:layout_height="match_parent">
+        <androidx.cardview.widget.CardView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            app:cardBackgroundColor="@color/White"
+            android:layout_marginLeft="@dimen/_6sdp"
+            android:layout_marginRight="@dimen/_6sdp"
+
+            app:cardCornerRadius="@dimen/_8sdp"
+            android:visibility="visible"
+            app:cardElevation="@dimen/_8sdp">
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:background="@drawable/imagess2"
+                android:layout_gravity="center">
+
+                <com.score3s.android.fontStyle.TextViewBold
+                    android:id="@+id/tvUserName"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:padding="@dimen/_15sdp"
+                    android:text="Hello, Pradeep Modi"
+                    android:textStyle="italic"
+                    android:gravity="top"
+                    android:textColor="@color/colorPrimary"
+                    android:textSize="@dimen/_16sdp"
+                    tools:ignore="RtlCompat" />
+
+
+            </RelativeLayout>
+        </androidx.cardview.widget.CardView>
+    </LinearLayout>
 
     <LinearLayout
-        android:layout_marginTop="@dimen/_5sdp"
-        android:layout_marginBottom="@dimen/_5sdp"
-        android:weightSum="3"
-        android:orientation="vertical"
+        android:layout_weight="1"
         android:layout_width="match_parent"
         android:layout_height="match_parent">
 
         <LinearLayout
-            android:layout_weight="1"
+            android:weightSum="2"
+            android:orientation="horizontal"
             android:layout_width="match_parent"
             android:layout_height="match_parent">
+
             <androidx.cardview.widget.CardView
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:layout_weight="1"
-                app:cardBackgroundColor="@color/colorPrimary"
+                app:cardBackgroundColor="@color/White"
                 android:layout_marginLeft="@dimen/_6sdp"
-                android:layout_marginRight="@dimen/_6sdp"
+                android:layout_marginRight="@dimen/_3sdp"
+                android:layout_marginTop="@dimen/_6sdp"
                 app:cardCornerRadius="@dimen/_8sdp"
                 android:visibility="visible"
                 app:cardElevation="@dimen/_8sdp">
@@ -43,258 +86,159 @@
 
 
                     <ImageView
-                        android:layout_width="@dimen/_100sdp"
-                        android:layout_height="@dimen/_100sdp"
-                        android:src="@drawable/call"
-                        android:padding="@dimen/_20sdp"
+                        android:layout_width="@dimen/_80sdp"
+                        android:layout_height="@dimen/_80sdp"
+                        android:src="@drawable/sold"
+                        android:padding="@dimen/_15sdp"
                         android:layout_alignParentBottom="true"
-                        android:tint="@color/White"/>
+                        android:tint="@color/colorPrimary"
+
+                        />
 
                     <com.score3s.android.fontStyle.TextViewRegular
                         android:layout_width="wrap_content"
                         android:padding="@dimen/_10sdp"
                         android:layout_height="wrap_content"
-                        android:text="Total Calls"
-                        android:textColor="@color/White"
+                        android:text="Total Invoices"
+                        android:textColor="@color/colorPrimary"
                         android:textSize="@dimen/_15sdp"/>
 
                     <com.score3s.android.fontStyle.TextViewRegular
-                        android:id="@+id/tvTotalCalls"
+                        android:id="@+id/tvTotalInvoice"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:padding="@dimen/_10sdp"
-                        android:layout_alignParentEnd="true"
-                        android:text="33"
-                        android:layout_alignParentBottom="true"
-                        android:textColor="@color/White"
-                        android:textSize="@dimen/_20sdp" />
+                        android:textStyle="bold"
+                        android:text="0"
+                        android:layout_centerInParent="true"
+                        android:textColor="@color/colorPrimary"
+                        android:textSize="@dimen/_16sdp" />
                 </RelativeLayout>
+
+
             </androidx.cardview.widget.CardView>
-        </LinearLayout>
 
-        <LinearLayout
-            android:layout_weight="1"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent">
-
-            <LinearLayout
-                android:weightSum="2"
-                android:orientation="horizontal"
+            <androidx.cardview.widget.CardView
                 android:layout_width="match_parent"
-                android:layout_height="match_parent">
-                <androidx.cardview.widget.CardView
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                app:cardBackgroundColor="@color/White"
+                android:layout_marginLeft="@dimen/_3sdp"
+                android:layout_marginRight="@dimen/_6sdp"
+                android:layout_marginTop="@dimen/_6sdp"
+                app:cardCornerRadius="@dimen/_8sdp"
+                android:visibility="visible"
+                app:cardElevation="@dimen/_8sdp">
+
+
+
+                <RelativeLayout
                     android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:layout_weight="1"
-                    app:cardBackgroundColor="@color/colorPrimary"
-                    android:layout_marginLeft="@dimen/_6sdp"
-                    android:layout_marginRight="@dimen/_3sdp"
-                    android:layout_marginTop="@dimen/_6sdp"
-                    app:cardCornerRadius="@dimen/_8sdp"
-                    android:visibility="visible"
-                    app:cardElevation="@dimen/_8sdp">
+                    android:layout_height="match_parent">
 
 
+                    <ImageView
+                        android:layout_width="@dimen/_80sdp"
+                        android:layout_height="@dimen/_80sdp"
+                        android:src="@drawable/achivement"
+                        android:padding="@dimen/_15sdp"
+                        android:layout_alignParentBottom="true"
+                        android:tint="@color/colorPrimary"
+                        />
 
-                    <RelativeLayout
-                        android:layout_width="match_parent"
-                        android:layout_height="match_parent">
+                    <com.score3s.android.fontStyle.TextViewRegular
+                        android:layout_width="wrap_content"
+                        android:padding="@dimen/_10sdp"
+                        android:layout_height="wrap_content"
+                        android:text="Total Sales(in INR)"
+                        android:textColor="@color/colorPrimary"
+                        android:textSize="@dimen/_15sdp"/>
 
+                    <com.score3s.android.fontStyle.TextViewRegular
+                        android:id="@+id/tvTotalSalesAmt"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:padding="@dimen/_10sdp"
+                        android:layout_centerInParent="true"
+                        android:text="0.0"
+                        android:textStyle="bold"
+                        android:textColor="@color/colorPrimary"
+                        android:textSize="@dimen/_16sdp" />
+                </RelativeLayout>
 
-                        <ImageView
-                            android:layout_width="@dimen/_80sdp"
-                            android:layout_height="@dimen/_80sdp"
-                            android:src="@drawable/call"
-                            android:padding="@dimen/_20sdp"
-                            android:layout_alignParentBottom="true"
-                            android:tint="@color/White"/>
+            </androidx.cardview.widget.CardView>
 
-                        <com.score3s.android.fontStyle.TextViewRegular
-                            android:layout_width="wrap_content"
-                            android:padding="@dimen/_10sdp"
-                            android:layout_height="wrap_content"
-                            android:text="Producative Calls"
-                            android:textColor="@color/White"
-                            android:textSize="@dimen/_15sdp"/>
-
-                        <com.score3s.android.fontStyle.TextViewRegular
-                            android:id="@+id/tvprodectiveCalls"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:padding="@dimen/_10sdp"
-                            android:layout_alignParentEnd="true"
-                            android:text="33"
-                            android:layout_alignParentBottom="true"
-                            android:textColor="@color/White"
-                            android:textSize="@dimen/_20sdp" />
-                    </RelativeLayout>
-
-
-                </androidx.cardview.widget.CardView>
-
-                <androidx.cardview.widget.CardView
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:layout_weight="1"
-                    app:cardBackgroundColor="@color/colorPrimary"
-                    android:layout_marginLeft="@dimen/_3sdp"
-                    android:layout_marginRight="@dimen/_6sdp"
-                    android:layout_marginTop="@dimen/_6sdp"
-                    app:cardCornerRadius="@dimen/_8sdp"
-                    android:visibility="visible"
-                    app:cardElevation="@dimen/_8sdp">
-
-
-
-                    <RelativeLayout
-                        android:layout_width="match_parent"
-                        android:layout_height="match_parent">
-
-
-                        <ImageView
-                            android:layout_width="@dimen/_80sdp"
-                            android:layout_height="@dimen/_80sdp"
-                            android:src="@drawable/sold"
-                            android:padding="@dimen/_15sdp"
-                            android:layout_alignParentBottom="true"
-                            android:tint="@color/White"/>
-
-                        <com.score3s.android.fontStyle.TextViewRegular
-                            android:layout_width="wrap_content"
-                            android:padding="@dimen/_10sdp"
-                            android:layout_height="wrap_content"
-                            android:text="Line Sold"
-                            android:textColor="@color/White"
-                            android:textSize="@dimen/_15sdp"/>
-
-                        <com.score3s.android.fontStyle.TextViewRegular
-                            android:id="@+id/tvLineSold"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:padding="@dimen/_10sdp"
-                            android:layout_alignParentEnd="true"
-                            android:text="33"
-                            android:layout_alignParentBottom="true"
-                            android:textColor="@color/White"
-                            android:textSize="@dimen/_20sdp" />
-                    </RelativeLayout>
-
-                </androidx.cardview.widget.CardView>
-            </LinearLayout>
         </LinearLayout>
+    </LinearLayout>
 
+    <LinearLayout
+        android:layout_weight="1"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
 
-        <LinearLayout
-            android:layout_weight="1"
+        <androidx.cardview.widget.CardView
             android:layout_width="match_parent"
-            android:layout_height="match_parent">
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            app:cardBackgroundColor="@color/White"
+            android:layout_marginLeft="@dimen/_6sdp"
+            android:layout_marginRight="@dimen/_6sdp"
+            android:layout_marginTop="@dimen/_6sdp"
+            app:cardCornerRadius="@dimen/_8sdp"
+            android:visibility="visible"
+            app:cardElevation="@dimen/_8sdp">
 
-            <LinearLayout
-                android:weightSum="2"
-                android:orientation="horizontal"
+            <RelativeLayout
                 android:layout_width="match_parent"
-                android:layout_height="match_parent">
-                <androidx.cardview.widget.CardView
-                    app:cardBackgroundColor="@color/colorPrimary"
+                android:layout_height="match_parent"
+                android:layout_gravity="center" >
+
+                <com.score3s.android.fontStyle.TextViewBold
+                    android:id="@+id/tvSoftwareName"
                     android:layout_width="match_parent"
+                    android:padding="@dimen/_5sdp"
+                    android:layout_height="wrap_content"
+                    android:gravity="center"
+                    android:textStyle="bold"
+                    android:text="@string/software_name"
+                    android:textColor="@color/colorPrimary"
+                    android:textSize="@dimen/_16sdp"/>
+
+                <com.score3s.android.fontStyle.TextViewBold
+                    android:id="@+id/tvDevloperInfoDetails"
+                    android:layout_below="@+id/tvSoftwareName"
+                    android:layout_above="@+id/AppVersionInfo"
+                    android:layout_width="match_parent"
+                    android:background="@drawable/textview_border"
+                    android:padding="@dimen/_5sdp"
                     android:layout_height="match_parent"
-                    android:layout_weight="1"
                     android:layout_marginLeft="@dimen/_6sdp"
-                    android:layout_marginRight="@dimen/_3sdp"
-                    android:layout_marginTop="@dimen/_6sdp"
-                    app:cardCornerRadius="@dimen/_8sdp"
-                    android:visibility="visible"
-                    app:cardElevation="@dimen/_8sdp">
-
-                    <RelativeLayout
-                        android:layout_width="match_parent"
-                        android:layout_height="match_parent">
-
-
-                        <ImageView
-                            android:layout_width="@dimen/_80sdp"
-                            android:layout_height="@dimen/_80sdp"
-                            android:src="@drawable/target"
-                            android:padding="@dimen/_17sdp"
-                            android:layout_alignParentBottom="true"
-                            android:tint="@color/White"/>
-
-                        <com.score3s.android.fontStyle.TextViewRegular
-                            android:layout_width="wrap_content"
-                            android:padding="@dimen/_10sdp"
-                            android:layout_height="wrap_content"
-                            android:text="Target"
-                            android:textColor="@color/White"
-                            android:textSize="@dimen/_15sdp"/>
-
-                        <com.score3s.android.fontStyle.TextViewRegular
-                            android:id="@+id/tvTarget"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:padding="@dimen/_10sdp"
-                            android:layout_alignParentEnd="true"
-                            android:text="33"
-                            android:layout_alignParentBottom="true"
-                            android:textColor="@color/White"
-                            android:textSize="@dimen/_20sdp" />
-                    </RelativeLayout>
-
-
-
-                </androidx.cardview.widget.CardView>
-
-                <androidx.cardview.widget.CardView
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:layout_weight="1"
-                    app:cardBackgroundColor="@color/colorPrimary"
-                    android:layout_marginLeft="@dimen/_3sdp"
                     android:layout_marginRight="@dimen/_6sdp"
-                    android:layout_marginTop="@dimen/_6sdp"
-                    app:cardCornerRadius="@dimen/_8sdp"
-                    android:visibility="visible"
-                    app:cardElevation="@dimen/_8sdp">
+                    android:textStyle="normal"
+                    android:gravity="center"
+                    android:textColor="@color/White"
+                    android:textSize="@dimen/_10sdp"/>
 
-                    <RelativeLayout
-                        android:layout_width="match_parent"
-                        android:layout_height="match_parent">
+                <com.score3s.android.fontStyle.TextViewBold
+                    android:id="@+id/AppVersionInfo"
+                    android:layout_width="match_parent"
+                    android:padding="@dimen/_5sdp"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentBottom="true"
+                    android:layout_marginRight="@dimen/_6sdp"
+                    android:layout_marginLeft="@dimen/_6sdp"
+                    android:layout_marginBottom="@dimen/_6sdp"
+                    android:gravity="center"
+                    android:textStyle="bold|italic"
+                    android:textColor="@color/colorPrimary"
+                    android:textSize="@dimen/_10sdp"/>
 
+            </RelativeLayout>
 
-                        <ImageView
-                            android:layout_width="@dimen/_80sdp"
-                            android:layout_height="@dimen/_80sdp"
-                            android:src="@drawable/achivement"
-                            android:padding="@dimen/_18sdp"
-                            android:layout_alignParentBottom="true"
-                            android:tint="@color/White"/>
-
-                        <com.score3s.android.fontStyle.TextViewRegular
-                            android:layout_width="wrap_content"
-                            android:padding="@dimen/_10sdp"
-                            android:layout_height="wrap_content"
-                            android:text="Achivement"
-                            android:textColor="@color/White"
-                            android:textSize="@dimen/_15sdp"/>
-
-                        <com.score3s.android.fontStyle.TextViewRegular
-                            android:id="@+id/tvAchivement"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:padding="@dimen/_10sdp"
-                            android:layout_alignParentEnd="true"
-                            android:text="33"
-                            android:layout_alignParentBottom="true"
-                            android:textColor="@color/White"
-                            android:textSize="@dimen/_20sdp" />
-                    </RelativeLayout>
-
-
-
-
-                </androidx.cardview.widget.CardView>
-            </LinearLayout>
-        </LinearLayout>
-
+        </androidx.cardview.widget.CardView>
 
     </LinearLayout>
+
+</LinearLayout>
+
 </LinearLayout>

@@ -147,6 +147,7 @@ public class MainActivity extends Activity {
                             editorUserAuthKey.putString("auth", jRootObject.getString("AuthKey"));
                             editorUserAuthKey.putString("CompanyName", jRootObject.getString("CompanyName"));
                             editorUserAuthKey.putString("UserName",jRootObject.getString("UserName"));
+                            editorUserAuthKey.putString("FullName",jRootObject.getString("FullName"));
                             editorUserAuthKey.apply();
 
                             AuthKey = preferencesUserAuthKey.getString("auth", "");
