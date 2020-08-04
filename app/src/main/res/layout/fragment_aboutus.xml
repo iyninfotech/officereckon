@@ -5,15 +5,13 @@
     android:layout_height="match_parent"
     tools:context=".AboutusFragment">
 
-
-            <LinearLayout
+    <LinearLayout
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_centerInParent="true"
+                android:layout_height="match_parent"
                 android:orientation="vertical">
 
                 <ImageView
-                    android:layout_marginTop="@dimen/_5sdp"
+                    android:layout_marginTop="@dimen/_50sdp"
                     android:layout_width="match_parent"
                     android:layout_height="@dimen/_100sdp"
                     android:layout_gravity="center"
@@ -25,15 +23,23 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_gravity="center"
+                    android:layout_marginTop="@dimen/_15sdp"
                     android:layout_marginBottom="@dimen/_15sdp"
                     android:gravity="center"
                     android:text="@string/software_name"
                     android:textColor="@color/colorPrimary"
                     android:textSize="@dimen/_25sdp" />
 
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:weightSum="2"
+            android:orientation="vertical">
+
                 <LinearLayout
                     android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
+                    android:layout_height="match_parent"
+                    android:layout_weight="0.7"
                     android:layout_margin="@dimen/_8sdp"
                     android:orientation="vertical">
 
@@ -42,59 +48,47 @@
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:padding="@dimen/_2sdp"
-                        android:text="@string/version_details"
+                        android:text="@string/about_us"
+                        android:textStyle="bold"
                         android:textAlignment="gravity"
                         android:textSize="@dimen/_11sdp"
-                        android:textColor="@color/white" />
+                        android:textColor="@color/colorPrimary" />
 
 
                     <com.score3s.android.fontStyle.TextViewMedium
-                        android:id="@+id/tvVersionDetails"
+                        android:id="@+id/tvAboutUs"
                         android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
+                        android:layout_height="match_parent"
                         android:background="@null"
                         android:textAlignment="gravity"
                         android:padding="@dimen/_2sdp"
                         android:ellipsize="end"
-                        android:maxLines="2"
-                        android:singleLine="false"
-                        android:lines="2"
-                        android:textColor="@color/white"
+                        android:textColor="@color/colorPrimary"
                         android:textColorHint="@color/grey" />
 
-                    <LinearLayout
-                        android:layout_width="match_parent"
-                        android:layout_height="1dp"
-                        android:layout_margin="@dimen/_2sdp"
-                        android:background="@color/white" />
-
-
                 </LinearLayout>
-
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:layout_marginRight="@dimen/_8sdp"
+                android:layout_marginLeft="@dimen/_8sdp"
+                android:background="@color/colorPrimary" />
                 <LinearLayout
                     android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1.3"
                     android:layout_margin="@dimen/_8sdp"
                     android:orientation="vertical">
-
 
                     <com.score3s.android.fontStyle.TextViewBold
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:padding="@dimen/_2sdp"
                         android:text="@string/contact_us"
+                        android:textStyle="bold"
                         android:textAlignment="gravity"
                         android:textSize="@dimen/_11sdp"
-                        android:textColor="@color/white" />
-
-                    <com.score3s.android.fontStyle.TextViewMedium
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:textAlignment="gravity"
-                        android:padding="@dimen/_2sdp"
-                        android:text="@string/company_name"
-                        android:textSize="@dimen/_11sdp"
-                        android:textColor="@color/white" />
+                        android:textColor="@color/colorPrimary" />
 
                     <com.score3s.android.fontStyle.TextViewMedium
                         android:id="@+id/tvCompanyDetails"
@@ -104,23 +98,14 @@
                         android:textAlignment="gravity"
                         android:padding="@dimen/_2sdp"
                         android:ellipsize="end"
-                        android:maxLines="3"
-                        android:singleLine="false"
-                        android:lines="3"
                         android:textSize="@dimen/_10sdp"
-                        android:textColor="@color/white"
+                        android:textColor="@color/colorPrimary"
+                        android:autoLink="web"
                         android:textColorHint="@color/grey" />
 
-                    <LinearLayout
-                        android:layout_width="match_parent"
-                        android:layout_height="1dp"
-                        android:layout_margin="@dimen/_2sdp"
-                        android:background="@color/White" />
-
-
                 </LinearLayout>
-
-            </LinearLayout>
+        </LinearLayout>
+    </LinearLayout>
 
 
 </RelativeLayout>

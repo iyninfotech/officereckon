@@ -75,7 +75,7 @@ public class DashBoardFragment extends Fragment {
         if (NetworkUtils.isInternetAvailable(getActivity())) {
 
             tvUserName.setText("Hello, " + FullName);
-            String AboutDevloper = " <i> Devloped By </i>  <h4> Infozeal eSolutions Private Limited </h4> Email Id = support@infozeal.co.in  <br/> Phone No. = +91 (79) 49117200 <br/>Website = www.infozeal.co.in";
+            String AboutDevloper = " <i> <u> Devloped By</u> </i>  <h4> Infozeal eSolutions Private Limited </h4> Email Id : support@infozeal.co.in  <br/> Phone No. : +91 (79) 49117200 <br/>Website : www.infozeal.co.in";
             tvDevloperInfoDetails.setText(Html.fromHtml(AboutDevloper));
             getVersionInfo();
             //getDashboard();
@@ -95,11 +95,13 @@ public class DashBoardFragment extends Fragment {
         try {
             PackageInfo packageInfo = getActivity().getPackageManager().getPackageInfo(getActivity().getPackageName(), 0);
             versionName = packageInfo.versionName;
+            versionCode = packageInfo.versionCode;
 
         } catch (PackageManager.NameNotFoundException e) {
             e.printStackTrace();
         }
-        AppVersionInfo.setText(String.format("App Version :: %s", versionName));
+        AppVersionInfo.setText(String.format("App Version Code : "+ versionCode + " & Name : " + versionName));
+       // AppVersionInfo.setText(String.format("Version code = %d  \nVersion name = %s", versionCode, versionName));
         getInvoice();
     }
 

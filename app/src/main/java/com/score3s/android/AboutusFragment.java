@@ -5,6 +5,8 @@ import android.content.pm.PackageManager;
 import android.os.Bundle;
 import android.os.Handler;
 import androidx.fragment.app.Fragment;
+
+import android.text.Html;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -15,7 +17,7 @@ public class AboutusFragment extends Fragment {
     private Handler handler;
 
 
-    TextView tvVersionDetails, tvCompanyDetails;
+    TextView tvAboutUs, tvCompanyDetails;
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
@@ -23,28 +25,21 @@ public class AboutusFragment extends Fragment {
         View view = inflater.inflate(R.layout.fragment_aboutus, container, false);
 
         handler = new Handler();
+        tvAboutUs = view.findViewById(R.id.tvAboutUs);
+        String AboutUs = "<ul>" +
+                "<li><p>Since 2008, we are delivering full cycle software development services to customers in over 30 countries worldwide. </p></li>"+
+                "<li><p>We have developed software in various business categories like Travel Industries, FMCG, Automobile Industries, Customer Relationship Management, Wholesale Agencies, Retail Outlet, POS Systems Payroll and Financial Accounting Systems. More than 1200 + customers are presently associated with us. </p></li>"+
+                " </ul>";
+        tvAboutUs.setText(Html.fromHtml(AboutUs));
 
-        tvVersionDetails = view.findViewById(R.id.tvVersionDetails);
         tvCompanyDetails = view.findViewById(R.id.tvCompanyDetails);
-        tvCompanyDetails.setText(String.format("Phone No. = +91 (79) 49117200 \nEmail Id = support@infozeal.co.in \nWebsite = www.infozeal.co.in"));
-        getVersionInfo();
+
+        String ContactUs = " <h5> Infozeal eSolutions Private Limited </h5> Email Id = support@infozeal.co.in  <br/> Phone No. = +91 (79) 49117200 <br/>Website = <a href=\\\"http://www.infozeal.co.in\\\">www.infozeal.co.in</a>";
+        tvCompanyDetails.setText(Html.fromHtml(ContactUs));
 
         //End of code Return View
         return view;
     }
 
-    //get the current version number and name
-    private void getVersionInfo() {
-        String versionName = null;
-        int versionCode = -1;
-        try {
-            PackageInfo packageInfo = getActivity().getPackageManager().getPackageInfo(getActivity().getPackageName(), 0);
-            versionName = packageInfo.versionName;
-            versionCode = packageInfo.versionCode;
-        } catch (PackageManager.NameNotFoundException e) {
-            e.printStackTrace();
-        }
-        tvVersionDetails.setText(String.format("Version code = %d  \nVersion name = %s", versionCode, versionName));
-    }
 
 }
