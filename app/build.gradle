@@ -6,7 +6,7 @@ android {
         applicationId "com.score3s.android"
         minSdkVersion 21
         targetSdkVersion 30
-        versionCode 12
+        versionCode 13
         versionName '013.013.013.013'
         testInstrumentationRunner 'androidx.test.runner.AndroidJUnitRunner'
     }
