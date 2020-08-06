@@ -31,6 +31,7 @@
             android:layout_marginLeft="@dimen/_5sdp"
             android:layout_centerVertical="true"
             android:textSize="@dimen/_10sdp"
+            android:textColor="@color/colorPrimary"
             android:layout_height="wrap_content" />
 
         <LinearLayout

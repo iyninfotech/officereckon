@@ -2,6 +2,7 @@
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@color/White"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools">
     <!-- Header aligned to top -->
@@ -131,7 +132,7 @@
                             android:layout_height="wrap_content"
                             android:text="Select Division"
                             android:padding="@dimen/_8sdp"
-                            android:textColor="@color/colorAccent"/>
+                            android:textColor="@color/colorPrimary"/>
 
 
                         <ImageView
@@ -165,7 +166,7 @@
                     android:layout_height="wrap_content"
                     android:text="Select Route"
                     android:padding="@dimen/_8sdp"
-                    android:textColor="@color/colorAccent"
+                    android:textColor="@color/colorPrimary"
                     />
 
                 <ImageView
@@ -195,7 +196,7 @@
                     android:layout_height="wrap_content"
                     android:text="Select Salesman"
                     android:padding="@dimen/_8sdp"
-                    android:textColor="@color/colorAccent"
+                    android:textColor="@color/colorPrimary"
                     />
 
                 <ImageView
@@ -226,7 +227,7 @@
                     android:layout_height="wrap_content"
                     android:text="Select Client"
                     android:padding="@dimen/_8sdp"
-                    android:textColor="@color/colorAccent"
+                    android:textColor="@color/colorPrimary"
                     />
 
                 <ImageView

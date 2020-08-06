@@ -6,8 +6,8 @@ android {
         applicationId "com.score3s.android"
         minSdkVersion 21
         targetSdkVersion 30
-        versionCode 13
-        versionName '013.013.013.013'
+        versionCode 15
+        versionName '015.015.015.015'
         testInstrumentationRunner 'androidx.test.runner.AndroidJUnitRunner'
     }
     buildTypes {

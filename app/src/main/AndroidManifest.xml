@@ -35,7 +35,7 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".NavigationDrawerActivity" android:screenOrientation="portrait"/>
+        <activity android:name=".NavigationDrawerActivity" android:screenOrientation="portrait" android:configChanges="uiMode"/>
         <activity android:name=".OutletDetailsActivity" android:screenOrientation="portrait"/>
         <activity android:name=".MRPDetailsActivity" android:screenOrientation="portrait"/>
         <activity android:name=".InVoiceDetailsActivity" android:screenOrientation="portrait"/>

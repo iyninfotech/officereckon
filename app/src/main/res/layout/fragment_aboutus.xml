@@ -60,6 +60,7 @@
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
                         android:background="@null"
+                        android:textColorLink="@color/link_color"
                         android:textAlignment="gravity"
                         android:padding="@dimen/_2sdp"
                         android:ellipsize="end"
@@ -100,6 +101,7 @@
                         android:padding="@dimen/_2sdp"
                         android:ellipsize="end"
                         android:textSize="@dimen/_10sdp"
+                        android:textColorLink="@color/link_color"
                         android:textColor="@color/colorPrimary"
                         android:autoLink="web"
                         android:textColorHint="@color/grey" />

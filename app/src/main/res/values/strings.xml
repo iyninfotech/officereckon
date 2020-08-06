@@ -30,4 +30,7 @@
     <string name="no_selection">No Selection</string>
 
     <string name="defalert">Some Error !</string>
+
+    <string name="contact_info"><![CDATA[<p><h5> Infozeal eSolutions Private Limited </h5> Email Id :: support@infozeal.co.in  <br/> Phone No. :: +91 (79) 49117200 <br/>Website :: <a href=\"http://www.infozeal.co.in\">www.infozeal.co.in</a><p>]]></string>
+
 </resources>

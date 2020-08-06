@@ -217,6 +217,8 @@ xmlns:app="http://schemas.android.com/apk/res-auto">
                     android:textStyle="normal"
                     android:gravity="center"
                     android:textColor="@color/White"
+                    android:textColorLink="@color/White"
+                    android:autoLink="web"
                     android:textSize="@dimen/_10sdp"/>
 
                 <com.score3s.android.fontStyle.TextViewBold

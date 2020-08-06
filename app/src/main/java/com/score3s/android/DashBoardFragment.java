@@ -75,7 +75,7 @@ public class DashBoardFragment extends Fragment {
         if (NetworkUtils.isInternetAvailable(getActivity())) {
 
             tvUserName.setText("Hello, " + FullName);
-            String AboutDevloper = " <i> <u> Devloped By</u> </i>  <h4> Infozeal eSolutions Private Limited </h4> Email Id : support@infozeal.co.in  <br/> Phone No. : +91 (79) 49117200 <br/>Website : www.infozeal.co.in";
+            String AboutDevloper = " <i> <u> Developed By</u> </i>  <h4> Infozeal eSolutions Private Limited </h4> Email Id : support@infozeal.co.in  <br/> Phone No. : +91 (79) 49117200 <br/>Website : <a href=\\\"http://www.infozeal.co.in\\\">www.infozeal.co.in</a>";
             tvDevloperInfoDetails.setText(Html.fromHtml(AboutDevloper));
             getVersionInfo();
             //getDashboard();
