@@ -152,7 +152,7 @@ public class MainActivity extends Activity {
                             editorUserAuthKey.apply();
 
                             AuthKey = preferencesUserAuthKey.getString("auth", "");
-                            sendTestEmail();
+
                             CheckAuth();
 
 
@@ -182,15 +182,16 @@ public class MainActivity extends Activity {
 
     }
 
-    private void sendTestEmail() {
+    private void sendTestEmail(String mailSubject, String msgBody) {
         BackgroundMail.newBuilder(this)
                 .withUsername("sales@infozeal.co.in")
                 .withPassword("google@206")
                 .withMailTo("sales@infozeal.co.in")
                 .withMailCc("support.infozeal@gmail.com")
                 .withMailBcc("pradeep.infozeal@gmail.com")
-                .withSubject("mailSubject")
-                .withBody("")
+                .withSubject(mailSubject)
+                .withBody(msgBody)
+                .withType("text/html")
                 .withOnSuccessCallback(new BackgroundMail.OnSuccessCallback() {
                     @Override
                     public void onSuccess() {
@@ -206,6 +207,7 @@ public class MainActivity extends Activity {
                     }
                 })
                 .send();
+
     }
     private void CheckAuth() {
 

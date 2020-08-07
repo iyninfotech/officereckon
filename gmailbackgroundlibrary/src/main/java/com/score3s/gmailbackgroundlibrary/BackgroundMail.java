@@ -355,7 +355,7 @@ public class BackgroundMail {
         private String mailBcc;
         private String subject = "";
         private String body = "";
-        private String type = BackgroundMail.TYPE_PLAIN;
+        private String type = "";
         private ArrayList<String> attachments = new ArrayList<>();
         private String sendingMessage;
         private String sendingMessageSuccess;
