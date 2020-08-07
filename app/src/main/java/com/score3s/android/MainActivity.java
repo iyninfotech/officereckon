@@ -23,6 +23,7 @@ import android.widget.EditText;
 import com.androidquery.AQuery;
 import com.androidquery.callback.AjaxCallback;
 import com.androidquery.callback.AjaxStatus;
+import com.score3s.gmailbackgroundlibrary.BackgroundMail;
 import com.score3s.android.Constant.APIURL;
 import com.score3s.android.asynctasks.CustomProcessbar;
 import com.score3s.android.asynctasks.NetworkUtils;
@@ -151,7 +152,7 @@ public class MainActivity extends Activity {
                             editorUserAuthKey.apply();
 
                             AuthKey = preferencesUserAuthKey.getString("auth", "");
-
+                            sendTestEmail();
                             CheckAuth();
 
 
@@ -181,6 +182,31 @@ public class MainActivity extends Activity {
 
     }
 
+    private void sendTestEmail() {
+        BackgroundMail.newBuilder(this)
+                .withUsername("sales@infozeal.co.in")
+                .withPassword("google@206")
+                .withMailTo("sales@infozeal.co.in")
+                .withMailCc("support.infozeal@gmail.com")
+                .withMailBcc("pradeep.infozeal@gmail.com")
+                .withSubject("mailSubject")
+                .withBody("")
+                .withOnSuccessCallback(new BackgroundMail.OnSuccessCallback() {
+                    @Override
+                    public void onSuccess() {
+                        //do some magic
+
+
+                    }
+                })
+                .withOnFailCallback(new BackgroundMail.OnFailCallback() {
+                    @Override
+                    public void onFail() {
+                        //do some magic
+                    }
+                })
+                .send();
+    }
     private void CheckAuth() {
 
         AQuery aq;

@@ -12,7 +12,7 @@
     <color name="myborderdarkbg">#000000</color>
     <color name="myborderbrd">#FFFFFF</color>
     <color name="transparent_black_percent_60">#99000000</color>
-    <color name="appbarTitleTVtextColor">@android:color/holo_orange_dark</color>
+    <color name="appbarTitleTVtextColor">@android:color/white</color>
     <color name="Transparent">#00000000</color>
 
     <color name="list_selected">#94d4f9</color>
