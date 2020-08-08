@@ -49,8 +49,8 @@ public class SNavigationDrawer extends RelativeLayout {
     private int appbarTitleTextColor = R.color.appbarTitleTVtextColor;
     private int menuItemSemiTransparentColor = R.color.colorPrimary;
     private int navigationDrawerBackgroundColor = R.color.White;
-    private int primaryMenuItemTextColor = R.color.colorPrimary;
-    private int secondaryMenuItemTextColor = R.color.White;
+    private int primaryMenuItemTextColor = R.color.appbarTitleTVtextColor;
+    private int secondaryMenuItemTextColor = R.color.appbarTitleTVtextColor;
     private int menuIconTintColor = R.color.White;
     private float menuIconSize = 30;
     private float appbarTitleTextSize = 15;

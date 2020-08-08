@@ -5,8 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".MainActivity"
-    android:background="@color/White"
-    >
+    android:background="@color/White">
 
 
     <!--<LinearLayout-->
@@ -55,7 +54,7 @@
                 android:layout_gravity="center"
                 android:layout_marginBottom="@dimen/_15sdp"
                 android:gravity="center"
-                android:text="LOGIN"
+                android:text="Demo Request"
                 android:textColor="@color/colorPrimary"
                 android:textSize="@dimen/_25sdp" />
 
@@ -223,11 +222,10 @@
                     android:minHeight="@dimen/_35sdp"
                     android:layout_marginRight="@dimen/_50sdp"
                     android:layout_marginLeft="@dimen/_50sdp"
-                    android:text="Login"
+                    android:text="Register"
                     android:textAllCaps="false"
-                    android:textStyle="bold"
                     android:textColor="@color/appbarTitleTVtextColor"
-                    android:textSize="@dimen/_15sdp" />
+                    android:textSize="@dimen/_14sdp" />
 
                 <com.score3s.android.fontStyle.TextViewBold
                     android:id="@+id/tvDemoRequest"

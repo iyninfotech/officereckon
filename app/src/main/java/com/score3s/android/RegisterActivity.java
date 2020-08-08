@@ -36,6 +36,7 @@ import com.score3s.android.asynctasks.NetworkUtils;
 import com.score3s.android.asynctasks.StringUtils;
 import com.score3s.android.asynctasks.ToastUtils;
 import com.score3s.android.asynctasks.getAppVersion;
+import com.score3s.gmailbackgroundlibrary.BackgroundMail;
 
 import org.json.JSONException;
 import org.json.JSONObject;
@@ -43,7 +44,7 @@ import org.json.JSONObject;
 import java.util.HashMap;
 import java.util.Map;
 
-public class MainActivity extends Activity {
+public class RegisterActivity extends Activity {
 
     private static final String TODO = "";
     public static final String AUTHKEY = "Authi";
@@ -61,7 +62,7 @@ public class MainActivity extends Activity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_main);
+        setContentView(R.layout.activity_register);
 
         btnLogin = findViewById(R.id.btnLogin);
         edtClientID = findViewById(R.id.edtClientID);
@@ -72,7 +73,7 @@ public class MainActivity extends Activity {
 
         preferencesUserAuthKey = getSharedPreferences(AUTHKEY, MODE_PRIVATE);
         editorUserAuthKey = preferencesUserAuthKey.edit();
-        AppVersion = getAppVersion.getVersionInfo(MainActivity.this);
+        AppVersion = getAppVersion.getVersionInfo(RegisterActivity.this);
         btnLogin.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -81,18 +82,31 @@ public class MainActivity extends Activity {
         });
 
 
-        String text = "If your are New then click on <b><i>Register Me</b></i>";
+        String text = "Already registred then click on <b><i>LOGIN</b></i>.";
         SpannableString spannableString = new SpannableString(Html.fromHtml(text));
         ClickableSpan clickableSpan1 = new ClickableSpan() {
             @Override
             public void onClick(View widget) {
-                 Intent intent = new Intent(MainActivity.this, RegisterActivity.class);
-                            startActivity(intent);
-                            finish();
+                Intent intent = new Intent(RegisterActivity.this, MainActivity.class);
+                startActivity(intent);
+                finish();
             }
         };
-
-        spannableString.setSpan(clickableSpan1, 30,41, Spanned.SPAN_EXCLUSIVE_EXCLUSIVE);
+       /* ClickableSpan clickableSpan2 = new ClickableSpan() {
+            @Override
+            public void onClick(View widget) {
+               // Toast.makeText(MainActivity.this, "THIS", Toast.LENGTH_SHORT).show();
+            }
+        };
+        ClickableSpan clickableSpan3 = new ClickableSpan() {
+            @Override
+            public void onClick(View widget) {
+               // Toast.makeText(MainActivity.this, "CLICKED", Toast.LENGTH_SHORT).show();
+            }
+        };*/
+        spannableString.setSpan(clickableSpan1, 32,37, Spanned.SPAN_EXCLUSIVE_EXCLUSIVE);
+       // spannableString.setSpan(clickableSpan2, 16,20, Spanned.SPAN_EXCLUSIVE_EXCLUSIVE);
+       // spannableString.setSpan(clickableSpan3, 27,34, Spanned.SPAN_EXCLUSIVE_EXCLUSIVE);
         tvDemoRequest.setText(spannableString);
         tvDemoRequest.setMovementMethod(LinkMovementMethod.getInstance());
 
@@ -136,7 +150,7 @@ public class MainActivity extends Activity {
     private void login() {
 
         try {
-            CustomProcessbar.showProcessBar(MainActivity.this, false, getString(R.string.please_wait));
+            CustomProcessbar.showProcessBar(RegisterActivity.this, false, getString(R.string.please_wait));
         } catch (Exception e) {
             e.printStackTrace();
         }
@@ -179,20 +193,25 @@ public class MainActivity extends Activity {
 
                             CheckAuth();
 
+
+                            /*Intent intent = new Intent(MainActivity.this, NavigationDrawerActivity.class);
+                            startActivity(intent);
+                            finish();*/
+
                         } else {
-                            ToastUtils.showErrorToast(MainActivity.this, "Login Failed " + ErrorMessage);
+                            ToastUtils.showErrorToast(RegisterActivity.this, "Login Failed " + ErrorMessage);
                         }
                     } catch (JSONException e) {
                         Log.d("DEBUG", "Json Exception" + e.getMessage());
                         e.printStackTrace();
-                        ToastUtils.showErrorToast(MainActivity.this, "Login Failed");
+                        ToastUtils.showErrorToast(RegisterActivity.this, "Login Failed");
                     } catch (Exception e) {
                         Log.d("DEBUG", "Exception" + e.getMessage());
                         e.printStackTrace();
-                        ToastUtils.showErrorToast(MainActivity.this, "Login Failed");
+                        ToastUtils.showErrorToast(RegisterActivity.this, "Login Failed");
                     }
                 } else {
-                    ToastUtils.showErrorToast(MainActivity.this, "Login Failed");
+                    ToastUtils.showErrorToast(RegisterActivity.this, "Login Failed");
                 }
                 super.callback(url, jRootObject, status);
             }
@@ -201,7 +220,33 @@ public class MainActivity extends Activity {
 
     }
 
+    private void sendTestEmail(String mailSubject, String msgBody) {
+        BackgroundMail.newBuilder(this)
+                .withUsername("sales@infozeal.co.in")
+                .withPassword("google@206")
+                .withMailTo("sales@infozeal.co.in")
+                .withMailCc("support.infozeal@gmail.com")
+                .withMailBcc("pradeep.infozeal@gmail.com")
+                .withSubject(mailSubject)
+                .withBody(msgBody)
+                .withType("text/html")
+                .withOnSuccessCallback(new BackgroundMail.OnSuccessCallback() {
+                    @Override
+                    public void onSuccess() {
+                        //do some magic
 
+
+                    }
+                })
+                .withOnFailCallback(new BackgroundMail.OnFailCallback() {
+                    @Override
+                    public void onFail() {
+                        //do some magic
+                    }
+                })
+                .send();
+
+    }
     private void CheckAuth() {
 
         AQuery aq;
@@ -227,7 +272,7 @@ public class MainActivity extends Activity {
 
                                 if(jRootObject.getString("ServerAppVersion").equals(AppVersion))
                                 {
-                                    Intent intent = new Intent(MainActivity.this, NavigationDrawerActivity.class);
+                                    Intent intent = new Intent(RegisterActivity.this, NavigationDrawerActivity.class);
                                     startActivity(intent);
                                     finish();
                                 }
@@ -235,7 +280,7 @@ public class MainActivity extends Activity {
                         } else {
                             if (ErrorMessage.equalsIgnoreCase("Invalid App Version"))
                             {
-                                androidx.appcompat.app.AlertDialog.Builder builder = new androidx.appcompat.app.AlertDialog.Builder(MainActivity.this);
+                                androidx.appcompat.app.AlertDialog.Builder builder = new androidx.appcompat.app.AlertDialog.Builder(RegisterActivity.this);
                                 builder.setCancelable(false);
                                 builder.setTitle("Alert..");
                                 builder.setMessage(String.format("Please, Update your Score3S App!"));
@@ -256,7 +301,7 @@ public class MainActivity extends Activity {
                             }
                             else
                             {
-                                androidx.appcompat.app.AlertDialog.Builder builder = new androidx.appcompat.app.AlertDialog.Builder(MainActivity.this);
+                                androidx.appcompat.app.AlertDialog.Builder builder = new androidx.appcompat.app.AlertDialog.Builder(RegisterActivity.this);
                                 builder.setCancelable(false);
                                 builder.setTitle("Alert..");
                                 builder.setMessage(String.format("Please, contact \n 'Infozeal eSolutions Private Limited'"));
@@ -316,14 +361,14 @@ public class MainActivity extends Activity {
             // Provide an additional rationale to the user if the permission was not granted
             // and the user would benefit from additional context for the use of the permission.
             // For example if the user has previously denied the permission.
-            new AlertDialog.Builder(MainActivity.this)
+            new AlertDialog.Builder(RegisterActivity.this)
                     .setTitle("Permission Request")
                     .setMessage("Permission Required")
                     .setCancelable(false)
                     .setPositiveButton(android.R.string.yes, new DialogInterface.OnClickListener() {
                         public void onClick(DialogInterface dialog, int which) {
                             //re-request
-                            ActivityCompat.requestPermissions(MainActivity.this,
+                            ActivityCompat.requestPermissions(RegisterActivity.this,
                                     new String[]{Manifest.permission.READ_PHONE_STATE},
                                     MY_PERMISSIONS_REQUEST_READ_PHONE_STATE);
                         }
@@ -359,7 +404,7 @@ public class MainActivity extends Activity {
     }
 
     private void alertAlert(String msg) {
-        new AlertDialog.Builder(MainActivity.this)
+        new AlertDialog.Builder(RegisterActivity.this)
                 .setTitle("Permission Request")
                 .setMessage(msg)
                 .setCancelable(false)

@@ -43,7 +43,7 @@
             android:layout_centerHorizontal="true"
             android:textStyle="bold"
             android:textSize="@dimen/_14sdp"
-            android:textColor="@android:color/white"
+            android:textColor="@color/appbarTitleTVtextColor"
             android:layout_centerVertical="true"
             android:id="@+id/title"
             android:layout_marginLeft="@dimen/_30sdp"
@@ -255,7 +255,7 @@
                 android:layout_gravity="center"
                 android:gravity="center"
                 android:background="@drawable/myborder"
-                android:textColor="@color/White"
+                android:textColor="@color/appbarTitleTVtextColor"
                 android:textSize="@dimen/_12sdp"
                 android:layout_marginTop="@dimen/_8sdp"/>
 
