@@ -1,4 +1,4 @@
-package com.score3s.gmailbackgroundlibrary.util;
+package com.score3s.android.util;
 
 import android.content.Context;
 import android.net.ConnectivityManager;

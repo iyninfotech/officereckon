@@ -69,18 +69,19 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:padding="@dimen/_2sdp"
-                    android:text="CLIENT ID"
+                    android:text="Agency/Company Name"
                     android:textSize="@dimen/_10sdp"
                     android:textColor="@color/colorPrimary" />
 
 
                 <com.score3s.android.fontStyle.EdittextRegular
-                    android:id="@+id/edtClientID"
+                    android:id="@+id/edtAgencyName"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:background="@null"
-                    android:hint="Please enter Client ID"
+                    android:hint="Enter Your Agency/Company Name"
                     android:padding="@dimen/_2sdp"
+                    android:inputType="textCapWords"
                     android:singleLine="true"
                     android:textColor="@color/colorPrimary"
                     android:textColorHint="@color/grey" />
@@ -105,18 +106,55 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:padding="@dimen/_2sdp"
-                    android:text="MOBILE NO"
+                    android:textSize="@dimen/_10sdp"
+                    android:text="Owner/Contact Person Name"
+                    android:textColor="@color/colorPrimary" />
+
+
+                <com.score3s.android.fontStyle.EdittextRegular
+                    android:id="@+id/edtOwnerName"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:background="@null"
+                    android:hint="Enter Owner/Contact Person Name"
+                    android:padding="@dimen/_2sdp"
+                    android:singleLine="true"
+                    android:inputType="textCapWords"
+                    android:textColor="@color/colorPrimary"
+                    android:textColorHint="@color/grey" />
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="1dp"
+                    android:layout_margin="@dimen/_2sdp"
+                    android:background="@color/colorPrimary" />
+
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="@dimen/_8sdp"
+                android:orientation="vertical">
+
+
+                <com.score3s.android.fontStyle.TextViewRegular
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:padding="@dimen/_2sdp"
+                    android:text="Contact Number"
                     android:textSize="@dimen/_10sdp"
                     android:textColor="@color/colorPrimary" />
 
 
                 <com.score3s.android.fontStyle.EdittextRegular
-                    android:id="@+id/edtMobileNo"
+                    android:id="@+id/edtContactNo"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:background="@null"
-                    android:hint="Please enter Mobile Number"
-                    android:inputType="number"
+                    android:hint="Enter Contact Number(Mobile)"
+                    android:inputType="phone"
                     android:maxLength="10"
                     android:padding="@dimen/_2sdp"
                     android:singleLine="true"
@@ -143,54 +181,19 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:padding="@dimen/_2sdp"
+                    android:text="Email Id"
                     android:textSize="@dimen/_10sdp"
-                    android:text="USERNAME"
                     android:textColor="@color/colorPrimary" />
 
 
                 <com.score3s.android.fontStyle.EdittextRegular
-                    android:id="@+id/edtUserID"
+                    android:id="@+id/edtEmailID"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:background="@null"
-                    android:hint="Please enter User Name"
-                    android:padding="@dimen/_2sdp"
-                    android:singleLine="true"
-                    android:textColor="@color/colorPrimary"
-                    android:textColorHint="@color/grey" />
-
-                <LinearLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="1dp"
-                    android:layout_margin="@dimen/_2sdp"
-                    android:background="@color/colorPrimary" />
-
-
-            </LinearLayout>
-
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_margin="@dimen/_8sdp"
-                android:orientation="vertical">
-
-
-                <com.score3s.android.fontStyle.TextViewRegular
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:padding="@dimen/_2sdp"
-                    android:textSize="@dimen/_10sdp"
-                    android:text="USER PASSWORD"
-                    android:textColor="@color/colorPrimary" />
-
-
-                <com.score3s.android.fontStyle.EdittextRegular
-                    android:id="@+id/edtPassword"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:background="@null"
-                    android:hint="Please enter User Password"
-                    android:inputType="textPassword"
+                    android:hint="Enter Email Id"
+                    android:inputType="textEmailAddress"
+                    android:maxLength="100"
                     android:padding="@dimen/_2sdp"
                     android:singleLine="true"
                     android:textColor="@color/colorPrimary"
@@ -214,15 +217,16 @@
 
 
                 <com.score3s.android.fontStyle.ButtonRegular
-                    android:id="@+id/btnLogin"
+                    android:id="@+id/btnRegister"
                     android:layout_weight="2"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:background="@drawable/button_background"
                     android:minHeight="@dimen/_35sdp"
-                    android:layout_marginRight="@dimen/_50sdp"
-                    android:layout_marginLeft="@dimen/_50sdp"
+                    android:layout_marginRight="@dimen/_80sdp"
+                    android:layout_marginLeft="@dimen/_80sdp"
                     android:text="Register"
+                    android:textStyle="bold|italic"
                     android:textAllCaps="false"
                     android:textColor="@color/appbarTitleTVtextColor"
                     android:textSize="@dimen/_14sdp" />
@@ -233,6 +237,8 @@
                     android:layout_height="wrap_content"
                     android:layout_gravity="center"
                     android:layout_marginTop="@dimen/_20sdp"
+                    android:layout_marginRight="@dimen/_6sdp"
+                    android:layout_marginLeft="@dimen/_6sdp"
                     android:textColorLink="@color/colorPrimary"
                     android:gravity="center"
                     android:textColor="@color/colorPrimary"
@@ -240,6 +246,8 @@
                     android:textSize="@dimen/_12sdp" />
 
             </LinearLayout>
+
+
 
         </LinearLayout>
         </ScrollView>

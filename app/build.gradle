@@ -38,10 +38,12 @@ dependencies {
     implementation 'com.google.code.gson:gson:2.8.6'
     implementation files('libs/android-query-full.0.26.8.jar')
     implementation 'org.jbundle.util.osgi.wrapped:org.jbundle.util.osgi.wrapped.org.apache.http.client:4.1.2'
+    implementation files('libs\\activation.jar')
     testImplementation 'junit:junit:4.13'
     androidTestImplementation 'androidx.test.ext:junit:1.1.1'
     androidTestImplementation 'androidx.test.espresso:espresso-core:3.1.0'
     implementation 'com.itextpdf:itextg:5.5.10'
     implementation 'com.wang.avi:library:2.1.3'
-    implementation project(':gmailbackgroundlibrary')
+    implementation 'com.android.support:support-annotations:28.0.0'
+
 }

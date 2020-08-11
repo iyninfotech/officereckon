@@ -1,4 +1,4 @@
-package com.score3s.gmailbackgroundlibrary.util;
+package com.score3s.android.util;
 
 import android.text.TextUtils;
 
@@ -64,7 +64,7 @@ public class GmailSender extends javax.mail.Authenticator {
 
         DataHandler handler = new DataHandler(new ByteArrayDataSource(body.getBytes(), type));
         message.setDataHandler(handler);
-        message.setText(body);
+        message.setText(body, "utf-8", "html");
         if (_multipart.getCount() > 0) {
             BodyPart messageBodyPart = new MimeBodyPart();
             messageBodyPart.setText(body);

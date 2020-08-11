@@ -1,23 +1,19 @@
-package com.score3s.gmailbackgroundlibrary;
+package com.score3s.android;
 
 import android.app.Fragment;
 import android.app.ProgressDialog;
 import android.content.Context;
 import android.os.AsyncTask;
-
 import android.text.TextUtils;
 import android.util.Log;
-import android.widget.Toast;
 
 import androidx.annotation.ArrayRes;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.annotation.StringRes;
 
-import com.score3s.gmailbackgroundlibrary.util.GmailSender;
-import com.score3s.gmailbackgroundlibrary.util.Utils;
-
-
+import com.score3s.android.util.GmailSender;
+import com.score3s.android.util.Utils;
 
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -60,9 +56,9 @@ public class BackgroundMail {
 
     public BackgroundMail(Context context) {
         this.mContext = context;
-        this.sendingMessage = context.getString(R.string.msg_sending_email);
-        this.sendingMessageSuccess = context.getString(R.string.msg_email_sent_successfully);
-        this.sendingMessageError = context.getString(R.string.msg_error_sending_email);
+        this.sendingMessage = context.getString(com.score3s.android.R.string.msg_sending_email);
+        this.sendingMessageSuccess = context.getString(com.score3s.android.R.string.msg_email_sent_successfully);
+        this.sendingMessageError = context.getString(com.score3s.android.R.string.msg_error_sending_email);
     }
 
     private BackgroundMail(Builder builder) {
@@ -328,16 +324,16 @@ public class BackgroundMail {
             if (processVisibility) {
                 progressDialog.dismiss();
                 if (result) {
-                    if (!TextUtils.isEmpty(sendingMessageSuccess)) {
+                    /*if (!TextUtils.isEmpty(sendingMessageSuccess)) {
                         Toast.makeText(mContext, sendingMessageSuccess, Toast.LENGTH_SHORT).show();
-                    }
+                    }*/
                     if (onSuccessCallback != null) {
                         onSuccessCallback.onSuccess();
                     }
                 } else {
-                    if (!TextUtils.isEmpty(sendingMessageError)) {
+                    /*if (!TextUtils.isEmpty(sendingMessageError)) {
                         Toast.makeText(mContext, sendingMessageError, Toast.LENGTH_SHORT).show();
-                    }
+                    }*/
                     if (onFailCallback != null) {
                         onFailCallback.onFail();
                     }
@@ -366,9 +362,9 @@ public class BackgroundMail {
 
         private Builder(Context context) {
             this.context = context;
-            this.sendingMessage = context.getString(R.string.msg_sending_email);
-            this.sendingMessageSuccess = context.getString(R.string.msg_email_sent_successfully);
-            this.sendingMessageError = context.getString(R.string.msg_error_sending_email);
+            this.sendingMessage = context.getString(com.score3s.android.R.string.msg_sending_email);
+            this.sendingMessageSuccess = context.getString(com.score3s.android.R.string.msg_email_sent_successfully);
+            this.sendingMessageError = context.getString(com.score3s.android.R.string.msg_error_sending_email);
         }
 
         public Builder withUsername(@NonNull String username) {

@@ -81,7 +81,7 @@ public class MainActivity extends Activity {
         });
 
 
-        String text = "If your are New then click on <b><i>Register Me</b></i>";
+        String text = "If your are not using our software then please click on <br /> <b><i>Register Me</b></i>";
         SpannableString spannableString = new SpannableString(Html.fromHtml(text));
         ClickableSpan clickableSpan1 = new ClickableSpan() {
             @Override
@@ -92,7 +92,7 @@ public class MainActivity extends Activity {
             }
         };
 
-        spannableString.setSpan(clickableSpan1, 30,41, Spanned.SPAN_EXCLUSIVE_EXCLUSIVE);
+        spannableString.setSpan(clickableSpan1, 56,68, Spanned.SPAN_EXCLUSIVE_EXCLUSIVE);
         tvDemoRequest.setText(spannableString);
         tvDemoRequest.setMovementMethod(LinkMovementMethod.getInstance());
 

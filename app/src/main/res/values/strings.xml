@@ -32,5 +32,8 @@
     <string name="defalert">Some Error !</string>
 
     <string name="contact_info"><![CDATA[<p><h5> Infozeal eSolutions Private Limited </h5> Email Id :: support@infozeal.co.in  <br/> Phone No. :: +91 (79) 49117200 <br/>Website :: <a href=\"http://www.infozeal.co.in\">www.infozeal.co.in</a><p>]]></string>
+    <string name="msg_sending_email">Please Wait...</string>
+    <string name="msg_email_sent_successfully">Your demo request was sent successfully.</string>
+    <string name="msg_error_sending_email">Error sending demo request, check your connection</string>
 
 </resources>
