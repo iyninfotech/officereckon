@@ -16,14 +16,9 @@
         android:title="Delete" />
 
 
-
-   <!-- <item
-        android:id="@+id/mnuShare"
-        android:title="Share" />-->
-
-
-
-
+    <!-- <item
+         android:id="@+id/mnuShare"
+         android:title="Share" />-->
 
 
 </menu>

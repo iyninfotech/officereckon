@@ -3,17 +3,18 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    >
+    android:layout_height="match_parent">
+
     <com.score3s.android.NavigationCustom.widget.SNavigationDrawer
+        android:id="@+id/navigationDrawer"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:id="@+id/navigationDrawer">
+        android:layout_height="match_parent">
+
         <FrameLayout
             android:id="@+id/frameLayout"
 
             android:layout_width="match_parent"
-            android:layout_height="match_parent"/>
+            android:layout_height="match_parent" />
 
     </com.score3s.android.NavigationCustom.widget.SNavigationDrawer>
 </RelativeLayout>

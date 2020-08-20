@@ -29,12 +29,12 @@ public class RegisterActivity extends Activity {
 
 
     Button btnRegister;
-    EditText edtAgencyName,edtOwnerName, edtContactNo, edtEmailID;
+    EditText edtAgencyName, edtOwnerName, edtContactNo, edtEmailID;
     TextView tvDemoRequest;
 
     String AgencyName, OwnerName, ContactNo, EmailID;
 
-    public String EmailSubjectTxt,EmailBodymsgTxt;
+    public String EmailSubjectTxt, EmailBodymsgTxt;
 
     @RequiresApi(api = Build.VERSION_CODES.O)
     @Override
@@ -66,7 +66,7 @@ public class RegisterActivity extends Activity {
         });
 
 
-       // String text = "Already registred then click on <b><i>LOGIN</b></i>.";
+        // String text = "Already registred then click on <b><i>LOGIN</b></i>.";
         String text = "If your are Already using our software then click on <br /> <b><i>LOGIN</b></i>";
         SpannableString spannableString = new SpannableString(Html.fromHtml(text));
         ClickableSpan clickableSpan1 = new ClickableSpan() {
@@ -89,16 +89,16 @@ public class RegisterActivity extends Activity {
                // Toast.makeText(MainActivity.this, "CLICKED", Toast.LENGTH_SHORT).show();
             }
         };*/
-        spannableString.setSpan(clickableSpan1, 54,59, Spanned.SPAN_EXCLUSIVE_EXCLUSIVE);
-       // spannableString.setSpan(clickableSpan2, 16,20, Spanned.SPAN_EXCLUSIVE_EXCLUSIVE);
-       // spannableString.setSpan(clickableSpan3, 27,34, Spanned.SPAN_EXCLUSIVE_EXCLUSIVE);
+        spannableString.setSpan(clickableSpan1, 54, 59, Spanned.SPAN_EXCLUSIVE_EXCLUSIVE);
+        // spannableString.setSpan(clickableSpan2, 16,20, Spanned.SPAN_EXCLUSIVE_EXCLUSIVE);
+        // spannableString.setSpan(clickableSpan3, 27,34, Spanned.SPAN_EXCLUSIVE_EXCLUSIVE);
         tvDemoRequest.setText(spannableString);
         tvDemoRequest.setMovementMethod(LinkMovementMethod.getInstance());
 
 
     }
-    public boolean emailValidator(String email)
-    {
+
+    public boolean emailValidator(String email) {
         Pattern pattern;
         Matcher matcher;
         final String EMAIL_PATTERN = "^[_A-Za-z0-9-]+(\\.[_A-Za-z0-9-]+)*@[A-Za-z0-9]+(\\.[A-Za-z0-9]+)*(\\.[A-Za-z]{2,})$";
@@ -106,6 +106,7 @@ public class RegisterActivity extends Activity {
         matcher = pattern.matcher(email);
         return matcher.matches();
     }
+
     @RequiresApi(api = Build.VERSION_CODES.O)
     public void attemptLogin() {
 
@@ -131,13 +132,13 @@ public class RegisterActivity extends Activity {
         } else if (!emailValidator(EmailID)) {
             edtEmailID.requestFocus();
             ToastUtils.showErrorToast(this, "Please enter valid Email Id");
-        }else {
+        } else {
             if (NetworkUtils.isInternetAvailable(this)) {
-                EmailSubjectTxt = "Contact To "+ OwnerName.trim() +" for Software & Mobile App Demonstration(Socre 3S FMCG Mobile App)" ;
-                EmailBodymsgTxt="<div><i>Company Name:</i>&nbsp;<b>"+ AgencyName.trim() +"</b></div><br />" +
-                                "<div><i>Contact Person:</i>&nbsp;<b>"+ OwnerName.trim() +"</b></div><br />" +
-                                "<div><i>Contact Number:</i>&nbsp;<b>"+ ContactNo.trim() +"</b></div><br />" +
-                                "<div><i>Email Address:</i>&nbsp;<b>"+ EmailID.trim() +"</b></div>";
+                EmailSubjectTxt = "Contact To " + OwnerName.trim() + " for Software & Mobile App Demonstration(Socre 3S FMCG Mobile App)";
+                EmailBodymsgTxt = "<div><i>Company Name:</i>&nbsp;<b>" + AgencyName.trim() + "</b></div><br />" +
+                        "<div><i>Contact Person:</i>&nbsp;<b>" + OwnerName.trim() + "</b></div><br />" +
+                        "<div><i>Contact Number:</i>&nbsp;<b>" + ContactNo.trim() + "</b></div><br />" +
+                        "<div><i>Email Address:</i>&nbsp;<b>" + EmailID.trim() + "</b></div>";
                 sendEmailtoInfozeal(EmailSubjectTxt, EmailBodymsgTxt);
 
             } else {
@@ -145,7 +146,6 @@ public class RegisterActivity extends Activity {
             }
         }
     }
-
 
 
     private void sendEmailtoInfozeal(String mailSubject, String msgBody) {
@@ -160,7 +160,7 @@ public class RegisterActivity extends Activity {
                     @Override
                     public void onSuccess() {
 
-                        EmailSubjectTxt = "Hello,"+ OwnerName.trim() +" thanks for registered demonstration of our Score 3s Cloud .net Software & Mobile App." ;
+                        EmailSubjectTxt = "Hello," + OwnerName.trim() + " thanks for registered demonstration of our Score 3s Cloud .net Software & Mobile App.";
                         EmailBodymsgTxt = "<!DOCTYPE html PUBLIC \"-//W3C//DTD XHTML 1.0 Strict//EN\" \"http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd\">\n" +
                                 "<html xmlns=\"http://www.w3.org/1999/xhtml\">\n" +
                                 "<head>\n" +
@@ -445,7 +445,7 @@ public class RegisterActivity extends Activity {
                                 "                                                        <tbody>\n" +
                                 "                                                            <tr>\n" +
                                 "                                                                <td align=\"start\" style=\"font-family: Verdana,Helvetica, arial, sans-serif; font-size: 16px; color: #6d6d7a;padding:5px\" st-content=\"phone\" height=\"60\">\n" +
-                                "                                                                  <b><i> Welcome, "+ OwnerName.trim() +"</i></b>\n" +
+                                "                                                                  <b><i> Welcome, " + OwnerName.trim() + "</i></b>\n" +
                                 "\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t  \n" +
                                 "                                                                </td>\n" +
                                 "                                                            </tr>\n" +
@@ -765,7 +765,7 @@ public class RegisterActivity extends Activity {
                                 "</body>\n" +
                                 "</html>";
 
-                       sendEmailtoUser(EmailID.trim(),EmailSubjectTxt, EmailBodymsgTxt);
+                        sendEmailtoUser(EmailID.trim(), EmailSubjectTxt, EmailBodymsgTxt);
 
                     }
                 })
@@ -779,7 +779,7 @@ public class RegisterActivity extends Activity {
 
     }
 
-    private void sendEmailtoUser(String emiailid,String mailSubject, String msgBody) {
+    private void sendEmailtoUser(String emiailid, String mailSubject, String msgBody) {
         BackgroundMail.newBuilder(this)
                 .withUsername("sales@infozeal.co.in")
                 .withPassword("google@206")

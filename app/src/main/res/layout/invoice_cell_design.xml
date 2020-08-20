@@ -1,72 +1,72 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout android:id="@+id/mainLayout"
-    android:background="@drawable/background_outlet_cell"
-    android:weightSum="4"
-    android:orientation="horizontal"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/mainLayout"
     android:layout_width="match_parent"
-    android:layout_marginTop="@dimen/_4sdp"
-    android:layout_marginLeft="@dimen/_8sdp"
-    android:layout_marginRight="@dimen/_8sdp"
     android:layout_height="@dimen/_40sdp"
-    xmlns:android="http://schemas.android.com/apk/res/android">
-
-        <com.score3s.android.fontStyle.TextViewMedium
-            android:id="@+id/tvInvoiceID"
-            android:layout_width="match_parent"
-            android:layout_weight="1"
-            android:text="Sr"
-            android:textColor="@color/Black"
-            android:textSize="@dimen/_8sdp"
-            android:layout_gravity="center"
-            android:gravity="center"
-            android:layout_height="wrap_content" />
-
-
-        <com.score3s.android.fontStyle.TextViewMedium
-            android:id="@+id/tvOrderNumber"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:text="Order No"
-            android:textColor="@color/Black"
-            android:textSize="@dimen/_8sdp"
-            android:layout_gravity="center"
-            android:gravity="center" />
-
-
-        <com.score3s.android.fontStyle.TextViewMedium
-
-            android:id="@+id/tvClientName"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:text="Client Name"
-            android:textColor="@color/Black"
-            android:textSize="@dimen/_8sdp"
-            android:layout_gravity="center"
-            android:gravity="center"/>
+    android:layout_marginLeft="@dimen/_8sdp"
+    android:layout_marginTop="@dimen/_4sdp"
+    android:layout_marginRight="@dimen/_8sdp"
+    android:background="@drawable/background_outlet_cell"
+    android:orientation="horizontal"
+    android:weightSum="4">
 
     <com.score3s.android.fontStyle.TextViewMedium
+        android:id="@+id/tvInvoiceID"
         android:layout_width="match_parent"
-        android:id="@+id/tvAmount"
         android:layout_height="wrap_content"
+        android:layout_gravity="center"
         android:layout_weight="1"
+        android:gravity="center"
+        android:text="Sr"
+        android:textColor="@color/Black"
+        android:textSize="@dimen/_8sdp" />
+
+
+    <com.score3s.android.fontStyle.TextViewMedium
+        android:id="@+id/tvOrderNumber"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:layout_weight="1"
+        android:gravity="center"
+        android:text="Order No"
+        android:textColor="@color/Black"
+        android:textSize="@dimen/_8sdp" />
+
+
+    <com.score3s.android.fontStyle.TextViewMedium
+
+        android:id="@+id/tvClientName"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:layout_weight="1"
+        android:gravity="center"
+        android:text="Client Name"
+        android:textColor="@color/Black"
+        android:textSize="@dimen/_8sdp" />
+
+    <com.score3s.android.fontStyle.TextViewMedium
+        android:id="@+id/tvAmount"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:layout_weight="1"
+        android:gravity="center"
         android:text="Amount"
         android:textColor="@color/Black"
-        android:textSize="@dimen/_8sdp"
-        android:layout_gravity="center"
-        android:gravity="center"/>
+        android:textSize="@dimen/_8sdp" />
 
     <com.score3s.android.fontStyle.TextViewBold
         android:id="@+id/textViewOptions"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:textColor="@color/colorPrimary"
         android:layout_gravity="center"
-        android:textStyle="bold"
         android:paddingRight="@dimen/_5sdp"
-        android:tooltipText="click here for more option"
         android:text="&#8942;"
-        android:textAppearance="?android:textAppearanceLarge" />
-    </LinearLayout>
+        android:textAppearance="?android:textAppearanceLarge"
+        android:textColor="@color/colorPrimary"
+        android:textStyle="bold"
+        android:tooltipText="click here for more option" />
+</LinearLayout>
 

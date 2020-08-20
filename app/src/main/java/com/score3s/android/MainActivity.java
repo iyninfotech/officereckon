@@ -35,7 +35,6 @@ import com.score3s.android.asynctasks.CustomProcessbar;
 import com.score3s.android.asynctasks.NetworkUtils;
 import com.score3s.android.asynctasks.StringUtils;
 import com.score3s.android.asynctasks.ToastUtils;
-import com.score3s.android.asynctasks.getAppVersion;
 
 import org.json.JSONException;
 import org.json.JSONObject;
@@ -55,7 +54,7 @@ public class MainActivity extends Activity {
     String UserID, ClientID, Password, MobileNo;
     private static final int MY_PERMISSIONS_REQUEST_READ_PHONE_STATE = 0;
     String IMEINumber = "";
-    String AuthKey,AppVersion;
+
 
     @RequiresApi(api = Build.VERSION_CODES.O)
     @Override
@@ -72,7 +71,6 @@ public class MainActivity extends Activity {
 
         preferencesUserAuthKey = getSharedPreferences(AUTHKEY, MODE_PRIVATE);
         editorUserAuthKey = preferencesUserAuthKey.edit();
-        AppVersion = getAppVersion.getVersionInfo(MainActivity.this);
         btnLogin.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -175,9 +173,10 @@ public class MainActivity extends Activity {
                             editorUserAuthKey.putString("FullName",jRootObject.getString("FullName"));
                             editorUserAuthKey.apply();
 
-                            AuthKey = preferencesUserAuthKey.getString("auth", "");
 
-                            CheckAuth();
+                            Intent intent = new Intent(MainActivity.this, NavigationDrawerActivity.class);
+                            startActivity(intent);
+                            finish();
 
                         } else {
                             ToastUtils.showErrorToast(MainActivity.this, "Login Failed " + ErrorMessage);
@@ -201,95 +200,6 @@ public class MainActivity extends Activity {
 
     }
 
-
-    private void CheckAuth() {
-
-        AQuery aq;
-        aq = new AQuery(this);
-        String url = APIURL.BASE_URL + APIURL.LOGIN_AUTH;
-        Map<String, String> params = new HashMap<String, String>();
-        params.put("AuthKey",AuthKey);
-        params.put("AppVersion", AppVersion);
-
-        aq.ajax(url, params, JSONObject.class, new AjaxCallback<JSONObject>() {
-
-            @Override
-            public void callback(String url, JSONObject jRootObject, AjaxStatus status) {
-
-                CustomProcessbar.hideProcessBar();
-                if (jRootObject != null) {
-                    Log.d("DEBUG", "status " + status.getError() + status.getMessage() + jRootObject.toString());
-                    try {
-                        String ErrorMessage = "";
-                        ErrorMessage = jRootObject.getString("ErrorMessage");
-                        if (ErrorMessage.equalsIgnoreCase("")) {
-                            if(jRootObject.getString("LoginStatus").equals("Success")){
-
-                                if(jRootObject.getString("ServerAppVersion").equals(AppVersion))
-                                {
-                                    Intent intent = new Intent(MainActivity.this, NavigationDrawerActivity.class);
-                                    startActivity(intent);
-                                    finish();
-                                }
-                            }
-                        } else {
-                            if (ErrorMessage.equalsIgnoreCase("Invalid App Version"))
-                            {
-                                androidx.appcompat.app.AlertDialog.Builder builder = new androidx.appcompat.app.AlertDialog.Builder(MainActivity.this);
-                                builder.setCancelable(false);
-                                builder.setTitle("Alert..");
-                                builder.setMessage(String.format("Please, Update your Score3S App!"));
-                                builder.setPositiveButton("Exit", new DialogInterface.OnClickListener() {
-                                    @Override
-                                    public void onClick(DialogInterface dialog, int which) {
-                                        //if user pressed "yes", then he is allowed to exit from application
-                                        finish();
-                                    }
-                                });
-                                androidx.appcompat.app.AlertDialog alert = builder.create();
-                                alert.show();
-                            }
-                            else if(ErrorMessage.equalsIgnoreCase("Invalid App Authentication"))
-                            {
-                                AuthKey = "";
-
-                            }
-                            else
-                            {
-                                androidx.appcompat.app.AlertDialog.Builder builder = new androidx.appcompat.app.AlertDialog.Builder(MainActivity.this);
-                                builder.setCancelable(false);
-                                builder.setTitle("Alert..");
-                                builder.setMessage(String.format("Please, contact \n 'Infozeal eSolutions Private Limited'"));
-                                builder.setPositiveButton("Exit", new DialogInterface.OnClickListener() {
-                                    @Override
-                                    public void onClick(DialogInterface dialog, int which) {
-                                        //if user pressed "yes", then he is allowed to exit from application
-                                        finish();
-                                    }
-                                });
-                                androidx.appcompat.app.AlertDialog alert = builder.create();
-                                alert.show();
-                            }
-
-                        }
-                    } catch (JSONException e) {
-                        Log.d("DEBUG", "Json Exception" + e.getMessage());
-                        e.printStackTrace();
-
-                    } catch (Exception e) {
-                        Log.d("DEBUG", "Exception" + e.getMessage());
-                        e.printStackTrace();
-
-                    }
-                } else {
-
-                }
-                super.callback(url, jRootObject, status);
-            }
-
-        });
-
-    }
 
     @RequiresApi(api = Build.VERSION_CODES.O)
     public void loadIMEI() {

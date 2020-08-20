@@ -4,20 +4,18 @@ import android.content.SharedPreferences;
 import android.content.pm.PackageInfo;
 import android.content.pm.PackageManager;
 import android.os.Bundle;
-import androidx.fragment.app.Fragment;
-
 import android.text.Html;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.Button;
 import android.widget.TextView;
+
+import androidx.fragment.app.Fragment;
 
 import com.androidquery.AQuery;
 import com.androidquery.callback.AjaxCallback;
 import com.androidquery.callback.AjaxStatus;
-import com.score3s.android.Adapter.InVoiceAdapter;
 import com.score3s.android.Constant.APIURL;
 import com.score3s.android.asynctasks.CustomProcessbar;
 import com.score3s.android.asynctasks.NetworkUtils;
@@ -32,8 +30,8 @@ import java.util.HashMap;
 import java.util.Map;
 
 import static android.content.Context.MODE_PRIVATE;
-import static com.score3s.android.MainActivity.AUTHKEY;
 import static com.score3s.android.AddInvoiceActivity.DEFHEADDATA;
+import static com.score3s.android.MainActivity.AUTHKEY;
 
 public class DashBoardFragment extends Fragment {
     public DashBoardFragment() {
@@ -42,14 +40,15 @@ public class DashBoardFragment extends Fragment {
 
     SharedPreferences preferencesUserAuthKey;
     SharedPreferences.Editor editorUserAuthKey;
-    String AuthKey,FullName;
+    String AuthKey, FullName;
     JSONObject jsonObject;
     JSONArray jsonArray;
     double sum = 0;
-    int totalInv= 0;
-    TextView tvUserName,tvTotalSalesAmt,tvTotalInvoice,tvDevloperInfoDetails,AppVersionInfo;
+    int totalInv = 0;
+    TextView tvUserName, tvTotalSalesAmt, tvTotalInvoice, tvDevloperInfoDetails, AppVersionInfo;
     SharedPreferences preferencesDEFHEADDATA;
     SharedPreferences.Editor editorDEFHEADDATA;
+
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
@@ -82,7 +81,7 @@ public class DashBoardFragment extends Fragment {
 
         } else {
 
-            ShowAlert.ShowAlertOkCancle(getActivity(),"No Internet !","Try Again ?");
+            ShowAlert.ShowAlertOkCancle(getActivity(), "No Internet !", "Try Again ?");
         }
 
         return view;
@@ -100,8 +99,8 @@ public class DashBoardFragment extends Fragment {
         } catch (PackageManager.NameNotFoundException e) {
             e.printStackTrace();
         }
-        AppVersionInfo.setText(String.format("App Version Code : "+ versionCode + " & Name : " + versionName));
-       // AppVersionInfo.setText(String.format("Version code = %d  \nVersion name = %s", versionCode, versionName));
+        AppVersionInfo.setText(String.format("App Version Code : " + versionCode + " & Name : " + versionName));
+        // AppVersionInfo.setText(String.format("Version code = %d  \nVersion name = %s", versionCode, versionName));
         getInvoice();
     }
 
@@ -155,8 +154,7 @@ public class DashBoardFragment extends Fragment {
                         Log.d("DEBUG", "Exception" + e.getMessage());
                         e.printStackTrace();
                         ToastUtils.showErrorToast(getActivity(), "Error ");
-                    }
-                    finally {
+                    } finally {
 
                     }
                 } else {
@@ -175,9 +173,9 @@ public class DashBoardFragment extends Fragment {
         sum = 0;
 
         totalInv = jsonArray.length();
-        tvTotalInvoice.setText(String.format("%d",totalInv));
+        tvTotalInvoice.setText(String.format("%d", totalInv));
 
-        for(int i = 0; i <jsonArray.length();i++){
+        for (int i = 0; i < jsonArray.length(); i++) {
             try {
                 JSONObject jobj = jsonArray.getJSONObject(i);
                 double amount = Double.parseDouble(jobj.getString("Amount"));

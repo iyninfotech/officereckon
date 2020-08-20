@@ -3,13 +3,16 @@ package com.score3s.android.Adapter;
 import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
-import androidx.appcompat.app.AlertDialog;
-import androidx.recyclerview.widget.RecyclerView;
 import android.view.LayoutInflater;
+import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
-import android.view.MenuItem;
+import android.widget.Toast;
+
+import androidx.appcompat.app.AlertDialog;
+import androidx.appcompat.widget.PopupMenu;
+import androidx.recyclerview.widget.RecyclerView;
 
 import com.score3s.android.InVoiceDetailsActivity;
 import com.score3s.android.R;
@@ -17,8 +20,6 @@ import com.score3s.android.R;
 import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
-import androidx.appcompat.widget.PopupMenu;
-import android.widget.Toast;
 
 import java.util.List;
 
@@ -29,7 +30,7 @@ public class InVoiceAdapter extends RecyclerView.Adapter<InVoiceAdapter.ViewHold
     Context context;
     JSONArray jsonArray;
 
-    public InVoiceAdapter(Context context , JSONArray jsonArray) {
+    public InVoiceAdapter(Context context, JSONArray jsonArray) {
         this.mInflater = LayoutInflater.from(context);
         this.context = context;
         this.jsonArray = jsonArray;
@@ -74,8 +75,8 @@ public class InVoiceAdapter extends RecyclerView.Adapter<InVoiceAdapter.ViewHold
 
                                 Intent iview = new Intent(context, InVoiceDetailsActivity.class);
                                 try {
-                                    iview.putExtra("id",jsonArray.getJSONObject(position).getString("InvId"));
-                                    iview.putExtra("btnType","ViewOnly");
+                                    iview.putExtra("id", jsonArray.getJSONObject(position).getString("InvId"));
+                                    iview.putExtra("btnType", "ViewOnly");
                                 } catch (JSONException e) {
                                     e.printStackTrace();
                                 }
@@ -99,8 +100,8 @@ public class InVoiceAdapter extends RecyclerView.Adapter<InVoiceAdapter.ViewHold
 
                                 Intent i = new Intent(context, InVoiceDetailsActivity.class);
                                 try {
-                                    i.putExtra("id",jsonArray.getJSONObject(position).getString("InvId"));
-                                    i.putExtra("btnType","Edit");
+                                    i.putExtra("id", jsonArray.getJSONObject(position).getString("InvId"));
+                                    i.putExtra("btnType", "Edit");
                                 } catch (JSONException e) {
                                     e.printStackTrace();
                                 }
@@ -151,8 +152,8 @@ public class InVoiceAdapter extends RecyclerView.Adapter<InVoiceAdapter.ViewHold
 
                         Intent onLongPress = new Intent(context, InVoiceDetailsActivity.class);
                         try {
-                            onLongPress.putExtra("id",jsonArray.getJSONObject(position).getString("InvId"));
-                            onLongPress.putExtra("btnType","Edit");
+                            onLongPress.putExtra("id", jsonArray.getJSONObject(position).getString("InvId"));
+                            onLongPress.putExtra("btnType", "Edit");
                         } catch (JSONException e) {
                             e.printStackTrace();
                         }
@@ -183,10 +184,9 @@ public class InVoiceAdapter extends RecyclerView.Adapter<InVoiceAdapter.ViewHold
     }
 
 
+    public class ViewHolder extends RecyclerView.ViewHolder {
 
-    public class ViewHolder extends RecyclerView.ViewHolder  {
-
-        TextView tvInvoiceID,tvOrderNo,tvClientName,tvAmount;
+        TextView tvInvoiceID, tvOrderNo, tvClientName, tvAmount;
         public TextView buttonViewOption;
 
         ViewHolder(View itemView) {
@@ -206,7 +206,6 @@ public class InVoiceAdapter extends RecyclerView.Adapter<InVoiceAdapter.ViewHold
     String getItem(int id) {
         return "0";
     }
-
 
 
 }

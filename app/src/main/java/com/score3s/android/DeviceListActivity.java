@@ -38,16 +38,12 @@ public class DeviceListActivity extends Activity {
         mBluetoothAdapter = BluetoothAdapter.getDefaultAdapter();
         Set<BluetoothDevice> mPairedDevices = mBluetoothAdapter.getBondedDevices();
 
-        if (mPairedDevices.size() > 0)
-        {
+        if (mPairedDevices.size() > 0) {
             findViewById(R.id.title_paired_devices).setVisibility(View.VISIBLE);
-            for (BluetoothDevice mDevice : mPairedDevices)
-            {
+            for (BluetoothDevice mDevice : mPairedDevices) {
                 mPairedDevicesArrayAdapter.add(mDevice.getName() + "\n" + mDevice.getAddress());
             }
-        }
-        else
-        {
+        } else {
             String mNoDevices = "None Paired";//getResources().getText(R.string.none_paired).toString();
             mPairedDevicesArrayAdapter.add(mNoDevices);
         }
@@ -56,19 +52,15 @@ public class DeviceListActivity extends Activity {
     // END ON Create
 
     @Override
-    protected void onDestroy()
-    {
+    protected void onDestroy() {
         super.onDestroy();
-        if (mBluetoothAdapter != null)
-        {
+        if (mBluetoothAdapter != null) {
             mBluetoothAdapter.cancelDiscovery();
         }
     }
 
-    private OnItemClickListener mDeviceClickListener = new OnItemClickListener()
-    {
-        public void onItemClick(AdapterView<?> mAdapterView, View mView, int mPosition, long mLong)
-        {
+    private OnItemClickListener mDeviceClickListener = new OnItemClickListener() {
+        public void onItemClick(AdapterView<?> mAdapterView, View mView, int mPosition, long mLong) {
             mBluetoothAdapter.cancelDiscovery();
             String mDeviceInfo = ((TextView) mView).getText().toString();
             String mDeviceAddress = mDeviceInfo.substring(mDeviceInfo.length() - 17);

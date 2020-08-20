@@ -4,6 +4,7 @@ package com.score3s.android.DateWheel;
  * Created by prati on 06-Jul-16 at VARAHI TECHNOLOGIES.
  * http://www.varahitechnologies.com
  */
+
 import java.util.TimerTask;
 
 final class MTimer extends TimerTask {
@@ -25,7 +26,7 @@ final class MTimer extends TimerTask {
     public final void run() {
         if (realTotalOffset == Integer.MAX_VALUE) {
             float itemHeight = loopView.lineSpacingMultiplier * loopView.maxTextHeight;
-            offset = (int)((offset + itemHeight) % itemHeight);
+            offset = (int) ((offset + itemHeight) % itemHeight);
             if ((float) offset > itemHeight / 2.0F) {
                 realTotalOffset = (int) (itemHeight - (float) offset);
             } else {

@@ -4,23 +4,23 @@ import android.app.Activity;
 import android.widget.Toast;
 
 public class ToastUtils {
-	
-	
-	private static Toast toast;
 
-	public static void showSuccessToast(Activity context, String message) {
-		
-		toast = Toast.makeText(context, message, Toast.LENGTH_LONG);
-//		toast.setGravity(Gravity.CENTER, 0, 0);
-		toast.show();
-	}
 
-	public static void showErrorToast(Activity context, String message) {
-		
-		toast = Toast.makeText(context, message, Toast.LENGTH_LONG);
+    private static Toast toast;
+
+    public static void showSuccessToast(Activity context, String message) {
+
+        toast = Toast.makeText(context, message, Toast.LENGTH_LONG);
 //		toast.setGravity(Gravity.CENTER, 0, 0);
-		toast.show();
-	}
+        toast.show();
+    }
+
+    public static void showErrorToast(Activity context, String message) {
+
+        toast = Toast.makeText(context, message, Toast.LENGTH_LONG);
+//		toast.setGravity(Gravity.CENTER, 0, 0);
+        toast.show();
+    }
 
 	
 	
@@ -64,4 +64,5 @@ public class ToastUtils {
 			toast.show();
 		}
 	}
-*/}
+*/
+}

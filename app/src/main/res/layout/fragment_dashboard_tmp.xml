@@ -1,40 +1,40 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@color/White"
-    android:orientation="vertical"
-    xmlns:app="http://schemas.android.com/apk/res-auto">
+    android:orientation="vertical">
 
     <LinearLayout
-        android:background="@color/White"
         android:layout_width="match_parent"
-        android:layout_height="@dimen/_1sdp"/>
+        android:layout_height="@dimen/_1sdp"
+        android:background="@color/White" />
 
     <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
         android:layout_marginTop="@dimen/_5sdp"
         android:layout_marginBottom="@dimen/_5sdp"
-        android:weightSum="3"
         android:orientation="vertical"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent">
+        android:weightSum="3">
 
         <LinearLayout
-            android:layout_weight="1"
             android:layout_width="match_parent"
-            android:layout_height="match_parent">
+            android:layout_height="match_parent"
+            android:layout_weight="1">
+
             <androidx.cardview.widget.CardView
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:layout_weight="1"
-                app:cardBackgroundColor="@color/colorPrimary"
                 android:layout_marginLeft="@dimen/_6sdp"
                 android:layout_marginRight="@dimen/_6sdp"
-                app:cardCornerRadius="@dimen/_8sdp"
+                android:layout_weight="1"
                 android:visibility="visible"
+                app:cardBackgroundColor="@color/colorPrimary"
+                app:cardCornerRadius="@dimen/_8sdp"
                 app:cardElevation="@dimen/_8sdp">
-
 
 
                 <RelativeLayout
@@ -45,27 +45,27 @@
                     <ImageView
                         android:layout_width="@dimen/_100sdp"
                         android:layout_height="@dimen/_100sdp"
-                        android:src="@drawable/call"
-                        android:padding="@dimen/_20sdp"
                         android:layout_alignParentBottom="true"
-                        android:tint="@color/White"/>
+                        android:padding="@dimen/_20sdp"
+                        android:src="@drawable/call"
+                        android:tint="@color/White" />
 
                     <com.score3s.android.fontStyle.TextViewRegular
                         android:layout_width="wrap_content"
-                        android:padding="@dimen/_10sdp"
                         android:layout_height="wrap_content"
+                        android:padding="@dimen/_10sdp"
                         android:text="Total Calls"
                         android:textColor="@color/White"
-                        android:textSize="@dimen/_15sdp"/>
+                        android:textSize="@dimen/_15sdp" />
 
                     <com.score3s.android.fontStyle.TextViewRegular
                         android:id="@+id/tvTotalCalls"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:padding="@dimen/_10sdp"
                         android:layout_alignParentEnd="true"
-                        android:text="33"
                         android:layout_alignParentBottom="true"
+                        android:padding="@dimen/_10sdp"
+                        android:text="33"
                         android:textColor="@color/White"
                         android:textSize="@dimen/_20sdp" />
                 </RelativeLayout>
@@ -73,27 +73,27 @@
         </LinearLayout>
 
         <LinearLayout
-            android:layout_weight="1"
             android:layout_width="match_parent"
-            android:layout_height="match_parent">
+            android:layout_height="match_parent"
+            android:layout_weight="1">
 
             <LinearLayout
-                android:weightSum="2"
-                android:orientation="horizontal"
                 android:layout_width="match_parent"
-                android:layout_height="match_parent">
+                android:layout_height="match_parent"
+                android:orientation="horizontal"
+                android:weightSum="2">
+
                 <androidx.cardview.widget.CardView
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
-                    android:layout_weight="1"
-                    app:cardBackgroundColor="@color/colorPrimary"
                     android:layout_marginLeft="@dimen/_6sdp"
-                    android:layout_marginRight="@dimen/_3sdp"
                     android:layout_marginTop="@dimen/_6sdp"
-                    app:cardCornerRadius="@dimen/_8sdp"
+                    android:layout_marginRight="@dimen/_3sdp"
+                    android:layout_weight="1"
                     android:visibility="visible"
+                    app:cardBackgroundColor="@color/colorPrimary"
+                    app:cardCornerRadius="@dimen/_8sdp"
                     app:cardElevation="@dimen/_8sdp">
-
 
 
                     <RelativeLayout
@@ -104,27 +104,27 @@
                         <ImageView
                             android:layout_width="@dimen/_80sdp"
                             android:layout_height="@dimen/_80sdp"
-                            android:src="@drawable/call"
-                            android:padding="@dimen/_20sdp"
                             android:layout_alignParentBottom="true"
-                            android:tint="@color/White"/>
+                            android:padding="@dimen/_20sdp"
+                            android:src="@drawable/call"
+                            android:tint="@color/White" />
 
                         <com.score3s.android.fontStyle.TextViewRegular
                             android:layout_width="wrap_content"
-                            android:padding="@dimen/_10sdp"
                             android:layout_height="wrap_content"
+                            android:padding="@dimen/_10sdp"
                             android:text="Producative Calls"
                             android:textColor="@color/White"
-                            android:textSize="@dimen/_15sdp"/>
+                            android:textSize="@dimen/_15sdp" />
 
                         <com.score3s.android.fontStyle.TextViewRegular
                             android:id="@+id/tvprodectiveCalls"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:padding="@dimen/_10sdp"
                             android:layout_alignParentEnd="true"
-                            android:text="33"
                             android:layout_alignParentBottom="true"
+                            android:padding="@dimen/_10sdp"
+                            android:text="33"
                             android:textColor="@color/White"
                             android:textSize="@dimen/_20sdp" />
                     </RelativeLayout>
@@ -135,15 +135,14 @@
                 <androidx.cardview.widget.CardView
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
-                    android:layout_weight="1"
-                    app:cardBackgroundColor="@color/colorPrimary"
                     android:layout_marginLeft="@dimen/_3sdp"
-                    android:layout_marginRight="@dimen/_6sdp"
                     android:layout_marginTop="@dimen/_6sdp"
-                    app:cardCornerRadius="@dimen/_8sdp"
+                    android:layout_marginRight="@dimen/_6sdp"
+                    android:layout_weight="1"
                     android:visibility="visible"
+                    app:cardBackgroundColor="@color/colorPrimary"
+                    app:cardCornerRadius="@dimen/_8sdp"
                     app:cardElevation="@dimen/_8sdp">
-
 
 
                     <RelativeLayout
@@ -154,27 +153,27 @@
                         <ImageView
                             android:layout_width="@dimen/_80sdp"
                             android:layout_height="@dimen/_80sdp"
-                            android:src="@drawable/sold"
-                            android:padding="@dimen/_15sdp"
                             android:layout_alignParentBottom="true"
-                            android:tint="@color/White"/>
+                            android:padding="@dimen/_15sdp"
+                            android:src="@drawable/sold"
+                            android:tint="@color/White" />
 
                         <com.score3s.android.fontStyle.TextViewRegular
                             android:layout_width="wrap_content"
-                            android:padding="@dimen/_10sdp"
                             android:layout_height="wrap_content"
+                            android:padding="@dimen/_10sdp"
                             android:text="Line Sold"
                             android:textColor="@color/White"
-                            android:textSize="@dimen/_15sdp"/>
+                            android:textSize="@dimen/_15sdp" />
 
                         <com.score3s.android.fontStyle.TextViewRegular
                             android:id="@+id/tvLineSold"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:padding="@dimen/_10sdp"
                             android:layout_alignParentEnd="true"
-                            android:text="33"
                             android:layout_alignParentBottom="true"
+                            android:padding="@dimen/_10sdp"
+                            android:text="33"
                             android:textColor="@color/White"
                             android:textSize="@dimen/_20sdp" />
                     </RelativeLayout>
@@ -185,25 +184,26 @@
 
 
         <LinearLayout
-            android:layout_weight="1"
             android:layout_width="match_parent"
-            android:layout_height="match_parent">
+            android:layout_height="match_parent"
+            android:layout_weight="1">
 
             <LinearLayout
-                android:weightSum="2"
-                android:orientation="horizontal"
                 android:layout_width="match_parent"
-                android:layout_height="match_parent">
+                android:layout_height="match_parent"
+                android:orientation="horizontal"
+                android:weightSum="2">
+
                 <androidx.cardview.widget.CardView
-                    app:cardBackgroundColor="@color/colorPrimary"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
-                    android:layout_weight="1"
                     android:layout_marginLeft="@dimen/_6sdp"
-                    android:layout_marginRight="@dimen/_3sdp"
                     android:layout_marginTop="@dimen/_6sdp"
-                    app:cardCornerRadius="@dimen/_8sdp"
+                    android:layout_marginRight="@dimen/_3sdp"
+                    android:layout_weight="1"
                     android:visibility="visible"
+                    app:cardBackgroundColor="@color/colorPrimary"
+                    app:cardCornerRadius="@dimen/_8sdp"
                     app:cardElevation="@dimen/_8sdp">
 
                     <RelativeLayout
@@ -214,31 +214,30 @@
                         <ImageView
                             android:layout_width="@dimen/_80sdp"
                             android:layout_height="@dimen/_80sdp"
-                            android:src="@drawable/target"
-                            android:padding="@dimen/_17sdp"
                             android:layout_alignParentBottom="true"
-                            android:tint="@color/White"/>
+                            android:padding="@dimen/_17sdp"
+                            android:src="@drawable/target"
+                            android:tint="@color/White" />
 
                         <com.score3s.android.fontStyle.TextViewRegular
                             android:layout_width="wrap_content"
-                            android:padding="@dimen/_10sdp"
                             android:layout_height="wrap_content"
+                            android:padding="@dimen/_10sdp"
                             android:text="Target"
                             android:textColor="@color/White"
-                            android:textSize="@dimen/_15sdp"/>
+                            android:textSize="@dimen/_15sdp" />
 
                         <com.score3s.android.fontStyle.TextViewRegular
                             android:id="@+id/tvTarget"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:padding="@dimen/_10sdp"
                             android:layout_alignParentEnd="true"
-                            android:text="33"
                             android:layout_alignParentBottom="true"
+                            android:padding="@dimen/_10sdp"
+                            android:text="33"
                             android:textColor="@color/White"
                             android:textSize="@dimen/_20sdp" />
                     </RelativeLayout>
-
 
 
                 </androidx.cardview.widget.CardView>
@@ -246,13 +245,13 @@
                 <androidx.cardview.widget.CardView
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
-                    android:layout_weight="1"
-                    app:cardBackgroundColor="@color/colorPrimary"
                     android:layout_marginLeft="@dimen/_3sdp"
-                    android:layout_marginRight="@dimen/_6sdp"
                     android:layout_marginTop="@dimen/_6sdp"
-                    app:cardCornerRadius="@dimen/_8sdp"
+                    android:layout_marginRight="@dimen/_6sdp"
+                    android:layout_weight="1"
                     android:visibility="visible"
+                    app:cardBackgroundColor="@color/colorPrimary"
+                    app:cardCornerRadius="@dimen/_8sdp"
                     app:cardElevation="@dimen/_8sdp">
 
                     <RelativeLayout
@@ -263,32 +262,30 @@
                         <ImageView
                             android:layout_width="@dimen/_80sdp"
                             android:layout_height="@dimen/_80sdp"
-                            android:src="@drawable/achivement"
-                            android:padding="@dimen/_18sdp"
                             android:layout_alignParentBottom="true"
-                            android:tint="@color/White"/>
+                            android:padding="@dimen/_18sdp"
+                            android:src="@drawable/achivement"
+                            android:tint="@color/White" />
 
                         <com.score3s.android.fontStyle.TextViewRegular
                             android:layout_width="wrap_content"
-                            android:padding="@dimen/_10sdp"
                             android:layout_height="wrap_content"
+                            android:padding="@dimen/_10sdp"
                             android:text="Achivement"
                             android:textColor="@color/White"
-                            android:textSize="@dimen/_15sdp"/>
+                            android:textSize="@dimen/_15sdp" />
 
                         <com.score3s.android.fontStyle.TextViewRegular
                             android:id="@+id/tvAchivement"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:padding="@dimen/_10sdp"
                             android:layout_alignParentEnd="true"
-                            android:text="33"
                             android:layout_alignParentBottom="true"
+                            android:padding="@dimen/_10sdp"
+                            android:text="33"
                             android:textColor="@color/White"
                             android:textSize="@dimen/_20sdp" />
                     </RelativeLayout>
-
-
 
 
                 </androidx.cardview.widget.CardView>

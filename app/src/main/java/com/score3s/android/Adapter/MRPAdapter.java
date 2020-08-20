@@ -2,11 +2,12 @@ package com.score3s.android.Adapter;
 
 import android.content.Context;
 import android.content.Intent;
-import androidx.recyclerview.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
+
+import androidx.recyclerview.widget.RecyclerView;
 
 import com.score3s.android.MRPDetailsActivity;
 import com.score3s.android.R;
@@ -22,7 +23,7 @@ public class MRPAdapter extends RecyclerView.Adapter<MRPAdapter.ViewHolder> {
     private LayoutInflater mInflater;
     JSONArray jsonArray;
 
-    public MRPAdapter(Context context,JSONArray jsonArray) {
+    public MRPAdapter(Context context, JSONArray jsonArray) {
         this.mInflater = LayoutInflater.from(context);
         this.context = context;
         this.jsonArray = jsonArray;
@@ -54,8 +55,8 @@ public class MRPAdapter extends RecyclerView.Adapter<MRPAdapter.ViewHolder> {
             public void onClick(View v) {
                 Intent i = new Intent(context, MRPDetailsActivity.class);
                 try {
-                    i.putExtra("id",jsonArray.getJSONObject(position).getString("ItemId"));
-                    i.putExtra("MRPId",jsonArray.getJSONObject(position).getString("MRPId"));
+                    i.putExtra("id", jsonArray.getJSONObject(position).getString("ItemId"));
+                    i.putExtra("MRPId", jsonArray.getJSONObject(position).getString("MRPId"));
                 } catch (JSONException e) {
                     e.printStackTrace();
                 }
@@ -72,7 +73,7 @@ public class MRPAdapter extends RecyclerView.Adapter<MRPAdapter.ViewHolder> {
 
 
     public class ViewHolder extends RecyclerView.ViewHolder {
-        TextView tvMRPId, tvItemId,tvMRPItemName,tvMRP,tvMRPStock;
+        TextView tvMRPId, tvItemId, tvMRPItemName, tvMRP, tvMRPStock;
 
         ViewHolder(View itemView) {
             super(itemView);
@@ -86,6 +87,6 @@ public class MRPAdapter extends RecyclerView.Adapter<MRPAdapter.ViewHolder> {
     }
 
     String getItem(int id) {
-         return "0";
+        return "0";
     }
 }

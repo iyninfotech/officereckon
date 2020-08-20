@@ -3,13 +3,14 @@ package com.score3s.android;
 import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.os.Handler;
-import androidx.fragment.app.Fragment;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.TextView;
+
+import androidx.fragment.app.Fragment;
 
 import com.androidquery.AQuery;
 import com.androidquery.callback.AjaxCallback;
@@ -31,7 +32,7 @@ import java.util.Map;
 import static android.content.Context.MODE_PRIVATE;
 import static com.score3s.android.MainActivity.AUTHKEY;
 
-public class SettingFragment extends Fragment  {
+public class SettingFragment extends Fragment {
     /*public SettingFragment() {
         // Required empty public constructor
     }*/
@@ -45,10 +46,10 @@ public class SettingFragment extends Fragment  {
     ArrayList<String> SALEMENLIST = new ArrayList<>();
     ArrayList<String> GODOWNLIST = new ArrayList<>();
     JSONObject jsonObjMRPDetails;
-    SpinnerDialog Division,Route,Salemen,GodownSD,Client;
-    JSONArray jsonArrayDivision,jsonArrayRoute,jsonArraySalesmen,jsonArrayGodown;
+    SpinnerDialog Division, Route, Salemen, GodownSD, Client;
+    JSONArray jsonArrayDivision, jsonArrayRoute, jsonArraySalesmen, jsonArrayGodown;
     JSONArray jsonArray = new JSONArray();
-    TextView SelectedItemDivision,SelectedItemRoute,SelectedItemSaleman,SelectedItemGodown,SelectedItemClient;
+    TextView SelectedItemDivision, SelectedItemRoute, SelectedItemSaleman, SelectedItemGodown, SelectedItemClient;
     Button btnSubmit;
     JSONObject jsonObjectAddValues;
 
@@ -80,22 +81,18 @@ public class SettingFragment extends Fragment  {
                         ToastUtils.showErrorToast(getActivity(), "Please,select division ");
 
                         return;
-                    }
-                    else if (SelectedItemRoute.getText().toString().trim().equals("Select Route")) {
+                    } else if (SelectedItemRoute.getText().toString().trim().equals("Select Route")) {
 
                         ToastUtils.showErrorToast(getActivity(), "Please,select route ");
                         return;
-                    }
-                    else if (SelectedItemClient.getText().toString().trim().equals("Select Client")) {
+                    } else if (SelectedItemClient.getText().toString().trim().equals("Select Client")) {
 
                         ToastUtils.showErrorToast(getActivity(), "Please,select client ");
-                    }
-                    else if (SelectedItemSaleman.getText().toString().trim().equals("Select Salesman")) {
+                    } else if (SelectedItemSaleman.getText().toString().trim().equals("Select Salesman")) {
 
                         ToastUtils.showErrorToast(getActivity(), "Please,select salesman ");
                         return;
-                    }
-                    else {
+                    } else {
                         jsonObjectAddValues = new JSONObject();
 
                         for (int i = 0; i < jsonArrayDivision.length(); i++) {
@@ -145,9 +142,7 @@ public class SettingFragment extends Fragment  {
 
                         SaveData();
                     }
-                }
-                catch (Exception e)
-                {
+                } catch (Exception e) {
                     ToastUtils.showErrorToast(getActivity(), e.toString());
                 }
             }
@@ -188,8 +183,8 @@ public class SettingFragment extends Fragment  {
                         if (ErrorMessage.equalsIgnoreCase("")) {
                             DIVISIONLIST.clear();
                             jsonArrayDivision = jRootObject.getJSONArray("Divisions");
-                            Log.d("array",jsonArrayDivision.toString());
-                            for(int i = 0;i<jsonArrayDivision.length();i++){
+                            Log.d("array", jsonArrayDivision.toString());
+                            for (int i = 0; i < jsonArrayDivision.length(); i++) {
                                 DIVISIONLIST.add(jsonArrayDivision.getJSONObject(i).getString("DivisionName"));
                             }
                             Division = new SpinnerDialog(getActivity(), DIVISIONLIST,
@@ -265,7 +260,7 @@ public class SettingFragment extends Fragment  {
                         if (ErrorMessage.equalsIgnoreCase("")) {
 
                             jsonArrayRoute = jRootObject.getJSONArray("Routes");
-                            for(int i = 0;i<jsonArrayRoute.length();i++){
+                            for (int i = 0; i < jsonArrayRoute.length(); i++) {
                                 ROUTELIST.add(jsonArrayRoute.getJSONObject(i).getString("RouteName"));
                             }
                             Route = new SpinnerDialog(getActivity(), ROUTELIST,
@@ -317,6 +312,7 @@ public class SettingFragment extends Fragment  {
         });
 
     }
+
     private void getSalemen() {
 
         AQuery aq;
@@ -337,7 +333,7 @@ public class SettingFragment extends Fragment  {
                         ErrorMessage = jRootObject.getString("ErrorMessage");
                         if (ErrorMessage.equalsIgnoreCase("")) {
                             jsonArraySalesmen = jRootObject.getJSONArray("Salesmans");
-                            for(int i = 0;i<jsonArraySalesmen.length();i++){
+                            for (int i = 0; i < jsonArraySalesmen.length(); i++) {
                                 SALEMENLIST.add(jsonArraySalesmen.getJSONObject(i).getString("SalesmanName"));
                             }
                             Salemen = new SpinnerDialog(getActivity(), SALEMENLIST,
@@ -410,7 +406,7 @@ public class SettingFragment extends Fragment  {
                         ErrorMessage = jRootObject.getString("ErrorMessage");
                         if (ErrorMessage.equalsIgnoreCase("")) {
                             jsonArrayGodown = jRootObject.getJSONArray("Godowns");
-                            for(int i = 0;i<jsonArrayGodown.length();i++){
+                            for (int i = 0; i < jsonArrayGodown.length(); i++) {
                                 GODOWNLIST.add(jsonArrayGodown.getJSONObject(i).getString("GodownName"));
                             }
                             GodownSD = new SpinnerDialog(getActivity(), GODOWNLIST,
@@ -490,7 +486,7 @@ public class SettingFragment extends Fragment  {
                         String ErrorMessage = "";
                         ErrorMessage = jRootObject.getString("ErrorMessage");
                         if (ErrorMessage.equalsIgnoreCase("")) {
-                            editorUserAuthKey.putString("SELECTVALUE","3");
+                            editorUserAuthKey.putString("SELECTVALUE", "3");
                             editorUserAuthKey.apply();
 
 
@@ -503,24 +499,24 @@ public class SettingFragment extends Fragment  {
 
                         } else {
                             CustomProcessbar.hideProcessBar();
-                            ToastUtils.showErrorToast(getActivity(),"Error " + ErrorMessage);
+                            ToastUtils.showErrorToast(getActivity(), "Error " + ErrorMessage);
                         }
                     } catch (JSONException e) {
                         CustomProcessbar.hideProcessBar();
 
                         Log.d("DEBUG", "Json Exception" + e.getMessage());
                         e.printStackTrace();
-                        ToastUtils.showErrorToast(getActivity(),"Error " );
+                        ToastUtils.showErrorToast(getActivity(), "Error ");
                     } catch (Exception e) {
                         CustomProcessbar.hideProcessBar();
                         Log.d("DEBUG", "Exception" + e.getMessage());
                         e.printStackTrace();
-                        ToastUtils.showErrorToast(getActivity(),"Error " );
+                        ToastUtils.showErrorToast(getActivity(), "Error ");
                     }
                 } else {
                     CustomProcessbar.hideProcessBar();
 
-                    ToastUtils.showErrorToast(getActivity(),"Error " );
+                    ToastUtils.showErrorToast(getActivity(), "Error ");
                 }
                 super.callback(url, jRootObject, status);
             }

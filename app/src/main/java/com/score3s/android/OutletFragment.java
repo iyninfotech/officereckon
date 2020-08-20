@@ -2,9 +2,6 @@ package com.score3s.android;
 
 import android.content.SharedPreferences;
 import android.os.Bundle;
-import androidx.fragment.app.Fragment;
-import androidx.recyclerview.widget.LinearLayoutManager;
-import androidx.recyclerview.widget.RecyclerView;
 import android.text.Editable;
 import android.text.TextWatcher;
 import android.util.Log;
@@ -13,6 +10,10 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.EditText;
 import android.widget.ListView;
+
+import androidx.fragment.app.Fragment;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
 
 import com.androidquery.AQuery;
 import com.androidquery.callback.AjaxCallback;
@@ -43,6 +44,7 @@ public class OutletFragment extends Fragment {
     RecyclerView recyclerView;
     EditText edtSearch;
     JSONArray jsonArray;
+
     public OutletFragment() {
     }
 
@@ -67,7 +69,6 @@ public class OutletFragment extends Fragment {
         }
 
 
-
         recyclerView = view.findViewById(R.id.listViewOutlet);
         recyclerView.setLayoutManager(new LinearLayoutManager(getActivity()));
 
@@ -79,16 +80,14 @@ public class OutletFragment extends Fragment {
 
             @Override
             public void onTextChanged(CharSequence s, int start, int before, int count) {
-                JSONArray arrayTemplist= new JSONArray();
-                String searchString =edtSearch.getText().toString().toLowerCase();
-                for (int i = 0; i < jsonArray.length(); i++)
-                {
-                    String OutletName = null,OutletArea = null;
+                JSONArray arrayTemplist = new JSONArray();
+                String searchString = edtSearch.getText().toString().toLowerCase();
+                for (int i = 0; i < jsonArray.length(); i++) {
+                    String OutletName = null, OutletArea = null;
                     try {
                         OutletName = jsonArray.getJSONObject(i).getString("OutletName").toLowerCase();
                         OutletArea = jsonArray.getJSONObject(i).getString("Area").toLowerCase();
-                        if (OutletName.contains(searchString) || OutletArea.contains(searchString))
-                        {
+                        if (OutletName.contains(searchString) || OutletArea.contains(searchString)) {
                             arrayTemplist.put(jsonArray.getJSONObject(i));
                         }
                     } catch (JSONException e) {
@@ -96,7 +95,7 @@ public class OutletFragment extends Fragment {
                     }
 
                 }
-                adapter = new OutletAdapter(getActivity(),arrayTemplist);
+                adapter = new OutletAdapter(getActivity(), arrayTemplist);
                 recyclerView.setAdapter(adapter);
             }
 
@@ -140,7 +139,7 @@ public class OutletFragment extends Fragment {
                         if (ErrorMessage.equalsIgnoreCase("")) {
 
                             jsonArray = jRootObject.getJSONArray("Outlets");
-                            adapter = new OutletAdapter(getActivity(),jsonArray);
+                            adapter = new OutletAdapter(getActivity(), jsonArray);
                             recyclerView.setAdapter(adapter);
 
 

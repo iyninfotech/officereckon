@@ -20,13 +20,13 @@ import java.util.ArrayList;
 public class SpinnerDialog {
     ArrayList<String> items;
     Activity context;
-    String dTitle,closeTitle="Close";
+    String dTitle, closeTitle = "Close";
     OnSpinerItemClick onSpinerItemClick;
     AlertDialog alertDialog;
     int pos;
     int style;
-    boolean cancellable=false;
-    boolean showKeyboard=false;
+    boolean cancellable = false;
+    boolean showKeyboard = false;
 
     public SpinnerDialog(Activity activity, ArrayList<String> items, String dialogTitle) {
         this.items = items;
@@ -35,11 +35,11 @@ public class SpinnerDialog {
     }
 
     public SpinnerDialog(Activity activity, ArrayList<String> items, String dialogTitle,
-        String closeTitle) {
+                         String closeTitle) {
         this.items = items;
         this.context = activity;
         this.dTitle = dialogTitle;
-        this.closeTitle=closeTitle;
+        this.closeTitle = closeTitle;
     }
 
     public SpinnerDialog(Activity activity, ArrayList<String> items, String dialogTitle, int style) {
@@ -50,12 +50,12 @@ public class SpinnerDialog {
     }
 
     public SpinnerDialog(Activity activity, ArrayList<String> items, String dialogTitle, int style,
-        String closeTitle) {
+                         String closeTitle) {
         this.items = items;
         this.context = activity;
         this.dTitle = dialogTitle;
         this.style = style;
-        this.closeTitle=closeTitle;
+        this.closeTitle = closeTitle;
     }
 
     public void bindOnSpinerListener(OnSpinerItemClick onSpinerItemClick1) {
@@ -71,11 +71,11 @@ public class SpinnerDialog {
         title.setText(dTitle);
         final ListView listView = (ListView) v.findViewById(R.id.list);
         final EditText searchBox = (EditText) v.findViewById(R.id.searchBox);
-        if(isShowKeyboard()){
+        if (isShowKeyboard()) {
             showKeyboard(searchBox);
         }
         final ArrayAdapter<String>
-            adapter = new ArrayAdapter<String>(context, R.layout.items_view, items);
+                adapter = new ArrayAdapter<String>(context, R.layout.items_view, items);
         listView.setAdapter(adapter);
         adb.setView(v);
         alertDialog = adb.create();
@@ -128,7 +128,7 @@ public class SpinnerDialog {
         }
     }
 
-    private void hideKeyboard(){
+    private void hideKeyboard() {
         try {
             InputMethodManager inputManager = (InputMethodManager) context.getSystemService(Context.INPUT_METHOD_SERVICE);
             inputManager.hideSoftInputFromWindow(context.getCurrentFocus().getWindowToken(), InputMethodManager.HIDE_NOT_ALWAYS);
@@ -136,16 +136,17 @@ public class SpinnerDialog {
         }
     }
 
-    private void showKeyboard(final EditText ettext){
+    private void showKeyboard(final EditText ettext) {
         ettext.requestFocus();
-        ettext.postDelayed(new Runnable(){
-                               @Override public void run(){
-                                   InputMethodManager keyboard=(InputMethodManager)context.getSystemService(
-                                       Context.INPUT_METHOD_SERVICE);
-                                   keyboard.showSoftInput(ettext,0);
+        ettext.postDelayed(new Runnable() {
+                               @Override
+                               public void run() {
+                                   InputMethodManager keyboard = (InputMethodManager) context.getSystemService(
+                                           Context.INPUT_METHOD_SERVICE);
+                                   keyboard.showSoftInput(ettext, 0);
                                }
                            }
-                ,200);
+                , 200);
     }
 
     private boolean isCancellable() {

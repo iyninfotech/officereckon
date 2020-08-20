@@ -1,11 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout
-    xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
-    android:background="@color/White"
     android:layout_height="wrap_content"
-    app:layout_behavior="@string/appbar_scrolling_view_behavior"
-    xmlns:app="http://schemas.android.com/apk/res-auto">
+    android:background="@color/White"
+    app:layout_behavior="@string/appbar_scrolling_view_behavior">
 
 
     <!--<RelativeLayout
@@ -44,9 +43,9 @@
 
 
     <ScrollView
-        android:layout_below="@+id/toolbar"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content">
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/toolbar">
 
         <LinearLayout
             android:id="@+id/f_layout"
@@ -64,25 +63,24 @@
                 android:layout_height="wrap_content">
 
                 <com.score3s.android.fontStyle.TextViewMedium
-                    android:textSize="@dimen/_10sdp"
                     android:id="@+id/tvDivision"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:text="Select Division"
                     android:padding="@dimen/_8sdp"
+                    android:text="Select Division"
                     android:textColor="@color/colorAccent"
-                    />
+                    android:textSize="@dimen/_10sdp" />
 
                 <ImageView
-                    android:layout_centerVertical="true"
-                    android:tint="@color/Black"
-                    android:layout_alignParentEnd="true"
                     android:id="@+id/imageDivision"
-                    android:src="@drawable/ic_keyboard_arrow_down_24dp_searchable"
                     android:layout_width="@dimen/_20sdp"
                     android:layout_height="@dimen/_20sdp"
-                    />
+                    android:layout_alignParentEnd="true"
+                    android:layout_centerVertical="true"
+                    android:src="@drawable/ic_keyboard_arrow_down_24dp_searchable"
+                    android:tint="@color/Black" />
             </RelativeLayout>
+
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="1dp"
@@ -94,85 +92,82 @@
                 android:layout_height="wrap_content">
 
                 <com.score3s.android.fontStyle.TextViewMedium
-                    android:textSize="@dimen/_10sdp"
                     android:id="@+id/tvRoute"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:text="Select Route"
                     android:padding="@dimen/_8sdp"
+                    android:text="Select Route"
                     android:textColor="@color/colorAccent"
-                    />
+                    android:textSize="@dimen/_10sdp" />
 
                 <ImageView
-                    android:layout_centerVertical="true"
-                    android:tint="@color/Black"
-                    android:layout_alignParentEnd="true"
                     android:id="@+id/imageRoute"
-                    android:src="@drawable/ic_keyboard_arrow_down_24dp_searchable"
                     android:layout_width="@dimen/_20sdp"
                     android:layout_height="@dimen/_20sdp"
-                    />
+                    android:layout_alignParentEnd="true"
+                    android:layout_centerVertical="true"
+                    android:src="@drawable/ic_keyboard_arrow_down_24dp_searchable"
+                    android:tint="@color/Black" />
             </RelativeLayout>
 
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="1dp"
                 android:background="#C8C8C8" />
+
             <RelativeLayout
                 android:id="@+id/layoutSaleman"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content">
 
                 <com.score3s.android.fontStyle.TextViewMedium
-                    android:textSize="@dimen/_10sdp"
                     android:id="@+id/tvSaleman"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:text="Select Saleman"
                     android:padding="@dimen/_8sdp"
+                    android:text="Select Saleman"
                     android:textColor="@color/colorAccent"
-                    />
+                    android:textSize="@dimen/_10sdp" />
 
                 <ImageView
-                    android:layout_centerVertical="true"
-                    android:tint="@color/Black"
-                    android:layout_alignParentEnd="true"
                     android:id="@+id/imageSaleman"
-                    android:src="@drawable/ic_keyboard_arrow_down_24dp_searchable"
                     android:layout_width="@dimen/_20sdp"
                     android:layout_height="@dimen/_20sdp"
-                    />
+                    android:layout_alignParentEnd="true"
+                    android:layout_centerVertical="true"
+                    android:src="@drawable/ic_keyboard_arrow_down_24dp_searchable"
+                    android:tint="@color/Black" />
             </RelativeLayout>
 
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="1dp"
                 android:background="#C8C8C8" />
+
             <RelativeLayout
                 android:id="@+id/layoutGodown"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content">
 
                 <com.score3s.android.fontStyle.TextViewMedium
-                    android:textSize="@dimen/_10sdp"
                     android:id="@+id/tvGodown"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:text="Select Godwon"
                     android:padding="@dimen/_8sdp"
+                    android:text="Select Godwon"
                     android:textColor="@color/colorAccent"
-                    />
+                    android:textSize="@dimen/_10sdp" />
 
                 <ImageView
-                    android:layout_centerVertical="true"
-                    android:tint="@color/Black"
-                    android:layout_alignParentEnd="true"
                     android:id="@+id/imageGodown"
-                    android:src="@drawable/ic_keyboard_arrow_down_24dp_searchable"
                     android:layout_width="@dimen/_20sdp"
                     android:layout_height="@dimen/_20sdp"
-                    />
+                    android:layout_alignParentEnd="true"
+                    android:layout_centerVertical="true"
+                    android:src="@drawable/ic_keyboard_arrow_down_24dp_searchable"
+                    android:tint="@color/Black" />
             </RelativeLayout>
+
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="1dp"
@@ -183,14 +178,14 @@
                 android:id="@+id/btnSubmit"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
+                android:layout_marginLeft="@dimen/_50sdp"
+                android:layout_marginTop="@dimen/_10sdp"
+                android:layout_marginRight="@dimen/_50sdp"
+                android:background="@drawable/background_outlet_list"
                 android:text="Submit"
                 android:textAllCaps="false"
-                android:background="@drawable/background_outlet_list"
                 android:textColor="@color/White"
-                android:textSize="@dimen/_14sdp"
-                android:layout_marginLeft="@dimen/_50sdp"
-                android:layout_marginRight="@dimen/_50sdp"
-                android:layout_marginTop="@dimen/_10sdp"/>
+                android:textSize="@dimen/_14sdp" />
 
 
         </LinearLayout>

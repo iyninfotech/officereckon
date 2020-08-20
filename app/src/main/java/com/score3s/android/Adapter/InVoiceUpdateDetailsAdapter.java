@@ -1,11 +1,12 @@
 package com.score3s.android.Adapter;
 
 import android.content.Context;
-import androidx.recyclerview.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
+
+import androidx.recyclerview.widget.RecyclerView;
 
 import com.score3s.android.R;
 import com.score3s.android.Validations.CheckValidate;
@@ -87,8 +88,8 @@ public class InVoiceUpdateDetailsAdapter extends RecyclerView.Adapter<InVoiceUpd
 
     public class ViewHolder extends RecyclerView.ViewHolder {
 
-        TextView myTextView,tvItem,tvMRP,tvAlternetQtyUnit,tvAlternetQty,tvPrimaryQtyUnit,tvPrimaryQty,tvTotalQty,tvFreeQty,tvRate,tvGross,tvCGSTACID,tvCGSTP,tvCGST,tvSGSTACID,tvSGSTP,tvSGST,tvIGSTACID,tvIGSTP,tvIGST,tvAmount;
-        TextView tvDiscPer,tvDisc,tvDiscIIPer,tvDiscII,tvDiscIIIPer,tvDiscIII ,tvOtherPer,tvOther,tvOtherIIPer,tvOtherII;
+        TextView myTextView, tvItem, tvMRP, tvAlternetQtyUnit, tvAlternetQty, tvPrimaryQtyUnit, tvPrimaryQty, tvTotalQty, tvFreeQty, tvRate, tvGross, tvCGSTACID, tvCGSTP, tvCGST, tvSGSTACID, tvSGSTP, tvSGST, tvIGSTACID, tvIGSTP, tvIGST, tvAmount;
+        TextView tvDiscPer, tvDisc, tvDiscIIPer, tvDiscII, tvDiscIIIPer, tvDiscIII, tvOtherPer, tvOther, tvOtherIIPer, tvOtherII;
 
         ViewHolder(View itemView) {
             super(itemView);

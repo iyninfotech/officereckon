@@ -6,8 +6,7 @@ import android.util.AttributeSet;
 import android.widget.EditText;
 import android.widget.TextView;
 
-public class EdittextBlack extends EditText
-{
+public class EdittextBlack extends EditText {
 
     public EdittextBlack(Context context, AttributeSet attrs, int defStyle) {
         super(context, attrs, defStyle);

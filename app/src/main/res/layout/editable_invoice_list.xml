@@ -9,981 +9,980 @@
 
     <!-- Header aligned to top -->
     <RelativeLayout
-            android:background="@color/colorPrimary"
-            android:layout_width="match_parent"
-            android:layout_height="@dimen/_35sdp"
-            android:layout_alignParentTop="true"
+        android:id="@+id/toolbar"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/_35sdp"
+        android:layout_alignParentTop="true"
+        android:background="@color/colorPrimary"
+        android:gravity="center"
+        android:orientation="horizontal">
+
+        <com.score3s.android.fontStyle.ButtonBold
+            android:id="@+id/btnOk"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentEnd="true"
+            android:layout_centerVertical="true"
+            android:layout_margin="@dimen/_5sdp"
+            android:background="@drawable/background_outlet_cell"
+            android:text="Ok"
+            android:textAllCaps="false"
+            android:textColor="@color/colorPrimary"
+            android:textSize="@dimen/_10sdp" />
+
+        <ImageView
+            android:id="@+id/btnCancel"
+            android:layout_width="@dimen/_30sdp"
+            android:layout_height="@dimen/_30sdp"
+            android:layout_centerVertical="true"
+            android:layout_margin="@dimen/_5sdp"
+            android:src="@drawable/avd_pathmorph_drawer_arrow_to_hamburger"
+            android:tint="@android:color/white" />
+
+        <com.score3s.android.fontStyle.TextViewBlack
+            android:id="@+id/titlePopup"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerHorizontal="true"
+            android:layout_centerVertical="true"
+            android:layout_gravity="center"
+            android:layout_marginLeft="@dimen/_30sdp"
+            android:layout_marginRight="@dimen/_30sdp"
             android:gravity="center"
-            android:id="@+id/toolbar"
-            android:orientation="horizontal">
+            android:text="1"
+            android:textColor="@color/appbarTitleTVtextColor"
+            android:textSize="@dimen/_14sdp"
+            android:textStyle="bold" />
 
-            <com.score3s.android.fontStyle.ButtonBold
-                android:id="@+id/btnOk"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="Ok"
-                android:textAllCaps="false"
-                android:layout_centerVertical="true"
-                android:textColor="@color/colorPrimary"
-                android:background="@drawable/background_outlet_cell"
-                android:textSize="@dimen/_10sdp"
-                android:layout_alignParentEnd="true"
-                android:layout_margin="@dimen/_5sdp"/>
-
-            <ImageView
-                android:layout_centerVertical="true"
-                android:layout_width="@dimen/_30sdp"
-                android:layout_height="@dimen/_30sdp"
-                android:tint="@android:color/white"
-                android:id="@+id/btnCancel"
-                android:src="@drawable/avd_pathmorph_drawer_arrow_to_hamburger"
-                android:layout_margin="@dimen/_5sdp"/>
-
-            <com.score3s.android.fontStyle.TextViewBlack
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_centerHorizontal="true"
-                android:textStyle="bold"
-                android:textSize="@dimen/_14sdp"
-                android:textColor="@color/appbarTitleTVtextColor"
-                android:layout_centerVertical="true"
-                android:id="@+id/titlePopup"
-                android:layout_marginLeft="@dimen/_30sdp"
-                android:layout_marginRight="@dimen/_30sdp"
-                android:layout_gravity="center"
-                android:gravity="center"
-                android:text="1"/>
-
-        </RelativeLayout>
+    </RelativeLayout>
 
     <!-- Middle  -->
     <RelativeLayout
-        android:background="@color/colorPrimary"
+        android:id="@+id/middledata"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_below="@+id/toolbar"
-        android:id="@+id/middledata"
+        android:background="@color/colorPrimary"
         android:orientation="horizontal">
 
         <ScrollView
-       android:layout_width="fill_parent"
-       android:layout_height="wrap_content"
-       android:background="@color/White">
-
-
-           <LinearLayout
-               android:layout_width="fill_parent"
-               android:layout_height="wrap_content"
-               android:gravity="center_horizontal"
-               android:orientation="vertical" >
-
-               <LinearLayout
-                   android:layout_width="match_parent"
-                   android:layout_height="wrap_content"
-                   android:orientation="horizontal"
-                   android:padding="@dimen/_1sdp"
-                   android:weightSum="6.0"
-                   android:baselineAligned="false">
-
-                   <RelativeLayout
-                       android:layout_width="match_parent"
-                       android:layout_height="wrap_content"
-                       android:layout_weight="4.0">
-
-                       <RelativeLayout
-                           android:id="@+id/layoutItemId"
-                           android:layout_width="match_parent"
-                           android:layout_height="wrap_content"
-                           android:padding="@dimen/_5sdp">
-
-
-                           <com.score3s.android.fontStyle.TextViewMedium
-                               android:id="@+id/selectItemId"
-                               android:layout_width="match_parent"
-                               android:layout_height="wrap_content"
-                               android:textColor="#000"
-                               android:textColorHint="#000"
-                               android:textSize="@dimen/_10sdp" />
-
-
-                           <ImageView
-                               android:id="@+id/imageItemId"
-                               android:layout_width="@dimen/_20sdp"
-                               android:layout_height="@dimen/_15sdp"
-                               android:layout_alignParentEnd="true"
-                               android:layout_centerVertical="true"
-                               android:src="@drawable/ic_keyboard_arrow_down_24dp_searchable"
-                               android:tint="@color/Black" />
-                       </RelativeLayout>
-
-                       <LinearLayout
-                           android:layout_width="match_parent"
-                           android:layout_height="1dp"
-                           android:layout_below="@+id/layoutItemId"
-                           android:background="#C8C8C8" />
-                   </RelativeLayout>
-
-
-                   <RelativeLayout
-                       android:layout_width="match_parent"
-                       android:layout_height="wrap_content"
-                       android:layout_weight="2.0">
-
-                       <RelativeLayout
-                           android:id="@+id/layoutItem"
-                           android:layout_width="match_parent"
-                           android:layout_height="wrap_content"
-                           android:padding="@dimen/_5sdp">
-
-
-                           <com.score3s.android.fontStyle.TextViewMedium
-                               android:id="@+id/selectItem"
-                               android:layout_width="match_parent"
-                               android:layout_height="wrap_content"
-                               android:textColor="#000"
-                               android:textColorHint="#000"
-                               android:textSize="@dimen/_10sdp" />
-
-
-                           <ImageView
-                               android:id="@+id/imageDate"
-                               android:layout_width="@dimen/_20sdp"
-                               android:layout_height="@dimen/_15sdp"
-                               android:layout_alignParentEnd="true"
-                               android:layout_centerVertical="true"
-                               android:src="@drawable/ic_keyboard_arrow_down_24dp_searchable"
-                               android:tint="@color/Black" />
-                       </RelativeLayout>
-
-                       <LinearLayout
-                           android:layout_width="match_parent"
-                           android:layout_height="1dp"
-                           android:layout_below="@+id/layoutItem"
-                           android:background="#C8C8C8" />
-                   </RelativeLayout>
-               </LinearLayout>
-
-               <LinearLayout
-                   android:layout_width="match_parent"
-                   android:layout_height="wrap_content"
-                   android:orientation="horizontal"
-                   android:padding="@dimen/_1sdp"
-                   android:weightSum="6.0">
-
-                   <RelativeLayout
-                       android:layout_width="0dp"
-                       android:layout_height="wrap_content"
-                       android:layout_weight="1.0">
-
-                       <com.score3s.android.fontStyle.TextViewMedium
-                           android:id="@+id/txtSetMRPTitle"
-                           android:layout_width="match_parent"
-                           android:layout_height="wrap_content"
-                           android:layout_gravity="center"
-                           android:text="MRP"
-                           android:padding="@dimen/_5sdp"
-                           android:textColor="@color/colorPrimary"
-                           android:textSize="@dimen/_10sdp" />
-
-
-                   </RelativeLayout>
-
-                   <RelativeLayout
-                       android:layout_width="0dp"
-                       android:layout_height="wrap_content"
-                       android:layout_weight="2.0">
-
-                       <RelativeLayout
-                           android:id="@+id/layoutMRP"
-                           android:layout_width="match_parent"
-                           android:layout_height="wrap_content">
-
-
-                           <com.score3s.android.fontStyle.TextViewMedium
-                               android:id="@+id/selectMRP"
-                               android:layout_width="match_parent"
-                               android:layout_height="wrap_content"
-                               android:textColorHint="#000"
-                               android:textColor="#000"
-                               android:textSize="@dimen/_10sdp" />
-
-
-                           <ImageView
-                               android:id="@+id/imageMRP"
-                               android:layout_width="@dimen/_20sdp"
-                               android:layout_height="@dimen/_15sdp"
-                               android:layout_alignParentEnd="true"
-                               android:layout_centerVertical="true"
-                               android:src="@drawable/ic_keyboard_arrow_down_24dp_searchable"
-                               android:tint="@color/Black" />
-                       </RelativeLayout>
-
-                       <LinearLayout
-                           android:layout_width="match_parent"
-                           android:layout_height="1dp"
-                           android:layout_below="@+id/layoutMRP"
-                           android:background="#C8C8C8" />
-
-                   </RelativeLayout>
-
-                   <RelativeLayout
-                       android:layout_width="0dp"
-                       android:layout_height="wrap_content"
-                       android:layout_weight="1.0">
-
-                       <com.score3s.android.fontStyle.TextViewMedium
-                           android:layout_width="match_parent"
-                           android:layout_height="wrap_content"
-                           android:layout_gravity="center"
-                           android:padding="@dimen/_5sdp"
-                           android:text="Stock"
-                           android:textColor="@color/colorPrimary"
-                           android:textSize="@dimen/_10sdp" />
-
-
-                   </RelativeLayout>
-
-                   <RelativeLayout
-                       android:layout_width="0dp"
-                       android:layout_height="wrap_content"
-                       android:layout_weight="2.0">
-
-                       <com.score3s.android.fontStyle.EdittextBold
-                           android:id="@+id/edtStock"
-                           android:layout_width="match_parent"
-                           android:layout_height="wrap_content"
-                           android:layout_gravity="center"
-                           android:backgroundTint="@color/grey"
-                           android:clickable="false"
-                           android:editable="false"
-                           android:enabled="false"
-                           android:singleLine="true"
-                           android:textColor="@color/grey"
-                           android:textSize="@dimen/_8sdp" />
-
-
-                   </RelativeLayout>
-
-
-               </LinearLayout>
-
-               <LinearLayout
-                   android:layout_width="match_parent"
-                   android:layout_height="wrap_content"
-                   android:orientation="horizontal"
-                   android:padding="@dimen/_1sdp"
-                   android:weightSum="6.0">
-
-                   <RelativeLayout
-                       android:layout_width="0dp"
-                       android:layout_height="wrap_content"
-                       android:layout_weight="1.0">
-
-                       <com.score3s.android.fontStyle.TextViewMedium
-                           android:layout_width="match_parent"
-                           android:layout_height="wrap_content"
-                           android:layout_gravity="center"
-                           android:padding="@dimen/_5sdp"
-                           android:text="Qty"
-                           android:textColor="@color/colorPrimary"
-                           android:textSize="@dimen/_10sdp" />
-
-
-                   </RelativeLayout>
-
-                   <RelativeLayout
-                       android:layout_width="0dp"
-                       android:layout_height="wrap_content"
-                       android:layout_weight="1.0">
-
-                       <RelativeLayout
-                           android:id="@+id/LayoutAltUnit"
-                           android:layout_width="match_parent"
-                           android:layout_height="wrap_content">
-
-
-                           <com.score3s.android.fontStyle.TextViewMedium
-                               android:id="@+id/selectAltUnit"
-                               android:layout_width="match_parent"
-                               android:layout_height="wrap_content"
-                               android:textColorHint="#000"
-                               android:textColor="#000"
-                               android:textSize="@dimen/_10sdp" />
-
-
-                           <ImageView
-                               android:id="@+id/imageAltUnit"
-                               android:layout_width="@dimen/_20sdp"
-                               android:layout_height="@dimen/_15sdp"
-                               android:layout_alignParentEnd="true"
-                               android:layout_centerVertical="true"
-                               android:src="@drawable/ic_keyboard_arrow_down_24dp_searchable"
-                               android:tint="@color/Black" />
-                       </RelativeLayout>
-
-                       <LinearLayout
-                           android:layout_width="match_parent"
-                           android:layout_height="1dp"
-                           android:layout_below="@+id/LayoutAltUnit"
-                           android:background="#C8C8C8" />
-
-                   </RelativeLayout>
-
-                   <RelativeLayout
-                       android:layout_width="0dp"
-                       android:layout_height="wrap_content"
-                       android:layout_weight="1.0">
-
-                       <com.score3s.android.fontStyle.EdittextBold
-                           android:id="@+id/edtAltUnitQty"
-                           android:layout_width="match_parent"
-                           android:layout_height="wrap_content"
-                           android:layout_gravity="center"
-                           android:backgroundTint="#D6D6D6"
-                           android:inputType="numberDecimal"
-                           android:singleLine="true"
-                           android:maxLength="18"
-                           android:textColor="@color/Black"
-                           android:textSize="@dimen/_8sdp" />
-
-
-                   </RelativeLayout>
-
-                   <RelativeLayout
-                       android:layout_width="0dp"
-                       android:layout_height="wrap_content"
-                       android:layout_weight="1.0">
-
-                       <com.score3s.android.fontStyle.TextViewMedium
-                           android:id="@+id/selectPrimaryUnit"
-                           android:layout_width="match_parent"
-                           android:layout_height="wrap_content"
-                           android:layout_gravity="center"
-                           android:padding="@dimen/_5sdp"
-                           android:text="PCS"
-                           android:textColor="@color/colorPrimary"
-                           android:textSize="@dimen/_10sdp" />
-
-
-                   </RelativeLayout>
-
-                   <RelativeLayout
-                       android:layout_width="0dp"
-                       android:layout_height="wrap_content"
-                       android:layout_weight="2.0">
-
-                       <com.score3s.android.fontStyle.EdittextBold
-                           android:id="@+id/edtPrimaryUnitQty"
-                           android:layout_width="match_parent"
-                           android:layout_height="wrap_content"
-                           android:layout_gravity="center"
-                           android:hint="Quantity"
-                           android:backgroundTint="#D6D6D6"
-                           android:inputType="numberDecimal"
-                           android:singleLine="true"
-                           android:maxLength="18"
-                           android:textColor="@color/Black"
-                           android:textSize="@dimen/_8sdp" />
-
-
-                   </RelativeLayout>
-
-
-               </LinearLayout>
-
-               <LinearLayout
-                   android:layout_width="match_parent"
-                   android:layout_height="wrap_content"
-                   android:orientation="horizontal"
-                   android:padding="@dimen/_1sdp"
-                   android:weightSum="6.0">
-
-                   <com.score3s.android.fontStyle.TextViewMedium
-                       android:layout_width="0dp"
-                       android:layout_height="wrap_content"
-                       android:id="@+id/tvTotalQty"
-                       android:layout_gravity="center"
-                       android:layout_weight="1.0"
-                       android:padding="@dimen/_5sdp"
-                       android:text="TQty"
-                       android:textColor="@color/colorPrimary"
-                       android:textSize="@dimen/_10sdp" />
-
-
-                  <!-- <com.score3s.android.fontStyle.EdittextBold
-                       android:id="@+id/edtTotalQty"
-                       android:layout_width="0dp"
-                       android:layout_height="wrap_content"
-                       android:layout_gravity="center"
-                       android:layout_weight="2.0"
-                       android:backgroundTint="#D6D6D6"
-                       android:inputType="number"
-                       android:hint="Total Qty"
-                       android:singleLine="true"
-                       android:maxLength="12"
-                       android:textColor="@color/Black"
-                       android:textSize="@dimen/_8sdp" />-->
-
-                   <com.score3s.android.fontStyle.EdittextBold
-                       android:id="@+id/edtTotalQty"
-                       android:layout_width="0dp"
-                       android:layout_height="wrap_content"
-                       android:layout_gravity="center"
-                       android:layout_weight="2.0"
-                       android:backgroundTint="#D6D6D6"
-                       android:inputType="numberDecimal"
-                       android:clickable="false"
-                       android:hint="Total Qty"
-                       android:editable="false"
-                       android:enabled="false"
-                       android:singleLine="true"
-                       android:maxLength="18"
-                       android:textColor="@color/Black"
-                       android:textSize="@dimen/_8sdp" />
-
-                   <com.score3s.android.fontStyle.TextViewMedium
-                       android:layout_width="0dp"
-                       android:layout_height="wrap_content"
-                       android:layout_gravity="center"
-                       android:layout_weight="1.0"
-                       android:padding="@dimen/_5sdp"
-                       android:text="Free"
-                       android:textColor="@color/colorPrimary"
-                       android:textSize="@dimen/_10sdp" />
-
-                   <com.score3s.android.fontStyle.EdittextBold
-                       android:id="@+id/edtFreeQty"
-                       android:layout_width="0dp"
-                       android:layout_height="wrap_content"
-                       android:layout_gravity="center"
-                       android:layout_weight="2.0"
-                       android:backgroundTint="#D6D6D6"
-                       android:inputType="numberDecimal"
-                       android:hint="Free Qty"
-                       android:singleLine="true"
-                       android:maxLength="12"
-                       android:textColor="@color/Black"
-                       android:textSize="@dimen/_8sdp" />
-
-
-               </LinearLayout>
-
-               <LinearLayout
-                   android:layout_width="match_parent"
-                   android:layout_height="wrap_content"
-                   android:orientation="horizontal"
-                   android:padding="@dimen/_1sdp"
-                   android:weightSum="6.0">
-
-                   <com.score3s.android.fontStyle.TextViewMedium
-                       android:layout_width="0dp"
-                       android:layout_height="wrap_content"
-                       android:id="@+id/tvRateper"
-                       android:layout_gravity="center"
-                       android:layout_weight="1.0"
-                       android:padding="@dimen/_5sdp"
-                       android:text="Rate"
-                       android:textColor="@color/colorPrimary"
-                       android:textSize="@dimen/_10sdp" />
-
-
-                   <com.score3s.android.fontStyle.EdittextBold
-                       android:id="@+id/edtRate"
-                       android:layout_width="0dp"
-                       android:layout_height="wrap_content"
-                       android:layout_gravity="center"
-                       android:layout_weight="2.0"
-                       android:hint="Sales Rate"
-                       android:backgroundTint="#D6D6D6"
-                       android:inputType="numberDecimal"
-                       android:singleLine="true"
-                       android:maxLength="18"
-                       android:textColor="@color/Black"
-                       android:textSize="@dimen/_8sdp" />
-
-                   <com.score3s.android.fontStyle.TextViewMedium
-                       android:layout_width="0dp"
-                       android:layout_height="wrap_content"
-                       android:layout_gravity="center"
-                       android:layout_weight="1.0"
-                       android:padding="@dimen/_5sdp"
-                       android:text="Gross"
-                       android:textColor="@color/colorPrimary"
-                       android:textSize="@dimen/_10sdp" />
-
-
-                   <com.score3s.android.fontStyle.EdittextBold
-                       android:id="@+id/edtGross"
-                       android:layout_width="0dp"
-                       android:layout_height="wrap_content"
-                       android:layout_gravity="center"
-                       android:layout_weight="2.0"
-                       android:backgroundTint="@color/grey"
-                       android:hint="Gross Amount"
-                       android:clickable="false"
-                       android:editable="false"
-                       android:enabled="false"
-                       android:singleLine="true"
-                       android:textColor="@color/grey"
-                       android:textSize="@dimen/_8sdp" />
-
-
-               </LinearLayout>
-
-               <LinearLayout
-                   android:layout_width="match_parent"
-                   android:layout_height="wrap_content"
-                   android:orientation="horizontal"
-                   android:padding="@dimen/_1sdp"
-                   android:weightSum="6.0">
-
-
-                   <com.score3s.android.fontStyle.TextViewMedium
-                       android:layout_width="0dp"
-                       android:layout_height="wrap_content"
-                       android:layout_gravity="center"
-                       android:layout_weight="1.0"
-                       android:padding="@dimen/_5sdp"
-                       android:text="QPS"
-                       android:textColor="@color/colorPrimary"
-                       android:textSize="@dimen/_10sdp" />
-
-                   <com.score3s.android.fontStyle.EdittextBold
-                       android:id="@+id/edtDiscPer"
-                       android:layout_width="0dp"
-                       android:layout_height="wrap_content"
-                       android:layout_gravity="center"
-                       android:layout_weight="0.8"
-                       android:hint="(%)"
-                       android:backgroundTint="#D6D6D6"
-                       android:inputType="numberDecimal"
-                       android:maxLength="5"
-                       android:singleLine="true"
-                       android:textColor="@color/Black"
-                       android:textSize="@dimen/_8sdp" />
-
-                   <com.score3s.android.fontStyle.EdittextBold
-                       android:id="@+id/edtDisc"
-                       android:layout_width="0dp"
-                       android:layout_height="wrap_content"
-                       android:layout_gravity="center"
-                       android:layout_weight="1.2"
-                       android:backgroundTint="#D6D6D6"
-                       android:inputType="numberDecimal"
-                       android:hint="Amount"
-                       android:maxLength="18"
-                       android:singleLine="true"
-                       android:textColor="@color/Black"
-                       android:textSize="@dimen/_8sdp" />
-
-                   <com.score3s.android.fontStyle.TextViewMedium
-                       android:layout_width="0dp"
-                       android:layout_height="wrap_content"
-                       android:layout_gravity="center"
-                       android:layout_weight="1.0"
-                       android:padding="@dimen/_5sdp"
-                       android:text="SCM"
-                       android:textColor="@color/colorPrimary"
-                       android:textSize="@dimen/_10sdp" />
-
-                   <com.score3s.android.fontStyle.EdittextBold
-                       android:id="@+id/edtDiscIIPer"
-                       android:layout_width="0dp"
-                       android:layout_height="wrap_content"
-                       android:layout_gravity="center"
-                       android:layout_weight="0.8"
-                       android:hint="(%)"
-                       android:backgroundTint="#D6D6D6"
-                       android:inputType="numberDecimal"
-                       android:maxLength="5"
-                       android:singleLine="true"
-                       android:textColor="@color/Black"
-                       android:textSize="@dimen/_8sdp" />
-
-                   <com.score3s.android.fontStyle.EdittextBold
-                       android:id="@+id/edtDiscII"
-                       android:layout_width="0dp"
-                       android:layout_height="wrap_content"
-                       android:layout_gravity="center"
-                       android:layout_weight="1.2"
-                       android:backgroundTint="#D6D6D6"
-                       android:inputType="numberDecimal"
-                       android:hint="Amount"
-                       android:maxLength="18"
-                       android:singleLine="true"
-                       android:textColor="@color/Black"
-                       android:textSize="@dimen/_8sdp" />
-
-
-               </LinearLayout>
-
-               <LinearLayout
-                   android:layout_width="match_parent"
-                   android:layout_height="wrap_content"
-                   android:orientation="horizontal"
-                   android:padding="@dimen/_1sdp"
-                   android:weightSum="6.0">
-
-                   <com.score3s.android.fontStyle.TextViewMedium
-                       android:layout_width="0dp"
-                       android:layout_height="wrap_content"
-                       android:layout_gravity="center"
-                       android:layout_weight="1.0"
-                       android:padding="@dimen/_5sdp"
-                       android:text="Disc."
-                       android:textColor="@color/colorPrimary"
-                       android:textSize="@dimen/_10sdp" />
-
-                   <com.score3s.android.fontStyle.EdittextBold
-                       android:id="@+id/edtDiscIIIPer"
-                       android:layout_width="0dp"
-                       android:layout_height="wrap_content"
-                       android:layout_gravity="center"
-                       android:layout_weight="0.8"
-                       android:hint="(%)"
-                       android:backgroundTint="#D6D6D6"
-                       android:inputType="numberDecimal"
-                       android:maxLength="5"
-                       android:singleLine="true"
-                       android:textColor="@color/Black"
-                       android:textSize="@dimen/_8sdp" />
-
-                   <com.score3s.android.fontStyle.EdittextBold
-                       android:id="@+id/edtDiscIII"
-                       android:layout_width="0dp"
-                       android:layout_height="wrap_content"
-                       android:layout_gravity="center"
-                       android:layout_weight="1.2"
-                       android:hint="Amount"
-                       android:backgroundTint="#D6D6D6"
-                       android:inputType="numberDecimal"
-                       android:maxLength="18"
-                       android:singleLine="true"
-                       android:textColor="@color/Black"
-                       android:textSize="@dimen/_8sdp" />
-
-                   <com.score3s.android.fontStyle.TextViewMedium
-                       android:layout_width="0dp"
-                       android:layout_height="wrap_content"
-                       android:layout_gravity="center"
-                       android:layout_weight="1.0"
-                       android:padding="@dimen/_5sdp"
-                       android:text="T Disc."
-                       android:textColor="@color/colorPrimary"
-                       android:textSize="@dimen/_10sdp" />
-
-
-                   <com.score3s.android.fontStyle.EdittextBold
-                       android:id="@+id/edtTotalDisc"
-                       android:layout_width="0dp"
-                       android:layout_height="wrap_content"
-                       android:layout_gravity="center"
-                       android:layout_weight="1.5"
-                       android:backgroundTint="@color/grey"
-                       android:clickable="false"
-                       android:editable="false"
-                       android:enabled="false"
-                       android:singleLine="true"
-                       android:textColor="@color/grey"
-                       android:textSize="@dimen/_8sdp" />
-
-                   <com.score3s.android.fontStyle.ButtonBold
-                       android:id="@+id/btnMGDisc"
-                       android:layout_width="0dp"
-                       android:layout_height="@dimen/_20sdp"
-                       android:layout_gravity="center"
-                       android:layout_weight="0.5"
-                       android:text="-G"
-                       android:textAllCaps="false"
-                       android:layout_centerVertical="true"
-                       android:background="@drawable/myborder"
-                       android:textColor="@color/White"
-                       android:textSize="@dimen/_12sdp"
-                       android:layout_alignParentEnd="true"/>
-
-
-               </LinearLayout>
-
-               <LinearLayout
-                   android:layout_width="match_parent"
-                   android:layout_height="wrap_content"
-                   android:orientation="horizontal"
-                   android:padding="@dimen/_1sdp"
-                   android:weightSum="6.0">
-
-                   <com.score3s.android.fontStyle.TextViewMedium
-                       android:layout_width="0dp"
-                       android:layout_height="wrap_content"
-                       android:layout_gravity="center"
-                       android:layout_weight="1.0"
-                       android:padding="@dimen/_5sdp"
-                       android:text="Oth I"
-                       android:textColor="@color/colorPrimary"
-                       android:textSize="@dimen/_10sdp" />
-
-                   <com.score3s.android.fontStyle.EdittextBold
-                       android:id="@+id/edtOtherPer"
-                       android:layout_width="0dp"
-                       android:layout_height="wrap_content"
-                       android:layout_gravity="center"
-                       android:layout_weight="0.8"
-                       android:hint="(%)"
-                       android:backgroundTint="#D6D6D6"
-                       android:inputType="numberDecimal"
-                       android:maxLength="5"
-                       android:singleLine="true"
-                       android:textColor="@color/Black"
-                       android:textSize="@dimen/_8sdp" />
-
-
-                   <com.score3s.android.fontStyle.EdittextBold
-                       android:id="@+id/edtOther"
-                       android:layout_width="0dp"
-                       android:layout_height="wrap_content"
-                       android:layout_gravity="center"
-                       android:layout_weight="1.2"
-                       android:hint="Amount"
-                       android:backgroundTint="#D6D6D6"
-                       android:inputType="numberDecimal"
-                       android:maxLength="18"
-                       android:singleLine="true"
-                       android:textColor="@color/Black"
-                       android:textSize="@dimen/_8sdp" />
-
-                   <com.score3s.android.fontStyle.TextViewMedium
-                       android:layout_width="0dp"
-                       android:layout_height="wrap_content"
-                       android:layout_gravity="center"
-                       android:layout_weight="1.0"
-                       android:padding="@dimen/_5sdp"
-                       android:text="II"
-                       android:textColor="@color/colorPrimary"
-                       android:textSize="@dimen/_10sdp" />
-
-                   <com.score3s.android.fontStyle.EdittextBold
-                       android:id="@+id/edtOtherIIPer"
-                       android:layout_width="0dp"
-                       android:layout_height="wrap_content"
-                       android:layout_gravity="center"
-                       android:layout_weight="0.8"
-                       android:hint="(%)"
-                       android:backgroundTint="#D6D6D6"
-                       android:inputType="numberDecimal"
-                       android:maxLength="5"
-                       android:singleLine="true"
-                       android:textColor="@color/Black"
-                       android:textSize="@dimen/_8sdp" />
-
-
-                   <com.score3s.android.fontStyle.EdittextBold
-                       android:id="@+id/edtOtherII"
-                       android:layout_width="0dp"
-                       android:layout_height="wrap_content"
-                       android:layout_gravity="center"
-                       android:layout_weight="1.2"
-                       android:hint="Amount"
-                       android:backgroundTint="#D6D6D6"
-                       android:inputType="numberDecimal"
-                       android:maxLength="18"
-                       android:singleLine="true"
-                       android:textColor="@color/Black"
-                       android:textSize="@dimen/_8sdp" />
-
-
-               </LinearLayout>
-
-               <LinearLayout
-                   android:id="@+id/layoutCGST"
-                   android:layout_width="match_parent"
-                   android:layout_height="wrap_content"
-                   android:orientation="horizontal"
-                   android:padding="@dimen/_1sdp"
-                   android:weightSum="6.0">
-
-                   <com.score3s.android.fontStyle.TextViewMedium
-                       android:layout_width="0dp"
-                       android:layout_height="wrap_content"
-                       android:layout_gravity="center"
-                       android:layout_weight="1.0"
-                       android:padding="@dimen/_5sdp"
-                       android:text="Gst [C]"
-                       android:textColor="@color/colorPrimary"
-                       android:textSize="@dimen/_10sdp" />
-
-                   <com.score3s.android.fontStyle.EdittextBold
-                       android:id="@+id/edtCGSTACID"
-                       android:layout_width="0dp"
-                       android:layout_height="wrap_content"
-                       android:visibility = "gone"
-                       android:enabled="false"
-                       android:singleLine="true"
-                       android:textColor="@color/grey"
-                       android:textSize="@dimen/_8sdp" />
-
-                   <com.score3s.android.fontStyle.EdittextBold
-                       android:id="@+id/edtCGSTP"
-                       android:layout_width="0dp"
-                       android:layout_height="wrap_content"
-                       android:layout_gravity="center"
-                       android:layout_weight="0.8"
-                       android:backgroundTint="@color/grey"
-                       android:hint="(%)"
-                       android:clickable="false"
-                       android:editable="false"
-                       android:enabled="false"
-                       android:singleLine="true"
-                       android:textColor="@color/grey"
-                       android:textSize="@dimen/_8sdp" />
-
-                   <com.score3s.android.fontStyle.EdittextBold
-                       android:id="@+id/edtCGST"
-                       android:layout_width="0dp"
-                       android:layout_height="wrap_content"
-                       android:layout_gravity="center"
-                       android:layout_weight="1.2"
-                       android:hint="Amount"
-                       android:backgroundTint="@color/grey"
-                       android:clickable="false"
-                       android:editable="false"
-                       android:enabled="false"
-                       android:singleLine="true"
-                       android:textColor="@color/grey"
-                       android:textSize="@dimen/_8sdp" />
-
-                   <com.score3s.android.fontStyle.TextViewMedium
-                       android:layout_width="0dp"
-                       android:layout_height="wrap_content"
-                       android:layout_gravity="center"
-                       android:layout_weight="1.0"
-                       android:padding="@dimen/_8sdp"
-                       android:text="[S]"
-                       android:textColor="@color/colorPrimary"
-                       android:textSize="@dimen/_10sdp" />
-
-                   <com.score3s.android.fontStyle.EdittextBold
-                       android:id="@+id/edtSGSTACID"
-                       android:layout_width="0dp"
-                       android:layout_height="wrap_content"
-                       android:visibility = "gone"
-                       android:enabled="false"
-                       android:singleLine="true"
-                       android:textColor="@color/grey"
-                       android:textSize="@dimen/_8sdp" />
-
-                   <com.score3s.android.fontStyle.EdittextBold
-                       android:id="@+id/edtSGSTP"
-                       android:layout_width="0dp"
-                       android:layout_height="wrap_content"
-                       android:layout_gravity="center"
-                       android:layout_weight="0.8"
-                       android:backgroundTint="@color/grey"
-                       android:hint="(%)"
-                       android:clickable="false"
-                       android:editable="false"
-                       android:enabled="false"
-                       android:singleLine="true"
-                       android:textColor="@color/grey"
-                       android:textSize="@dimen/_8sdp" />
-
-                   <com.score3s.android.fontStyle.EdittextBold
-                       android:id="@+id/edtSGST"
-                       android:layout_width="0dp"
-                       android:layout_height="wrap_content"
-                       android:layout_gravity="center"
-                       android:layout_weight="1.2"
-                       android:hint="Amount"
-                       android:backgroundTint="@color/grey"
-                       android:clickable="false"
-                       android:editable="false"
-                       android:enabled="false"
-                       android:singleLine="true"
-                       android:textColor="@color/grey"
-                       android:textSize="@dimen/_8sdp" />
-
-
-               </LinearLayout>
-
-               <LinearLayout
-                   android:id="@+id/layoutIGST"
-                   android:layout_width="match_parent"
-                   android:layout_height="wrap_content"
-                   android:orientation="horizontal"
-                   android:padding="@dimen/_1sdp"
-                   android:weightSum="6.0">
-
-                   <com.score3s.android.fontStyle.TextViewMedium
-                       android:layout_width="0dp"
-                       android:layout_height="wrap_content"
-                       android:layout_gravity="center"
-                       android:layout_weight="1.0"
-                       android:padding="@dimen/_5sdp"
-                       android:text="Gst [I]"
-                       android:textColor="@color/colorPrimary"
-                       android:textSize="@dimen/_10sdp" />
-
-                   <com.score3s.android.fontStyle.EdittextBold
-                       android:id="@+id/edtIGSTACID"
-                       android:layout_width="match_parent"
-                       android:layout_height="wrap_content"
-                       android:visibility = "gone"
-                       android:enabled="false"
-                       android:singleLine="true"
-                       android:textColor="@color/grey"
-                       android:textSize="@dimen/_8sdp" />
-
-                   <com.score3s.android.fontStyle.EdittextBold
-                       android:id="@+id/edtIGSTP"
-                       android:layout_width="0dp"
-                       android:layout_height="wrap_content"
-                       android:layout_gravity="center"
-                       android:layout_weight="1.0"
-                       android:hint="(%)"
-                       android:backgroundTint="@color/grey"
-                       android:clickable="false"
-                       android:editable="false"
-                       android:enabled="false"
-                       android:singleLine="true"
-                       android:textColor="@color/grey"
-                       android:textSize="@dimen/_8sdp" />
-
-                   <com.score3s.android.fontStyle.EdittextBold
-                       android:id="@+id/edtIGST"
-                       android:layout_width="0dp"
-                       android:layout_height="wrap_content"
-                       android:layout_gravity="center"
-                       android:layout_weight="4.0"
-                       android:backgroundTint="@color/grey"
-                       android:hint="Amount"
-                       android:clickable="false"
-                       android:editable="false"
-                       android:enabled="false"
-                       android:singleLine="true"
-                       android:textColor="@color/grey"
-                       android:textSize="@dimen/_8sdp" />
-               </LinearLayout>
-
-
-
-           </LinearLayout>
-
-   </ScrollView>
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:background="@color/White">
+
+
+            <LinearLayout
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:gravity="center_horizontal"
+                android:orientation="vertical">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:baselineAligned="false"
+                    android:orientation="horizontal"
+                    android:padding="@dimen/_1sdp"
+                    android:weightSum="6.0">
+
+                    <RelativeLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="4.0">
+
+                        <RelativeLayout
+                            android:id="@+id/layoutItemId"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:padding="@dimen/_5sdp">
+
+
+                            <com.score3s.android.fontStyle.TextViewMedium
+                                android:id="@+id/selectItemId"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:textColor="#000"
+                                android:textColorHint="#000"
+                                android:textSize="@dimen/_10sdp" />
+
+
+                            <ImageView
+                                android:id="@+id/imageItemId"
+                                android:layout_width="@dimen/_20sdp"
+                                android:layout_height="@dimen/_15sdp"
+                                android:layout_alignParentEnd="true"
+                                android:layout_centerVertical="true"
+                                android:src="@drawable/ic_keyboard_arrow_down_24dp_searchable"
+                                android:tint="@color/Black" />
+                        </RelativeLayout>
+
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="1dp"
+                            android:layout_below="@+id/layoutItemId"
+                            android:background="#C8C8C8" />
+                    </RelativeLayout>
+
+
+                    <RelativeLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="2.0">
+
+                        <RelativeLayout
+                            android:id="@+id/layoutItem"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:padding="@dimen/_5sdp">
+
+
+                            <com.score3s.android.fontStyle.TextViewMedium
+                                android:id="@+id/selectItem"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:textColor="#000"
+                                android:textColorHint="#000"
+                                android:textSize="@dimen/_10sdp" />
+
+
+                            <ImageView
+                                android:id="@+id/imageDate"
+                                android:layout_width="@dimen/_20sdp"
+                                android:layout_height="@dimen/_15sdp"
+                                android:layout_alignParentEnd="true"
+                                android:layout_centerVertical="true"
+                                android:src="@drawable/ic_keyboard_arrow_down_24dp_searchable"
+                                android:tint="@color/Black" />
+                        </RelativeLayout>
+
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="1dp"
+                            android:layout_below="@+id/layoutItem"
+                            android:background="#C8C8C8" />
+                    </RelativeLayout>
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    android:padding="@dimen/_1sdp"
+                    android:weightSum="6.0">
+
+                    <RelativeLayout
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1.0">
+
+                        <com.score3s.android.fontStyle.TextViewMedium
+                            android:id="@+id/txtSetMRPTitle"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="center"
+                            android:padding="@dimen/_5sdp"
+                            android:text="MRP"
+                            android:textColor="@color/colorPrimary"
+                            android:textSize="@dimen/_10sdp" />
+
+
+                    </RelativeLayout>
+
+                    <RelativeLayout
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="2.0">
+
+                        <RelativeLayout
+                            android:id="@+id/layoutMRP"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content">
+
+
+                            <com.score3s.android.fontStyle.TextViewMedium
+                                android:id="@+id/selectMRP"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:textColor="#000"
+                                android:textColorHint="#000"
+                                android:textSize="@dimen/_10sdp" />
+
+
+                            <ImageView
+                                android:id="@+id/imageMRP"
+                                android:layout_width="@dimen/_20sdp"
+                                android:layout_height="@dimen/_15sdp"
+                                android:layout_alignParentEnd="true"
+                                android:layout_centerVertical="true"
+                                android:src="@drawable/ic_keyboard_arrow_down_24dp_searchable"
+                                android:tint="@color/Black" />
+                        </RelativeLayout>
+
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="1dp"
+                            android:layout_below="@+id/layoutMRP"
+                            android:background="#C8C8C8" />
+
+                    </RelativeLayout>
+
+                    <RelativeLayout
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1.0">
+
+                        <com.score3s.android.fontStyle.TextViewMedium
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="center"
+                            android:padding="@dimen/_5sdp"
+                            android:text="Stock"
+                            android:textColor="@color/colorPrimary"
+                            android:textSize="@dimen/_10sdp" />
+
+
+                    </RelativeLayout>
+
+                    <RelativeLayout
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="2.0">
+
+                        <com.score3s.android.fontStyle.EdittextBold
+                            android:id="@+id/edtStock"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="center"
+                            android:backgroundTint="@color/grey"
+                            android:clickable="false"
+                            android:editable="false"
+                            android:enabled="false"
+                            android:singleLine="true"
+                            android:textColor="@color/grey"
+                            android:textSize="@dimen/_8sdp" />
+
+
+                    </RelativeLayout>
+
+
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    android:padding="@dimen/_1sdp"
+                    android:weightSum="6.0">
+
+                    <RelativeLayout
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1.0">
+
+                        <com.score3s.android.fontStyle.TextViewMedium
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="center"
+                            android:padding="@dimen/_5sdp"
+                            android:text="Qty"
+                            android:textColor="@color/colorPrimary"
+                            android:textSize="@dimen/_10sdp" />
+
+
+                    </RelativeLayout>
+
+                    <RelativeLayout
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1.0">
+
+                        <RelativeLayout
+                            android:id="@+id/LayoutAltUnit"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content">
+
+
+                            <com.score3s.android.fontStyle.TextViewMedium
+                                android:id="@+id/selectAltUnit"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:textColor="#000"
+                                android:textColorHint="#000"
+                                android:textSize="@dimen/_10sdp" />
+
+
+                            <ImageView
+                                android:id="@+id/imageAltUnit"
+                                android:layout_width="@dimen/_20sdp"
+                                android:layout_height="@dimen/_15sdp"
+                                android:layout_alignParentEnd="true"
+                                android:layout_centerVertical="true"
+                                android:src="@drawable/ic_keyboard_arrow_down_24dp_searchable"
+                                android:tint="@color/Black" />
+                        </RelativeLayout>
+
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="1dp"
+                            android:layout_below="@+id/LayoutAltUnit"
+                            android:background="#C8C8C8" />
+
+                    </RelativeLayout>
+
+                    <RelativeLayout
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1.0">
+
+                        <com.score3s.android.fontStyle.EdittextBold
+                            android:id="@+id/edtAltUnitQty"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="center"
+                            android:backgroundTint="#D6D6D6"
+                            android:inputType="numberDecimal"
+                            android:maxLength="18"
+                            android:singleLine="true"
+                            android:textColor="@color/Black"
+                            android:textSize="@dimen/_8sdp" />
+
+
+                    </RelativeLayout>
+
+                    <RelativeLayout
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1.0">
+
+                        <com.score3s.android.fontStyle.TextViewMedium
+                            android:id="@+id/selectPrimaryUnit"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="center"
+                            android:padding="@dimen/_5sdp"
+                            android:text="PCS"
+                            android:textColor="@color/colorPrimary"
+                            android:textSize="@dimen/_10sdp" />
+
+
+                    </RelativeLayout>
+
+                    <RelativeLayout
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="2.0">
+
+                        <com.score3s.android.fontStyle.EdittextBold
+                            android:id="@+id/edtPrimaryUnitQty"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="center"
+                            android:backgroundTint="#D6D6D6"
+                            android:hint="Quantity"
+                            android:inputType="numberDecimal"
+                            android:maxLength="18"
+                            android:singleLine="true"
+                            android:textColor="@color/Black"
+                            android:textSize="@dimen/_8sdp" />
+
+
+                    </RelativeLayout>
+
+
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    android:padding="@dimen/_1sdp"
+                    android:weightSum="6.0">
+
+                    <com.score3s.android.fontStyle.TextViewMedium
+                        android:id="@+id/tvTotalQty"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center"
+                        android:layout_weight="1.0"
+                        android:padding="@dimen/_5sdp"
+                        android:text="TQty"
+                        android:textColor="@color/colorPrimary"
+                        android:textSize="@dimen/_10sdp" />
+
+
+                    <!-- <com.score3s.android.fontStyle.EdittextBold
+                         android:id="@+id/edtTotalQty"
+                         android:layout_width="0dp"
+                         android:layout_height="wrap_content"
+                         android:layout_gravity="center"
+                         android:layout_weight="2.0"
+                         android:backgroundTint="#D6D6D6"
+                         android:inputType="number"
+                         android:hint="Total Qty"
+                         android:singleLine="true"
+                         android:maxLength="12"
+                         android:textColor="@color/Black"
+                         android:textSize="@dimen/_8sdp" />-->
+
+                    <com.score3s.android.fontStyle.EdittextBold
+                        android:id="@+id/edtTotalQty"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center"
+                        android:layout_weight="2.0"
+                        android:backgroundTint="#D6D6D6"
+                        android:clickable="false"
+                        android:editable="false"
+                        android:enabled="false"
+                        android:hint="Total Qty"
+                        android:inputType="numberDecimal"
+                        android:maxLength="18"
+                        android:singleLine="true"
+                        android:textColor="@color/Black"
+                        android:textSize="@dimen/_8sdp" />
+
+                    <com.score3s.android.fontStyle.TextViewMedium
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center"
+                        android:layout_weight="1.0"
+                        android:padding="@dimen/_5sdp"
+                        android:text="Free"
+                        android:textColor="@color/colorPrimary"
+                        android:textSize="@dimen/_10sdp" />
+
+                    <com.score3s.android.fontStyle.EdittextBold
+                        android:id="@+id/edtFreeQty"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center"
+                        android:layout_weight="2.0"
+                        android:backgroundTint="#D6D6D6"
+                        android:hint="Free Qty"
+                        android:inputType="numberDecimal"
+                        android:maxLength="12"
+                        android:singleLine="true"
+                        android:textColor="@color/Black"
+                        android:textSize="@dimen/_8sdp" />
+
+
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    android:padding="@dimen/_1sdp"
+                    android:weightSum="6.0">
+
+                    <com.score3s.android.fontStyle.TextViewMedium
+                        android:id="@+id/tvRateper"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center"
+                        android:layout_weight="1.0"
+                        android:padding="@dimen/_5sdp"
+                        android:text="Rate"
+                        android:textColor="@color/colorPrimary"
+                        android:textSize="@dimen/_10sdp" />
+
+
+                    <com.score3s.android.fontStyle.EdittextBold
+                        android:id="@+id/edtRate"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center"
+                        android:layout_weight="2.0"
+                        android:backgroundTint="#D6D6D6"
+                        android:hint="Sales Rate"
+                        android:inputType="numberDecimal"
+                        android:maxLength="18"
+                        android:singleLine="true"
+                        android:textColor="@color/Black"
+                        android:textSize="@dimen/_8sdp" />
+
+                    <com.score3s.android.fontStyle.TextViewMedium
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center"
+                        android:layout_weight="1.0"
+                        android:padding="@dimen/_5sdp"
+                        android:text="Gross"
+                        android:textColor="@color/colorPrimary"
+                        android:textSize="@dimen/_10sdp" />
+
+
+                    <com.score3s.android.fontStyle.EdittextBold
+                        android:id="@+id/edtGross"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center"
+                        android:layout_weight="2.0"
+                        android:backgroundTint="@color/grey"
+                        android:clickable="false"
+                        android:editable="false"
+                        android:enabled="false"
+                        android:hint="Gross Amount"
+                        android:singleLine="true"
+                        android:textColor="@color/grey"
+                        android:textSize="@dimen/_8sdp" />
+
+
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    android:padding="@dimen/_1sdp"
+                    android:weightSum="6.0">
+
+
+                    <com.score3s.android.fontStyle.TextViewMedium
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center"
+                        android:layout_weight="1.0"
+                        android:padding="@dimen/_5sdp"
+                        android:text="QPS"
+                        android:textColor="@color/colorPrimary"
+                        android:textSize="@dimen/_10sdp" />
+
+                    <com.score3s.android.fontStyle.EdittextBold
+                        android:id="@+id/edtDiscPer"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center"
+                        android:layout_weight="0.8"
+                        android:backgroundTint="#D6D6D6"
+                        android:hint="(%)"
+                        android:inputType="numberDecimal"
+                        android:maxLength="5"
+                        android:singleLine="true"
+                        android:textColor="@color/Black"
+                        android:textSize="@dimen/_8sdp" />
+
+                    <com.score3s.android.fontStyle.EdittextBold
+                        android:id="@+id/edtDisc"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center"
+                        android:layout_weight="1.2"
+                        android:backgroundTint="#D6D6D6"
+                        android:hint="Amount"
+                        android:inputType="numberDecimal"
+                        android:maxLength="18"
+                        android:singleLine="true"
+                        android:textColor="@color/Black"
+                        android:textSize="@dimen/_8sdp" />
+
+                    <com.score3s.android.fontStyle.TextViewMedium
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center"
+                        android:layout_weight="1.0"
+                        android:padding="@dimen/_5sdp"
+                        android:text="SCM"
+                        android:textColor="@color/colorPrimary"
+                        android:textSize="@dimen/_10sdp" />
+
+                    <com.score3s.android.fontStyle.EdittextBold
+                        android:id="@+id/edtDiscIIPer"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center"
+                        android:layout_weight="0.8"
+                        android:backgroundTint="#D6D6D6"
+                        android:hint="(%)"
+                        android:inputType="numberDecimal"
+                        android:maxLength="5"
+                        android:singleLine="true"
+                        android:textColor="@color/Black"
+                        android:textSize="@dimen/_8sdp" />
+
+                    <com.score3s.android.fontStyle.EdittextBold
+                        android:id="@+id/edtDiscII"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center"
+                        android:layout_weight="1.2"
+                        android:backgroundTint="#D6D6D6"
+                        android:hint="Amount"
+                        android:inputType="numberDecimal"
+                        android:maxLength="18"
+                        android:singleLine="true"
+                        android:textColor="@color/Black"
+                        android:textSize="@dimen/_8sdp" />
+
+
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    android:padding="@dimen/_1sdp"
+                    android:weightSum="6.0">
+
+                    <com.score3s.android.fontStyle.TextViewMedium
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center"
+                        android:layout_weight="1.0"
+                        android:padding="@dimen/_5sdp"
+                        android:text="Disc."
+                        android:textColor="@color/colorPrimary"
+                        android:textSize="@dimen/_10sdp" />
+
+                    <com.score3s.android.fontStyle.EdittextBold
+                        android:id="@+id/edtDiscIIIPer"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center"
+                        android:layout_weight="0.8"
+                        android:backgroundTint="#D6D6D6"
+                        android:hint="(%)"
+                        android:inputType="numberDecimal"
+                        android:maxLength="5"
+                        android:singleLine="true"
+                        android:textColor="@color/Black"
+                        android:textSize="@dimen/_8sdp" />
+
+                    <com.score3s.android.fontStyle.EdittextBold
+                        android:id="@+id/edtDiscIII"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center"
+                        android:layout_weight="1.2"
+                        android:backgroundTint="#D6D6D6"
+                        android:hint="Amount"
+                        android:inputType="numberDecimal"
+                        android:maxLength="18"
+                        android:singleLine="true"
+                        android:textColor="@color/Black"
+                        android:textSize="@dimen/_8sdp" />
+
+                    <com.score3s.android.fontStyle.TextViewMedium
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center"
+                        android:layout_weight="1.0"
+                        android:padding="@dimen/_5sdp"
+                        android:text="T Disc."
+                        android:textColor="@color/colorPrimary"
+                        android:textSize="@dimen/_10sdp" />
+
+
+                    <com.score3s.android.fontStyle.EdittextBold
+                        android:id="@+id/edtTotalDisc"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center"
+                        android:layout_weight="1.5"
+                        android:backgroundTint="@color/grey"
+                        android:clickable="false"
+                        android:editable="false"
+                        android:enabled="false"
+                        android:singleLine="true"
+                        android:textColor="@color/grey"
+                        android:textSize="@dimen/_8sdp" />
+
+                    <com.score3s.android.fontStyle.ButtonBold
+                        android:id="@+id/btnMGDisc"
+                        android:layout_width="0dp"
+                        android:layout_height="@dimen/_20sdp"
+                        android:layout_alignParentEnd="true"
+                        android:layout_centerVertical="true"
+                        android:layout_gravity="center"
+                        android:layout_weight="0.5"
+                        android:background="@drawable/myborder"
+                        android:text="-G"
+                        android:textAllCaps="false"
+                        android:textColor="@color/White"
+                        android:textSize="@dimen/_12sdp" />
+
+
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    android:padding="@dimen/_1sdp"
+                    android:weightSum="6.0">
+
+                    <com.score3s.android.fontStyle.TextViewMedium
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center"
+                        android:layout_weight="1.0"
+                        android:padding="@dimen/_5sdp"
+                        android:text="Oth I"
+                        android:textColor="@color/colorPrimary"
+                        android:textSize="@dimen/_10sdp" />
+
+                    <com.score3s.android.fontStyle.EdittextBold
+                        android:id="@+id/edtOtherPer"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center"
+                        android:layout_weight="0.8"
+                        android:backgroundTint="#D6D6D6"
+                        android:hint="(%)"
+                        android:inputType="numberDecimal"
+                        android:maxLength="5"
+                        android:singleLine="true"
+                        android:textColor="@color/Black"
+                        android:textSize="@dimen/_8sdp" />
+
+
+                    <com.score3s.android.fontStyle.EdittextBold
+                        android:id="@+id/edtOther"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center"
+                        android:layout_weight="1.2"
+                        android:backgroundTint="#D6D6D6"
+                        android:hint="Amount"
+                        android:inputType="numberDecimal"
+                        android:maxLength="18"
+                        android:singleLine="true"
+                        android:textColor="@color/Black"
+                        android:textSize="@dimen/_8sdp" />
+
+                    <com.score3s.android.fontStyle.TextViewMedium
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center"
+                        android:layout_weight="1.0"
+                        android:padding="@dimen/_5sdp"
+                        android:text="II"
+                        android:textColor="@color/colorPrimary"
+                        android:textSize="@dimen/_10sdp" />
+
+                    <com.score3s.android.fontStyle.EdittextBold
+                        android:id="@+id/edtOtherIIPer"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center"
+                        android:layout_weight="0.8"
+                        android:backgroundTint="#D6D6D6"
+                        android:hint="(%)"
+                        android:inputType="numberDecimal"
+                        android:maxLength="5"
+                        android:singleLine="true"
+                        android:textColor="@color/Black"
+                        android:textSize="@dimen/_8sdp" />
+
+
+                    <com.score3s.android.fontStyle.EdittextBold
+                        android:id="@+id/edtOtherII"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center"
+                        android:layout_weight="1.2"
+                        android:backgroundTint="#D6D6D6"
+                        android:hint="Amount"
+                        android:inputType="numberDecimal"
+                        android:maxLength="18"
+                        android:singleLine="true"
+                        android:textColor="@color/Black"
+                        android:textSize="@dimen/_8sdp" />
+
+
+                </LinearLayout>
+
+                <LinearLayout
+                    android:id="@+id/layoutCGST"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    android:padding="@dimen/_1sdp"
+                    android:weightSum="6.0">
+
+                    <com.score3s.android.fontStyle.TextViewMedium
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center"
+                        android:layout_weight="1.0"
+                        android:padding="@dimen/_5sdp"
+                        android:text="Gst [C]"
+                        android:textColor="@color/colorPrimary"
+                        android:textSize="@dimen/_10sdp" />
+
+                    <com.score3s.android.fontStyle.EdittextBold
+                        android:id="@+id/edtCGSTACID"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:enabled="false"
+                        android:singleLine="true"
+                        android:textColor="@color/grey"
+                        android:textSize="@dimen/_8sdp"
+                        android:visibility="gone" />
+
+                    <com.score3s.android.fontStyle.EdittextBold
+                        android:id="@+id/edtCGSTP"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center"
+                        android:layout_weight="0.8"
+                        android:backgroundTint="@color/grey"
+                        android:clickable="false"
+                        android:editable="false"
+                        android:enabled="false"
+                        android:hint="(%)"
+                        android:singleLine="true"
+                        android:textColor="@color/grey"
+                        android:textSize="@dimen/_8sdp" />
+
+                    <com.score3s.android.fontStyle.EdittextBold
+                        android:id="@+id/edtCGST"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center"
+                        android:layout_weight="1.2"
+                        android:backgroundTint="@color/grey"
+                        android:clickable="false"
+                        android:editable="false"
+                        android:enabled="false"
+                        android:hint="Amount"
+                        android:singleLine="true"
+                        android:textColor="@color/grey"
+                        android:textSize="@dimen/_8sdp" />
+
+                    <com.score3s.android.fontStyle.TextViewMedium
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center"
+                        android:layout_weight="1.0"
+                        android:padding="@dimen/_8sdp"
+                        android:text="[S]"
+                        android:textColor="@color/colorPrimary"
+                        android:textSize="@dimen/_10sdp" />
+
+                    <com.score3s.android.fontStyle.EdittextBold
+                        android:id="@+id/edtSGSTACID"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:enabled="false"
+                        android:singleLine="true"
+                        android:textColor="@color/grey"
+                        android:textSize="@dimen/_8sdp"
+                        android:visibility="gone" />
+
+                    <com.score3s.android.fontStyle.EdittextBold
+                        android:id="@+id/edtSGSTP"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center"
+                        android:layout_weight="0.8"
+                        android:backgroundTint="@color/grey"
+                        android:clickable="false"
+                        android:editable="false"
+                        android:enabled="false"
+                        android:hint="(%)"
+                        android:singleLine="true"
+                        android:textColor="@color/grey"
+                        android:textSize="@dimen/_8sdp" />
+
+                    <com.score3s.android.fontStyle.EdittextBold
+                        android:id="@+id/edtSGST"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center"
+                        android:layout_weight="1.2"
+                        android:backgroundTint="@color/grey"
+                        android:clickable="false"
+                        android:editable="false"
+                        android:enabled="false"
+                        android:hint="Amount"
+                        android:singleLine="true"
+                        android:textColor="@color/grey"
+                        android:textSize="@dimen/_8sdp" />
+
+
+                </LinearLayout>
+
+                <LinearLayout
+                    android:id="@+id/layoutIGST"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    android:padding="@dimen/_1sdp"
+                    android:weightSum="6.0">
+
+                    <com.score3s.android.fontStyle.TextViewMedium
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center"
+                        android:layout_weight="1.0"
+                        android:padding="@dimen/_5sdp"
+                        android:text="Gst [I]"
+                        android:textColor="@color/colorPrimary"
+                        android:textSize="@dimen/_10sdp" />
+
+                    <com.score3s.android.fontStyle.EdittextBold
+                        android:id="@+id/edtIGSTACID"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:enabled="false"
+                        android:singleLine="true"
+                        android:textColor="@color/grey"
+                        android:textSize="@dimen/_8sdp"
+                        android:visibility="gone" />
+
+                    <com.score3s.android.fontStyle.EdittextBold
+                        android:id="@+id/edtIGSTP"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center"
+                        android:layout_weight="1.0"
+                        android:backgroundTint="@color/grey"
+                        android:clickable="false"
+                        android:editable="false"
+                        android:enabled="false"
+                        android:hint="(%)"
+                        android:singleLine="true"
+                        android:textColor="@color/grey"
+                        android:textSize="@dimen/_8sdp" />
+
+                    <com.score3s.android.fontStyle.EdittextBold
+                        android:id="@+id/edtIGST"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center"
+                        android:layout_weight="4.0"
+                        android:backgroundTint="@color/grey"
+                        android:clickable="false"
+                        android:editable="false"
+                        android:enabled="false"
+                        android:hint="Amount"
+                        android:singleLine="true"
+                        android:textColor="@color/grey"
+                        android:textSize="@dimen/_8sdp" />
+                </LinearLayout>
+
+
+            </LinearLayout>
+
+        </ScrollView>
 
     </RelativeLayout>
 
     <!-- Footer -->
     <RelativeLayout
-        android:background="@color/colorPrimary"
+        android:id="@+id/foottotal"
         android:layout_width="match_parent"
         android:layout_height="@dimen/_30sdp"
         android:layout_below="@+id/middledata"
-        android:id="@+id/foottotal"
+        android:background="@color/colorPrimary"
         android:orientation="horizontal">
 
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="@dimen/_30sdp"
-            android:orientation="horizontal"
             android:layout_gravity="center"
+            android:orientation="horizontal"
             android:weightSum="6.0">
 
 
@@ -991,27 +990,27 @@
                 android:layout_width="match_parent"
                 android:layout_height="@dimen/_30sdp"
                 android:layout_gravity="center"
+                android:layout_weight="4.0"
                 android:gravity="center"
                 android:text="Total Amount"
                 android:textColor="@color/White"
-                android:layout_weight="4.0"
                 android:textSize="@dimen/_11sdp" />
 
             <com.score3s.android.fontStyle.EdittextBold
                 android:id="@+id/edtAmount"
                 android:layout_width="match_parent"
                 android:layout_height="@dimen/_30sdp"
+                android:layout_alignParentEnd="true"
                 android:layout_gravity="center"
-                android:gravity="center"
-                android:clickable="false"
                 android:layout_weight="2.0"
                 android:backgroundTint="@color/Transparent"
+                android:clickable="false"
                 android:editable="false"
                 android:enabled="false"
+                android:gravity="center"
                 android:singleLine="true"
-                android:layout_alignParentEnd="true"
                 android:textColor="@color/White"
-                android:textSize="@dimen/_11sdp"/>
+                android:textSize="@dimen/_11sdp" />
         </LinearLayout>
 
     </RelativeLayout>

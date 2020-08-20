@@ -1,4 +1,5 @@
 package com.score3s.android.Validations;
+
 import android.text.Spanned;
 import android.text.method.DigitsKeyListener;
 

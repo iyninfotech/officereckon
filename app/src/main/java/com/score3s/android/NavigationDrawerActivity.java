@@ -5,12 +5,13 @@ import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
-import androidx.fragment.app.Fragment;
-import androidx.fragment.app.FragmentManager;
-import androidx.appcompat.app.AlertDialog;
-import androidx.appcompat.app.AppCompatActivity;
 import android.util.Log;
 import android.view.View;
+
+import androidx.appcompat.app.AlertDialog;
+import androidx.appcompat.app.AppCompatActivity;
+import androidx.fragment.app.Fragment;
+import androidx.fragment.app.FragmentManager;
 
 import com.androidquery.AQuery;
 import com.androidquery.callback.AjaxCallback;
@@ -35,12 +36,12 @@ import static com.score3s.android.MainActivity.AUTHKEY;
 public class NavigationDrawerActivity extends AppCompatActivity {
 
     SNavigationDrawer sNavigationDrawer;
-    int color1=0;
+    int color1 = 0;
     Class fragmentClass;
     public Fragment fragment;
     SharedPreferences preferencesUserAuthKey;
     SharedPreferences.Editor editorUserAuthKey;
-    String AuthKey,SelectedValue,CompanyName,UserName;
+    String AuthKey, SelectedValue, CompanyName, UserName;
 
     SharedPreferences preferencesDEFHEADDATA;
     SharedPreferences.Editor editorDEFHEADDATA;
@@ -67,7 +68,7 @@ public class NavigationDrawerActivity extends AppCompatActivity {
             sNavigationDrawer.closeDrawer();
         } else {
 
-           // super.onBackPressed();
+            // super.onBackPressed();
 
             AlertDialog.Builder builder = new AlertDialog.Builder(this);
             builder.setCancelable(false);
@@ -99,14 +100,14 @@ public class NavigationDrawerActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.navigation_drawer);
-        if(getSupportActionBar()!=null) {
+        if (getSupportActionBar() != null) {
             getSupportActionBar().hide();
         }
 
 
         preferencesDEFHEADDATA = getSharedPreferences(DEFHEADDATA, MODE_PRIVATE);
         editorDEFHEADDATA = preferencesDEFHEADDATA.edit();
-        preferencesUserAuthKey = getSharedPreferences(AUTHKEY,MODE_PRIVATE);
+        preferencesUserAuthKey = getSharedPreferences(AUTHKEY, MODE_PRIVATE);
         editorUserAuthKey = preferencesUserAuthKey.edit();
         AuthKey = preferencesUserAuthKey.getString("auth", "");
         SelectedValue = preferencesUserAuthKey.getString("SELECTVALUE", "0");
@@ -116,31 +117,31 @@ public class NavigationDrawerActivity extends AppCompatActivity {
 
         sNavigationDrawer = findViewById(R.id.navigationDrawer);
         List<MenuItem> menuItems = new ArrayList<>();
-        menuItems.add(new MenuItem("Dashboard",R.drawable.button_background));
-        menuItems.add(new MenuItem("Outlet",R.drawable.button_background));
-        menuItems.add(new MenuItem("MRP",R.drawable.button_background));
-        menuItems.add(new MenuItem("Invoice",R.drawable.button_background));
-        menuItems.add(new MenuItem("Setting",R.drawable.button_background));
-        menuItems.add(new MenuItem("Aboutus",R.drawable.button_background));
-        menuItems.add(new MenuItem("Logout",R.drawable.button_background));
+        menuItems.add(new MenuItem("Dashboard", R.drawable.button_background));
+        menuItems.add(new MenuItem("Outlet", R.drawable.button_background));
+        menuItems.add(new MenuItem("MRP", R.drawable.button_background));
+        menuItems.add(new MenuItem("Invoice", R.drawable.button_background));
+        menuItems.add(new MenuItem("Setting", R.drawable.button_background));
+        menuItems.add(new MenuItem("Aboutus", R.drawable.button_background));
+        menuItems.add(new MenuItem("Logout", R.drawable.button_background));
         sNavigationDrawer.setMenuItemList(menuItems);
 
-        if(SelectedValue.equals("3")) {
+        if (SelectedValue.equals("3")) {
 
-                fragmentClass = InvoiceGridFragment.class;
-                try {
-                    fragment = (Fragment) fragmentClass.newInstance();
-                } catch (Exception e) {
-                    e.printStackTrace();
-                }
-                if (fragment != null) {
-                    FragmentManager fragmentManager = getSupportFragmentManager();
-                    fragmentManager.beginTransaction().replace(R.id.frameLayout, fragment).commit();
-                    sNavigationDrawer.appbarTitleTV.setText("Invoice");
-                    sNavigationDrawer.btnAdd.setVisibility(View.VISIBLE);
-                }
+            fragmentClass = InvoiceGridFragment.class;
+            try {
+                fragment = (Fragment) fragmentClass.newInstance();
+            } catch (Exception e) {
+                e.printStackTrace();
+            }
+            if (fragment != null) {
+                FragmentManager fragmentManager = getSupportFragmentManager();
+                fragmentManager.beginTransaction().replace(R.id.frameLayout, fragment).commit();
+                sNavigationDrawer.appbarTitleTV.setText("Invoice");
+                sNavigationDrawer.btnAdd.setVisibility(View.VISIBLE);
+            }
 
-        }else{
+        } else {
 
             fragmentClass = DashBoardFragment.class;
             try {
@@ -158,33 +159,33 @@ public class NavigationDrawerActivity extends AppCompatActivity {
         sNavigationDrawer.setOnMenuItemClickListener(new SNavigationDrawer.OnMenuItemClickListener() {
             @Override
             public void onMenuItemClicked(int position) {
-                System.out.println("Position "+position);
+                System.out.println("Position " + position);
 
-                switch (position){
-                    case 0:{
+                switch (position) {
+                    case 0: {
                         sNavigationDrawer.appbarTitleTV.setText(CompanyName);
                         fragmentClass = DashBoardFragment.class;
                         break;
                     }
-                    case 1:{
+                    case 1: {
                         fragmentClass = OutletFragment.class;
                         break;
                     }
-                    case 2:{
+                    case 2: {
                         fragmentClass = MRPGridFragment.class;
                         break;
                     }
-                    case 3:{
+                    case 3: {
                         fragmentClass = InvoiceGridFragment.class;
                         break;
                     }
 
-                    case 4:{
+                    case 4: {
                         //fragmentClass = SettingFragment.class;
                         fragmentClass = DashBoardFragment.class;
                         break;
                     }
-                    case 5:{
+                    case 5: {
                         fragmentClass = AboutusFragment.class;
                         ////fragmentClass = DashBoardFragment.class;
                         break;
@@ -224,12 +225,12 @@ public class NavigationDrawerActivity extends AppCompatActivity {
                     }
 
                     @Override
-                    public void onDrawerOpening(){
+                    public void onDrawerOpening() {
 
                     }
 
                     @Override
-                    public void onDrawerClosing(){
+                    public void onDrawerClosing() {
                         System.out.println("Drawer closed");
                     }
 
@@ -238,8 +239,7 @@ public class NavigationDrawerActivity extends AppCompatActivity {
 
                         if (fragmentClass != null) {
 
-                            if(fragmentClass == DashBoardFragment.class )
-                            {
+                            if (fragmentClass == DashBoardFragment.class) {
                                 sNavigationDrawer.appbarTitleTV.setText(CompanyName);
                             }
 
@@ -254,14 +254,14 @@ public class NavigationDrawerActivity extends AppCompatActivity {
                             }
                         }
                     }
+
                     @Override
                     public void onDrawerStateChanged(int newState) {
-                        System.out.println("State "+newState);
+                        System.out.println("State " + newState);
                     }
                 });
             }
         });
-
 
 
     }
@@ -280,7 +280,7 @@ public class NavigationDrawerActivity extends AppCompatActivity {
         String url = APIURL.BASE_URL + APIURL.LOGOUT;
         Map<String, String> params = new HashMap<String, String>();
         params.put("AuthKey", AuthKey);
-        params.put("UserName",UserName);
+        params.put("UserName", UserName);
         aq.ajax(url, params, JSONObject.class, new AjaxCallback<JSONObject>() {
 
             @Override
@@ -294,12 +294,12 @@ public class NavigationDrawerActivity extends AppCompatActivity {
                         ErrorMessage = jRootObject.getString("ErrorMessage");
                         if (ErrorMessage.equalsIgnoreCase("")) {
 
-                            if(jRootObject.getString("Status").equals("Success")){
+                            if (jRootObject.getString("Status").equals("Success")) {
 
-                                editorUserAuthKey.putString("auth","");
-                                editorUserAuthKey.putString("CompanyName","");
-                                editorUserAuthKey.putString("UserName","");
-                                editorUserAuthKey.putString("SELECTVALUE","0");
+                                editorUserAuthKey.putString("auth", "");
+                                editorUserAuthKey.putString("CompanyName", "");
+                                editorUserAuthKey.putString("UserName", "");
+                                editorUserAuthKey.putString("SELECTVALUE", "0");
                                 editorUserAuthKey.apply();
 
                                 editorDEFHEADDATA.putString("divison", "");
@@ -308,12 +308,10 @@ public class NavigationDrawerActivity extends AppCompatActivity {
                                 editorDEFHEADDATA.apply();
 
 
-                                Intent i = new Intent(NavigationDrawerActivity.this,MainActivity.class);
+                                Intent i = new Intent(NavigationDrawerActivity.this, MainActivity.class);
                                 startActivity(i);
                                 finish();
-                            }
-                            else
-                            {
+                            } else {
                                 ToastUtils.showErrorToast(NavigationDrawerActivity.this, "Error " + ErrorMessage);
                             }
 

@@ -51,26 +51,24 @@
         <item name="android:windowBackground">@drawable/background_dialog</item>
     </style>
 
-   <!-- <style name="AppCompatAlertDialogStyle" parent="Theme.AppCompat.Light.Dialog.Alert">
-        <item name="colorAccent">#546E7A</item>
-        <item name="android:textColorPrimary">#37474F</item>
-        <item name="android:background">@color/White</item>
-    </style>-->
+    <!-- <style name="AppCompatAlertDialogStyle" parent="Theme.AppCompat.Light.Dialog.Alert">
+         <item name="colorAccent">#546E7A</item>
+         <item name="android:textColorPrimary">#37474F</item>
+         <item name="android:background">@color/White</item>
+     </style>-->
 
-   <!-- <style name="CustomDialogTheme2" parent="@android:style/Theme.Dialog">
-        <item name="android:bottomBright">@color/white</item>
-        <item name="android:bottomDark">@color/white</item>
-        <item name="android:bottomMedium">@color/white</item>
-        <item name="android:centerBright">@color/white</item>
-        <item name="android:centerDark">@color/white</item>
-        <item name="android:centerMedium">@color/white</item>
-        <item name="android:fullBright">@android:color/holo_orange_light</item>
-        <item name="android:fullDark">@android:color/holo_orange_light</item>
-        <item name="android:topBright">@android:color/holo_blue_dark</item>
-        <item name="android:topDark">@android:color/holo_blue_dark</item>
-    </style>-->
-
-
+    <!-- <style name="CustomDialogTheme2" parent="@android:style/Theme.Dialog">
+         <item name="android:bottomBright">@color/white</item>
+         <item name="android:bottomDark">@color/white</item>
+         <item name="android:bottomMedium">@color/white</item>
+         <item name="android:centerBright">@color/white</item>
+         <item name="android:centerDark">@color/white</item>
+         <item name="android:centerMedium">@color/white</item>
+         <item name="android:fullBright">@android:color/holo_orange_light</item>
+         <item name="android:fullDark">@android:color/holo_orange_light</item>
+         <item name="android:topBright">@android:color/holo_blue_dark</item>
+         <item name="android:topDark">@android:color/holo_blue_dark</item>
+     </style>-->
 
 
 </resources>

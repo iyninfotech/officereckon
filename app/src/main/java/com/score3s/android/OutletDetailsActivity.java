@@ -30,7 +30,7 @@ public class OutletDetailsActivity extends Activity {
     SharedPreferences preferencesUserAuthKey;
     SharedPreferences.Editor editorUserAuthKey;
     String AuthKey;
-    TextView tvOutletID,tvOutName,tvoutletAddress,tvOutletContact,tvOutletEmail,tvOutletContactPerson,tvGSTNo,tvSalesMan,tvRoute,tvOutstanding;
+    TextView tvOutletID, tvOutName, tvoutletAddress, tvOutletContact, tvOutletEmail, tvOutletContactPerson, tvGSTNo, tvSalesMan, tvRoute, tvOutstanding;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {

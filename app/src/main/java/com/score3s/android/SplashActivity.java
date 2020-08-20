@@ -6,8 +6,9 @@ import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.os.Handler;
-import androidx.appcompat.app.AlertDialog;
 import android.util.Log;
+
+import androidx.appcompat.app.AlertDialog;
 
 import com.androidquery.AQuery;
 import com.androidquery.callback.AjaxCallback;
@@ -83,6 +84,7 @@ public class SplashActivity extends Activity {
         Map<String, String> params = new HashMap<String, String>();
         params.put("AuthKey",AuthKey);
         params.put("AppVersion", AppVersion);
+        params.put("AppId", getString(R.string.app_id));
 
         aq.ajax(url, params, JSONObject.class, new AjaxCallback<JSONObject>() {
 

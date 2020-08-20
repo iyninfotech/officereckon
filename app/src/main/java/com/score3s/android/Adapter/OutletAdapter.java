@@ -2,12 +2,12 @@ package com.score3s.android.Adapter;
 
 import android.content.Context;
 import android.content.Intent;
-
-import androidx.recyclerview.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
+
+import androidx.recyclerview.widget.RecyclerView;
 
 import com.score3s.android.OutletDetailsActivity;
 import com.score3s.android.R;
@@ -25,6 +25,7 @@ public class OutletAdapter extends RecyclerView.Adapter<OutletAdapter.ViewHolder
     private LayoutInflater mInflater;
     Context context;
     JSONArray jsonArray;
+
     // data is passed into the constructor
     public OutletAdapter(Context context, JSONArray jsonArray) {
         this.mInflater = LayoutInflater.from(context);
@@ -57,9 +58,9 @@ public class OutletAdapter extends RecyclerView.Adapter<OutletAdapter.ViewHolder
         holder.itemView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent i = new Intent(context,OutletDetailsActivity.class);
+                Intent i = new Intent(context, OutletDetailsActivity.class);
                 try {
-                    i.putExtra("id",jsonArray.getJSONObject(position).getString("OutletId"));
+                    i.putExtra("id", jsonArray.getJSONObject(position).getString("OutletId"));
                 } catch (JSONException e) {
                     e.printStackTrace();
                 }
@@ -80,8 +81,8 @@ public class OutletAdapter extends RecyclerView.Adapter<OutletAdapter.ViewHolder
 
 
     // stores and recycles views as they are scrolled off screen
-    public class ViewHolder extends RecyclerView.ViewHolder  {
-        TextView tvOutletID,tvOutletName,tvOutletArea;
+    public class ViewHolder extends RecyclerView.ViewHolder {
+        TextView tvOutletID, tvOutletName, tvOutletArea;
 
         ViewHolder(View itemView) {
             super(itemView);
@@ -91,7 +92,6 @@ public class OutletAdapter extends RecyclerView.Adapter<OutletAdapter.ViewHolder
             tvOutletArea = itemView.findViewById(R.id.tvOutletArea);
 
         }
-
 
 
     }

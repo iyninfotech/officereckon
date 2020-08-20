@@ -29,7 +29,6 @@ import java.util.List;
 import java.util.Locale;
 
 
-
 /**
  * PopWindow for Date Pick
  */
@@ -61,19 +60,20 @@ public class DatePickerPopWin extends PopupWindow implements OnClickListener {
     List<String> monthList = new ArrayList();
     List<String> dayList = new ArrayList();
 
-    public static class Builder{
+    public static class Builder {
 
         //Required
         private Context context;
         private OnDatePickedListener listener;
-        public Builder(Context context,OnDatePickedListener listener){
+
+        public Builder(Context context, OnDatePickedListener listener) {
             this.context = context;
             this.listener = listener;
         }
 
         //Option
         private int minYear = DEFAULT_MIN_YEAR;
-        private int maxYear = Calendar.getInstance().get(Calendar.YEAR)+1;
+        private int maxYear = Calendar.getInstance().get(Calendar.YEAR) + 1;
         private String textCancel = "Cancel";
         private String textConfirm = "Confirm";
         private String dateChose = getStrDate();
@@ -82,64 +82,65 @@ public class DatePickerPopWin extends PopupWindow implements OnClickListener {
         private int btnTextSize = 16;//text btnTextsize of cancel and confirm button
         private int viewTextSize = 25;
 
-        public Builder minYear(int minYear){
+        public Builder minYear(int minYear) {
             this.minYear = minYear;
             return this;
         }
 
-        public Builder maxYear(int maxYear){
+        public Builder maxYear(int maxYear) {
             this.maxYear = maxYear;
             return this;
         }
 
-        public Builder textCancel(String textCancel){
+        public Builder textCancel(String textCancel) {
             this.textCancel = textCancel;
             return this;
         }
 
-        public Builder textConfirm(String textConfirm){
+        public Builder textConfirm(String textConfirm) {
             this.textConfirm = textConfirm;
             return this;
         }
 
-        public Builder dateChose(String dateChose){
+        public Builder dateChose(String dateChose) {
             this.dateChose = dateChose;
             return this;
         }
 
-        public Builder colorCancel(int colorCancel){
+        public Builder colorCancel(int colorCancel) {
             this.colorCancel = colorCancel;
             return this;
         }
 
-        public Builder colorConfirm(int colorConfirm){
+        public Builder colorConfirm(int colorConfirm) {
             this.colorConfirm = colorConfirm;
             return this;
         }
 
         /**
          * set btn text btnTextSize
+         *
          * @param textSize dp
          */
-        public Builder btnTextSize(int textSize){
+        public Builder btnTextSize(int textSize) {
             this.btnTextSize = textSize;
             return this;
         }
 
-        public Builder viewTextSize(int textSize){
+        public Builder viewTextSize(int textSize) {
             this.viewTextSize = textSize;
             return this;
         }
 
-        public DatePickerPopWin build(){
-            if(minYear > maxYear){
+        public DatePickerPopWin build() {
+            if (minYear > maxYear) {
                 throw new IllegalArgumentException();
             }
             return new DatePickerPopWin(this);
         }
     }
 
-    public DatePickerPopWin(Builder builder){
+    public DatePickerPopWin(Builder builder) {
         this.minYear = builder.minYear;
         this.maxYear = builder.maxYear;
         this.textCancel = builder.textCancel;
@@ -395,12 +396,13 @@ public class DatePickerPopWin extends PopupWindow implements OnClickListener {
     }
 
     public static String getStrDate() {
-        SimpleDateFormat dd = new SimpleDateFormat("yyyy-MM-dd",Locale.CHINA);
+        SimpleDateFormat dd = new SimpleDateFormat("yyyy-MM-dd", Locale.CHINA);
         return dd.format(new Date());
     }
 
     /**
      * Transform int to String with prefix "0" if less than 10
+     *
      * @param num
      * @return
      */
@@ -423,7 +425,7 @@ public class DatePickerPopWin extends PopupWindow implements OnClickListener {
          * @param year
          * @param month
          * @param day
-         * @param dateDesc  yyyy-MM-dd
+         * @param dateDesc yyyy-MM-dd
          */
         void onDatePickCompleted(int year, int month, int day,
                                  String dateDesc);

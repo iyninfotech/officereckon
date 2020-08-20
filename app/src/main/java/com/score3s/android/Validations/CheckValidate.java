@@ -1,21 +1,18 @@
 package com.score3s.android.Validations;
-import android.text.TextUtils;
 
-import java.math.BigDecimal;
-import java.math.RoundingMode;
+import android.text.TextUtils;
 
 public class CheckValidate {
 
 
     public static final double checkemptyDouble(String string) {
 
-        if(string.trim().equals(".")) {
+        if (string.trim().equals(".")) {
             string = "";
         }
         if (!TextUtils.isEmpty(string)) {
             return Double.parseDouble(string);
-        }
-        else {
+        } else {
             return 0;
         }
     }
@@ -23,39 +20,34 @@ public class CheckValidate {
 
     public static final int checkemptyintger(String string) {
 
-        if(string.trim().equals(".")) {
+        if (string.trim().equals(".")) {
             string = "";
         }
         if (!TextUtils.isEmpty(string)) {
             return Integer.parseInt(string);
-        }
-        else {
+        } else {
             return 0;
         }
     }
 
     public static final String checkemptyTV(String string) {
-        if(string.equals("0")|| string.equals("0.0") || string.equals("0.00")|| string.equals("null") || string.equals("NULL"))
-        {
+        if (string.equals("0") || string.equals("0.0") || string.equals("0.00") || string.equals("null") || string.equals("NULL")) {
             string = "";
         }
         if (!TextUtils.isEmpty(string.trim())) {
             return string;
-        }
-        else {
+        } else {
             return "";
         }
     }
 
     public static final String checkemptystring(String string) {
-        if(string.trim().equals(".") || string.trim().equals("null") || string.trim().equals("NULL"))
-        {
+        if (string.trim().equals(".") || string.trim().equals("null") || string.trim().equals("NULL")) {
             string = "";
         }
         if (!TextUtils.isEmpty(string.trim())) {
             return string;
-        }
-        else {
+        } else {
             return "";
         }
     }
@@ -64,8 +56,7 @@ public class CheckValidate {
 
         if (!TextUtils.isEmpty(string)) {
             return string;
-        }
-        else {
+        } else {
             return "";
         }
     }
@@ -74,10 +65,9 @@ public class CheckValidate {
 
         if (!TextUtils.isEmpty(edtTotalQty)) {
 
-            if(checkemptyDouble(edtTotalQty) == 0)
-            {
+            if (checkemptyDouble(edtTotalQty) == 0) {
                 return false;
-            }else {
+            } else {
                 return true;
             }
 

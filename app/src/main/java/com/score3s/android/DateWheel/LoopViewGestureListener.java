@@ -4,6 +4,7 @@ package com.score3s.android.DateWheel;
  * Created by prati on 06-Jul-16 at VARAHI TECHNOLOGIES.
  * http://www.varahitechnologies.com
  */
+
 import android.view.MotionEvent;
 
 final class LoopViewGestureListener extends android.view.GestureDetector.SimpleOnGestureListener {

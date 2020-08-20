@@ -2,9 +2,6 @@ package com.score3s.android;
 
 import android.content.SharedPreferences;
 import android.os.Bundle;
-import androidx.fragment.app.Fragment;
-import androidx.recyclerview.widget.LinearLayoutManager;
-import androidx.recyclerview.widget.RecyclerView;
 import android.text.Editable;
 import android.text.TextWatcher;
 import android.util.Log;
@@ -14,6 +11,10 @@ import android.view.ViewGroup;
 import android.widget.EditText;
 import android.widget.LinearLayout;
 import android.widget.TextView;
+
+import androidx.fragment.app.Fragment;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
 
 import com.androidquery.AQuery;
 import com.androidquery.callback.AjaxCallback;
@@ -65,7 +66,6 @@ public class InvoiceGridFragment extends Fragment {
         AuthKey = preferencesUserAuthKey.getString("auth", "");
 
 
-
         if (NetworkUtils.isInternetAvailable(getActivity())) {
 
             getInvoice();
@@ -73,9 +73,9 @@ public class InvoiceGridFragment extends Fragment {
         } else {
 
 
-            editorUserAuthKey.putString("SELECTVALUE","0");
+            editorUserAuthKey.putString("SELECTVALUE", "0");
             editorUserAuthKey.apply();
-            ShowAlert.ShowAlertOkCancle(getActivity(),"No Internet !","Are Sure want Exit ?");
+            ShowAlert.ShowAlertOkCancle(getActivity(), "No Internet !", "Are Sure want Exit ?");
         }
 
 
@@ -93,16 +93,14 @@ public class InvoiceGridFragment extends Fragment {
             @Override
             public void afterTextChanged(Editable s) {
 
-                JSONArray arrayTemplist= new JSONArray();
-                String searchString =edtSearch.getText().toString().toLowerCase();
-                for (int i = 0; i < jsonArray.length(); i++)
-                {
-                    String ClientName = null,invoiceNo = null;
+                JSONArray arrayTemplist = new JSONArray();
+                String searchString = edtSearch.getText().toString().toLowerCase();
+                for (int i = 0; i < jsonArray.length(); i++) {
+                    String ClientName = null, invoiceNo = null;
                     try {
                         ClientName = jsonArray.getJSONObject(i).getString("ClientName").toLowerCase();
                         invoiceNo = jsonArray.getJSONObject(i).getString("InvNo").toLowerCase();
-                        if (ClientName.contains(searchString) || invoiceNo.contains(searchString) )
-                        {
+                        if (ClientName.contains(searchString) || invoiceNo.contains(searchString)) {
                             arrayTemplist.put(jsonArray.getJSONObject(i));
                         }
                     } catch (JSONException e) {
@@ -110,7 +108,7 @@ public class InvoiceGridFragment extends Fragment {
                     }
 
                 }
-                adapter = new InVoiceAdapter(getActivity(),arrayTemplist);
+                adapter = new InVoiceAdapter(getActivity(), arrayTemplist);
                 recyclerView.setAdapter(adapter);
             }
 
@@ -144,12 +142,12 @@ public class InvoiceGridFragment extends Fragment {
                     Log.d("DEBUG", "status " + status.getError() + status.getMessage() + jRootObject.toString());
                     try {
                         String ErrorMessage = "";
-                            ErrorMessage = jRootObject.getString("ErrorMessage");
+                        ErrorMessage = jRootObject.getString("ErrorMessage");
                         if (ErrorMessage.equalsIgnoreCase("")) {
 
                             jsonArray = jRootObject.getJSONArray("Invoices");
 
-                            adapter = new InVoiceAdapter(getActivity(),jsonArray);
+                            adapter = new InVoiceAdapter(getActivity(), jsonArray);
                             recyclerView.setAdapter(adapter);
 
                             calculateSum();
@@ -173,8 +171,7 @@ public class InvoiceGridFragment extends Fragment {
                         Log.d("DEBUG", "Exception" + e.getMessage());
                         e.printStackTrace();
                         ToastUtils.showErrorToast(getActivity(), "Error ");
-                    }
-                    finally {
+                    } finally {
                         adapter.notifyDataSetChanged();
                     }
                 } else {
@@ -192,7 +189,7 @@ public class InvoiceGridFragment extends Fragment {
     private void calculateSum() {
         sum = 0;
 
-        for(int i = 0; i <jsonArray.length();i++){
+        for (int i = 0; i < jsonArray.length(); i++) {
             try {
                 JSONObject jobj = jsonArray.getJSONObject(i);
                 double amount = Double.parseDouble(jobj.getString("Amount"));

@@ -2,9 +2,6 @@ package com.score3s.android;
 
 import android.content.SharedPreferences;
 import android.os.Bundle;
-import androidx.fragment.app.Fragment;
-import androidx.recyclerview.widget.LinearLayoutManager;
-import androidx.recyclerview.widget.RecyclerView;
 import android.text.Editable;
 import android.text.TextWatcher;
 import android.util.Log;
@@ -12,6 +9,10 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.EditText;
+
+import androidx.fragment.app.Fragment;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
 
 import com.androidquery.AQuery;
 import com.androidquery.callback.AjaxCallback;
@@ -58,7 +59,6 @@ public class MRPGridFragment extends Fragment {
         edtSearch = view.findViewById(R.id.edtSearch);
 
 
-
         if (NetworkUtils.isInternetAvailable(getActivity())) {
 
             getMRP();
@@ -75,15 +75,13 @@ public class MRPGridFragment extends Fragment {
 
             @Override
             public void onTextChanged(CharSequence s, int start, int before, int count) {
-                JSONArray arrayTemplist= new JSONArray();
-                String searchString =edtSearch.getText().toString().toLowerCase();
-                for (int i = 0; i < jsonArray.length(); i++)
-                {
+                JSONArray arrayTemplist = new JSONArray();
+                String searchString = edtSearch.getText().toString().toLowerCase();
+                for (int i = 0; i < jsonArray.length(); i++) {
                     String currentString = null;
                     try {
                         currentString = jsonArray.getJSONObject(i).getString("ItemName").toLowerCase();
-                        if (currentString.contains(searchString))
-                        {
+                        if (currentString.contains(searchString)) {
                             arrayTemplist.put(jsonArray.getJSONObject(i));
                         }
                     } catch (JSONException e) {
@@ -91,7 +89,7 @@ public class MRPGridFragment extends Fragment {
                     }
 
                 }
-                adapter = new MRPAdapter(getActivity(),arrayTemplist);
+                adapter = new MRPAdapter(getActivity(), arrayTemplist);
                 recyclerView.setAdapter(adapter);
             }
 
@@ -133,7 +131,7 @@ public class MRPGridFragment extends Fragment {
                         if (ErrorMessage.equalsIgnoreCase("")) {
 
                             jsonArray = jRootObject.getJSONArray("MRPs");
-                            adapter = new MRPAdapter(getActivity(),jsonArray);
+                            adapter = new MRPAdapter(getActivity(), jsonArray);
                             recyclerView.setAdapter(adapter);
 
                             CustomProcessbar.hideProcessBar();

@@ -10,7 +10,7 @@ import com.score3s.android.NavigationCustom.widget.SNavigationDrawer;
 public class CustomViewFactory implements LayoutInflater.Factory {
     private static CustomViewFactory mInstance;
 
-    public static CustomViewFactory getInstance () {
+    public static CustomViewFactory getInstance() {
         if (mInstance == null) {
             mInstance = new CustomViewFactory();
         }
@@ -18,10 +18,11 @@ public class CustomViewFactory implements LayoutInflater.Factory {
         return mInstance;
     }
 
-    private CustomViewFactory () {}
+    private CustomViewFactory() {
+    }
 
     @Override
-    public View onCreateView (String name, Context context, AttributeSet attrs) {
+    public View onCreateView(String name, Context context, AttributeSet attrs) {
         //Check if it's one of our custom classes, if so, return one using
         //the Context/AttributeSet constructor
         if (SNavigationDrawer.class.getSimpleName().equals(name)) {

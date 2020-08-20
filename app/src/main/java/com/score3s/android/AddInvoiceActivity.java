@@ -12,8 +12,10 @@ import android.net.ConnectivityManager;
 import android.net.NetworkInfo;
 import android.os.Bundle;
 import android.os.Handler;
+
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
+
 import android.text.Editable;
 import android.text.InputFilter;
 import android.text.TextWatcher;
@@ -70,12 +72,12 @@ public class AddInvoiceActivity extends Activity {
     String SetSalesman;
 
     private static NumberFormat newnumformat = new DecimalFormat("##.00");
-   // private static DecimalFormat dfd = new DecimalFormat("#.00");
+    // private static DecimalFormat dfd = new DecimalFormat("#.00");
 
     private Handler handler;
     TextView tvDate;
     /*String isLogin;*/
-    TextView tvTotalAmt,tvPointValue;
+    TextView tvTotalAmt, tvPointValue;
 
     SharedPreferences preferencesUserAuthKey;
     SharedPreferences.Editor editorUserAuthKey;
@@ -89,24 +91,24 @@ public class AddInvoiceActivity extends Activity {
     ArrayList<String> ITEMIDLIST = new ArrayList<>();
 
     JSONObject jsonObjMRPDetails;
-    SpinnerDialog Division,Route,Salemen,Client;
-    JSONArray jsonArrayDivision,jsonArrayRoute,jsonArraySalesmen,jsonArrayClient,jsonArrayItem,jsonArrayMRP,jsonArrayUnits,jsonArrayAlternetUnit;
-    double AltUnitQty,PrimaryUnitQty,TotalQty,Gross,cgstP = 0,sgstP = 0,igstP = 0,Rate;
-    double DiscPer = 0,Disc = 0 ,DiscIIPer = 0,DiscII = 0,DiscIIIPer = 0,DiscIII = 0,TotalDisc = 0,OtherPer = 0,Other = 0,OtherIIPer = 0,OtherII = 0,AltUnitConversion=0  ;
-    int UnitDecimalPlaces = 0,UDP=0,UDA=0;
-    ImageView btnBack,btnCancel;
-    Button btnAdd,btnSubmit,btnOk,btnMGDisc;
+    SpinnerDialog Division, Route, Salemen, Client;
+    JSONArray jsonArrayDivision, jsonArrayRoute, jsonArraySalesmen, jsonArrayClient, jsonArrayItem, jsonArrayMRP, jsonArrayUnits, jsonArrayAlternetUnit;
+    double AltUnitQty, PrimaryUnitQty, TotalQty, Gross, cgstP = 0, sgstP = 0, igstP = 0, Rate;
+    double DiscPer = 0, Disc = 0, DiscIIPer = 0, DiscII = 0, DiscIIIPer = 0, DiscIII = 0, TotalDisc = 0, OtherPer = 0, Other = 0, OtherIIPer = 0, OtherII = 0, AltUnitConversion = 0;
+    int UnitDecimalPlaces = 0, UDP = 0, UDA = 0;
+    ImageView btnBack, btnCancel;
+    Button btnAdd, btnSubmit, btnOk, btnMGDisc;
     JSONArray jsonArray = new JSONArray();
     RecyclerView recyclerView;
     double sum;
 
-    LinearLayout layoutcgst,layoutigst;
+    LinearLayout layoutcgst, layoutigst;
     JSONObject jsonObjectAddValues;
-    TextView SelectedItemDivision,SelectedItemRoute,SelectedItemSaleman,SelectedItemClient;
-    String  SetItemName = "", tmpSetItemId = "";
+    TextView SelectedItemDivision, SelectedItemRoute, SelectedItemSaleman, SelectedItemClient;
+    String SetItemName = "", tmpSetItemId = "";
 
-    String  SetPrimaryUnit = "";
-    String  SetAltUnit = "";
+    String SetPrimaryUnit = "";
+    String SetAltUnit = "";
     String ITEMID = "0";
     String DivisionID = "0";
     String RoutID = "0";
@@ -114,39 +116,37 @@ public class AddInvoiceActivity extends Activity {
 
 
     JSONObject jobjPerticularPosition;
-     EditText edtAltUnitQty;
-     EditText edtPrimaryUnitQty;
-     EditText edtTotalQty;
-     EditText edtFreeQty;
-     EditText edtRate;
-     EditText edtStock;
-     EditText edtGross;
-     EditText edtDiscPer;
-     EditText edtDisc;
-     EditText edtDiscIIPer;
-     EditText edtDiscII;
-     EditText edtDiscIIIPer;
-     EditText edtDiscIII;
-     EditText edtTotalDisc;
-     EditText edtOtherPer;
-     EditText edtOther;
-     EditText edtOtherIIPer;
-     EditText edtOtherII;
-     EditText edtCGSTACID;
-     EditText edtCGSTP;
-     EditText edtCGST;
-     EditText edtSGSTACID;
-     EditText edtSGSTP;
-     EditText edtSGST;
-     EditText edtIGSTACID;
-     EditText edtIGSTP;
-     EditText edtIGST;
-     EditText edtAmount;
+    EditText edtAltUnitQty;
+    EditText edtPrimaryUnitQty;
+    EditText edtTotalQty;
+    EditText edtFreeQty;
+    EditText edtRate;
+    EditText edtStock;
+    EditText edtGross;
+    EditText edtDiscPer;
+    EditText edtDisc;
+    EditText edtDiscIIPer;
+    EditText edtDiscII;
+    EditText edtDiscIIIPer;
+    EditText edtDiscIII;
+    EditText edtTotalDisc;
+    EditText edtOtherPer;
+    EditText edtOther;
+    EditText edtOtherIIPer;
+    EditText edtOtherII;
+    EditText edtCGSTACID;
+    EditText edtCGSTP;
+    EditText edtCGST;
+    EditText edtSGSTACID;
+    EditText edtSGSTP;
+    EditText edtSGST;
+    EditText edtIGSTACID;
+    EditText edtIGSTP;
+    EditText edtIGST;
+    EditText edtAmount;
 
 
-
-    private int GetUnitDecimalPlaces(String Unit)
-    {
+    private int GetUnitDecimalPlaces(String Unit) {
         for (int i = 0; i < jsonArrayUnits.length(); i++) {
             try {
                 if (jsonArrayUnits.getJSONObject(i).getString("UnitAlias").equals(Unit.trim())) {
@@ -160,6 +160,7 @@ public class AddInvoiceActivity extends Activity {
         }
         return UnitDecimalPlaces;
     }
+
     public boolean checkNetwork() {
 
         ConnectivityManager internetManager = (ConnectivityManager) this.getSystemService(Context.CONNECTIVITY_SERVICE);
@@ -167,10 +168,11 @@ public class AddInvoiceActivity extends Activity {
         return (networkInfo != null && networkInfo.isConnected() && networkInfo.isAvailable() && networkInfo.isConnectedOrConnecting());
 
     }
-    private void calculateSum() {
-        try{
 
-            if(jsonArray.length() != 0) {
+    private void calculateSum() {
+        try {
+
+            if (jsonArray.length() != 0) {
 
                 sum = 0;
 
@@ -183,20 +185,20 @@ public class AddInvoiceActivity extends Activity {
                         e.printStackTrace();
                     }
                 }
-                double roundoffvalue = Math.round(sum)- sum;
-                tvPointValue.setText(String.format("%.2f",roundoffvalue));
+                double roundoffvalue = Math.round(sum) - sum;
+                tvPointValue.setText(String.format("%.2f", roundoffvalue));
                 //String totalamt = String.valueOf(Math.round(sum));
                 double tmpTotalAmt = Math.round(sum);
-                tvTotalAmt.setText(String.format("%.2f",tmpTotalAmt));
+                tvTotalAmt.setText(String.format("%.2f", tmpTotalAmt));
 
-            }else{
+            } else {
 
                 tvPointValue.setText("0");
                 tvTotalAmt.setText("0");
 
             }
 
-        }catch(NumberFormatException e){
+        } catch (NumberFormatException e) {
             ToastUtils.showErrorToast(AddInvoiceActivity.this, e.toString());
 
 
@@ -239,13 +241,13 @@ public class AddInvoiceActivity extends Activity {
         SelectedItemSaleman = findViewById(R.id.tvSaleman);
         SelectedItemClient = findViewById(R.id.tvClient);
 
-        if(SetDivision.length() > 0) {
+        if (SetDivision.length() > 0) {
             SelectedItemDivision.setText(SetDivision);
         }
-        if(SetRoute.length() > 0) {
+        if (SetRoute.length() > 0) {
             SelectedItemRoute.setText(SetRoute);
         }
-        if(SetSalesman.length() > 0) {
+        if (SetSalesman.length() > 0) {
             SelectedItemSaleman.setText(SetSalesman);
         }
 
@@ -256,30 +258,24 @@ public class AddInvoiceActivity extends Activity {
             public void onClick(View v) {
                 try {
                     if (checkNetwork() == false) {
-                        ShowAlert.ShowAlert(AddInvoiceActivity.this,"Alert...","No Internet...");
+                        ShowAlert.ShowAlert(AddInvoiceActivity.this, "Alert...", "No Internet...");
                         return;
-                    }
-                    else if (SelectedItemDivision.getText().toString().trim().equals("Select Division")) {
-                        ShowAlert.ShowAlert(AddInvoiceActivity.this,"Alert...","Must select division.");
+                    } else if (SelectedItemDivision.getText().toString().trim().equals("Select Division")) {
+                        ShowAlert.ShowAlert(AddInvoiceActivity.this, "Alert...", "Must select division.");
                         return;
-                    }
-                    else if (SelectedItemRoute.getText().toString().trim().equals("Select Route")) {
-                        ShowAlert.ShowAlert(AddInvoiceActivity.this,"Alert...","Must select route.");
+                    } else if (SelectedItemRoute.getText().toString().trim().equals("Select Route")) {
+                        ShowAlert.ShowAlert(AddInvoiceActivity.this, "Alert...", "Must select route.");
                         return;
-                    }
-                    else if (SelectedItemClient.getText().toString().trim().equals("Select Client")) {
-                        ShowAlert.ShowAlert(AddInvoiceActivity.this,"Alert...","Must select client.");
+                    } else if (SelectedItemClient.getText().toString().trim().equals("Select Client")) {
+                        ShowAlert.ShowAlert(AddInvoiceActivity.this, "Alert...", "Must select client.");
                         return;
-                    }
-                    else if (SelectedItemSaleman.getText().toString().trim().equals("Select Salesman")) {
-                        ShowAlert.ShowAlert(AddInvoiceActivity.this,"Alert...","Must select salesman.");
+                    } else if (SelectedItemSaleman.getText().toString().trim().equals("Select Salesman")) {
+                        ShowAlert.ShowAlert(AddInvoiceActivity.this, "Alert...", "Must select salesman.");
                         return;
-                    }
-                    else if (jsonArray.length() == 0) {
-                        ShowAlert.ShowAlert(AddInvoiceActivity.this,"Alert...","Add atleast 1 item.");
+                    } else if (jsonArray.length() == 0) {
+                        ShowAlert.ShowAlert(AddInvoiceActivity.this, "Alert...", "Add atleast 1 item.");
                         return;
-                    }
-                    else {
+                    } else {
                         jsonObjectAddValues = new JSONObject();
 
                         for (int i = 0; i < jsonArrayDivision.length(); i++) {
@@ -338,9 +334,7 @@ public class AddInvoiceActivity extends Activity {
 
                         addInVoice();
                     }
-                }
-                catch (Exception e)
-                {
+                } catch (Exception e) {
                     Toast.makeText(AddInvoiceActivity.this, e.toString(), Toast.LENGTH_LONG).show();
                 }
             }
@@ -348,7 +342,7 @@ public class AddInvoiceActivity extends Activity {
 
         recyclerView = findViewById(R.id.listAddInvoice);
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
-        adapter = new InVoiceUpdateDetailsAdapter(this,jsonArray);
+        adapter = new InVoiceUpdateDetailsAdapter(this, jsonArray);
         recyclerView.setAdapter(adapter);
 
 
@@ -357,111 +351,105 @@ public class AddInvoiceActivity extends Activity {
         btnAdd.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-              try{
+                try {
 
-                if (SelectedItemDivision.getText().toString().trim().equals("Select Division")) {
-                    ShowAlert.ShowAlert(AddInvoiceActivity.this,"Alert...","Must select division.");
-                    return;
-                }
-                else if (SelectedItemRoute.getText().toString().trim().equals("Select Route")) {
-                    ShowAlert.ShowAlert(AddInvoiceActivity.this,"Alert...","Must select route.");
-                    return;
-                }
-                else if (SelectedItemClient.getText().toString().trim().equals("Select Client")) {
-                    ShowAlert.ShowAlert(AddInvoiceActivity.this,"Alert...","Must select client/outlet.");
-                    return;
-                }
-                else if (SelectedItemSaleman.getText().toString().trim().equals("Select Salesman")) {
-                    ShowAlert.ShowAlert(AddInvoiceActivity.this,"Alert...","Must select salesman.");
-                    return;
-                }
-                else
-                    {
+                    if (SelectedItemDivision.getText().toString().trim().equals("Select Division")) {
+                        ShowAlert.ShowAlert(AddInvoiceActivity.this, "Alert...", "Must select division.");
+                        return;
+                    } else if (SelectedItemRoute.getText().toString().trim().equals("Select Route")) {
+                        ShowAlert.ShowAlert(AddInvoiceActivity.this, "Alert...", "Must select route.");
+                        return;
+                    } else if (SelectedItemClient.getText().toString().trim().equals("Select Client")) {
+                        ShowAlert.ShowAlert(AddInvoiceActivity.this, "Alert...", "Must select client/outlet.");
+                        return;
+                    } else if (SelectedItemSaleman.getText().toString().trim().equals("Select Salesman")) {
+                        ShowAlert.ShowAlert(AddInvoiceActivity.this, "Alert...", "Must select salesman.");
+                        return;
+                    } else {
 
-                    final AlertDialog.Builder mBuilder = new AlertDialog.Builder(AddInvoiceActivity.this);
-                    final View mView = LayoutInflater.from(AddInvoiceActivity.this).inflate(R.layout.editable_invoice_list, null);
-                    mBuilder.setView(mView);
-                    final AlertDialog dialog = mBuilder.create();
-                    dialog.show();
+                        final AlertDialog.Builder mBuilder = new AlertDialog.Builder(AddInvoiceActivity.this);
+                        final View mView = LayoutInflater.from(AddInvoiceActivity.this).inflate(R.layout.editable_invoice_list, null);
+                        mBuilder.setView(mView);
+                        final AlertDialog dialog = mBuilder.create();
+                        dialog.show();
 
-                    edtAltUnitQty = mView.findViewById(R.id.edtAltUnitQty);
-                    edtPrimaryUnitQty = mView.findViewById(R.id.edtPrimaryUnitQty);
-                    edtTotalQty = mView.findViewById(R.id.edtTotalQty);
-                    edtFreeQty = mView.findViewById(R.id.edtFreeQty);
-                    edtRate = mView.findViewById(R.id.edtRate);
-                    edtStock = mView.findViewById(R.id.edtStock);
-                    edtGross = mView.findViewById(R.id.edtGross);
-                    edtDiscPer = mView.findViewById(R.id.edtDiscPer);
-                    edtDisc = mView.findViewById(R.id.edtDisc);
-                    edtDiscIIPer = mView.findViewById(R.id.edtDiscIIPer);
-                    edtDiscII = mView.findViewById(R.id.edtDiscII);
-                    edtDiscIIIPer = mView.findViewById(R.id.edtDiscIIIPer);
-                    edtDiscIII = mView.findViewById(R.id.edtDiscIII);
-                    edtTotalDisc = mView.findViewById(R.id.edtTotalDisc);
-                    edtOtherPer = mView.findViewById(R.id.edtOtherPer);
-                    edtOther = mView.findViewById(R.id.edtOther);
-                    edtOtherIIPer = mView.findViewById(R.id.edtOtherIIPer);
-                    edtOtherII = mView.findViewById(R.id.edtOtherII);
-                    edtCGSTACID = mView.findViewById(R.id.edtCGSTACID);
-                    edtCGSTP = mView.findViewById(R.id.edtCGSTP);
-                    edtCGST = mView.findViewById(R.id.edtCGST);
-                    edtSGSTACID = mView.findViewById(R.id.edtSGSTACID);
-                    edtSGSTP = mView.findViewById(R.id.edtSGSTP);
-                    edtSGST = mView.findViewById(R.id.edtSGST);
-                    edtIGSTACID = mView.findViewById(R.id.edtIGSTACID);
-                    edtIGSTP = mView.findViewById(R.id.edtIGSTP);
-                    edtIGST = mView.findViewById(R.id.edtIGST);
-                    edtAmount = mView.findViewById(R.id.edtAmount);
-                    btnOk = mView.findViewById(R.id.btnOk);
-                    btnMGDisc = mView.findViewById(R.id.btnMGDisc);
-                    btnCancel = mView.findViewById(R.id.btnCancel);
+                        edtAltUnitQty = mView.findViewById(R.id.edtAltUnitQty);
+                        edtPrimaryUnitQty = mView.findViewById(R.id.edtPrimaryUnitQty);
+                        edtTotalQty = mView.findViewById(R.id.edtTotalQty);
+                        edtFreeQty = mView.findViewById(R.id.edtFreeQty);
+                        edtRate = mView.findViewById(R.id.edtRate);
+                        edtStock = mView.findViewById(R.id.edtStock);
+                        edtGross = mView.findViewById(R.id.edtGross);
+                        edtDiscPer = mView.findViewById(R.id.edtDiscPer);
+                        edtDisc = mView.findViewById(R.id.edtDisc);
+                        edtDiscIIPer = mView.findViewById(R.id.edtDiscIIPer);
+                        edtDiscII = mView.findViewById(R.id.edtDiscII);
+                        edtDiscIIIPer = mView.findViewById(R.id.edtDiscIIIPer);
+                        edtDiscIII = mView.findViewById(R.id.edtDiscIII);
+                        edtTotalDisc = mView.findViewById(R.id.edtTotalDisc);
+                        edtOtherPer = mView.findViewById(R.id.edtOtherPer);
+                        edtOther = mView.findViewById(R.id.edtOther);
+                        edtOtherIIPer = mView.findViewById(R.id.edtOtherIIPer);
+                        edtOtherII = mView.findViewById(R.id.edtOtherII);
+                        edtCGSTACID = mView.findViewById(R.id.edtCGSTACID);
+                        edtCGSTP = mView.findViewById(R.id.edtCGSTP);
+                        edtCGST = mView.findViewById(R.id.edtCGST);
+                        edtSGSTACID = mView.findViewById(R.id.edtSGSTACID);
+                        edtSGSTP = mView.findViewById(R.id.edtSGSTP);
+                        edtSGST = mView.findViewById(R.id.edtSGST);
+                        edtIGSTACID = mView.findViewById(R.id.edtIGSTACID);
+                        edtIGSTP = mView.findViewById(R.id.edtIGSTP);
+                        edtIGST = mView.findViewById(R.id.edtIGST);
+                        edtAmount = mView.findViewById(R.id.edtAmount);
+                        btnOk = mView.findViewById(R.id.btnOk);
+                        btnMGDisc = mView.findViewById(R.id.btnMGDisc);
+                        btnCancel = mView.findViewById(R.id.btnCancel);
 
-                    edtRate.setFilters(new InputFilter[]{new InputFilterDecimal(12,5)});
-                    edtDiscPer.setFilters(new InputFilter[]{new InputFilterDecimal(2,2)});
-                    edtDisc.setFilters(new InputFilter[]{new InputFilterDecimal(12,2)});
-                    edtDiscIIPer.setFilters(new InputFilter[]{new InputFilterDecimal(2,2)});
-                    edtDiscII.setFilters(new InputFilter[]{new InputFilterDecimal(12,2)});
-                    edtDiscIIIPer.setFilters(new InputFilter[]{new InputFilterDecimal(2,2)});
-                    edtDiscIII.setFilters(new InputFilter[]{new InputFilterDecimal(12,2)});
-                    edtOtherPer.setFilters(new InputFilter[]{new InputFilterDecimal(2,2)});
-                    edtOther.setFilters(new InputFilter[]{new InputFilterDecimal(12,2)});
-                    edtOtherIIPer.setFilters(new InputFilter[]{new InputFilterDecimal(2,2)});
-                    edtOtherII.setFilters(new InputFilter[]{new InputFilterDecimal(12,2)});
+                        edtRate.setFilters(new InputFilter[]{new InputFilterDecimal(12, 5)});
+                        edtDiscPer.setFilters(new InputFilter[]{new InputFilterDecimal(2, 2)});
+                        edtDisc.setFilters(new InputFilter[]{new InputFilterDecimal(12, 2)});
+                        edtDiscIIPer.setFilters(new InputFilter[]{new InputFilterDecimal(2, 2)});
+                        edtDiscII.setFilters(new InputFilter[]{new InputFilterDecimal(12, 2)});
+                        edtDiscIIIPer.setFilters(new InputFilter[]{new InputFilterDecimal(2, 2)});
+                        edtDiscIII.setFilters(new InputFilter[]{new InputFilterDecimal(12, 2)});
+                        edtOtherPer.setFilters(new InputFilter[]{new InputFilterDecimal(2, 2)});
+                        edtOther.setFilters(new InputFilter[]{new InputFilterDecimal(12, 2)});
+                        edtOtherIIPer.setFilters(new InputFilter[]{new InputFilterDecimal(2, 2)});
+                        edtOtherII.setFilters(new InputFilter[]{new InputFilterDecimal(12, 2)});
 
-                    ClearControl();
-                    edtPrimaryUnitQty.setText("");
-                    edtAltUnitQty.setText("");
-                    edtFreeQty.setText("");
+                        ClearControl();
+                        edtPrimaryUnitQty.setText("");
+                        edtAltUnitQty.setText("");
+                        edtFreeQty.setText("");
 
-                    TextView title = mView.findViewById(R.id.titlePopup);
+                        TextView title = mView.findViewById(R.id.titlePopup);
 
 
+                        final TextView SelectedItem = mView.findViewById(R.id.selectItem);
+                        SelectedItem.setText("Select Item");
 
-                    final TextView SelectedItem = mView.findViewById(R.id.selectItem);
-                    SelectedItem.setText("Select Item");
+                        final TextView txtSetMRPTitle = mView.findViewById(R.id.txtSetMRPTitle);
 
-                    final TextView  txtSetMRPTitle = mView.findViewById(R.id.txtSetMRPTitle);
+                        final TextView SelectedMRP = mView.findViewById(R.id.selectMRP);
+                        final SpinnerDialog spMRP;
 
-                    final TextView SelectedMRP = mView.findViewById(R.id.selectMRP);
-                    final SpinnerDialog spMRP;
+                        final TextView SelectedAltUnit = mView.findViewById(R.id.selectAltUnit);
+                        SelectedAltUnit.setText("");
 
-                    final TextView  SelectedAltUnit = mView.findViewById(R.id.selectAltUnit);
-                    SelectedAltUnit.setText("");
+                        final TextView SelectedPrimaryUnit = mView.findViewById(R.id.selectPrimaryUnit);
+                        SelectedPrimaryUnit.setText("PCS");
 
-                    final TextView SelectedPrimaryUnit = mView.findViewById(R.id.selectPrimaryUnit);
-                    SelectedPrimaryUnit.setText("PCS");
-
-                    final ArrayList<String> ITEMIDARRAY = new ArrayList<>();
-                    final ArrayList<String> ALTUNITARRAY = new ArrayList<>();
+                        final ArrayList<String> ITEMIDARRAY = new ArrayList<>();
+                        final ArrayList<String> ALTUNITARRAY = new ArrayList<>();
 
 
-                    SelectedMRP.setText("Select MRP");
+                        SelectedMRP.setText("Select MRP");
 
-                    //ItemCode Code Start
+                        //ItemCode Code Start
 
-                    final TextView SelectedItemId = mView.findViewById(R.id.selectItemId);
+                        final TextView SelectedItemId = mView.findViewById(R.id.selectItemId);
                         SelectedItemId.setText("Item ID");
-                    final SpinnerDialog spItemId;
+                        final SpinnerDialog spItemId;
 
                         spItemId = new SpinnerDialog(AddInvoiceActivity.this, ITEMIDLIST,
                                 "Select or Search Item ID");
@@ -480,11 +468,9 @@ public class AddInvoiceActivity extends Activity {
                                 edtAltUnitQty.setText("");
                                 edtFreeQty.setText("");
                                 PrimaryUnitQty = 0;
-                                if (null != item && item.length() > 0 )
-                                {
+                                if (null != item && item.length() > 0) {
                                     int endIndex = item.lastIndexOf(" || ");
-                                    if (endIndex != -1)
-                                    {
+                                    if (endIndex != -1) {
                                         tmpSetItemId = item.substring(0, endIndex); // not forgot to put check if(endIndex != -1)
                                     }
                                 }
@@ -494,7 +480,7 @@ public class AddInvoiceActivity extends Activity {
                                     try {
                                         if (jsonArrayItem.getJSONObject(i).getString("Id").equals(SelectedItemId.getText().toString())) {
                                             ITEMID = jsonArrayItem.getJSONObject(i).getString("Id");
-                                            SetItemName =  jsonArrayItem.getJSONObject(i).getString("ItemName");
+                                            SetItemName = jsonArrayItem.getJSONObject(i).getString("ItemName");
                                             SetPrimaryUnit = jsonArrayItem.getJSONObject(i).getString("Unit");
                                             SetAltUnit = jsonArrayItem.getJSONObject(i).getString("SaleUnit");
 
@@ -506,22 +492,18 @@ public class AddInvoiceActivity extends Activity {
 
                                 SelectedItem.setText(SetItemName);
 
-                                if(CheckValidate.checkemptystring(SetPrimaryUnit)  != "")
-                                {
+                                if (CheckValidate.checkemptystring(SetPrimaryUnit) != "") {
                                     SelectedPrimaryUnit.setText(CheckValidate.checkemptystring(SetPrimaryUnit));
                                 }
 
-                                if(CheckValidate.checkemptystring(SetAltUnit)  == "")
-                                {
+                                if (CheckValidate.checkemptystring(SetAltUnit) == "") {
 
                                     SelectedAltUnit.setText("");
                                     SelectedAltUnit.setEnabled(false);
                                     edtAltUnitQty.setEnabled(false);
 
-                                }
-                                else
-                                {
-                                   // SelectedAltUnit.setText(CheckValidate.checkemptystring(SetAltUnit));
+                                } else {
+                                    // SelectedAltUnit.setText(CheckValidate.checkemptystring(SetAltUnit));
                                     SelectedAltUnit.setEnabled(true);
                                     edtAltUnitQty.setEnabled(true);
 
@@ -529,8 +511,7 @@ public class AddInvoiceActivity extends Activity {
                                         try {
                                             if (jsonArrayAlternetUnit.getJSONObject(i).getString("ItemID").equals(ITEMID)) {
 
-                                                if(!jsonArrayAlternetUnit.getJSONObject(i).getString("UnitAlias").isEmpty() || !jsonArrayAlternetUnit.getJSONObject(i).getString("UnitAlias").equals("null"))
-                                                {
+                                                if (!jsonArrayAlternetUnit.getJSONObject(i).getString("UnitAlias").isEmpty() || !jsonArrayAlternetUnit.getJSONObject(i).getString("UnitAlias").equals("null")) {
                                                     ALTUNITARRAY.add(jsonArrayAlternetUnit.getJSONObject(i).getString("UnitAlias"));
                                                 }
 
@@ -540,24 +521,21 @@ public class AddInvoiceActivity extends Activity {
                                         }
                                     }
 
-                                    if(ALTUNITARRAY.size() > 0)
-                                    {
+                                    if (ALTUNITARRAY.size() > 0) {
                                         SelectedAltUnit.setText(CheckValidate.checkemptystring(SetAltUnit));
 
                                         for (int i = 0; i < jsonArrayAlternetUnit.length(); i++) {
                                             try {
                                                 if (jsonArrayAlternetUnit.getJSONObject(i).getString("ItemID").equals(ITEMID) && jsonArrayAlternetUnit.getJSONObject(i).getString("UnitAlias").equals(SelectedAltUnit.getText().toString())) {
 
-                                                   AltUnitConversion = CheckValidate.checkemptyDouble(jsonArrayAlternetUnit.getJSONObject(i).getString("UnitConversion"));
+                                                    AltUnitConversion = CheckValidate.checkemptyDouble(jsonArrayAlternetUnit.getJSONObject(i).getString("UnitConversion"));
 
                                                 }
                                             } catch (JSONException e) {
                                                 e.printStackTrace();
                                             }
                                         }
-                                    }
-                                    else
-                                    {
+                                    } else {
                                         AltUnitConversion = 0;
                                     }
 
@@ -568,17 +546,13 @@ public class AddInvoiceActivity extends Activity {
                                     try {
                                         if (jsonArrayMRP.getJSONObject(i).getString("ItemId").equals(ITEMID) && CheckValidate.checkemptyDouble(jsonArrayMRP.getJSONObject(i).getString("Stock")) > 0) {
 
-                                            if(jsonArrayMRP.getJSONObject(i).getString("ItemType").equals("Batch"))
-                                            {
-                                                if(!jsonArrayMRP.getJSONObject(i).getString("ItemBATCH").isEmpty() || !jsonArrayMRP.getJSONObject(i).getString("ItemBATCH").equals("null"))
-                                                {
+                                            if (jsonArrayMRP.getJSONObject(i).getString("ItemType").equals("Batch")) {
+                                                if (!jsonArrayMRP.getJSONObject(i).getString("ItemBATCH").isEmpty() || !jsonArrayMRP.getJSONObject(i).getString("ItemBATCH").equals("null")) {
                                                     ITEMIDARRAY.add(jsonArrayMRP.getJSONObject(i).getString("ItemBATCH"));
                                                     txtSetMRPTitle.setText("Batch");
                                                 }
-                                            }else
-                                            {
-                                                if(!jsonArrayMRP.getJSONObject(i).getString("ItemMRP").isEmpty() || !jsonArrayMRP.getJSONObject(i).getString("ItemMRP").equals("null"))
-                                                {
+                                            } else {
+                                                if (!jsonArrayMRP.getJSONObject(i).getString("ItemMRP").isEmpty() || !jsonArrayMRP.getJSONObject(i).getString("ItemMRP").equals("null")) {
                                                     ITEMIDARRAY.add(jsonArrayMRP.getJSONObject(i).getString("ItemMRP"));
                                                     txtSetMRPTitle.setText("MRP");
                                                 }
@@ -590,31 +564,26 @@ public class AddInvoiceActivity extends Activity {
                                     }
                                 }
 
-                                if(ITEMIDARRAY.size() > 0)
-                                {
+                                if (ITEMIDARRAY.size() > 0) {
                                     SelectedMRP.setText(ITEMIDARRAY.get(0));
-                                }
-                                else
-                                {
+                                } else {
                                     Toast.makeText(AddInvoiceActivity.this, "No stock available", Toast.LENGTH_LONG).show();
                                     SelectedMRP.setText("");
                                     edtRate.setError(null);
                                     return;
                                 }
 
-                                if(SelectedPrimaryUnit.getText().toString().trim().length() > 0)
-                                {
+                                if (SelectedPrimaryUnit.getText().toString().trim().length() > 0) {
                                     UDP = GetUnitDecimalPlaces(SelectedPrimaryUnit.getText().toString().trim());
                                     final int decPPU = GetUnitDecimalPlaces(SelectedPrimaryUnit.getText().toString().trim());
-                                    edtPrimaryUnitQty.setFilters(new InputFilter[]{new InputFilterDecimal(12,decPPU)});
-                                    edtFreeQty.setFilters(new InputFilter[]{new InputFilterDecimal(12,decPPU)});
+                                    edtPrimaryUnitQty.setFilters(new InputFilter[]{new InputFilterDecimal(12, decPPU)});
+                                    edtFreeQty.setFilters(new InputFilter[]{new InputFilterDecimal(12, decPPU)});
                                 }
 
-                                if(SelectedAltUnit.getText().toString().trim().length() > 0)
-                                {
+                                if (SelectedAltUnit.getText().toString().trim().length() > 0) {
                                     UDA = GetUnitDecimalPlaces(SelectedAltUnit.getText().toString().trim());
                                     final int decPAU = GetUnitDecimalPlaces(SelectedPrimaryUnit.getText().toString().trim());
-                                    edtAltUnitQty.setFilters(new InputFilter[]{new InputFilterDecimal(12,decPAU)});
+                                    edtAltUnitQty.setFilters(new InputFilter[]{new InputFilterDecimal(12, decPAU)});
                                 }
 
                                /* try {
@@ -636,14 +605,12 @@ public class AddInvoiceActivity extends Activity {
                                     for (int i = 0; i < jsonArrayMRP.length(); i++) {
                                         if (jsonArrayMRP.getJSONObject(i).getString("ItemName").equals(SelectedItem.getText().toString()) && jsonArrayMRP.getJSONObject(i).getString("ItemType").equals("Batch")) {
                                             if (jsonArrayMRP.getJSONObject(i).getString("ItemBATCH").equals(SelectedMRP.getText().toString()) && jsonArrayMRP.getJSONObject(i).getString("ItemName").equals(SelectedItem.getText().toString())) {
-                                                getMRPDetails(jsonArrayMRP.getJSONObject(i).getString("ItemId"),jsonArrayMRP.getJSONObject(i).getString("MRPId"));
+                                                getMRPDetails(jsonArrayMRP.getJSONObject(i).getString("ItemId"), jsonArrayMRP.getJSONObject(i).getString("MRPId"));
                                                 break;
                                             }
-                                        }
-                                        else
-                                        {
+                                        } else {
                                             if (jsonArrayMRP.getJSONObject(i).getString("ItemMRP").equals(SelectedMRP.getText().toString()) && jsonArrayMRP.getJSONObject(i).getString("ItemName").equals(SelectedItem.getText().toString())) {
-                                                getMRPDetails(jsonArrayMRP.getJSONObject(i).getString("ItemId"),jsonArrayMRP.getJSONObject(i).getString("MRPId"));
+                                                getMRPDetails(jsonArrayMRP.getJSONObject(i).getString("ItemId"), jsonArrayMRP.getJSONObject(i).getString("MRPId"));
                                                 break;
                                             }
                                         }
@@ -662,84 +629,116 @@ public class AddInvoiceActivity extends Activity {
                             }
                         });
 
-                     //ItemCode Code END
+                        //ItemCode Code END
 
-                    final SpinnerDialog spItem;
+                        final SpinnerDialog spItem;
 
-                    spItem = new SpinnerDialog(AddInvoiceActivity.this, ITEMLIST,
-                            "Select or Search Item");
+                        spItem = new SpinnerDialog(AddInvoiceActivity.this, ITEMLIST,
+                                "Select or Search Item");
 
-                    spItem.setCancellable(true);
-                    spItem.setShowKeyboard(false);
+                        spItem.setCancellable(true);
+                        spItem.setShowKeyboard(false);
 
 
-                    spItem.bindOnSpinerListener(new OnSpinerItemClick() {
-                        @Override
-                        public void onClick(String item, int position) {
+                        spItem.bindOnSpinerListener(new OnSpinerItemClick() {
+                            @Override
+                            public void onClick(String item, int position) {
 
-                            ITEMIDARRAY.clear();
-                            ALTUNITARRAY.clear();
+                                ITEMIDARRAY.clear();
+                                ALTUNITARRAY.clear();
 
-                            if (null != item && item.length() > 0 )
-                            {
+                                if (null != item && item.length() > 0) {
 
-                                int endIndex = item.lastIndexOf(" || ");
-                                if (endIndex != -1)
-                                {
-                                     SetItemName = item.substring(0, endIndex); // not forgot to put check if(endIndex != -1)
-                                }
-                            }
-                            SelectedItem.setText(SetItemName);
-                            ClearControl();
-                            edtPrimaryUnitQty.setText("");
-                            edtAltUnitQty.setText("");
-                            edtFreeQty.setText("");
-                            PrimaryUnitQty = 0;
-                            for (int i = 0; i < jsonArrayItem.length(); i++) {
-                                try {
-                                    if (jsonArrayItem.getJSONObject(i).getString("ItemName").equals(SelectedItem.getText().toString())) {
-                                        ITEMID = jsonArrayItem.getJSONObject(i).getString("Id");
-                                        SetPrimaryUnit = jsonArrayItem.getJSONObject(i).getString("Unit");
-                                        SetAltUnit = jsonArrayItem.getJSONObject(i).getString("SaleUnit");
+                                    int endIndex = item.lastIndexOf(" || ");
+                                    if (endIndex != -1) {
+                                        SetItemName = item.substring(0, endIndex); // not forgot to put check if(endIndex != -1)
                                     }
-                                } catch (JSONException e) {
-                                    e.printStackTrace();
                                 }
-                            }
-                            if(!ITEMID.equals("0") || !ITEMID.isEmpty()) {
-                                SelectedItemId.setText(ITEMID);
-                            }
-                            else
-                            {
-                                SelectedItemId.setText("Item ID");
-                            }
-
-
-                            if(CheckValidate.checkemptystring(SetPrimaryUnit)  != "")
-                            {
-                                SelectedPrimaryUnit.setText(CheckValidate.checkemptystring(SetPrimaryUnit));
-                            }
-
-                            if(CheckValidate.checkemptystring(SetAltUnit)  == "")
-                            {
-                                SelectedAltUnit.setText("");
-                                SelectedAltUnit.setEnabled(false);
-                                edtAltUnitQty.setEnabled(false);
-
-                            }
-                            else
-                            {
-                                // SelectedAltUnit.setText(CheckValidate.checkemptystring(SetAltUnit));
-                                SelectedAltUnit.setEnabled(true);
-                                edtAltUnitQty.setEnabled(true);
-
-                                for (int i = 0; i < jsonArrayAlternetUnit.length(); i++) {
+                                SelectedItem.setText(SetItemName);
+                                ClearControl();
+                                edtPrimaryUnitQty.setText("");
+                                edtAltUnitQty.setText("");
+                                edtFreeQty.setText("");
+                                PrimaryUnitQty = 0;
+                                for (int i = 0; i < jsonArrayItem.length(); i++) {
                                     try {
-                                        if (jsonArrayAlternetUnit.getJSONObject(i).getString("ItemID").equals(ITEMID)) {
+                                        if (jsonArrayItem.getJSONObject(i).getString("ItemName").equals(SelectedItem.getText().toString())) {
+                                            ITEMID = jsonArrayItem.getJSONObject(i).getString("Id");
+                                            SetPrimaryUnit = jsonArrayItem.getJSONObject(i).getString("Unit");
+                                            SetAltUnit = jsonArrayItem.getJSONObject(i).getString("SaleUnit");
+                                        }
+                                    } catch (JSONException e) {
+                                        e.printStackTrace();
+                                    }
+                                }
+                                if (!ITEMID.equals("0") || !ITEMID.isEmpty()) {
+                                    SelectedItemId.setText(ITEMID);
+                                } else {
+                                    SelectedItemId.setText("Item ID");
+                                }
 
-                                            if(!jsonArrayAlternetUnit.getJSONObject(i).getString("UnitAlias").isEmpty() || !jsonArrayAlternetUnit.getJSONObject(i).getString("UnitAlias").equals("null"))
-                                            {
-                                                ALTUNITARRAY.add(jsonArrayAlternetUnit.getJSONObject(i).getString("UnitAlias"));
+
+                                if (CheckValidate.checkemptystring(SetPrimaryUnit) != "") {
+                                    SelectedPrimaryUnit.setText(CheckValidate.checkemptystring(SetPrimaryUnit));
+                                }
+
+                                if (CheckValidate.checkemptystring(SetAltUnit) == "") {
+                                    SelectedAltUnit.setText("");
+                                    SelectedAltUnit.setEnabled(false);
+                                    edtAltUnitQty.setEnabled(false);
+
+                                } else {
+                                    // SelectedAltUnit.setText(CheckValidate.checkemptystring(SetAltUnit));
+                                    SelectedAltUnit.setEnabled(true);
+                                    edtAltUnitQty.setEnabled(true);
+
+                                    for (int i = 0; i < jsonArrayAlternetUnit.length(); i++) {
+                                        try {
+                                            if (jsonArrayAlternetUnit.getJSONObject(i).getString("ItemID").equals(ITEMID)) {
+
+                                                if (!jsonArrayAlternetUnit.getJSONObject(i).getString("UnitAlias").isEmpty() || !jsonArrayAlternetUnit.getJSONObject(i).getString("UnitAlias").equals("null")) {
+                                                    ALTUNITARRAY.add(jsonArrayAlternetUnit.getJSONObject(i).getString("UnitAlias"));
+                                                }
+
+                                            }
+                                        } catch (JSONException e) {
+                                            e.printStackTrace();
+                                        }
+                                    }
+
+                                    if (ALTUNITARRAY.size() > 0) {
+                                        SelectedAltUnit.setText(CheckValidate.checkemptystring(SetAltUnit));
+
+                                        for (int i = 0; i < jsonArrayAlternetUnit.length(); i++) {
+                                            try {
+                                                if (jsonArrayAlternetUnit.getJSONObject(i).getString("ItemID").equals(ITEMID) && jsonArrayAlternetUnit.getJSONObject(i).getString("UnitAlias").equals(SelectedAltUnit.getText().toString())) {
+
+                                                    AltUnitConversion = CheckValidate.checkemptyDouble(jsonArrayAlternetUnit.getJSONObject(i).getString("UnitConversion"));
+
+                                                }
+                                            } catch (JSONException e) {
+                                                e.printStackTrace();
+                                            }
+                                        }
+                                    } else {
+                                        AltUnitConversion = 0;
+                                    }
+                                }
+
+                                for (int i = 0; i < jsonArrayMRP.length(); i++) {
+                                    try {
+                                        if (jsonArrayMRP.getJSONObject(i).getString("ItemId").equals(ITEMID) && CheckValidate.checkemptyDouble(jsonArrayMRP.getJSONObject(i).getString("Stock")) > 0) {
+
+                                            if (jsonArrayMRP.getJSONObject(i).getString("ItemType").equals("Batch")) {
+                                                if (!jsonArrayMRP.getJSONObject(i).getString("ItemBATCH").isEmpty() || !jsonArrayMRP.getJSONObject(i).getString("ItemBATCH").equals("null")) {
+                                                    ITEMIDARRAY.add(jsonArrayMRP.getJSONObject(i).getString("ItemBATCH"));
+                                                    txtSetMRPTitle.setText("Batch");
+                                                }
+                                            } else {
+                                                if (!jsonArrayMRP.getJSONObject(i).getString("ItemMRP").isEmpty() || !jsonArrayMRP.getJSONObject(i).getString("ItemMRP").equals("null")) {
+                                                    ITEMIDARRAY.add(jsonArrayMRP.getJSONObject(i).getString("ItemMRP"));
+                                                    txtSetMRPTitle.setText("MRP");
+                                                }
                                             }
 
                                         }
@@ -748,184 +747,123 @@ public class AddInvoiceActivity extends Activity {
                                     }
                                 }
 
-                                if(ALTUNITARRAY.size() > 0)
-                                {
-                                    SelectedAltUnit.setText(CheckValidate.checkemptystring(SetAltUnit));
-
-                                    for (int i = 0; i < jsonArrayAlternetUnit.length(); i++) {
-                                        try {
-                                            if (jsonArrayAlternetUnit.getJSONObject(i).getString("ItemID").equals(ITEMID) && jsonArrayAlternetUnit.getJSONObject(i).getString("UnitAlias").equals(SelectedAltUnit.getText().toString())) {
-
-                                                AltUnitConversion = CheckValidate.checkemptyDouble(jsonArrayAlternetUnit.getJSONObject(i).getString("UnitConversion"));
-
-                                            }
-                                        } catch (JSONException e) {
-                                            e.printStackTrace();
-                                        }
-                                    }
+                                if (ITEMIDARRAY.size() > 0) {
+                                    SelectedMRP.setText(ITEMIDARRAY.get(0));
+                                } else {
+                                    Toast.makeText(AddInvoiceActivity.this, "No stock available", Toast.LENGTH_LONG).show();
+                                    SelectedMRP.setText("");
+                                    edtRate.setError(null);
+                                    return;
                                 }
-                                else
-                                {
-                                    AltUnitConversion = 0;
-                                }
-                            }
 
-                            for (int i = 0; i < jsonArrayMRP.length(); i++) {
+                                if (SelectedPrimaryUnit.getText().toString().trim().length() > 0) {
+                                    UDP = GetUnitDecimalPlaces(SelectedPrimaryUnit.getText().toString().trim());
+                                    final int decPPU = GetUnitDecimalPlaces(SelectedPrimaryUnit.getText().toString().trim());
+                                    edtPrimaryUnitQty.setFilters(new InputFilter[]{new InputFilterDecimal(12, decPPU)});
+                                    edtFreeQty.setFilters(new InputFilter[]{new InputFilterDecimal(12, decPPU)});
+                                }
+
+                                if (SelectedAltUnit.getText().toString().trim().length() > 0) {
+                                    UDA = GetUnitDecimalPlaces(SelectedAltUnit.getText().toString().trim());
+                                    final int decPAU = GetUnitDecimalPlaces(SelectedPrimaryUnit.getText().toString().trim());
+                                    edtAltUnitQty.setFilters(new InputFilter[]{new InputFilterDecimal(12, decPAU)});
+                                }
+
                                 try {
-                                    if (jsonArrayMRP.getJSONObject(i).getString("ItemId").equals(ITEMID) && CheckValidate.checkemptyDouble(jsonArrayMRP.getJSONObject(i).getString("Stock")) > 0) {
-
-                                        if(jsonArrayMRP.getJSONObject(i).getString("ItemType").equals("Batch"))
-                                        {
-                                            if(!jsonArrayMRP.getJSONObject(i).getString("ItemBATCH").isEmpty() || !jsonArrayMRP.getJSONObject(i).getString("ItemBATCH").equals("null"))
-                                            {
-                                                ITEMIDARRAY.add(jsonArrayMRP.getJSONObject(i).getString("ItemBATCH"));
-                                                txtSetMRPTitle.setText("Batch");
+                                    for (int i = 0; i < jsonArrayMRP.length(); i++) {
+                                        if (jsonArrayMRP.getJSONObject(i).getString("ItemName").equals(SelectedItem.getText().toString()) && jsonArrayMRP.getJSONObject(i).getString("ItemType").equals("Batch")) {
+                                            if (jsonArrayMRP.getJSONObject(i).getString("ItemBATCH").equals(SelectedMRP.getText().toString()) && jsonArrayMRP.getJSONObject(i).getString("ItemName").equals(SelectedItem.getText().toString())) {
+                                                getMRPDetails(jsonArrayMRP.getJSONObject(i).getString("ItemId"), jsonArrayMRP.getJSONObject(i).getString("MRPId"));
+                                                break;
                                             }
-                                        }else
-                                        {
-                                            if(!jsonArrayMRP.getJSONObject(i).getString("ItemMRP").isEmpty() || !jsonArrayMRP.getJSONObject(i).getString("ItemMRP").equals("null"))
-                                            {
-                                                ITEMIDARRAY.add(jsonArrayMRP.getJSONObject(i).getString("ItemMRP"));
-                                                txtSetMRPTitle.setText("MRP");
+                                        } else {
+                                            if (jsonArrayMRP.getJSONObject(i).getString("ItemMRP").equals(SelectedMRP.getText().toString()) && jsonArrayMRP.getJSONObject(i).getString("ItemName").equals(SelectedItem.getText().toString())) {
+                                                getMRPDetails(jsonArrayMRP.getJSONObject(i).getString("ItemId"), jsonArrayMRP.getJSONObject(i).getString("MRPId"));
+                                                break;
                                             }
                                         }
-
                                     }
                                 } catch (JSONException e) {
                                     e.printStackTrace();
                                 }
                             }
+                        });
 
-                            if(ITEMIDARRAY.size() > 0)
-                            {
-                                SelectedMRP.setText(ITEMIDARRAY.get(0));
+                        mView.findViewById(R.id.layoutItem).setOnClickListener(new View.OnClickListener() {
+                            @Override
+                            public void onClick(View v) {
+                                spItem.showSpinerDialog();
                             }
-                            else
-                            {
-                                Toast.makeText(AddInvoiceActivity.this, "No stock available", Toast.LENGTH_LONG).show();
-                                SelectedMRP.setText("");
-                                edtRate.setError(null);
-                                return;
-                            }
+                        });
 
-                            if(SelectedPrimaryUnit.getText().toString().trim().length() > 0)
-                            {
-                                UDP = GetUnitDecimalPlaces(SelectedPrimaryUnit.getText().toString().trim());
-                                final int decPPU = GetUnitDecimalPlaces(SelectedPrimaryUnit.getText().toString().trim());
-                                edtPrimaryUnitQty.setFilters(new InputFilter[]{new InputFilterDecimal(12,decPPU)});
-                                edtFreeQty.setFilters(new InputFilter[]{new InputFilterDecimal(12,decPPU)});
-                            }
+                        spMRP = new SpinnerDialog(AddInvoiceActivity.this, ITEMIDARRAY,
+                                "Select or Search MRP");
 
-                            if(SelectedAltUnit.getText().toString().trim().length() > 0)
-                            {
-                                UDA = GetUnitDecimalPlaces(SelectedAltUnit.getText().toString().trim());
-                                final int decPAU = GetUnitDecimalPlaces(SelectedPrimaryUnit.getText().toString().trim());
-                                edtAltUnitQty.setFilters(new InputFilter[]{new InputFilterDecimal(12,decPAU)});
-                            }
+                        spMRP.setCancellable(true);
+                        spMRP.setShowKeyboard(false);
 
-                            try {
-                                for (int i = 0; i < jsonArrayMRP.length(); i++) {
-                                    if (jsonArrayMRP.getJSONObject(i).getString("ItemName").equals(SelectedItem.getText().toString()) && jsonArrayMRP.getJSONObject(i).getString("ItemType").equals("Batch")) {
-                                        if (jsonArrayMRP.getJSONObject(i).getString("ItemBATCH").equals(SelectedMRP.getText().toString()) && jsonArrayMRP.getJSONObject(i).getString("ItemName").equals(SelectedItem.getText().toString())) {
-                                            getMRPDetails(jsonArrayMRP.getJSONObject(i).getString("ItemId"),jsonArrayMRP.getJSONObject(i).getString("MRPId"));
-                                            break;
-                                        }
-                                    }
-                                    else
-                                    {
-                                        if (jsonArrayMRP.getJSONObject(i).getString("ItemMRP").equals(SelectedMRP.getText().toString()) && jsonArrayMRP.getJSONObject(i).getString("ItemName").equals(SelectedItem.getText().toString())) {
-                                            getMRPDetails(jsonArrayMRP.getJSONObject(i).getString("ItemId"),jsonArrayMRP.getJSONObject(i).getString("MRPId"));
-                                            break;
-                                        }
-                                    }
-                                }
-                            } catch (JSONException e) {
-                                e.printStackTrace();
-                            }
-                        }
-                    });
+                        spMRP.bindOnSpinerListener(new OnSpinerItemClick() {
+                            @Override
+                            public void onClick(String item, int position) {
 
-                    mView.findViewById(R.id.layoutItem).setOnClickListener(new View.OnClickListener() {
-                        @Override
-                        public void onClick(View v) {
-                            spItem.showSpinerDialog();
-                        }
-                    });
-
-                    spMRP = new SpinnerDialog(AddInvoiceActivity.this, ITEMIDARRAY,
-                            "Select or Search MRP");
-
-                    spMRP.setCancellable(true);
-                    spMRP.setShowKeyboard(false);
-
-                    spMRP.bindOnSpinerListener(new OnSpinerItemClick() {
-                        @Override
-                        public void onClick(String item, int position) {
-
-                            SelectedMRP.setText(item);
-                            ClearControl();
+                                SelectedMRP.setText(item);
+                                ClearControl();
                             /*edtAltUnitQty.setText("");
                             edtFreeQty.setText("");*/
-                            if(CheckValidate.checkemptyDouble(edtPrimaryUnitQty.getText().toString().trim()) >=0)
-                            {
-                                PrimaryUnitQty = CheckValidate.checkemptyDouble(edtPrimaryUnitQty.getText().toString().trim());
-                            }else{
-                                PrimaryUnitQty = 0;
-                            }
-
-                            if(CheckValidate.checkemptyDouble(edtAltUnitQty.getText().toString().trim()) >=0)
-                            {
-                                AltUnitQty = CheckValidate.checkemptyDouble(edtAltUnitQty.getText().toString().trim());
-                            }else{
-                                AltUnitQty = 0;
-                            }
-
-                           ////start
-                            if(SelectedPrimaryUnit.getText().toString().trim().length() > 0)
-                            {
-                                UDP = GetUnitDecimalPlaces(SelectedPrimaryUnit.getText().toString().trim());
-                                final int decPPU = GetUnitDecimalPlaces(SelectedPrimaryUnit.getText().toString().trim());
-                                edtPrimaryUnitQty.setFilters(new InputFilter[]{new InputFilterDecimal(12,decPPU)});
-                                edtFreeQty.setFilters(new InputFilter[]{new InputFilterDecimal(12,decPPU)});
-                            }
-
-                            if(SelectedAltUnit.getText().toString().trim().length() > 0)
-                            {
-                                UDA = GetUnitDecimalPlaces(SelectedAltUnit.getText().toString().trim());
-                                final int decPAU = GetUnitDecimalPlaces(SelectedPrimaryUnit.getText().toString().trim());
-                                edtAltUnitQty.setFilters(new InputFilter[]{new InputFilterDecimal(12,decPAU)});
-                            }
-
-                            try {
-                                for (int i = 0; i < jsonArrayMRP.length(); i++) {
-                                    if (jsonArrayMRP.getJSONObject(i).getString("ItemName").equals(SelectedItem.getText().toString()) && jsonArrayMRP.getJSONObject(i).getString("ItemType").equals("Batch")) {
-                                        if (jsonArrayMRP.getJSONObject(i).getString("ItemBATCH").equals(SelectedMRP.getText().toString()) && jsonArrayMRP.getJSONObject(i).getString("ItemName").equals(SelectedItem.getText().toString())) {
-                                            getMRPDetails(jsonArrayMRP.getJSONObject(i).getString("ItemId"),jsonArrayMRP.getJSONObject(i).getString("MRPId"));
-                                            break;
-                                        }
-                                    }
-                                    else
-                                    {
-                                        if (jsonArrayMRP.getJSONObject(i).getString("ItemMRP").equals(SelectedMRP.getText().toString()) && jsonArrayMRP.getJSONObject(i).getString("ItemName").equals(SelectedItem.getText().toString())) {
-                                            getMRPDetails(jsonArrayMRP.getJSONObject(i).getString("ItemId"),jsonArrayMRP.getJSONObject(i).getString("MRPId"));
-                                            break;
-                                        }
-                                    }
+                                if (CheckValidate.checkemptyDouble(edtPrimaryUnitQty.getText().toString().trim()) >= 0) {
+                                    PrimaryUnitQty = CheckValidate.checkemptyDouble(edtPrimaryUnitQty.getText().toString().trim());
+                                } else {
+                                    PrimaryUnitQty = 0;
                                 }
-                            } catch (JSONException e) {
-                                e.printStackTrace();
+
+                                if (CheckValidate.checkemptyDouble(edtAltUnitQty.getText().toString().trim()) >= 0) {
+                                    AltUnitQty = CheckValidate.checkemptyDouble(edtAltUnitQty.getText().toString().trim());
+                                } else {
+                                    AltUnitQty = 0;
+                                }
+
+                                ////start
+                                if (SelectedPrimaryUnit.getText().toString().trim().length() > 0) {
+                                    UDP = GetUnitDecimalPlaces(SelectedPrimaryUnit.getText().toString().trim());
+                                    final int decPPU = GetUnitDecimalPlaces(SelectedPrimaryUnit.getText().toString().trim());
+                                    edtPrimaryUnitQty.setFilters(new InputFilter[]{new InputFilterDecimal(12, decPPU)});
+                                    edtFreeQty.setFilters(new InputFilter[]{new InputFilterDecimal(12, decPPU)});
+                                }
+
+                                if (SelectedAltUnit.getText().toString().trim().length() > 0) {
+                                    UDA = GetUnitDecimalPlaces(SelectedAltUnit.getText().toString().trim());
+                                    final int decPAU = GetUnitDecimalPlaces(SelectedPrimaryUnit.getText().toString().trim());
+                                    edtAltUnitQty.setFilters(new InputFilter[]{new InputFilterDecimal(12, decPAU)});
+                                }
+
+                                try {
+                                    for (int i = 0; i < jsonArrayMRP.length(); i++) {
+                                        if (jsonArrayMRP.getJSONObject(i).getString("ItemName").equals(SelectedItem.getText().toString()) && jsonArrayMRP.getJSONObject(i).getString("ItemType").equals("Batch")) {
+                                            if (jsonArrayMRP.getJSONObject(i).getString("ItemBATCH").equals(SelectedMRP.getText().toString()) && jsonArrayMRP.getJSONObject(i).getString("ItemName").equals(SelectedItem.getText().toString())) {
+                                                getMRPDetails(jsonArrayMRP.getJSONObject(i).getString("ItemId"), jsonArrayMRP.getJSONObject(i).getString("MRPId"));
+                                                break;
+                                            }
+                                        } else {
+                                            if (jsonArrayMRP.getJSONObject(i).getString("ItemMRP").equals(SelectedMRP.getText().toString()) && jsonArrayMRP.getJSONObject(i).getString("ItemName").equals(SelectedItem.getText().toString())) {
+                                                getMRPDetails(jsonArrayMRP.getJSONObject(i).getString("ItemId"), jsonArrayMRP.getJSONObject(i).getString("MRPId"));
+                                                break;
+                                            }
+                                        }
+                                    }
+                                } catch (JSONException e) {
+                                    e.printStackTrace();
+                                }
+                                ////end
                             }
-                            ////end
-                        }
-                    });
+                        });
 
 
-                    mView.findViewById(R.id.layoutMRP).setOnClickListener(new View.OnClickListener() {
-                        @Override
-                        public void onClick(View v) {
-                            spMRP.showSpinerDialog();
-                        }
-                    });
+                        mView.findViewById(R.id.layoutMRP).setOnClickListener(new View.OnClickListener() {
+                            @Override
+                            public void onClick(View v) {
+                                spMRP.showSpinerDialog();
+                            }
+                        });
 
 
                         final SpinnerDialog spAltUnit;
@@ -954,46 +892,42 @@ public class AddInvoiceActivity extends Activity {
                                     }
                                 }
 
-                                if(SelectedPrimaryUnit.getText().toString().trim().length() > 0)
-                                {
+                                if (SelectedPrimaryUnit.getText().toString().trim().length() > 0) {
                                     UDP = GetUnitDecimalPlaces(SelectedPrimaryUnit.getText().toString().trim());
                                     final int decPPU = GetUnitDecimalPlaces(SelectedPrimaryUnit.getText().toString().trim());
-                                    edtPrimaryUnitQty.setFilters(new InputFilter[]{new InputFilterDecimal(12,decPPU)});
-                                    edtFreeQty.setFilters(new InputFilter[]{new InputFilterDecimal(12,decPPU)});
+                                    edtPrimaryUnitQty.setFilters(new InputFilter[]{new InputFilterDecimal(12, decPPU)});
+                                    edtFreeQty.setFilters(new InputFilter[]{new InputFilterDecimal(12, decPPU)});
                                 }
 
-                                if(SelectedAltUnit.getText().toString().trim().length() > 0)
-                                {
+                                if (SelectedAltUnit.getText().toString().trim().length() > 0) {
                                     UDA = GetUnitDecimalPlaces(SelectedAltUnit.getText().toString().trim());
                                     final int decPAU = GetUnitDecimalPlaces(SelectedPrimaryUnit.getText().toString().trim());
-                                    edtAltUnitQty.setFilters(new InputFilter[]{new InputFilterDecimal(12,decPAU)});
+                                    edtAltUnitQty.setFilters(new InputFilter[]{new InputFilterDecimal(12, decPAU)});
                                 }
 
-                                try{
+                                try {
 
                                     edtAmount.setError(null);
-                                   double tmpAltUnitQty =  CheckValidate.checkemptyDouble(edtAltUnitQty.getText().toString().trim());
-                                    if(tmpAltUnitQty > 0) {
+                                    double tmpAltUnitQty = CheckValidate.checkemptyDouble(edtAltUnitQty.getText().toString().trim());
+                                    if (tmpAltUnitQty > 0) {
                                         if (UDA > 0) {
                                             edtAltUnitQty.setText(String.format("%." + UDA + "f", tmpAltUnitQty));
                                         } else {
                                             edtAltUnitQty.setText(String.format("%.0f", tmpAltUnitQty));
                                         }
 
-                                        }
+                                    }
                                     AltUnitQty = CheckValidate.checkemptyDouble(edtAltUnitQty.getText().toString().trim());
-                                    PrimaryUnitQty =  CheckValidate.checkemptyDouble(edtPrimaryUnitQty.getText().toString().trim());
+                                    PrimaryUnitQty = CheckValidate.checkemptyDouble(edtPrimaryUnitQty.getText().toString().trim());
 
                                     double tmpTotalQty;
-                                    if(AltUnitQty <= 0)
-                                    {
+                                    if (AltUnitQty <= 0) {
                                         tmpTotalQty = PrimaryUnitQty;
 
-                                    }else
-                                    {
+                                    } else {
                                         tmpTotalQty = (AltUnitQty * AltUnitConversion) + PrimaryUnitQty;
                                     }
-                                    String strTotalQty = String.format("%."+UDP+"f",tmpTotalQty);
+                                    String strTotalQty = String.format("%." + UDP + "f", tmpTotalQty);
                                     edtTotalQty.setText(strTotalQty);
                                     TotalQty = CheckValidate.checkemptyDouble(edtTotalQty.getText().toString().trim());
 
@@ -1047,11 +981,9 @@ public class AddInvoiceActivity extends Activity {
                                     }
 
                                     TotalDisc = Disc + DiscII + DiscIII;
-                                    if(CheckValidate.checkemptyDouble(String.valueOf(TotalDisc)) > 0)
-                                    {
-                                        edtTotalDisc.setText(String.format("%.2f",TotalDisc));
-                                    }else
-                                    {
+                                    if (CheckValidate.checkemptyDouble(String.valueOf(TotalDisc)) > 0) {
+                                        edtTotalDisc.setText(String.format("%.2f", TotalDisc));
+                                    } else {
                                         edtTotalDisc.setText("");
                                     }
 
@@ -1121,7 +1053,7 @@ public class AddInvoiceActivity extends Activity {
                                     String totalAmt = String.format("%.2f", totalAmount);
                                     edtAmount.setText(totalAmt);
 
-                                }catch (NumberFormatException e){
+                                } catch (NumberFormatException e) {
                                     Toast.makeText(AddInvoiceActivity.this, e.toString(), Toast.LENGTH_LONG).show();
                                 }
                             }
@@ -1136,8 +1068,8 @@ public class AddInvoiceActivity extends Activity {
                         });
 
 
-                      final String Title = String.valueOf(jsonArray.length() + 1);
-                      title.setText(Title);
+                        final String Title = String.valueOf(jsonArray.length() + 1);
+                        title.setText(Title);
 
                         edtAltUnitQty.addTextChangedListener(new TextWatcher() {
                             @Override
@@ -1147,26 +1079,24 @@ public class AddInvoiceActivity extends Activity {
 
                             @Override
                             public void onTextChanged(CharSequence s, int start, int before, int count) {
-                                try{
+                                try {
 
                                     edtAmount.setError(null);
-                                    if (s.toString().trim().length() == 0 ) {
+                                    if (s.toString().trim().length() == 0) {
                                     }
 
 
-                                    AltUnitQty =  CheckValidate.checkemptyDouble(s.toString());
-                                    PrimaryUnitQty =  CheckValidate.checkemptyDouble(edtPrimaryUnitQty.getText().toString().trim());
+                                    AltUnitQty = CheckValidate.checkemptyDouble(s.toString());
+                                    PrimaryUnitQty = CheckValidate.checkemptyDouble(edtPrimaryUnitQty.getText().toString().trim());
 
                                     double tmpTotalQty;
-                                    if(AltUnitQty <= 0)
-                                    {
+                                    if (AltUnitQty <= 0) {
                                         tmpTotalQty = PrimaryUnitQty;
 
-                                    }else
-                                    {
+                                    } else {
                                         tmpTotalQty = (AltUnitQty * AltUnitConversion) + PrimaryUnitQty;
                                     }
-                                    String strTotalQty = String.format("%."+UDP+"f",tmpTotalQty);
+                                    String strTotalQty = String.format("%." + UDP + "f", tmpTotalQty);
                                     edtTotalQty.setText(strTotalQty);
                                     TotalQty = CheckValidate.checkemptyDouble(edtTotalQty.getText().toString().trim());
 
@@ -1220,11 +1150,9 @@ public class AddInvoiceActivity extends Activity {
                                     }
 
                                     TotalDisc = Disc + DiscII + DiscIII;
-                                    if(CheckValidate.checkemptyDouble(String.valueOf(TotalDisc)) > 0)
-                                    {
-                                        edtTotalDisc.setText(String.format("%.2f",TotalDisc));
-                                    }else
-                                    {
+                                    if (CheckValidate.checkemptyDouble(String.valueOf(TotalDisc)) > 0) {
+                                        edtTotalDisc.setText(String.format("%.2f", TotalDisc));
+                                    } else {
                                         edtTotalDisc.setText("");
                                     }
 
@@ -1294,7 +1222,7 @@ public class AddInvoiceActivity extends Activity {
                                     String totalAmt = String.format("%.2f", totalAmount);
                                     edtAmount.setText(totalAmt);
 
-                                }catch (NumberFormatException e){
+                                } catch (NumberFormatException e) {
                                     Toast.makeText(AddInvoiceActivity.this, e.toString(), Toast.LENGTH_LONG).show();
                                 }
 
@@ -1312,173 +1240,169 @@ public class AddInvoiceActivity extends Activity {
                                 edtPrimaryUnitQty.setError(null);
                                 edtPrimaryUnitQty.setCompoundDrawables(null, null, null, null);
 
-                                }
-                    });
+                            }
+                        });
 
                         edtPrimaryUnitQty.addTextChangedListener(new TextWatcher() {
-                        @Override
-                        public void beforeTextChanged(CharSequence s, int start, int count, int after) {
+                            @Override
+                            public void beforeTextChanged(CharSequence s, int start, int count, int after) {
 
-                        }
-
-                        @Override
-                        public void onTextChanged(CharSequence s, int start, int before, int count) {
-                            try{
-
-                                edtAmount.setError(null);
-                                if (s.toString().trim().length() == 0 ) {
-                                }
-
-                                PrimaryUnitQty = CheckValidate.checkemptyDouble(s.toString());
-                                AltUnitQty = CheckValidate.checkemptyDouble(edtAltUnitQty.getText().toString().trim());
-
-                                double tmpTotalQty;
-                                if(AltUnitQty <= 0)
-                                {
-                                    tmpTotalQty = PrimaryUnitQty;
-
-                                }else
-                                {
-                                    tmpTotalQty = (AltUnitQty * AltUnitConversion) + PrimaryUnitQty;
-                                }
-                                String strTotalQty = String.format("%."+UDP+"f",tmpTotalQty);
-                                edtTotalQty.setText(strTotalQty);
-                                TotalQty = CheckValidate.checkemptyDouble(edtTotalQty.getText().toString().trim());
-
-                                double tmpGross = TotalQty * Rate;
-                                String gross = String.format("%.2f", tmpGross);
-                                edtGross.setText(gross);
-                                Gross = CheckValidate.checkemptyDouble(edtGross.getText().toString().trim());
-
-                                DiscPer = CheckValidate.checkemptyDouble(edtDiscPer.getText().toString().trim());
-                                if (DiscPer > 0) {
-                                    double tmpDisc = ((Gross * DiscPer) / 100);
-                                    if (tmpDisc > 0) {
-                                        String txtDisc = String.format("%.2f", tmpDisc);
-                                        edtDisc.setText(txtDisc);
-                                    } else {
-                                        edtDisc.setText("");
-                                    }
-                                    Disc = CheckValidate.checkemptyDouble(edtDisc.getText().toString().trim());
-                                } else {
-                                    Disc = CheckValidate.checkemptyDouble(edtDisc.getText().toString().trim());
-                                }
-
-                                DiscIIPer = CheckValidate.checkemptyDouble(edtDiscIIPer.getText().toString().trim());
-                                if (DiscIIPer > 0) {
-                                    double tmpDiscII = (((Gross - Disc) * DiscIIPer) / 100);
-                                    if (tmpDiscII > 0) {
-                                        String txtDiscII = String.format("%.2f", tmpDiscII);
-                                        edtDiscII.setText(txtDiscII);
-
-                                    } else {
-                                        edtDiscII.setText("");
-                                    }
-                                    DiscII = CheckValidate.checkemptyDouble(edtDiscII.getText().toString().trim());
-                                } else {
-                                    DiscII = CheckValidate.checkemptyDouble(edtDiscII.getText().toString().trim());
-                                }
-
-                                DiscIIIPer = CheckValidate.checkemptyDouble(edtDiscIIIPer.getText().toString().trim());
-                                if (DiscIIIPer > 0) {
-
-                                    double tmpDiscIII = (((Gross - Disc - DiscII) * DiscIIIPer) / 100);
-                                    if (tmpDiscIII > 0) {
-                                        String txtDiscIII = String.format("%.2f", tmpDiscIII);
-                                        edtDiscIII.setText(txtDiscIII);
-                                    } else {
-                                        edtDiscIII.setText("");
-                                    }
-                                    DiscIII = CheckValidate.checkemptyDouble(edtDiscIII.getText().toString().trim());
-                                } else {
-                                    DiscIII = CheckValidate.checkemptyDouble(edtDiscIII.getText().toString().trim());
-                                }
-
-                                TotalDisc = Disc + DiscII + DiscIII;
-                                if(CheckValidate.checkemptyDouble(String.valueOf(TotalDisc)) > 0)
-                                {
-                                    edtTotalDisc.setText(String.format("%.2f",TotalDisc));
-                                }else
-                                {
-                                    edtTotalDisc.setText("");
-                                }
-
-                                OtherPer = CheckValidate.checkemptyDouble(edtOtherPer.getText().toString().trim());
-                                if (OtherPer > 0) {
-                                    double tmpOther = (((Gross - Disc - DiscII - DiscIII) * OtherPer) / 100);
-                                    if (tmpOther > 0) {
-                                        String txtOther = String.format("%.2f", tmpOther);
-                                        edtOther.setText(txtOther);
-                                    } else {
-                                        edtOther.setText("");
-                                    }
-                                    Other = CheckValidate.checkemptyDouble(edtOther.getText().toString().trim());
-                                } else {
-                                    Other = CheckValidate.checkemptyDouble(edtOther.getText().toString().trim());
-                                }
-
-                                OtherIIPer = CheckValidate.checkemptyDouble(edtOtherIIPer.getText().toString().trim());
-                                if (OtherIIPer > 0) {
-                                    double tmpOtherII = (((Gross - Disc - DiscII - DiscIII + Other) * OtherIIPer) / 100);
-                                    if (tmpOtherII > 0) {
-                                        String txtOtherII = String.format("%.2f", tmpOtherII);
-                                        edtOtherII.setText(txtOtherII);
-                                    } else {
-                                        edtOtherII.setText("");
-                                    }
-                                    OtherII = CheckValidate.checkemptyDouble(edtOtherII.getText().toString().trim());
-                                } else {
-                                    OtherII = CheckValidate.checkemptyDouble(edtOtherII.getText().toString().trim());
-                                }
-
-                                cgstP = CheckValidate.checkemptyDouble(edtCGSTP.getText().toString().trim());
-                                sgstP = CheckValidate.checkemptyDouble(edtSGSTP.getText().toString().trim());
-                                igstP = CheckValidate.checkemptyDouble(edtIGSTP.getText().toString().trim());
-
-                                double cgst = 0;
-                                if (cgstP > 0) {
-                                    double tmpCgst = (((Gross - Disc - DiscII - DiscIII + Other + OtherII) * cgstP) / 100);
-                                    String txtcgst = String.format("%.2f", tmpCgst);
-                                    edtCGST.setText(txtcgst);
-                                    cgst = CheckValidate.checkemptyDouble(edtCGST.getText().toString().trim());
-                                } else {
-                                    edtCGST.setText("");
-                                }
-
-                                double sgst = 0;
-                                if (sgstP > 0) {
-                                    double tmpSgst = (((Gross - Disc - DiscII - DiscIII + Other + OtherII) * sgstP) / 100);
-                                    String txtsgst = String.format("%.2f", tmpSgst);
-                                    edtSGST.setText(txtsgst);
-                                    sgst = CheckValidate.checkemptyDouble(edtSGST.getText().toString().trim());
-                                } else {
-                                    edtSGST.setText("");
-                                }
-
-                                double igst = 0;
-                                if (igstP > 0) {
-                                    double tmpIgst = (((Gross - Disc - DiscII - DiscIII + Other + OtherII) * igstP) / 100);
-                                    String txtigst = String.format("%.2f", tmpIgst);
-                                    edtIGST.setText(txtigst);
-                                    igst = CheckValidate.checkemptyDouble(edtIGST.getText().toString().trim());
-                                } else {
-                                    edtIGST.setText("");
-                                }
-
-                                double totalAmount = (Gross - Disc - DiscII - DiscIII + Other + OtherII + cgst + sgst + igst);
-                                String totalAmt = String.format("%.2f", totalAmount);
-                                edtAmount.setText(totalAmt);
-
-                            }catch (NumberFormatException e){
-                                Toast.makeText(AddInvoiceActivity.this, e.toString(), Toast.LENGTH_LONG).show();
                             }
 
-                        }
+                            @Override
+                            public void onTextChanged(CharSequence s, int start, int before, int count) {
+                                try {
 
-                        @Override
-                        public void afterTextChanged(Editable s) {
-                        }
-                    });
+                                    edtAmount.setError(null);
+                                    if (s.toString().trim().length() == 0) {
+                                    }
+
+                                    PrimaryUnitQty = CheckValidate.checkemptyDouble(s.toString());
+                                    AltUnitQty = CheckValidate.checkemptyDouble(edtAltUnitQty.getText().toString().trim());
+
+                                    double tmpTotalQty;
+                                    if (AltUnitQty <= 0) {
+                                        tmpTotalQty = PrimaryUnitQty;
+
+                                    } else {
+                                        tmpTotalQty = (AltUnitQty * AltUnitConversion) + PrimaryUnitQty;
+                                    }
+                                    String strTotalQty = String.format("%." + UDP + "f", tmpTotalQty);
+                                    edtTotalQty.setText(strTotalQty);
+                                    TotalQty = CheckValidate.checkemptyDouble(edtTotalQty.getText().toString().trim());
+
+                                    double tmpGross = TotalQty * Rate;
+                                    String gross = String.format("%.2f", tmpGross);
+                                    edtGross.setText(gross);
+                                    Gross = CheckValidate.checkemptyDouble(edtGross.getText().toString().trim());
+
+                                    DiscPer = CheckValidate.checkemptyDouble(edtDiscPer.getText().toString().trim());
+                                    if (DiscPer > 0) {
+                                        double tmpDisc = ((Gross * DiscPer) / 100);
+                                        if (tmpDisc > 0) {
+                                            String txtDisc = String.format("%.2f", tmpDisc);
+                                            edtDisc.setText(txtDisc);
+                                        } else {
+                                            edtDisc.setText("");
+                                        }
+                                        Disc = CheckValidate.checkemptyDouble(edtDisc.getText().toString().trim());
+                                    } else {
+                                        Disc = CheckValidate.checkemptyDouble(edtDisc.getText().toString().trim());
+                                    }
+
+                                    DiscIIPer = CheckValidate.checkemptyDouble(edtDiscIIPer.getText().toString().trim());
+                                    if (DiscIIPer > 0) {
+                                        double tmpDiscII = (((Gross - Disc) * DiscIIPer) / 100);
+                                        if (tmpDiscII > 0) {
+                                            String txtDiscII = String.format("%.2f", tmpDiscII);
+                                            edtDiscII.setText(txtDiscII);
+
+                                        } else {
+                                            edtDiscII.setText("");
+                                        }
+                                        DiscII = CheckValidate.checkemptyDouble(edtDiscII.getText().toString().trim());
+                                    } else {
+                                        DiscII = CheckValidate.checkemptyDouble(edtDiscII.getText().toString().trim());
+                                    }
+
+                                    DiscIIIPer = CheckValidate.checkemptyDouble(edtDiscIIIPer.getText().toString().trim());
+                                    if (DiscIIIPer > 0) {
+
+                                        double tmpDiscIII = (((Gross - Disc - DiscII) * DiscIIIPer) / 100);
+                                        if (tmpDiscIII > 0) {
+                                            String txtDiscIII = String.format("%.2f", tmpDiscIII);
+                                            edtDiscIII.setText(txtDiscIII);
+                                        } else {
+                                            edtDiscIII.setText("");
+                                        }
+                                        DiscIII = CheckValidate.checkemptyDouble(edtDiscIII.getText().toString().trim());
+                                    } else {
+                                        DiscIII = CheckValidate.checkemptyDouble(edtDiscIII.getText().toString().trim());
+                                    }
+
+                                    TotalDisc = Disc + DiscII + DiscIII;
+                                    if (CheckValidate.checkemptyDouble(String.valueOf(TotalDisc)) > 0) {
+                                        edtTotalDisc.setText(String.format("%.2f", TotalDisc));
+                                    } else {
+                                        edtTotalDisc.setText("");
+                                    }
+
+                                    OtherPer = CheckValidate.checkemptyDouble(edtOtherPer.getText().toString().trim());
+                                    if (OtherPer > 0) {
+                                        double tmpOther = (((Gross - Disc - DiscII - DiscIII) * OtherPer) / 100);
+                                        if (tmpOther > 0) {
+                                            String txtOther = String.format("%.2f", tmpOther);
+                                            edtOther.setText(txtOther);
+                                        } else {
+                                            edtOther.setText("");
+                                        }
+                                        Other = CheckValidate.checkemptyDouble(edtOther.getText().toString().trim());
+                                    } else {
+                                        Other = CheckValidate.checkemptyDouble(edtOther.getText().toString().trim());
+                                    }
+
+                                    OtherIIPer = CheckValidate.checkemptyDouble(edtOtherIIPer.getText().toString().trim());
+                                    if (OtherIIPer > 0) {
+                                        double tmpOtherII = (((Gross - Disc - DiscII - DiscIII + Other) * OtherIIPer) / 100);
+                                        if (tmpOtherII > 0) {
+                                            String txtOtherII = String.format("%.2f", tmpOtherII);
+                                            edtOtherII.setText(txtOtherII);
+                                        } else {
+                                            edtOtherII.setText("");
+                                        }
+                                        OtherII = CheckValidate.checkemptyDouble(edtOtherII.getText().toString().trim());
+                                    } else {
+                                        OtherII = CheckValidate.checkemptyDouble(edtOtherII.getText().toString().trim());
+                                    }
+
+                                    cgstP = CheckValidate.checkemptyDouble(edtCGSTP.getText().toString().trim());
+                                    sgstP = CheckValidate.checkemptyDouble(edtSGSTP.getText().toString().trim());
+                                    igstP = CheckValidate.checkemptyDouble(edtIGSTP.getText().toString().trim());
+
+                                    double cgst = 0;
+                                    if (cgstP > 0) {
+                                        double tmpCgst = (((Gross - Disc - DiscII - DiscIII + Other + OtherII) * cgstP) / 100);
+                                        String txtcgst = String.format("%.2f", tmpCgst);
+                                        edtCGST.setText(txtcgst);
+                                        cgst = CheckValidate.checkemptyDouble(edtCGST.getText().toString().trim());
+                                    } else {
+                                        edtCGST.setText("");
+                                    }
+
+                                    double sgst = 0;
+                                    if (sgstP > 0) {
+                                        double tmpSgst = (((Gross - Disc - DiscII - DiscIII + Other + OtherII) * sgstP) / 100);
+                                        String txtsgst = String.format("%.2f", tmpSgst);
+                                        edtSGST.setText(txtsgst);
+                                        sgst = CheckValidate.checkemptyDouble(edtSGST.getText().toString().trim());
+                                    } else {
+                                        edtSGST.setText("");
+                                    }
+
+                                    double igst = 0;
+                                    if (igstP > 0) {
+                                        double tmpIgst = (((Gross - Disc - DiscII - DiscIII + Other + OtherII) * igstP) / 100);
+                                        String txtigst = String.format("%.2f", tmpIgst);
+                                        edtIGST.setText(txtigst);
+                                        igst = CheckValidate.checkemptyDouble(edtIGST.getText().toString().trim());
+                                    } else {
+                                        edtIGST.setText("");
+                                    }
+
+                                    double totalAmount = (Gross - Disc - DiscII - DiscIII + Other + OtherII + cgst + sgst + igst);
+                                    String totalAmt = String.format("%.2f", totalAmount);
+                                    edtAmount.setText(totalAmt);
+
+                                } catch (NumberFormatException e) {
+                                    Toast.makeText(AddInvoiceActivity.this, e.toString(), Toast.LENGTH_LONG).show();
+                                }
+
+                            }
+
+                            @Override
+                            public void afterTextChanged(Editable s) {
+                            }
+                        });
 
                         edtRate.setOnClickListener(new View.OnClickListener() {
                             @Override
@@ -1489,63 +1413,57 @@ public class AddInvoiceActivity extends Activity {
                             }
                         });
 
-                    edtRate.addTextChangedListener(new TextWatcher() {
+                        edtRate.addTextChangedListener(new TextWatcher() {
                             @Override
-                         public void beforeTextChanged(CharSequence s, int start, int count, int after) {
+                            public void beforeTextChanged(CharSequence s, int start, int count, int after) {
 
                             }
 
                             @Override
                             public void onTextChanged(CharSequence s, int start, int before, int count) {
-                                try
-                                {
-                                edtAmount.setError(null);
-                                if (s.toString().trim().length() == 0 || CheckValidate.checkemptyDouble(s.toString()) < 0 ) {
-                                    edtRate.setError("Rate blank not allowed");
-                                }
-                                else {
-                                    edtRate.setError(null);
-                                    edtRate.setCompoundDrawables(null, null, null, null);
-                                }
+                                try {
+                                    edtAmount.setError(null);
+                                    if (s.toString().trim().length() == 0 || CheckValidate.checkemptyDouble(s.toString()) < 0) {
+                                        edtRate.setError("Rate blank not allowed");
+                                    } else {
+                                        edtRate.setError(null);
+                                        edtRate.setCompoundDrawables(null, null, null, null);
+                                    }
                                     double TotalQty = CheckValidate.checkemptyDouble(edtTotalQty.getText().toString().trim());
 
                                     Rate = CheckValidate.checkemptyDouble(s.toString());
 
                                     double tmpGross = TotalQty * Rate;
-                                    String gross = String.format("%.2f",tmpGross);
+                                    String gross = String.format("%.2f", tmpGross);
                                     edtGross.setText(gross);
                                     Gross = CheckValidate.checkemptyDouble(edtGross.getText().toString().trim());
 
                                     DiscPer = CheckValidate.checkemptyDouble(edtDiscPer.getText().toString().trim());
-                                    if(DiscPer > 0)
-                                    {
-                                        double  tmpDisc = ((Gross * DiscPer) / 100);
-                                        if(tmpDisc > 0 ){
-                                            String txtDisc = String.format("%.2f",tmpDisc);
+                                    if (DiscPer > 0) {
+                                        double tmpDisc = ((Gross * DiscPer) / 100);
+                                        if (tmpDisc > 0) {
+                                            String txtDisc = String.format("%.2f", tmpDisc);
                                             edtDisc.setText(txtDisc);
-                                        }else{
+                                        } else {
                                             edtDisc.setText("");
                                         }
                                         Disc = CheckValidate.checkemptyDouble(edtDisc.getText().toString().trim());
-                                    }else
-                                    {
+                                    } else {
                                         Disc = CheckValidate.checkemptyDouble(edtDisc.getText().toString().trim());
                                     }
 
                                     DiscIIPer = CheckValidate.checkemptyDouble(edtDiscIIPer.getText().toString().trim());
-                                    if(DiscIIPer > 0)
-                                    {
-                                        double  tmpDiscII = (((Gross-Disc) * DiscIIPer) / 100);
-                                        if(tmpDiscII > 0){
-                                            String txtDiscII = String.format("%.2f",tmpDiscII);
+                                    if (DiscIIPer > 0) {
+                                        double tmpDiscII = (((Gross - Disc) * DiscIIPer) / 100);
+                                        if (tmpDiscII > 0) {
+                                            String txtDiscII = String.format("%.2f", tmpDiscII);
                                             edtDiscII.setText(txtDiscII);
 
-                                        }else{
+                                        } else {
                                             edtDiscII.setText("");
                                         }
                                         DiscII = CheckValidate.checkemptyDouble(edtDiscII.getText().toString().trim());
-                                    }else
-                                    {
+                                    } else {
                                         DiscII = CheckValidate.checkemptyDouble(edtDiscII.getText().toString().trim());
                                     }
 
@@ -1553,55 +1471,49 @@ public class AddInvoiceActivity extends Activity {
                                     if (DiscIIIPer > 0) {
 
                                         double tmpDiscIII = (((Gross - Disc - DiscII) * DiscIIIPer) / 100);
-                                        if(tmpDiscIII > 0){
-                                            String txtDiscIII = String.format("%.2f",tmpDiscIII);
+                                        if (tmpDiscIII > 0) {
+                                            String txtDiscIII = String.format("%.2f", tmpDiscIII);
                                             edtDiscIII.setText(txtDiscIII);
-                                        }else{
+                                        } else {
                                             edtDiscIII.setText("");
                                         }
                                         DiscIII = CheckValidate.checkemptyDouble(edtDiscIII.getText().toString().trim());
-                                    }else
-                                    {
+                                    } else {
                                         DiscIII = CheckValidate.checkemptyDouble(edtDiscIII.getText().toString().trim());
                                     }
 
                                     TotalDisc = Disc + DiscII + DiscIII;
-                                    if(CheckValidate.checkemptyDouble(String.valueOf(TotalDisc)) > 0)
-                                    {
-                                        edtTotalDisc.setText(String.format("%.2f",TotalDisc));
-                                    }else
-                                    {
+                                    if (CheckValidate.checkemptyDouble(String.valueOf(TotalDisc)) > 0) {
+                                        edtTotalDisc.setText(String.format("%.2f", TotalDisc));
+                                    } else {
                                         edtTotalDisc.setText("");
                                     }
 
                                     OtherPer = CheckValidate.checkemptyDouble(edtOtherPer.getText().toString().trim());
-                                    if(OtherPer > 0){
-                                        double  tmpOther= (((Gross - Disc - DiscII - DiscIII) * OtherPer) / 100);
-                                        if(tmpOther > 0){
-                                            String txtOther = String.format("%.2f",tmpOther);
+                                    if (OtherPer > 0) {
+                                        double tmpOther = (((Gross - Disc - DiscII - DiscIII) * OtherPer) / 100);
+                                        if (tmpOther > 0) {
+                                            String txtOther = String.format("%.2f", tmpOther);
                                             edtOther.setText(txtOther);
-                                        }else{
+                                        } else {
                                             edtOther.setText("");
                                         }
                                         Other = CheckValidate.checkemptyDouble(edtOther.getText().toString().trim());
-                                    }else
-                                    {
+                                    } else {
                                         Other = CheckValidate.checkemptyDouble(edtOther.getText().toString().trim());
                                     }
 
                                     OtherIIPer = CheckValidate.checkemptyDouble(edtOtherIIPer.getText().toString().trim());
-                                    if(OtherIIPer > 0)
-                                    {
-                                        double  tmpOtherII= (((Gross - Disc - DiscII - DiscIII + Other ) * OtherIIPer) / 100);
-                                        if(tmpOtherII > 0){
-                                            String txtOtherII = String.format("%.2f",tmpOtherII);
+                                    if (OtherIIPer > 0) {
+                                        double tmpOtherII = (((Gross - Disc - DiscII - DiscIII + Other) * OtherIIPer) / 100);
+                                        if (tmpOtherII > 0) {
+                                            String txtOtherII = String.format("%.2f", tmpOtherII);
                                             edtOtherII.setText(txtOtherII);
-                                        }else{
+                                        } else {
                                             edtOtherII.setText("");
                                         }
                                         OtherII = CheckValidate.checkemptyDouble(edtOtherII.getText().toString().trim());
-                                    }else
-                                    {
+                                    } else {
                                         OtherII = CheckValidate.checkemptyDouble(edtOtherII.getText().toString().trim());
                                     }
 
@@ -1610,40 +1522,40 @@ public class AddInvoiceActivity extends Activity {
                                     igstP = CheckValidate.checkemptyDouble(edtIGSTP.getText().toString().trim());
 
                                     double cgst = 0;
-                                    if(cgstP > 0) {
+                                    if (cgstP > 0) {
                                         double tmpCgst = (((Gross - Disc - DiscII - DiscIII + Other + OtherII) * cgstP) / 100);
-                                        String txtcgst = String.format("%.2f",tmpCgst);
+                                        String txtcgst = String.format("%.2f", tmpCgst);
                                         edtCGST.setText(txtcgst);
                                         cgst = CheckValidate.checkemptyDouble(edtCGST.getText().toString().trim());
-                                    }else{
+                                    } else {
                                         edtCGST.setText("");
                                     }
 
                                     double sgst = 0;
-                                    if(sgstP > 0) {
+                                    if (sgstP > 0) {
                                         double tmpSgst = (((Gross - Disc - DiscII - DiscIII + Other + OtherII) * sgstP) / 100);
-                                        String txtsgst = String.format("%.2f",tmpSgst);
+                                        String txtsgst = String.format("%.2f", tmpSgst);
                                         edtSGST.setText(txtsgst);
                                         sgst = CheckValidate.checkemptyDouble(edtSGST.getText().toString().trim());
-                                    }else{
+                                    } else {
                                         edtSGST.setText("");
                                     }
 
                                     double igst = 0;
-                                    if(igstP > 0){
+                                    if (igstP > 0) {
                                         double tmpIgst = (((Gross - Disc - DiscII - DiscIII + Other + OtherII) * igstP) / 100);
-                                        String txtigst = String.format("%.2f",tmpIgst);
+                                        String txtigst = String.format("%.2f", tmpIgst);
                                         edtIGST.setText(txtigst);
                                         igst = CheckValidate.checkemptyDouble(edtIGST.getText().toString().trim());
-                                    }else{
+                                    } else {
                                         edtIGST.setText("");
                                     }
 
                                     double totalAmount = (Gross - Disc - DiscII - DiscIII + Other + OtherII + cgst + sgst + igst);
-                                    String totalAmt = String.format("%.2f",totalAmount);
+                                    String totalAmt = String.format("%.2f", totalAmount);
                                     edtAmount.setText(totalAmt);
 
-                                }catch (NumberFormatException e){
+                                } catch (NumberFormatException e) {
                                     Toast.makeText(AddInvoiceActivity.this, e.toString(), Toast.LENGTH_LONG).show();
                                 }
                             }
@@ -1651,7 +1563,7 @@ public class AddInvoiceActivity extends Activity {
                             @Override
                             public void afterTextChanged(Editable s) {
                             }
-                    });
+                        });
 
                         edtDiscPer.addTextChangedListener(new TextWatcher() {
                             @Override
@@ -1661,43 +1573,39 @@ public class AddInvoiceActivity extends Activity {
 
                             @Override
                             public void onTextChanged(CharSequence s, int start, int before, int count) {
-                                try
-                                {
-                                edtAmount.setError(null);
-                                if (s.toString().trim().length()!=0) {
+                                try {
+                                    edtAmount.setError(null);
+                                    if (s.toString().trim().length() != 0) {
 
-                                    edtDisc.setEnabled(false);
-                                }
-                                else {
-                                    edtDisc.setEnabled(true);
-                                }
+                                        edtDisc.setEnabled(false);
+                                    } else {
+                                        edtDisc.setEnabled(true);
+                                    }
 
                                     Gross = CheckValidate.checkemptyDouble(edtGross.getText().toString().trim());
 
                                     DiscPer = CheckValidate.checkemptyDouble(s.toString());
-                                    double  tmpDisc = ((Gross * DiscPer) / 100);
-                                    if(tmpDisc > 0){
-                                        String txtDisc = String.format("%.2f",tmpDisc);
+                                    double tmpDisc = ((Gross * DiscPer) / 100);
+                                    if (tmpDisc > 0) {
+                                        String txtDisc = String.format("%.2f", tmpDisc);
                                         edtDisc.setText(txtDisc);
-                                    }else{
+                                    } else {
                                         edtDisc.setText("");
                                     }
                                     Disc = CheckValidate.checkemptyDouble(edtDisc.getText().toString().trim());
 
                                     DiscIIPer = CheckValidate.checkemptyDouble(edtDiscIIPer.getText().toString().trim());
-                                    if(DiscIIPer > 0)
-                                    {
-                                        double  tmpDiscII = (((Gross-Disc) * DiscIIPer) / 100);
-                                        if(tmpDiscII > 0){
-                                            String txtDiscII = String.format("%.2f",tmpDiscII);
+                                    if (DiscIIPer > 0) {
+                                        double tmpDiscII = (((Gross - Disc) * DiscIIPer) / 100);
+                                        if (tmpDiscII > 0) {
+                                            String txtDiscII = String.format("%.2f", tmpDiscII);
                                             edtDiscII.setText(txtDiscII);
 
-                                        }else{
+                                        } else {
                                             edtDiscII.setText("");
                                         }
                                         DiscII = CheckValidate.checkemptyDouble(edtDiscII.getText().toString().trim());
-                                    }else
-                                    {
+                                    } else {
                                         DiscII = CheckValidate.checkemptyDouble(edtDiscII.getText().toString().trim());
                                     }
 
@@ -1705,55 +1613,49 @@ public class AddInvoiceActivity extends Activity {
                                     if (DiscIIIPer > 0) {
 
                                         double tmpDiscIII = (((Gross - Disc - DiscII) * DiscIIIPer) / 100);
-                                        if(tmpDiscIII > 0){
-                                            String txtDiscIII = String.format("%.2f",tmpDiscIII);
+                                        if (tmpDiscIII > 0) {
+                                            String txtDiscIII = String.format("%.2f", tmpDiscIII);
                                             edtDiscIII.setText(txtDiscIII);
-                                        }else{
+                                        } else {
                                             edtDiscIII.setText("");
                                         }
                                         DiscIII = CheckValidate.checkemptyDouble(edtDiscIII.getText().toString().trim());
-                                    }else
-                                    {
+                                    } else {
                                         DiscIII = CheckValidate.checkemptyDouble(edtDiscIII.getText().toString().trim());
                                     }
 
                                     TotalDisc = Disc + DiscII + DiscIII;
-                                    if(CheckValidate.checkemptyDouble(String.valueOf(TotalDisc)) > 0)
-                                    {
-                                        edtTotalDisc.setText(String.format("%.2f",TotalDisc));
-                                    }else
-                                    {
+                                    if (CheckValidate.checkemptyDouble(String.valueOf(TotalDisc)) > 0) {
+                                        edtTotalDisc.setText(String.format("%.2f", TotalDisc));
+                                    } else {
                                         edtTotalDisc.setText("");
                                     }
 
                                     OtherPer = CheckValidate.checkemptyDouble(edtOtherPer.getText().toString().trim());
-                                    if(OtherPer > 0){
-                                        double  tmpOther= (((Gross - Disc - DiscII - DiscIII) * OtherPer) / 100);
-                                        if(tmpOther > 0){
-                                            String txtOther = String.format("%.2f",tmpOther);
+                                    if (OtherPer > 0) {
+                                        double tmpOther = (((Gross - Disc - DiscII - DiscIII) * OtherPer) / 100);
+                                        if (tmpOther > 0) {
+                                            String txtOther = String.format("%.2f", tmpOther);
                                             edtOther.setText(txtOther);
-                                        }else{
+                                        } else {
                                             edtOther.setText("");
                                         }
                                         Other = CheckValidate.checkemptyDouble(edtOther.getText().toString().trim());
-                                    }else
-                                    {
+                                    } else {
                                         Other = CheckValidate.checkemptyDouble(edtOther.getText().toString().trim());
                                     }
 
                                     OtherIIPer = CheckValidate.checkemptyDouble(edtOtherIIPer.getText().toString().trim());
-                                    if(OtherIIPer > 0)
-                                    {
-                                        double  tmpOtherII= (((Gross - Disc - DiscII - DiscIII + Other ) * OtherIIPer) / 100);
-                                        if(tmpOtherII > 0){
-                                            String txtOtherII = String.format("%.2f",tmpOtherII);
+                                    if (OtherIIPer > 0) {
+                                        double tmpOtherII = (((Gross - Disc - DiscII - DiscIII + Other) * OtherIIPer) / 100);
+                                        if (tmpOtherII > 0) {
+                                            String txtOtherII = String.format("%.2f", tmpOtherII);
                                             edtOtherII.setText(txtOtherII);
-                                        }else{
+                                        } else {
                                             edtOtherII.setText("");
                                         }
                                         OtherII = CheckValidate.checkemptyDouble(edtOtherII.getText().toString().trim());
-                                    }else
-                                    {
+                                    } else {
                                         OtherII = CheckValidate.checkemptyDouble(edtOtherII.getText().toString().trim());
                                     }
 
@@ -1762,39 +1664,39 @@ public class AddInvoiceActivity extends Activity {
                                     igstP = CheckValidate.checkemptyDouble(edtIGSTP.getText().toString().trim());
 
                                     double cgst = 0;
-                                    if(cgstP > 0) {
+                                    if (cgstP > 0) {
                                         double tmpCgst = (((Gross - Disc - DiscII - DiscIII + Other + OtherII) * cgstP) / 100);
-                                        String txtcgst = String.format("%.2f",tmpCgst);
+                                        String txtcgst = String.format("%.2f", tmpCgst);
                                         edtCGST.setText(txtcgst);
                                         cgst = CheckValidate.checkemptyDouble(edtCGST.getText().toString().trim());
-                                    }else{
+                                    } else {
                                         edtCGST.setText("");
                                     }
 
                                     double sgst = 0;
-                                    if(sgstP > 0) {
+                                    if (sgstP > 0) {
                                         double tmpSgst = (((Gross - Disc - DiscII - DiscIII + Other + OtherII) * sgstP) / 100);
-                                        String txtsgst = String.format("%.2f",tmpSgst);
+                                        String txtsgst = String.format("%.2f", tmpSgst);
                                         edtSGST.setText(txtsgst);
                                         sgst = CheckValidate.checkemptyDouble(edtSGST.getText().toString().trim());
-                                    }else{
+                                    } else {
                                         edtSGST.setText("");
                                     }
 
                                     double igst = 0;
-                                    if(igstP > 0){
+                                    if (igstP > 0) {
                                         double tmpIgst = (((Gross - Disc - DiscII - DiscIII + Other + OtherII) * igstP) / 100);
-                                        String txtigst = String.format("%.2f",tmpIgst);
+                                        String txtigst = String.format("%.2f", tmpIgst);
                                         edtIGST.setText(txtigst);
                                         igst = CheckValidate.checkemptyDouble(edtIGST.getText().toString().trim());
-                                    }else{
+                                    } else {
                                         edtIGST.setText("");
                                     }
 
                                     double totalAmount = (Gross - Disc - DiscII - DiscIII + Other + OtherII + cgst + sgst + igst);
-                                    String totalAmt = String.format("%.2f",totalAmount);
+                                    String totalAmt = String.format("%.2f", totalAmount);
                                     edtAmount.setText(totalAmt);
-                                }catch (NumberFormatException e){
+                                } catch (NumberFormatException e) {
                                     Toast.makeText(AddInvoiceActivity.this, e.toString(), Toast.LENGTH_LONG).show();
                                 }
                             }
@@ -1805,145 +1707,136 @@ public class AddInvoiceActivity extends Activity {
                             }
                         });
 
-                    edtDisc.addTextChangedListener(new TextWatcher() {
-                        @Override
-                        public void beforeTextChanged(CharSequence s, int start, int count, int after) {
+                        edtDisc.addTextChangedListener(new TextWatcher() {
+                            @Override
+                            public void beforeTextChanged(CharSequence s, int start, int count, int after) {
 
-                        }
-
-                        @Override
-                        public void onTextChanged(CharSequence s, int start, int before, int count) {
-                            try
-                            {
-                            edtAmount.setError(null);
-                                if (s.toString().trim().length()!=0) {
-                                }
-
-                                Gross = CheckValidate.checkemptyDouble(edtGross.getText().toString().trim());
-
-                                DiscPer = CheckValidate.checkemptyDouble(edtDiscPer.getText().toString().trim());
-                                Disc = CheckValidate.checkemptyDouble(s.toString());
-
-                                DiscIIPer = CheckValidate.checkemptyDouble(edtDiscIIPer.getText().toString().trim());
-                                if(DiscIIPer > 0)
-                                {
-                                    double  tmpDiscII = (((Gross-Disc) * DiscIIPer) / 100);
-                                    if(tmpDiscII > 0){
-                                        String txtDiscII = String.format("%.2f",tmpDiscII);
-                                        edtDiscII.setText(txtDiscII);
-
-                                    }else{
-                                        edtDiscII.setText("");
-                                    }
-                                    DiscII = CheckValidate.checkemptyDouble(edtDiscII.getText().toString().trim());
-                                }else
-                                {
-                                    DiscII = CheckValidate.checkemptyDouble(edtDiscII.getText().toString().trim());
-                                }
-
-                                DiscIIIPer = CheckValidate.checkemptyDouble(edtDiscIIIPer.getText().toString().trim());
-                                if (DiscIIIPer > 0) {
-
-                                    double tmpDiscIII = (((Gross - Disc - DiscII) * DiscIIIPer) / 100);
-                                    if(tmpDiscIII > 0){
-                                        String txtDiscIII = String.format("%.2f",tmpDiscIII);
-                                        edtDiscIII.setText(txtDiscIII);
-                                    }else{
-                                        edtDiscIII.setText("");
-                                    }
-                                    DiscIII = CheckValidate.checkemptyDouble(edtDiscIII.getText().toString().trim());
-                                }else
-                                {
-                                    DiscIII = CheckValidate.checkemptyDouble(edtDiscIII.getText().toString().trim());
-                                }
-
-                                TotalDisc = Disc + DiscII + DiscIII;
-                                if(CheckValidate.checkemptyDouble(String.valueOf(TotalDisc)) > 0)
-                                {
-                                    edtTotalDisc.setText(String.format("%.2f",TotalDisc));
-                                }else
-                                {
-                                    edtTotalDisc.setText("");
-                                }
-
-                                OtherPer = CheckValidate.checkemptyDouble(edtOtherPer.getText().toString().trim());
-                                if(OtherPer > 0){
-                                    double  tmpOther= (((Gross - Disc - DiscII - DiscIII) * OtherPer) / 100);
-                                    if(tmpOther > 0){
-                                        String txtOther = String.format("%.2f",tmpOther);
-                                        edtOther.setText(txtOther);
-                                    }else{
-                                        edtOther.setText("");
-                                    }
-                                    Other = CheckValidate.checkemptyDouble(edtOther.getText().toString().trim());
-                                }else
-                                {
-                                    Other = CheckValidate.checkemptyDouble(edtOther.getText().toString().trim());
-                                }
-
-                                OtherIIPer = CheckValidate.checkemptyDouble(edtOtherIIPer.getText().toString().trim());
-                                if(OtherIIPer > 0)
-                                {
-                                    double  tmpOtherII= (((Gross - Disc - DiscII - DiscIII + Other ) * OtherIIPer) / 100);
-                                    if(tmpOtherII > 0){
-                                        String txtOtherII = String.format("%.2f",tmpOtherII);
-                                        edtOtherII.setText(txtOtherII);
-                                    }else{
-                                        edtOtherII.setText("");
-                                    }
-                                    OtherII = CheckValidate.checkemptyDouble(edtOtherII.getText().toString().trim());
-                                }else
-                                {
-                                    OtherII = CheckValidate.checkemptyDouble(edtOtherII.getText().toString().trim());
-                                }
-
-                                cgstP = CheckValidate.checkemptyDouble(edtCGSTP.getText().toString().trim());
-                                sgstP = CheckValidate.checkemptyDouble(edtSGSTP.getText().toString().trim());
-                                igstP = CheckValidate.checkemptyDouble(edtIGSTP.getText().toString().trim());
-
-                                double cgst = 0;
-                                if(cgstP > 0) {
-                                    double tmpCgst = (((Gross - Disc - DiscII - DiscIII + Other + OtherII) * cgstP) / 100);
-                                    String txtcgst = String.format("%.2f",tmpCgst);
-                                    edtCGST.setText(txtcgst);
-                                    cgst = CheckValidate.checkemptyDouble(edtCGST.getText().toString().trim());
-                                }else{
-                                    edtCGST.setText("");
-                                }
-
-                                double sgst = 0;
-                                if(sgstP > 0) {
-                                    double tmpSgst = (((Gross - Disc - DiscII - DiscIII + Other + OtherII) * sgstP) / 100);
-                                    String txtsgst = String.format("%.2f",tmpSgst);
-                                    edtSGST.setText(txtsgst);
-                                    sgst = CheckValidate.checkemptyDouble(edtSGST.getText().toString().trim());
-                                }else{
-                                    edtSGST.setText("");
-                                }
-
-                                double igst = 0;
-                                if(igstP > 0){
-                                    double tmpIgst = (((Gross - Disc - DiscII - DiscIII + Other + OtherII) * igstP) / 100);
-                                    String txtigst = String.format("%.2f",tmpIgst);
-                                    edtIGST.setText(txtigst);
-                                    igst = CheckValidate.checkemptyDouble(edtIGST.getText().toString().trim());
-                                }else{
-                                    edtIGST.setText("");
-                                }
-
-                                double totalAmount = (Gross - Disc - DiscII - DiscIII + Other + OtherII + cgst + sgst + igst);
-                                String totalAmt = String.format("%.2f",totalAmount);
-                                edtAmount.setText(totalAmt);
-
-                            }catch (NumberFormatException e){
-                                Toast.makeText(AddInvoiceActivity.this, e.toString(), Toast.LENGTH_LONG).show();
                             }
-                        }
 
-                        @Override
-                        public void afterTextChanged(Editable s) {
-                        }
-                    });
+                            @Override
+                            public void onTextChanged(CharSequence s, int start, int before, int count) {
+                                try {
+                                    edtAmount.setError(null);
+                                    if (s.toString().trim().length() != 0) {
+                                    }
+
+                                    Gross = CheckValidate.checkemptyDouble(edtGross.getText().toString().trim());
+
+                                    DiscPer = CheckValidate.checkemptyDouble(edtDiscPer.getText().toString().trim());
+                                    Disc = CheckValidate.checkemptyDouble(s.toString());
+
+                                    DiscIIPer = CheckValidate.checkemptyDouble(edtDiscIIPer.getText().toString().trim());
+                                    if (DiscIIPer > 0) {
+                                        double tmpDiscII = (((Gross - Disc) * DiscIIPer) / 100);
+                                        if (tmpDiscII > 0) {
+                                            String txtDiscII = String.format("%.2f", tmpDiscII);
+                                            edtDiscII.setText(txtDiscII);
+
+                                        } else {
+                                            edtDiscII.setText("");
+                                        }
+                                        DiscII = CheckValidate.checkemptyDouble(edtDiscII.getText().toString().trim());
+                                    } else {
+                                        DiscII = CheckValidate.checkemptyDouble(edtDiscII.getText().toString().trim());
+                                    }
+
+                                    DiscIIIPer = CheckValidate.checkemptyDouble(edtDiscIIIPer.getText().toString().trim());
+                                    if (DiscIIIPer > 0) {
+
+                                        double tmpDiscIII = (((Gross - Disc - DiscII) * DiscIIIPer) / 100);
+                                        if (tmpDiscIII > 0) {
+                                            String txtDiscIII = String.format("%.2f", tmpDiscIII);
+                                            edtDiscIII.setText(txtDiscIII);
+                                        } else {
+                                            edtDiscIII.setText("");
+                                        }
+                                        DiscIII = CheckValidate.checkemptyDouble(edtDiscIII.getText().toString().trim());
+                                    } else {
+                                        DiscIII = CheckValidate.checkemptyDouble(edtDiscIII.getText().toString().trim());
+                                    }
+
+                                    TotalDisc = Disc + DiscII + DiscIII;
+                                    if (CheckValidate.checkemptyDouble(String.valueOf(TotalDisc)) > 0) {
+                                        edtTotalDisc.setText(String.format("%.2f", TotalDisc));
+                                    } else {
+                                        edtTotalDisc.setText("");
+                                    }
+
+                                    OtherPer = CheckValidate.checkemptyDouble(edtOtherPer.getText().toString().trim());
+                                    if (OtherPer > 0) {
+                                        double tmpOther = (((Gross - Disc - DiscII - DiscIII) * OtherPer) / 100);
+                                        if (tmpOther > 0) {
+                                            String txtOther = String.format("%.2f", tmpOther);
+                                            edtOther.setText(txtOther);
+                                        } else {
+                                            edtOther.setText("");
+                                        }
+                                        Other = CheckValidate.checkemptyDouble(edtOther.getText().toString().trim());
+                                    } else {
+                                        Other = CheckValidate.checkemptyDouble(edtOther.getText().toString().trim());
+                                    }
+
+                                    OtherIIPer = CheckValidate.checkemptyDouble(edtOtherIIPer.getText().toString().trim());
+                                    if (OtherIIPer > 0) {
+                                        double tmpOtherII = (((Gross - Disc - DiscII - DiscIII + Other) * OtherIIPer) / 100);
+                                        if (tmpOtherII > 0) {
+                                            String txtOtherII = String.format("%.2f", tmpOtherII);
+                                            edtOtherII.setText(txtOtherII);
+                                        } else {
+                                            edtOtherII.setText("");
+                                        }
+                                        OtherII = CheckValidate.checkemptyDouble(edtOtherII.getText().toString().trim());
+                                    } else {
+                                        OtherII = CheckValidate.checkemptyDouble(edtOtherII.getText().toString().trim());
+                                    }
+
+                                    cgstP = CheckValidate.checkemptyDouble(edtCGSTP.getText().toString().trim());
+                                    sgstP = CheckValidate.checkemptyDouble(edtSGSTP.getText().toString().trim());
+                                    igstP = CheckValidate.checkemptyDouble(edtIGSTP.getText().toString().trim());
+
+                                    double cgst = 0;
+                                    if (cgstP > 0) {
+                                        double tmpCgst = (((Gross - Disc - DiscII - DiscIII + Other + OtherII) * cgstP) / 100);
+                                        String txtcgst = String.format("%.2f", tmpCgst);
+                                        edtCGST.setText(txtcgst);
+                                        cgst = CheckValidate.checkemptyDouble(edtCGST.getText().toString().trim());
+                                    } else {
+                                        edtCGST.setText("");
+                                    }
+
+                                    double sgst = 0;
+                                    if (sgstP > 0) {
+                                        double tmpSgst = (((Gross - Disc - DiscII - DiscIII + Other + OtherII) * sgstP) / 100);
+                                        String txtsgst = String.format("%.2f", tmpSgst);
+                                        edtSGST.setText(txtsgst);
+                                        sgst = CheckValidate.checkemptyDouble(edtSGST.getText().toString().trim());
+                                    } else {
+                                        edtSGST.setText("");
+                                    }
+
+                                    double igst = 0;
+                                    if (igstP > 0) {
+                                        double tmpIgst = (((Gross - Disc - DiscII - DiscIII + Other + OtherII) * igstP) / 100);
+                                        String txtigst = String.format("%.2f", tmpIgst);
+                                        edtIGST.setText(txtigst);
+                                        igst = CheckValidate.checkemptyDouble(edtIGST.getText().toString().trim());
+                                    } else {
+                                        edtIGST.setText("");
+                                    }
+
+                                    double totalAmount = (Gross - Disc - DiscII - DiscIII + Other + OtherII + cgst + sgst + igst);
+                                    String totalAmt = String.format("%.2f", totalAmount);
+                                    edtAmount.setText(totalAmt);
+
+                                } catch (NumberFormatException e) {
+                                    Toast.makeText(AddInvoiceActivity.this, e.toString(), Toast.LENGTH_LONG).show();
+                                }
+                            }
+
+                            @Override
+                            public void afterTextChanged(Editable s) {
+                            }
+                        });
 
                         edtDiscIIPer.addTextChangedListener(new TextWatcher() {
                             @Override
@@ -1953,128 +1846,120 @@ public class AddInvoiceActivity extends Activity {
 
                             @Override
                             public void onTextChanged(CharSequence s, int start, int before, int count) {
-                                try
-                                {
-                                edtAmount.setError(null);
-                                if (s.toString().trim().length()!=0) {
+                                try {
+                                    edtAmount.setError(null);
+                                    if (s.toString().trim().length() != 0) {
 
-                                    edtDiscII.setEnabled(false);
-                                }
-                                else {
-                                    edtDiscII.setEnabled(true);
-                                }
+                                        edtDiscII.setEnabled(false);
+                                    } else {
+                                        edtDiscII.setEnabled(true);
+                                    }
 
-                                Gross = CheckValidate.checkemptyDouble(edtGross.getText().toString().trim());
+                                    Gross = CheckValidate.checkemptyDouble(edtGross.getText().toString().trim());
 
-                                DiscPer = CheckValidate.checkemptyDouble(edtDiscPer.getText().toString().trim());
-                                Disc = CheckValidate.checkemptyDouble(edtDisc.getText().toString().trim());
+                                    DiscPer = CheckValidate.checkemptyDouble(edtDiscPer.getText().toString().trim());
+                                    Disc = CheckValidate.checkemptyDouble(edtDisc.getText().toString().trim());
 
-                                DiscIIPer = CheckValidate.checkemptyDouble(s.toString());
-                                    double  tmpDiscII = (((Gross - Disc) * DiscIIPer) / 100);
-                                    if(tmpDiscII > 0){
-                                        String txtDiscII = String.format("%.2f",tmpDiscII);
+                                    DiscIIPer = CheckValidate.checkemptyDouble(s.toString());
+                                    double tmpDiscII = (((Gross - Disc) * DiscIIPer) / 100);
+                                    if (tmpDiscII > 0) {
+                                        String txtDiscII = String.format("%.2f", tmpDiscII);
                                         edtDiscII.setText(txtDiscII);
-                                    }else{
+                                    } else {
                                         edtDiscII.setText("");
                                     }
 
-                                DiscII = CheckValidate.checkemptyDouble(edtDiscII.getText().toString().trim());
+                                    DiscII = CheckValidate.checkemptyDouble(edtDiscII.getText().toString().trim());
 
-                                DiscIIIPer = CheckValidate.checkemptyDouble(edtDiscIIIPer.getText().toString().trim());
-                                if (DiscIIIPer > 0) {
+                                    DiscIIIPer = CheckValidate.checkemptyDouble(edtDiscIIIPer.getText().toString().trim());
+                                    if (DiscIIIPer > 0) {
 
-                                    double tmpDiscIII = (((Gross - Disc - DiscII) * DiscIIIPer) / 100);
-                                    if(tmpDiscIII > 0){
-                                        String txtDiscIII = String.format("%.2f",tmpDiscIII);
-                                        edtDiscIII.setText(txtDiscIII);
-                                    }else{
-                                        edtDiscIII.setText("");
+                                        double tmpDiscIII = (((Gross - Disc - DiscII) * DiscIIIPer) / 100);
+                                        if (tmpDiscIII > 0) {
+                                            String txtDiscIII = String.format("%.2f", tmpDiscIII);
+                                            edtDiscIII.setText(txtDiscIII);
+                                        } else {
+                                            edtDiscIII.setText("");
+                                        }
+                                        DiscIII = CheckValidate.checkemptyDouble(edtDiscIII.getText().toString().trim());
+                                    } else {
+                                        DiscIII = CheckValidate.checkemptyDouble(edtDiscIII.getText().toString().trim());
                                     }
-                                    DiscIII = CheckValidate.checkemptyDouble(edtDiscIII.getText().toString().trim());
-                                }else
-                                {
-                                    DiscIII = CheckValidate.checkemptyDouble(edtDiscIII.getText().toString().trim());
-                                }
 
                                     TotalDisc = Disc + DiscII + DiscIII;
-                                    if(CheckValidate.checkemptyDouble(String.valueOf(TotalDisc)) > 0)
-                                    {
-                                        edtTotalDisc.setText(String.format("%.2f",TotalDisc));
-                                    }else
-                                    {
+                                    if (CheckValidate.checkemptyDouble(String.valueOf(TotalDisc)) > 0) {
+                                        edtTotalDisc.setText(String.format("%.2f", TotalDisc));
+                                    } else {
                                         edtTotalDisc.setText("");
                                     }
 
-                                OtherPer = CheckValidate.checkemptyDouble(edtOtherPer.getText().toString().trim());
-                                if(OtherPer > 0){
-                                    double  tmpOther= (((Gross - Disc - DiscII - DiscIII) * OtherPer) / 100);
-                                    if(tmpOther > 0){
-                                        String txtOther = String.format("%.2f",tmpOther);
-                                        edtOther.setText(txtOther);
-                                    }else{
-                                        edtOther.setText("");
+                                    OtherPer = CheckValidate.checkemptyDouble(edtOtherPer.getText().toString().trim());
+                                    if (OtherPer > 0) {
+                                        double tmpOther = (((Gross - Disc - DiscII - DiscIII) * OtherPer) / 100);
+                                        if (tmpOther > 0) {
+                                            String txtOther = String.format("%.2f", tmpOther);
+                                            edtOther.setText(txtOther);
+                                        } else {
+                                            edtOther.setText("");
+                                        }
+                                        Other = CheckValidate.checkemptyDouble(edtOther.getText().toString().trim());
+                                    } else {
+                                        Other = CheckValidate.checkemptyDouble(edtOther.getText().toString().trim());
                                     }
-                                    Other = CheckValidate.checkemptyDouble(edtOther.getText().toString().trim());
-                                }else
-                                {
-                                    Other = CheckValidate.checkemptyDouble(edtOther.getText().toString().trim());
-                                }
 
-                                OtherIIPer = CheckValidate.checkemptyDouble(edtOtherIIPer.getText().toString().trim());
-                                if(OtherIIPer > 0)
-                                {
-                                    double  tmpOtherII= (((Gross - Disc - DiscII - DiscIII + Other ) * OtherIIPer) / 100);
-                                    if(tmpOtherII > 0){
-                                        String txtOtherII = String.format("%.2f",tmpOtherII);
-                                        edtOtherII.setText(txtOtherII);
-                                    }else{
-                                        edtOtherII.setText("");
+                                    OtherIIPer = CheckValidate.checkemptyDouble(edtOtherIIPer.getText().toString().trim());
+                                    if (OtherIIPer > 0) {
+                                        double tmpOtherII = (((Gross - Disc - DiscII - DiscIII + Other) * OtherIIPer) / 100);
+                                        if (tmpOtherII > 0) {
+                                            String txtOtherII = String.format("%.2f", tmpOtherII);
+                                            edtOtherII.setText(txtOtherII);
+                                        } else {
+                                            edtOtherII.setText("");
+                                        }
+                                        OtherII = CheckValidate.checkemptyDouble(edtOtherII.getText().toString().trim());
+                                    } else {
+                                        OtherII = CheckValidate.checkemptyDouble(edtOtherII.getText().toString().trim());
                                     }
-                                    OtherII = CheckValidate.checkemptyDouble(edtOtherII.getText().toString().trim());
-                                }else
-                                {
-                                    OtherII = CheckValidate.checkemptyDouble(edtOtherII.getText().toString().trim());
-                                }
 
-                                cgstP = CheckValidate.checkemptyDouble(edtCGSTP.getText().toString().trim());
-                                sgstP = CheckValidate.checkemptyDouble(edtSGSTP.getText().toString().trim());
-                                igstP = CheckValidate.checkemptyDouble(edtIGSTP.getText().toString().trim());
+                                    cgstP = CheckValidate.checkemptyDouble(edtCGSTP.getText().toString().trim());
+                                    sgstP = CheckValidate.checkemptyDouble(edtSGSTP.getText().toString().trim());
+                                    igstP = CheckValidate.checkemptyDouble(edtIGSTP.getText().toString().trim());
 
-                                double cgst = 0;
-                                if(cgstP > 0) {
-                                    double tmpCgst = (((Gross - Disc - DiscII - DiscIII + Other + OtherII) * cgstP) / 100);
-                                    String txtcgst = String.format("%.2f",tmpCgst);
-                                    edtCGST.setText(txtcgst);
-                                    cgst = CheckValidate.checkemptyDouble(edtCGST.getText().toString().trim());
-                                }else{
-                                    edtCGST.setText("");
-                                }
+                                    double cgst = 0;
+                                    if (cgstP > 0) {
+                                        double tmpCgst = (((Gross - Disc - DiscII - DiscIII + Other + OtherII) * cgstP) / 100);
+                                        String txtcgst = String.format("%.2f", tmpCgst);
+                                        edtCGST.setText(txtcgst);
+                                        cgst = CheckValidate.checkemptyDouble(edtCGST.getText().toString().trim());
+                                    } else {
+                                        edtCGST.setText("");
+                                    }
 
-                                double sgst = 0;
-                                if(sgstP > 0) {
-                                    double tmpSgst = (((Gross - Disc - DiscII - DiscIII + Other + OtherII) * sgstP) / 100);
-                                    String txtsgst = String.format("%.2f",tmpSgst);
-                                    edtSGST.setText(txtsgst);
-                                    sgst = CheckValidate.checkemptyDouble(edtSGST.getText().toString().trim());
-                                }else{
-                                    edtSGST.setText("");
-                                }
+                                    double sgst = 0;
+                                    if (sgstP > 0) {
+                                        double tmpSgst = (((Gross - Disc - DiscII - DiscIII + Other + OtherII) * sgstP) / 100);
+                                        String txtsgst = String.format("%.2f", tmpSgst);
+                                        edtSGST.setText(txtsgst);
+                                        sgst = CheckValidate.checkemptyDouble(edtSGST.getText().toString().trim());
+                                    } else {
+                                        edtSGST.setText("");
+                                    }
 
-                                double igst = 0;
-                                if(igstP > 0){
-                                    double tmpIgst = (((Gross - Disc - DiscII - DiscIII + Other + OtherII) * igstP) / 100);
-                                    String txtigst = String.format("%.2f",tmpIgst);
-                                    edtIGST.setText(txtigst);
-                                    igst = CheckValidate.checkemptyDouble(edtIGST.getText().toString().trim());
-                                }else{
-                                    edtIGST.setText("");
-                                }
+                                    double igst = 0;
+                                    if (igstP > 0) {
+                                        double tmpIgst = (((Gross - Disc - DiscII - DiscIII + Other + OtherII) * igstP) / 100);
+                                        String txtigst = String.format("%.2f", tmpIgst);
+                                        edtIGST.setText(txtigst);
+                                        igst = CheckValidate.checkemptyDouble(edtIGST.getText().toString().trim());
+                                    } else {
+                                        edtIGST.setText("");
+                                    }
 
-                                double totalAmount = (Gross - Disc - DiscII - DiscIII + Other + OtherII + cgst + sgst + igst);
-                                String totalAmt = String.format("%.2f",totalAmount);
-                                edtAmount.setText(totalAmt);
+                                    double totalAmount = (Gross - Disc - DiscII - DiscIII + Other + OtherII + cgst + sgst + igst);
+                                    String totalAmt = String.format("%.2f", totalAmount);
+                                    edtAmount.setText(totalAmt);
 
-                                }catch (NumberFormatException e){
+                                } catch (NumberFormatException e) {
                                     Toast.makeText(AddInvoiceActivity.this, e.toString(), Toast.LENGTH_LONG).show();
                                 }
                             }
@@ -2093,10 +1978,9 @@ public class AddInvoiceActivity extends Activity {
 
                             @Override
                             public void onTextChanged(CharSequence s, int start, int before, int count) {
-                                try
-                                {
-                                edtAmount.setError(null);
-                                    if (s.toString().trim().length()!=0) {
+                                try {
+                                    edtAmount.setError(null);
+                                    if (s.toString().trim().length() != 0) {
                                     }
 
                                     Gross = CheckValidate.checkemptyDouble(edtGross.getText().toString().trim());
@@ -2111,55 +1995,49 @@ public class AddInvoiceActivity extends Activity {
                                     if (DiscIIIPer > 0) {
 
                                         double tmpDiscIII = (((Gross - Disc - DiscII) * DiscIIIPer) / 100);
-                                        if(tmpDiscIII > 0){
-                                            String txtDiscIII = String.format("%.2f",tmpDiscIII);
+                                        if (tmpDiscIII > 0) {
+                                            String txtDiscIII = String.format("%.2f", tmpDiscIII);
                                             edtDiscIII.setText(txtDiscIII);
-                                        }else{
+                                        } else {
                                             edtDiscIII.setText("");
                                         }
                                         DiscIII = CheckValidate.checkemptyDouble(edtDiscIII.getText().toString().trim());
-                                    }else
-                                    {
+                                    } else {
                                         DiscIII = CheckValidate.checkemptyDouble(edtDiscIII.getText().toString().trim());
                                     }
 
                                     TotalDisc = Disc + DiscII + DiscIII;
-                                    if(CheckValidate.checkemptyDouble(String.valueOf(TotalDisc)) > 0)
-                                    {
-                                        edtTotalDisc.setText(String.format("%.2f",TotalDisc));
-                                    }else
-                                    {
+                                    if (CheckValidate.checkemptyDouble(String.valueOf(TotalDisc)) > 0) {
+                                        edtTotalDisc.setText(String.format("%.2f", TotalDisc));
+                                    } else {
                                         edtTotalDisc.setText("");
                                     }
 
                                     OtherPer = CheckValidate.checkemptyDouble(edtOtherPer.getText().toString().trim());
-                                    if(OtherPer > 0){
-                                        double  tmpOther= (((Gross - Disc - DiscII - DiscIII) * OtherPer) / 100);
-                                        if(tmpOther > 0){
-                                            String txtOther = String.format("%.2f",tmpOther);
+                                    if (OtherPer > 0) {
+                                        double tmpOther = (((Gross - Disc - DiscII - DiscIII) * OtherPer) / 100);
+                                        if (tmpOther > 0) {
+                                            String txtOther = String.format("%.2f", tmpOther);
                                             edtOther.setText(txtOther);
-                                        }else{
+                                        } else {
                                             edtOther.setText("");
                                         }
                                         Other = CheckValidate.checkemptyDouble(edtOther.getText().toString().trim());
-                                    }else
-                                    {
+                                    } else {
                                         Other = CheckValidate.checkemptyDouble(edtOther.getText().toString().trim());
                                     }
 
                                     OtherIIPer = CheckValidate.checkemptyDouble(edtOtherIIPer.getText().toString().trim());
-                                    if(OtherIIPer > 0)
-                                    {
-                                        double  tmpOtherII= (((Gross - Disc - DiscII - DiscIII + Other ) * OtherIIPer) / 100);
-                                        if(tmpOtherII > 0){
-                                            String txtOtherII = String.format("%.2f",tmpOtherII);
+                                    if (OtherIIPer > 0) {
+                                        double tmpOtherII = (((Gross - Disc - DiscII - DiscIII + Other) * OtherIIPer) / 100);
+                                        if (tmpOtherII > 0) {
+                                            String txtOtherII = String.format("%.2f", tmpOtherII);
                                             edtOtherII.setText(txtOtherII);
-                                        }else{
+                                        } else {
                                             edtOtherII.setText("");
                                         }
                                         OtherII = CheckValidate.checkemptyDouble(edtOtherII.getText().toString().trim());
-                                    }else
-                                    {
+                                    } else {
                                         OtherII = CheckValidate.checkemptyDouble(edtOtherII.getText().toString().trim());
                                     }
 
@@ -2168,39 +2046,39 @@ public class AddInvoiceActivity extends Activity {
                                     igstP = CheckValidate.checkemptyDouble(edtIGSTP.getText().toString().trim());
 
                                     double cgst = 0;
-                                    if(cgstP > 0) {
+                                    if (cgstP > 0) {
                                         double tmpCgst = (((Gross - Disc - DiscII - DiscIII + Other + OtherII) * cgstP) / 100);
-                                        String txtcgst = String.format("%.2f",tmpCgst);
+                                        String txtcgst = String.format("%.2f", tmpCgst);
                                         edtCGST.setText(txtcgst);
                                         cgst = CheckValidate.checkemptyDouble(edtCGST.getText().toString().trim());
-                                    }else{
+                                    } else {
                                         edtCGST.setText("");
                                     }
 
                                     double sgst = 0;
-                                    if(sgstP > 0) {
+                                    if (sgstP > 0) {
                                         double tmpSgst = (((Gross - Disc - DiscII - DiscIII + Other + OtherII) * sgstP) / 100);
-                                        String txtsgst = String.format("%.2f",tmpSgst);
+                                        String txtsgst = String.format("%.2f", tmpSgst);
                                         edtSGST.setText(txtsgst);
                                         sgst = CheckValidate.checkemptyDouble(edtSGST.getText().toString().trim());
-                                    }else{
+                                    } else {
                                         edtSGST.setText("");
                                     }
 
                                     double igst = 0;
-                                    if(igstP > 0){
+                                    if (igstP > 0) {
                                         double tmpIgst = (((Gross - Disc - DiscII - DiscIII + Other + OtherII) * igstP) / 100);
-                                        String txtigst = String.format("%.2f",tmpIgst);
+                                        String txtigst = String.format("%.2f", tmpIgst);
                                         edtIGST.setText(txtigst);
                                         igst = CheckValidate.checkemptyDouble(edtIGST.getText().toString().trim());
-                                    }else{
+                                    } else {
                                         edtIGST.setText("");
                                     }
 
                                     double totalAmount = (Gross - Disc - DiscII - DiscIII + Other + OtherII + cgst + sgst + igst);
-                                    String totalAmt = String.format("%.2f",totalAmount);
+                                    String totalAmt = String.format("%.2f", totalAmount);
                                     edtAmount.setText(totalAmt);
-                                }catch (NumberFormatException e){
+                                } catch (NumberFormatException e) {
                                     Toast.makeText(AddInvoiceActivity.this, e.toString(), Toast.LENGTH_LONG).show();
                                 }
                             }
@@ -2218,112 +2096,105 @@ public class AddInvoiceActivity extends Activity {
 
                             @Override
                             public void onTextChanged(CharSequence s, int start, int before, int count) {
-                                try
-                                {
-                                edtAmount.setError(null);
-                                if (s.toString().trim().length()!=0) {
-                                    edtDiscIII.setEnabled(false);
-                                }
-                                else {
-                                    edtDiscIII.setEnabled(true);
-                                }
-
-                                Gross = CheckValidate.checkemptyDouble(edtGross.getText().toString().trim());
-
-                                DiscPer = CheckValidate.checkemptyDouble(edtDiscPer.getText().toString().trim());
-                                Disc = CheckValidate.checkemptyDouble(edtDisc.getText().toString().trim());
-
-                                DiscIIPer = CheckValidate.checkemptyDouble(edtDiscIIPer.getText().toString().trim());
-                                DiscII = CheckValidate.checkemptyDouble(edtDiscII.getText().toString().trim());
-
-                                DiscIIIPer = CheckValidate.checkemptyDouble(s.toString());
-                                double  tmpDiscIII = (((Gross - Disc - DiscII) * DiscIIIPer) / 100);
-                                if(tmpDiscIII > 0){
-                                    String txtDiscIII = String.format("%.2f",tmpDiscIII);
-                                    edtDiscIII.setText(txtDiscIII);
-                                }else{
-                                    edtDiscIII.setText("");
-                                }
-                                DiscIII = CheckValidate.checkemptyDouble(edtDiscIII.getText().toString().trim());
-
-                                TotalDisc = Disc + DiscII + DiscIII;
-                                if(CheckValidate.checkemptyDouble(String.valueOf(TotalDisc)) > 0)
-                                {
-                                     edtTotalDisc.setText(String.format("%.2f",TotalDisc));
-                                }else
-                                {
-                                     edtTotalDisc.setText("");
-                                 }
-
-                                OtherPer = CheckValidate.checkemptyDouble(edtOtherPer.getText().toString().trim());
-                                if(OtherPer > 0){
-                                    double  tmpOther= (((Gross - Disc - DiscII - DiscIII) * OtherPer) / 100);
-                                    if(tmpOther > 0){
-                                        String txtOther = String.format("%.2f",tmpOther);
-                                        edtOther.setText(txtOther);
-                                    }else{
-                                        edtOther.setText("");
+                                try {
+                                    edtAmount.setError(null);
+                                    if (s.toString().trim().length() != 0) {
+                                        edtDiscIII.setEnabled(false);
+                                    } else {
+                                        edtDiscIII.setEnabled(true);
                                     }
-                                    Other = CheckValidate.checkemptyDouble(edtOther.getText().toString().trim());
-                                }else
-                                {
-                                    Other = CheckValidate.checkemptyDouble(edtOther.getText().toString().trim());
-                                }
 
-                                OtherIIPer = CheckValidate.checkemptyDouble(edtOtherIIPer.getText().toString().trim());
-                                if(OtherIIPer > 0)
-                                {
-                                    double  tmpOtherII= (((Gross - Disc - DiscII - DiscIII + Other ) * OtherIIPer) / 100);
-                                    if(tmpOtherII > 0){
-                                        String txtOtherII = String.format("%.2f",tmpOtherII);
-                                        edtOtherII.setText(txtOtherII);
-                                    }else{
-                                        edtOtherII.setText("");
+                                    Gross = CheckValidate.checkemptyDouble(edtGross.getText().toString().trim());
+
+                                    DiscPer = CheckValidate.checkemptyDouble(edtDiscPer.getText().toString().trim());
+                                    Disc = CheckValidate.checkemptyDouble(edtDisc.getText().toString().trim());
+
+                                    DiscIIPer = CheckValidate.checkemptyDouble(edtDiscIIPer.getText().toString().trim());
+                                    DiscII = CheckValidate.checkemptyDouble(edtDiscII.getText().toString().trim());
+
+                                    DiscIIIPer = CheckValidate.checkemptyDouble(s.toString());
+                                    double tmpDiscIII = (((Gross - Disc - DiscII) * DiscIIIPer) / 100);
+                                    if (tmpDiscIII > 0) {
+                                        String txtDiscIII = String.format("%.2f", tmpDiscIII);
+                                        edtDiscIII.setText(txtDiscIII);
+                                    } else {
+                                        edtDiscIII.setText("");
                                     }
-                                    OtherII = CheckValidate.checkemptyDouble(edtOtherII.getText().toString().trim());
-                                }else
-                                {
-                                    OtherII = CheckValidate.checkemptyDouble(edtOtherII.getText().toString().trim());
-                                }
+                                    DiscIII = CheckValidate.checkemptyDouble(edtDiscIII.getText().toString().trim());
 
-                                cgstP = CheckValidate.checkemptyDouble(edtCGSTP.getText().toString().trim());
-                                sgstP = CheckValidate.checkemptyDouble(edtSGSTP.getText().toString().trim());
-                                igstP = CheckValidate.checkemptyDouble(edtIGSTP.getText().toString().trim());
+                                    TotalDisc = Disc + DiscII + DiscIII;
+                                    if (CheckValidate.checkemptyDouble(String.valueOf(TotalDisc)) > 0) {
+                                        edtTotalDisc.setText(String.format("%.2f", TotalDisc));
+                                    } else {
+                                        edtTotalDisc.setText("");
+                                    }
 
-                                double cgst = 0;
-                                if(cgstP > 0) {
-                                    double tmpCgst = (((Gross - Disc - DiscII - DiscIII + Other + OtherII) * cgstP) / 100);
-                                    String txtcgst = String.format("%.2f",tmpCgst);
-                                    edtCGST.setText(txtcgst);
-                                    cgst = CheckValidate.checkemptyDouble(edtCGST.getText().toString().trim());
-                                }else{
-                                    edtCGST.setText("");
-                                }
+                                    OtherPer = CheckValidate.checkemptyDouble(edtOtherPer.getText().toString().trim());
+                                    if (OtherPer > 0) {
+                                        double tmpOther = (((Gross - Disc - DiscII - DiscIII) * OtherPer) / 100);
+                                        if (tmpOther > 0) {
+                                            String txtOther = String.format("%.2f", tmpOther);
+                                            edtOther.setText(txtOther);
+                                        } else {
+                                            edtOther.setText("");
+                                        }
+                                        Other = CheckValidate.checkemptyDouble(edtOther.getText().toString().trim());
+                                    } else {
+                                        Other = CheckValidate.checkemptyDouble(edtOther.getText().toString().trim());
+                                    }
 
-                                double sgst = 0;
-                                if(sgstP > 0) {
-                                    double tmpSgst = (((Gross - Disc - DiscII - DiscIII + Other + OtherII) * sgstP) / 100);
-                                    String txtsgst = String.format("%.2f",tmpSgst);
-                                    edtSGST.setText(txtsgst);
-                                    sgst = CheckValidate.checkemptyDouble(edtSGST.getText().toString().trim());
-                                }else{
-                                    edtSGST.setText("");
-                                }
+                                    OtherIIPer = CheckValidate.checkemptyDouble(edtOtherIIPer.getText().toString().trim());
+                                    if (OtherIIPer > 0) {
+                                        double tmpOtherII = (((Gross - Disc - DiscII - DiscIII + Other) * OtherIIPer) / 100);
+                                        if (tmpOtherII > 0) {
+                                            String txtOtherII = String.format("%.2f", tmpOtherII);
+                                            edtOtherII.setText(txtOtherII);
+                                        } else {
+                                            edtOtherII.setText("");
+                                        }
+                                        OtherII = CheckValidate.checkemptyDouble(edtOtherII.getText().toString().trim());
+                                    } else {
+                                        OtherII = CheckValidate.checkemptyDouble(edtOtherII.getText().toString().trim());
+                                    }
 
-                                double igst = 0;
-                                if(igstP > 0){
-                                    double tmpIgst = (((Gross - Disc - DiscII - DiscIII + Other + OtherII) * igstP) / 100);
-                                    String txtigst = String.format("%.2f",tmpIgst);
-                                    edtIGST.setText(txtigst);
-                                    igst = CheckValidate.checkemptyDouble(edtIGST.getText().toString().trim());
-                                }else{
-                                    edtIGST.setText("");
-                                }
+                                    cgstP = CheckValidate.checkemptyDouble(edtCGSTP.getText().toString().trim());
+                                    sgstP = CheckValidate.checkemptyDouble(edtSGSTP.getText().toString().trim());
+                                    igstP = CheckValidate.checkemptyDouble(edtIGSTP.getText().toString().trim());
 
-                                double totalAmount = (Gross - Disc - DiscII - DiscIII + Other + OtherII + cgst + sgst + igst);
-                                String totalAmt = String.format("%.2f",totalAmount);
-                                edtAmount.setText(totalAmt);
-                                }catch (NumberFormatException e){
+                                    double cgst = 0;
+                                    if (cgstP > 0) {
+                                        double tmpCgst = (((Gross - Disc - DiscII - DiscIII + Other + OtherII) * cgstP) / 100);
+                                        String txtcgst = String.format("%.2f", tmpCgst);
+                                        edtCGST.setText(txtcgst);
+                                        cgst = CheckValidate.checkemptyDouble(edtCGST.getText().toString().trim());
+                                    } else {
+                                        edtCGST.setText("");
+                                    }
+
+                                    double sgst = 0;
+                                    if (sgstP > 0) {
+                                        double tmpSgst = (((Gross - Disc - DiscII - DiscIII + Other + OtherII) * sgstP) / 100);
+                                        String txtsgst = String.format("%.2f", tmpSgst);
+                                        edtSGST.setText(txtsgst);
+                                        sgst = CheckValidate.checkemptyDouble(edtSGST.getText().toString().trim());
+                                    } else {
+                                        edtSGST.setText("");
+                                    }
+
+                                    double igst = 0;
+                                    if (igstP > 0) {
+                                        double tmpIgst = (((Gross - Disc - DiscII - DiscIII + Other + OtherII) * igstP) / 100);
+                                        String txtigst = String.format("%.2f", tmpIgst);
+                                        edtIGST.setText(txtigst);
+                                        igst = CheckValidate.checkemptyDouble(edtIGST.getText().toString().trim());
+                                    } else {
+                                        edtIGST.setText("");
+                                    }
+
+                                    double totalAmount = (Gross - Disc - DiscII - DiscIII + Other + OtherII + cgst + sgst + igst);
+                                    String totalAmt = String.format("%.2f", totalAmount);
+                                    edtAmount.setText(totalAmt);
+                                } catch (NumberFormatException e) {
                                     Toast.makeText(AddInvoiceActivity.this, e.toString(), Toast.LENGTH_LONG).show();
                                 }
                             }
@@ -2341,10 +2212,9 @@ public class AddInvoiceActivity extends Activity {
 
                             @Override
                             public void onTextChanged(CharSequence s, int start, int before, int count) {
-                                try
-                                {
-                                edtAmount.setError(null);
-                                if (s.toString().trim().length()!=0) {
+                                try {
+                                    edtAmount.setError(null);
+                                    if (s.toString().trim().length() != 0) {
                                     }
 
                                     Gross = CheckValidate.checkemptyDouble(edtGross.getText().toString().trim());
@@ -2359,42 +2229,37 @@ public class AddInvoiceActivity extends Activity {
                                     DiscIII = CheckValidate.checkemptyDouble(s.toString());
 
                                     TotalDisc = Disc + DiscII + DiscIII;
-                                    if(CheckValidate.checkemptyDouble(String.valueOf(TotalDisc)) > 0)
-                                    {
-                                        edtTotalDisc.setText(String.format("%.2f",TotalDisc));
-                                    }else
-                                    {
+                                    if (CheckValidate.checkemptyDouble(String.valueOf(TotalDisc)) > 0) {
+                                        edtTotalDisc.setText(String.format("%.2f", TotalDisc));
+                                    } else {
                                         edtTotalDisc.setText("");
                                     }
 
                                     OtherPer = CheckValidate.checkemptyDouble(edtOtherPer.getText().toString().trim());
-                                    if(OtherPer > 0){
-                                        double  tmpOther= (((Gross - Disc - DiscII - DiscIII) * OtherPer) / 100);
-                                        if(tmpOther > 0){
-                                            String txtOther = String.format("%.2f",tmpOther);
+                                    if (OtherPer > 0) {
+                                        double tmpOther = (((Gross - Disc - DiscII - DiscIII) * OtherPer) / 100);
+                                        if (tmpOther > 0) {
+                                            String txtOther = String.format("%.2f", tmpOther);
                                             edtOther.setText(txtOther);
-                                        }else{
+                                        } else {
                                             edtOther.setText("");
                                         }
                                         Other = CheckValidate.checkemptyDouble(edtOther.getText().toString().trim());
-                                    }else
-                                    {
+                                    } else {
                                         Other = CheckValidate.checkemptyDouble(edtOther.getText().toString().trim());
                                     }
 
                                     OtherIIPer = CheckValidate.checkemptyDouble(edtOtherIIPer.getText().toString().trim());
-                                    if(OtherIIPer > 0)
-                                    {
-                                        double  tmpOtherII= (((Gross - Disc - DiscII - DiscIII + Other ) * OtherIIPer) / 100);
-                                        if(tmpOtherII > 0){
-                                            String txtOtherII = String.format("%.2f",tmpOtherII);
+                                    if (OtherIIPer > 0) {
+                                        double tmpOtherII = (((Gross - Disc - DiscII - DiscIII + Other) * OtherIIPer) / 100);
+                                        if (tmpOtherII > 0) {
+                                            String txtOtherII = String.format("%.2f", tmpOtherII);
                                             edtOtherII.setText(txtOtherII);
-                                        }else{
+                                        } else {
                                             edtOtherII.setText("");
                                         }
                                         OtherII = CheckValidate.checkemptyDouble(edtOtherII.getText().toString().trim());
-                                    }else
-                                    {
+                                    } else {
                                         OtherII = CheckValidate.checkemptyDouble(edtOtherII.getText().toString().trim());
                                     }
 
@@ -2403,42 +2268,42 @@ public class AddInvoiceActivity extends Activity {
                                     igstP = CheckValidate.checkemptyDouble(edtIGSTP.getText().toString().trim());
 
                                     double cgst = 0;
-                                    if(cgstP > 0) {
+                                    if (cgstP > 0) {
                                         double tmpCgst = (((Gross - Disc - DiscII - DiscIII + Other + OtherII) * cgstP) / 100);
-                                        String txtcgst = String.format("%.2f",tmpCgst);
+                                        String txtcgst = String.format("%.2f", tmpCgst);
                                         edtCGST.setText(txtcgst);
                                         cgst = CheckValidate.checkemptyDouble(edtCGST.getText().toString().trim());
-                                    }else{
+                                    } else {
                                         edtCGST.setText("");
                                     }
 
                                     double sgst = 0;
-                                    if(sgstP > 0) {
+                                    if (sgstP > 0) {
                                         double tmpSgst = (((Gross - Disc - DiscII - DiscIII + Other + OtherII) * sgstP) / 100);
-                                        String txtsgst = String.format("%.2f",tmpSgst);
+                                        String txtsgst = String.format("%.2f", tmpSgst);
                                         edtSGST.setText(txtsgst);
                                         sgst = CheckValidate.checkemptyDouble(edtSGST.getText().toString().trim());
-                                    }else{
+                                    } else {
                                         edtSGST.setText("");
                                     }
 
                                     double igst = 0;
-                                    if(igstP > 0){
+                                    if (igstP > 0) {
                                         double tmpIgst = (((Gross - Disc - DiscII - DiscIII + Other + OtherII) * igstP) / 100);
-                                        String txtigst = String.format("%.2f",tmpIgst);
+                                        String txtigst = String.format("%.2f", tmpIgst);
                                         edtIGST.setText(txtigst);
                                         igst = CheckValidate.checkemptyDouble(edtIGST.getText().toString().trim());
-                                    }else{
+                                    } else {
                                         edtIGST.setText("");
                                     }
 
                                     double totalAmount = (Gross - Disc - DiscII - DiscIII + Other + OtherII + cgst + sgst + igst);
-                                    String totalAmt = String.format("%.2f",totalAmount);
+                                    String totalAmt = String.format("%.2f", totalAmount);
                                     edtAmount.setText(totalAmt);
-                                }catch (NumberFormatException e){
+                                } catch (NumberFormatException e) {
                                     Toast.makeText(AddInvoiceActivity.this, e.toString(), Toast.LENGTH_LONG).show();
                                 }
-                                }
+                            }
 
                             @Override
                             public void afterTextChanged(Editable s) {
@@ -2453,93 +2318,89 @@ public class AddInvoiceActivity extends Activity {
 
                             @Override
                             public void onTextChanged(CharSequence s, int start, int before, int count) {
-                                try
-                                {
-                                edtAmount.setError(null);
-                                if (s.toString().trim().length()!=0) {
+                                try {
+                                    edtAmount.setError(null);
+                                    if (s.toString().trim().length() != 0) {
 
-                                    edtOther.setEnabled(false);
+                                        edtOther.setEnabled(false);
 
-                                }
-                                else {
-                                    edtOther.setEnabled(true);
-                                }
-
-                                Gross = CheckValidate.checkemptyDouble(edtGross.getText().toString().trim());
-
-                                DiscPer = CheckValidate.checkemptyDouble(edtDiscPer.getText().toString().trim());
-                                Disc = CheckValidate.checkemptyDouble(edtDisc.getText().toString().trim());
-
-                                DiscIIPer = CheckValidate.checkemptyDouble(edtDiscIIPer.getText().toString().trim());
-                                DiscII = CheckValidate.checkemptyDouble(edtDiscII.getText().toString().trim());
-
-                                DiscIIIPer = CheckValidate.checkemptyDouble(edtDiscIIIPer.getText().toString().trim());
-                                DiscIII = CheckValidate.checkemptyDouble(edtDiscIII.getText().toString().trim());
-
-                                OtherPer = CheckValidate.checkemptyDouble(s.toString());
-                                double  tmpOther= (((Gross - Disc - DiscII - DiscIII) * OtherPer) / 100);
-                                if(tmpOther> 0) {
-                                    String txtOther = String.format("%.2f",tmpOther);
-                                    edtOther.setText(txtOther);
-                                }else{
-                                    edtOther.setText("");
-                                }
-                                Other = CheckValidate.checkemptyDouble(edtOther.getText().toString().trim());
-
-                                OtherIIPer = CheckValidate.checkemptyDouble(edtOtherIIPer.getText().toString().trim());
-                                if(OtherIIPer > 0)
-                                {
-                                    double  tmpOtherII= (((Gross - Disc - DiscII - DiscIII + Other ) * OtherIIPer) / 100);
-                                    if(tmpOtherII > 0){
-                                        String txtOtherII = String.format("%.2f",tmpOtherII);
-                                        edtOtherII.setText(txtOtherII);
-                                    }else{
-                                        edtOtherII.setText("");
+                                    } else {
+                                        edtOther.setEnabled(true);
                                     }
-                                    OtherII = CheckValidate.checkemptyDouble(edtOtherII.getText().toString().trim());
-                                }else
-                                {
-                                    OtherII = CheckValidate.checkemptyDouble(edtOtherII.getText().toString().trim());
-                                }
 
-                                cgstP = CheckValidate.checkemptyDouble(edtCGSTP.getText().toString().trim());
-                                sgstP = CheckValidate.checkemptyDouble(edtSGSTP.getText().toString().trim());
-                                igstP = CheckValidate.checkemptyDouble(edtIGSTP.getText().toString().trim());
+                                    Gross = CheckValidate.checkemptyDouble(edtGross.getText().toString().trim());
 
-                                double cgst = 0;
-                                if(cgstP > 0) {
-                                    double tmpCgst = (((Gross - Disc - DiscII - DiscIII + Other + OtherII) * cgstP) / 100);
-                                    String txtcgst = String.format("%.2f",tmpCgst);
-                                    edtCGST.setText(txtcgst);
-                                    cgst = CheckValidate.checkemptyDouble(edtCGST.getText().toString().trim());
-                                }else{
-                                    edtCGST.setText("");
-                                }
+                                    DiscPer = CheckValidate.checkemptyDouble(edtDiscPer.getText().toString().trim());
+                                    Disc = CheckValidate.checkemptyDouble(edtDisc.getText().toString().trim());
 
-                                double sgst = 0;
-                                if(sgstP > 0) {
-                                    double tmpSgst = (((Gross - Disc - DiscII - DiscIII + Other + OtherII) * sgstP) / 100);
-                                    String txtsgst = String.format("%.2f",tmpSgst);
-                                    edtSGST.setText(txtsgst);
-                                    sgst = CheckValidate.checkemptyDouble(edtSGST.getText().toString().trim());
-                                }else{
-                                    edtSGST.setText("");
-                                }
+                                    DiscIIPer = CheckValidate.checkemptyDouble(edtDiscIIPer.getText().toString().trim());
+                                    DiscII = CheckValidate.checkemptyDouble(edtDiscII.getText().toString().trim());
 
-                                double igst = 0;
-                                if(igstP > 0){
-                                    double tmpIgst = (((Gross - Disc - DiscII - DiscIII + Other + OtherII) * igstP) / 100);
-                                    String txtigst = String.format("%.2f",tmpIgst);
-                                    edtIGST.setText(txtigst);
-                                    igst = CheckValidate.checkemptyDouble(edtIGST.getText().toString().trim());
-                                }else{
-                                    edtIGST.setText("");
-                                }
+                                    DiscIIIPer = CheckValidate.checkemptyDouble(edtDiscIIIPer.getText().toString().trim());
+                                    DiscIII = CheckValidate.checkemptyDouble(edtDiscIII.getText().toString().trim());
 
-                                double totalAmount = (Gross - Disc - DiscII - DiscIII + Other + OtherII + cgst + sgst + igst);
-                                String totalAmt = String.format("%.2f",totalAmount);
-                                edtAmount.setText(totalAmt);
-                                }catch (NumberFormatException e){
+                                    OtherPer = CheckValidate.checkemptyDouble(s.toString());
+                                    double tmpOther = (((Gross - Disc - DiscII - DiscIII) * OtherPer) / 100);
+                                    if (tmpOther > 0) {
+                                        String txtOther = String.format("%.2f", tmpOther);
+                                        edtOther.setText(txtOther);
+                                    } else {
+                                        edtOther.setText("");
+                                    }
+                                    Other = CheckValidate.checkemptyDouble(edtOther.getText().toString().trim());
+
+                                    OtherIIPer = CheckValidate.checkemptyDouble(edtOtherIIPer.getText().toString().trim());
+                                    if (OtherIIPer > 0) {
+                                        double tmpOtherII = (((Gross - Disc - DiscII - DiscIII + Other) * OtherIIPer) / 100);
+                                        if (tmpOtherII > 0) {
+                                            String txtOtherII = String.format("%.2f", tmpOtherII);
+                                            edtOtherII.setText(txtOtherII);
+                                        } else {
+                                            edtOtherII.setText("");
+                                        }
+                                        OtherII = CheckValidate.checkemptyDouble(edtOtherII.getText().toString().trim());
+                                    } else {
+                                        OtherII = CheckValidate.checkemptyDouble(edtOtherII.getText().toString().trim());
+                                    }
+
+                                    cgstP = CheckValidate.checkemptyDouble(edtCGSTP.getText().toString().trim());
+                                    sgstP = CheckValidate.checkemptyDouble(edtSGSTP.getText().toString().trim());
+                                    igstP = CheckValidate.checkemptyDouble(edtIGSTP.getText().toString().trim());
+
+                                    double cgst = 0;
+                                    if (cgstP > 0) {
+                                        double tmpCgst = (((Gross - Disc - DiscII - DiscIII + Other + OtherII) * cgstP) / 100);
+                                        String txtcgst = String.format("%.2f", tmpCgst);
+                                        edtCGST.setText(txtcgst);
+                                        cgst = CheckValidate.checkemptyDouble(edtCGST.getText().toString().trim());
+                                    } else {
+                                        edtCGST.setText("");
+                                    }
+
+                                    double sgst = 0;
+                                    if (sgstP > 0) {
+                                        double tmpSgst = (((Gross - Disc - DiscII - DiscIII + Other + OtherII) * sgstP) / 100);
+                                        String txtsgst = String.format("%.2f", tmpSgst);
+                                        edtSGST.setText(txtsgst);
+                                        sgst = CheckValidate.checkemptyDouble(edtSGST.getText().toString().trim());
+                                    } else {
+                                        edtSGST.setText("");
+                                    }
+
+                                    double igst = 0;
+                                    if (igstP > 0) {
+                                        double tmpIgst = (((Gross - Disc - DiscII - DiscIII + Other + OtherII) * igstP) / 100);
+                                        String txtigst = String.format("%.2f", tmpIgst);
+                                        edtIGST.setText(txtigst);
+                                        igst = CheckValidate.checkemptyDouble(edtIGST.getText().toString().trim());
+                                    } else {
+                                        edtIGST.setText("");
+                                    }
+
+                                    double totalAmount = (Gross - Disc - DiscII - DiscIII + Other + OtherII + cgst + sgst + igst);
+                                    String totalAmt = String.format("%.2f", totalAmount);
+                                    edtAmount.setText(totalAmt);
+                                } catch (NumberFormatException e) {
                                     Toast.makeText(AddInvoiceActivity.this, e.toString(), Toast.LENGTH_LONG).show();
                                 }
                             }
@@ -2550,96 +2411,93 @@ public class AddInvoiceActivity extends Activity {
                             }
                         });
 
-                    edtOther.addTextChangedListener(new TextWatcher() {
-                        @Override
-                        public void beforeTextChanged(CharSequence s, int start, int count, int after) {
+                        edtOther.addTextChangedListener(new TextWatcher() {
+                            @Override
+                            public void beforeTextChanged(CharSequence s, int start, int count, int after) {
 
-                        }
-
-                        @Override
-                        public void onTextChanged(CharSequence s, int start, int before, int count) {
-                            try
-                            {
-                            edtAmount.setError(null);
-                                if (s.toString().trim().length()!=0) {
-                                }
-
-                                Gross = CheckValidate.checkemptyDouble(edtGross.getText().toString().trim());
-
-                                DiscPer = CheckValidate.checkemptyDouble(edtDiscPer.getText().toString().trim());
-                                Disc = CheckValidate.checkemptyDouble(edtDisc.getText().toString().trim());
-
-                                DiscIIPer = CheckValidate.checkemptyDouble(edtDiscIIPer.getText().toString().trim());
-                                DiscII = CheckValidate.checkemptyDouble(edtDiscII.getText().toString().trim());
-
-                                DiscIIIPer = CheckValidate.checkemptyDouble(edtDiscIIIPer.getText().toString().trim());
-                                DiscIII = CheckValidate.checkemptyDouble(edtDiscIII.getText().toString().trim());
-
-                                OtherPer = CheckValidate.checkemptyDouble(edtOtherPer.getText().toString().trim());
-                                Other = CheckValidate.checkemptyDouble(s.toString());
-
-                                OtherIIPer = CheckValidate.checkemptyDouble(edtOtherIIPer.getText().toString().trim());
-                                if(OtherIIPer > 0)
-                                {
-                                    double  tmpOtherII= (((Gross - Disc - DiscII - DiscIII + Other ) * OtherIIPer) / 100);
-                                    if(tmpOtherII > 0){
-                                        String txtOtherII = String.format("%.2f",tmpOtherII);
-                                        edtOtherII.setText(txtOtherII);
-                                    }else{
-                                        edtOtherII.setText("");
-                                    }
-                                    OtherII = CheckValidate.checkemptyDouble(edtOtherII.getText().toString().trim());
-                                }else
-                                {
-                                    OtherII = CheckValidate.checkemptyDouble(edtOtherII.getText().toString().trim());
-                                }
-
-                                cgstP = CheckValidate.checkemptyDouble(edtCGSTP.getText().toString().trim());
-                                sgstP = CheckValidate.checkemptyDouble(edtSGSTP.getText().toString().trim());
-                                igstP = CheckValidate.checkemptyDouble(edtIGSTP.getText().toString().trim());
-
-                                double cgst = 0;
-                                if(cgstP > 0) {
-                                    double tmpCgst = (((Gross - Disc - DiscII - DiscIII + Other + OtherII) * cgstP) / 100);
-                                    String txtcgst = String.format("%.2f",tmpCgst);
-                                    edtCGST.setText(txtcgst);
-                                    cgst = CheckValidate.checkemptyDouble(edtCGST.getText().toString().trim());
-                                }else{
-                                    edtCGST.setText("");
-                                }
-
-                                double sgst = 0;
-                                if(sgstP > 0) {
-                                    double tmpSgst = (((Gross - Disc - DiscII - DiscIII + Other + OtherII) * sgstP) / 100);
-                                    String txtsgst = String.format("%.2f",tmpSgst);
-                                    edtSGST.setText(txtsgst);
-                                    sgst = CheckValidate.checkemptyDouble(edtSGST.getText().toString().trim());
-                                }else{
-                                    edtSGST.setText("");
-                                }
-
-                                double igst = 0;
-                                if(igstP > 0){
-                                    double tmpIgst = (((Gross - Disc - DiscII - DiscIII + Other + OtherII) * igstP) / 100);
-                                    String txtigst = String.format("%.2f",tmpIgst);
-                                    edtIGST.setText(txtigst);
-                                    igst = CheckValidate.checkemptyDouble(edtIGST.getText().toString().trim());
-                                }else{
-                                    edtIGST.setText("");
-                                }
-
-                                double totalAmount = (Gross - Disc - DiscII - DiscIII + Other + OtherII + cgst + sgst + igst);
-                                String totalAmt = String.format("%.2f",totalAmount);
-                                edtAmount.setText(totalAmt);
-                            }catch (NumberFormatException e){
-                                Toast.makeText(AddInvoiceActivity.this, e.toString(), Toast.LENGTH_LONG).show();
                             }
-                        }
 
-                        @Override
-                        public void afterTextChanged(Editable s) {
-                        }
-                    });
+                            @Override
+                            public void onTextChanged(CharSequence s, int start, int before, int count) {
+                                try {
+                                    edtAmount.setError(null);
+                                    if (s.toString().trim().length() != 0) {
+                                    }
+
+                                    Gross = CheckValidate.checkemptyDouble(edtGross.getText().toString().trim());
+
+                                    DiscPer = CheckValidate.checkemptyDouble(edtDiscPer.getText().toString().trim());
+                                    Disc = CheckValidate.checkemptyDouble(edtDisc.getText().toString().trim());
+
+                                    DiscIIPer = CheckValidate.checkemptyDouble(edtDiscIIPer.getText().toString().trim());
+                                    DiscII = CheckValidate.checkemptyDouble(edtDiscII.getText().toString().trim());
+
+                                    DiscIIIPer = CheckValidate.checkemptyDouble(edtDiscIIIPer.getText().toString().trim());
+                                    DiscIII = CheckValidate.checkemptyDouble(edtDiscIII.getText().toString().trim());
+
+                                    OtherPer = CheckValidate.checkemptyDouble(edtOtherPer.getText().toString().trim());
+                                    Other = CheckValidate.checkemptyDouble(s.toString());
+
+                                    OtherIIPer = CheckValidate.checkemptyDouble(edtOtherIIPer.getText().toString().trim());
+                                    if (OtherIIPer > 0) {
+                                        double tmpOtherII = (((Gross - Disc - DiscII - DiscIII + Other) * OtherIIPer) / 100);
+                                        if (tmpOtherII > 0) {
+                                            String txtOtherII = String.format("%.2f", tmpOtherII);
+                                            edtOtherII.setText(txtOtherII);
+                                        } else {
+                                            edtOtherII.setText("");
+                                        }
+                                        OtherII = CheckValidate.checkemptyDouble(edtOtherII.getText().toString().trim());
+                                    } else {
+                                        OtherII = CheckValidate.checkemptyDouble(edtOtherII.getText().toString().trim());
+                                    }
+
+                                    cgstP = CheckValidate.checkemptyDouble(edtCGSTP.getText().toString().trim());
+                                    sgstP = CheckValidate.checkemptyDouble(edtSGSTP.getText().toString().trim());
+                                    igstP = CheckValidate.checkemptyDouble(edtIGSTP.getText().toString().trim());
+
+                                    double cgst = 0;
+                                    if (cgstP > 0) {
+                                        double tmpCgst = (((Gross - Disc - DiscII - DiscIII + Other + OtherII) * cgstP) / 100);
+                                        String txtcgst = String.format("%.2f", tmpCgst);
+                                        edtCGST.setText(txtcgst);
+                                        cgst = CheckValidate.checkemptyDouble(edtCGST.getText().toString().trim());
+                                    } else {
+                                        edtCGST.setText("");
+                                    }
+
+                                    double sgst = 0;
+                                    if (sgstP > 0) {
+                                        double tmpSgst = (((Gross - Disc - DiscII - DiscIII + Other + OtherII) * sgstP) / 100);
+                                        String txtsgst = String.format("%.2f", tmpSgst);
+                                        edtSGST.setText(txtsgst);
+                                        sgst = CheckValidate.checkemptyDouble(edtSGST.getText().toString().trim());
+                                    } else {
+                                        edtSGST.setText("");
+                                    }
+
+                                    double igst = 0;
+                                    if (igstP > 0) {
+                                        double tmpIgst = (((Gross - Disc - DiscII - DiscIII + Other + OtherII) * igstP) / 100);
+                                        String txtigst = String.format("%.2f", tmpIgst);
+                                        edtIGST.setText(txtigst);
+                                        igst = CheckValidate.checkemptyDouble(edtIGST.getText().toString().trim());
+                                    } else {
+                                        edtIGST.setText("");
+                                    }
+
+                                    double totalAmount = (Gross - Disc - DiscII - DiscIII + Other + OtherII + cgst + sgst + igst);
+                                    String totalAmt = String.format("%.2f", totalAmount);
+                                    edtAmount.setText(totalAmt);
+                                } catch (NumberFormatException e) {
+                                    Toast.makeText(AddInvoiceActivity.this, e.toString(), Toast.LENGTH_LONG).show();
+                                }
+                            }
+
+                            @Override
+                            public void afterTextChanged(Editable s) {
+                            }
+                        });
 
                         edtOtherIIPer.addTextChangedListener(new TextWatcher() {
                             @Override
@@ -2649,79 +2507,77 @@ public class AddInvoiceActivity extends Activity {
 
                             @Override
                             public void onTextChanged(CharSequence s, int start, int before, int count) {
-                                try
-                                {
-                                edtAmount.setError(null);
-                                if (s.toString().trim().length()!=0) {
+                                try {
+                                    edtAmount.setError(null);
+                                    if (s.toString().trim().length() != 0) {
 
-                                    edtOtherII.setEnabled(false);
-                                }
-                                else {
-                                    edtOtherII.setEnabled(true);
-                                }
+                                        edtOtherII.setEnabled(false);
+                                    } else {
+                                        edtOtherII.setEnabled(true);
+                                    }
 
-                                Gross = CheckValidate.checkemptyDouble(edtGross.getText().toString().trim());
+                                    Gross = CheckValidate.checkemptyDouble(edtGross.getText().toString().trim());
 
-                                DiscPer = CheckValidate.checkemptyDouble(edtDiscPer.getText().toString().trim());
-                                Disc = CheckValidate.checkemptyDouble(edtDisc.getText().toString().trim());
+                                    DiscPer = CheckValidate.checkemptyDouble(edtDiscPer.getText().toString().trim());
+                                    Disc = CheckValidate.checkemptyDouble(edtDisc.getText().toString().trim());
 
-                                DiscIIPer = CheckValidate.checkemptyDouble(edtDiscIIPer.getText().toString().trim());
-                                DiscII = CheckValidate.checkemptyDouble(edtDiscII.getText().toString().trim());
+                                    DiscIIPer = CheckValidate.checkemptyDouble(edtDiscIIPer.getText().toString().trim());
+                                    DiscII = CheckValidate.checkemptyDouble(edtDiscII.getText().toString().trim());
 
-                                DiscIIIPer = CheckValidate.checkemptyDouble(edtDiscIIIPer.getText().toString().trim());
-                                DiscIII = CheckValidate.checkemptyDouble(edtDiscIII.getText().toString().trim());
+                                    DiscIIIPer = CheckValidate.checkemptyDouble(edtDiscIIIPer.getText().toString().trim());
+                                    DiscIII = CheckValidate.checkemptyDouble(edtDiscIII.getText().toString().trim());
 
-                                OtherPer = CheckValidate.checkemptyDouble(edtOtherPer.getText().toString().trim());
-                                Other = CheckValidate.checkemptyDouble(edtOther.getText().toString().trim());
+                                    OtherPer = CheckValidate.checkemptyDouble(edtOtherPer.getText().toString().trim());
+                                    Other = CheckValidate.checkemptyDouble(edtOther.getText().toString().trim());
 
-                                OtherIIPer = CheckValidate.checkemptyDouble(s.toString());
-                                double  tmpOtherII= (((Gross - Disc - DiscII - DiscIII + Other ) * OtherIIPer) / 100);
-                                if(tmpOtherII > 0){
-                                    String txtOtherII = String.format("%.2f",tmpOtherII);
-                                    edtOtherII.setText(txtOtherII);
-                                }else{
-                                    edtOtherII.setText("");
-                                }
-                                OtherII = CheckValidate.checkemptyDouble(edtOtherII.getText().toString().trim());
+                                    OtherIIPer = CheckValidate.checkemptyDouble(s.toString());
+                                    double tmpOtherII = (((Gross - Disc - DiscII - DiscIII + Other) * OtherIIPer) / 100);
+                                    if (tmpOtherII > 0) {
+                                        String txtOtherII = String.format("%.2f", tmpOtherII);
+                                        edtOtherII.setText(txtOtherII);
+                                    } else {
+                                        edtOtherII.setText("");
+                                    }
+                                    OtherII = CheckValidate.checkemptyDouble(edtOtherII.getText().toString().trim());
 
-                                cgstP = CheckValidate.checkemptyDouble(edtCGSTP.getText().toString().trim());
-                                sgstP = CheckValidate.checkemptyDouble(edtSGSTP.getText().toString().trim());
-                                igstP = CheckValidate.checkemptyDouble(edtIGSTP.getText().toString().trim());
+                                    cgstP = CheckValidate.checkemptyDouble(edtCGSTP.getText().toString().trim());
+                                    sgstP = CheckValidate.checkemptyDouble(edtSGSTP.getText().toString().trim());
+                                    igstP = CheckValidate.checkemptyDouble(edtIGSTP.getText().toString().trim());
 
-                                double cgst = 0;
-                                if(cgstP > 0) {
-                                    double tmpCgst = (((Gross - Disc - DiscII - DiscIII + Other + OtherII) * cgstP) / 100);
-                                    String txtcgst = String.format("%.2f",tmpCgst);
-                                    edtCGST.setText(txtcgst);
-                                    cgst = CheckValidate.checkemptyDouble(edtCGST.getText().toString().trim());
-                                }else{
-                                    edtCGST.setText("");
-                                }
+                                    double cgst = 0;
+                                    if (cgstP > 0) {
+                                        double tmpCgst = (((Gross - Disc - DiscII - DiscIII + Other + OtherII) * cgstP) / 100);
+                                        String txtcgst = String.format("%.2f", tmpCgst);
+                                        edtCGST.setText(txtcgst);
+                                        cgst = CheckValidate.checkemptyDouble(edtCGST.getText().toString().trim());
+                                    } else {
+                                        edtCGST.setText("");
+                                    }
 
-                                double sgst = 0;
-                                if(sgstP > 0) {
-                                    double tmpSgst = (((Gross - Disc - DiscII - DiscIII + Other + OtherII) * sgstP) / 100);
-                                    String txtsgst = String.format("%.2f",tmpSgst);
-                                    edtSGST.setText(txtsgst);
-                                    sgst = CheckValidate.checkemptyDouble(edtSGST.getText().toString().trim());
-                                }else{
-                                    edtSGST.setText("");
-                                }
+                                    double sgst = 0;
+                                    if (sgstP > 0) {
+                                        double tmpSgst = (((Gross - Disc - DiscII - DiscIII + Other + OtherII) * sgstP) / 100);
+                                        String txtsgst = String.format("%.2f", tmpSgst);
+                                        edtSGST.setText(txtsgst);
+                                        sgst = CheckValidate.checkemptyDouble(edtSGST.getText().toString().trim());
+                                    } else {
+                                        edtSGST.setText("");
+                                    }
 
-                                double igst = 0;
-                                if(igstP > 0){
-                                    double tmpIgst = (((Gross - Disc - DiscII - DiscIII + Other + OtherII) * igstP) / 100);
-                                    String txtigst = String.format("%.2f",tmpIgst);
-                                    edtIGST.setText(txtigst);
-                                    igst = CheckValidate.checkemptyDouble(edtIGST.getText().toString().trim());
-                                }else{
-                                    edtIGST.setText("");
-                                }
+                                    double igst = 0;
+                                    if (igstP > 0) {
+                                        double tmpIgst = (((Gross - Disc - DiscII - DiscIII + Other + OtherII) * igstP) / 100);
+                                        String txtigst = String.format("%.2f", tmpIgst);
+                                        edtIGST.setText(txtigst);
+                                        igst = CheckValidate.checkemptyDouble(edtIGST.getText().toString().trim());
+                                    } else {
+                                        edtIGST.setText("");
+                                    }
 
-                                double totalAmount = (Gross - Disc - DiscII - DiscIII + Other + OtherII + cgst + sgst + igst);
-                                String totalAmt = String.format("%.2f",totalAmount);
-                                edtAmount.setText(totalAmt);
-                                }catch (NumberFormatException e){
+                                    double totalAmount = (Gross - Disc - DiscII - DiscIII + Other + OtherII + cgst + sgst + igst);
+                                    String totalAmt = String.format("%.2f", totalAmount);
+                                    edtAmount.setText(totalAmt);
+                                } catch (NumberFormatException e) {
                                     Toast.makeText(AddInvoiceActivity.this, e.toString(), Toast.LENGTH_LONG).show();
                                 }
                             }
@@ -2736,12 +2592,12 @@ public class AddInvoiceActivity extends Activity {
                             public void beforeTextChanged(CharSequence s, int start, int count, int after) {
 
                             }
+
                             @Override
                             public void onTextChanged(CharSequence s, int start, int before, int count) {
-                               try
-                               {
-                                edtAmount.setError(null);
-                                    if (s.toString().trim().length()!=0) {
+                                try {
+                                    edtAmount.setError(null);
+                                    if (s.toString().trim().length() != 0) {
                                     }
 
                                     Gross = CheckValidate.checkemptyDouble(edtGross.getText().toString().trim());
@@ -2766,41 +2622,41 @@ public class AddInvoiceActivity extends Activity {
                                     igstP = CheckValidate.checkemptyDouble(edtIGSTP.getText().toString().trim());
 
                                     double cgst = 0;
-                                    if(cgstP > 0) {
+                                    if (cgstP > 0) {
                                         double tmpCgst = (((Gross - Disc - DiscII - DiscIII + Other + OtherII) * cgstP) / 100);
-                                        String txtcgst = String.format("%.2f",tmpCgst);
+                                        String txtcgst = String.format("%.2f", tmpCgst);
                                         edtCGST.setText(txtcgst);
                                         cgst = CheckValidate.checkemptyDouble(edtCGST.getText().toString().trim());
-                                    }else{
+                                    } else {
                                         edtCGST.setText("");
                                     }
 
                                     double sgst = 0;
-                                    if(sgstP > 0) {
+                                    if (sgstP > 0) {
                                         double tmpSgst = (((Gross - Disc - DiscII - DiscIII + Other + OtherII) * sgstP) / 100);
-                                        String txtsgst = String.format("%.2f",tmpSgst);
+                                        String txtsgst = String.format("%.2f", tmpSgst);
                                         edtSGST.setText(txtsgst);
                                         sgst = CheckValidate.checkemptyDouble(edtSGST.getText().toString().trim());
-                                    }else{
+                                    } else {
                                         edtSGST.setText("");
                                     }
 
                                     double igst = 0;
-                                    if(igstP > 0){
+                                    if (igstP > 0) {
                                         double tmpIgst = (((Gross - Disc - DiscII - DiscIII + Other + OtherII) * igstP) / 100);
-                                        String txtigst = String.format("%.2f",tmpIgst);
+                                        String txtigst = String.format("%.2f", tmpIgst);
                                         edtIGST.setText(txtigst);
                                         igst = CheckValidate.checkemptyDouble(edtIGST.getText().toString().trim());
-                                    }else{
+                                    } else {
                                         edtIGST.setText("");
                                     }
 
                                     double totalAmount = (Gross - Disc - DiscII - DiscIII + Other + OtherII + cgst + sgst + igst);
-                                    String totalAmt = String.format("%.2f",totalAmount);
+                                    String totalAmt = String.format("%.2f", totalAmount);
                                     edtAmount.setText(totalAmt);
-                               }catch (NumberFormatException e){
-                                   Toast.makeText(AddInvoiceActivity.this, e.toString(), Toast.LENGTH_LONG).show();
-                               }
+                                } catch (NumberFormatException e) {
+                                    Toast.makeText(AddInvoiceActivity.this, e.toString(), Toast.LENGTH_LONG).show();
+                                }
                             }
 
                             @Override
@@ -2808,60 +2664,52 @@ public class AddInvoiceActivity extends Activity {
                             }
                         });
 
-                    btnMGDisc.setOnClickListener(new View.OnClickListener() {
+                        btnMGDisc.setOnClickListener(new View.OnClickListener() {
                             @Override
                             public void onClick(View v) {
 
-                                try
-                                {
+                                try {
                                     edtAmount.setError(null);
 
                                     DiscPer = CheckValidate.checkemptyDouble(edtDiscPer.getText().toString().trim());
-                                    if(DiscPer == 0)
-                                    {
+                                    if (DiscPer == 0) {
                                         Gross = CheckValidate.checkemptyDouble(edtGross.getText().toString().trim());
                                         Disc = CheckValidate.checkemptyDouble(edtDisc.getText().toString().trim());
                                         cgstP = CheckValidate.checkemptyDouble(edtCGSTP.getText().toString().trim());
                                         sgstP = CheckValidate.checkemptyDouble(edtSGSTP.getText().toString().trim());
                                         igstP = CheckValidate.checkemptyDouble(edtIGSTP.getText().toString().trim());
                                         double tmpgstPer = 0;
-                                        if(cgstP > 0 && sgstP > 0)
-                                        {
-                                            tmpgstPer = cgstP+sgstP;
-                                        }
-                                        else
-                                        {
+                                        if (cgstP > 0 && sgstP > 0) {
+                                            tmpgstPer = cgstP + sgstP;
+                                        } else {
                                             tmpgstPer = igstP;
                                         }
 
-                                        if(tmpgstPer > 0)
-                                        {
-                                            double  tmpDisc = (Disc /((1+(tmpgstPer/100)))) ;
+                                        if (tmpgstPer > 0) {
+                                            double tmpDisc = (Disc / ((1 + (tmpgstPer / 100))));
 
-                                            if(tmpDisc > 0){
-                                                String txtDisc= String.format("%.2f",tmpDisc);
+                                            if (tmpDisc > 0) {
+                                                String txtDisc = String.format("%.2f", tmpDisc);
                                                 edtDisc.setText(txtDisc);
 
-                                            }else{
+                                            } else {
                                                 edtDisc.setText("");
                                             }
                                         }
                                         Disc = CheckValidate.checkemptyDouble(edtDisc.getText().toString().trim());
 
                                         DiscIIPer = CheckValidate.checkemptyDouble(edtDiscIIPer.getText().toString().trim());
-                                        if(DiscIIPer > 0)
-                                        {
-                                            double  tmpDiscII = (((Gross-Disc) * DiscIIPer) / 100);
-                                            if(tmpDiscII > 0){
-                                                String txtDiscII = String.format("%.2f",tmpDiscII);
+                                        if (DiscIIPer > 0) {
+                                            double tmpDiscII = (((Gross - Disc) * DiscIIPer) / 100);
+                                            if (tmpDiscII > 0) {
+                                                String txtDiscII = String.format("%.2f", tmpDiscII);
                                                 edtDiscII.setText(txtDiscII);
 
-                                            }else{
+                                            } else {
                                                 edtDiscII.setText("");
                                             }
                                             DiscII = CheckValidate.checkemptyDouble(edtDiscII.getText().toString().trim());
-                                        }else
-                                        {
+                                        } else {
                                             DiscII = CheckValidate.checkemptyDouble(edtDiscII.getText().toString().trim());
                                         }
 
@@ -2869,254 +2717,246 @@ public class AddInvoiceActivity extends Activity {
                                         if (DiscIIIPer > 0) {
 
                                             double tmpDiscIII = (((Gross - Disc - DiscII) * DiscIIIPer) / 100);
-                                            if(tmpDiscIII > 0){
-                                                String txtDiscIII = String.format("%.2f",tmpDiscIII);
+                                            if (tmpDiscIII > 0) {
+                                                String txtDiscIII = String.format("%.2f", tmpDiscIII);
                                                 edtDiscIII.setText(txtDiscIII);
-                                            }else{
+                                            } else {
                                                 edtDiscIII.setText("");
                                             }
                                             DiscIII = CheckValidate.checkemptyDouble(edtDiscIII.getText().toString().trim());
-                                        }else
-                                        {
+                                        } else {
                                             DiscIII = CheckValidate.checkemptyDouble(edtDiscIII.getText().toString().trim());
                                         }
 
                                         TotalDisc = Disc + DiscII + DiscIII;
-                                        if(CheckValidate.checkemptyDouble(String.valueOf(TotalDisc)) > 0)
-                                        {
-                                            edtTotalDisc.setText(String.format("%.2f",TotalDisc));
-                                        }else
-                                        {
+                                        if (CheckValidate.checkemptyDouble(String.valueOf(TotalDisc)) > 0) {
+                                            edtTotalDisc.setText(String.format("%.2f", TotalDisc));
+                                        } else {
                                             edtTotalDisc.setText("");
                                         }
 
                                         OtherPer = CheckValidate.checkemptyDouble(edtOtherPer.getText().toString().trim());
-                                        if(OtherPer > 0){
-                                            double  tmpOther= (((Gross - Disc - DiscII - DiscIII) * OtherPer) / 100);
-                                            if(tmpOther > 0){
-                                                String txtOther = String.format("%.2f",tmpOther);
+                                        if (OtherPer > 0) {
+                                            double tmpOther = (((Gross - Disc - DiscII - DiscIII) * OtherPer) / 100);
+                                            if (tmpOther > 0) {
+                                                String txtOther = String.format("%.2f", tmpOther);
                                                 edtOther.setText(txtOther);
-                                            }else{
+                                            } else {
                                                 edtOther.setText("");
                                             }
                                             Other = CheckValidate.checkemptyDouble(edtOther.getText().toString().trim());
-                                        }else
-                                        {
+                                        } else {
                                             Other = CheckValidate.checkemptyDouble(edtOther.getText().toString().trim());
                                         }
 
                                         OtherIIPer = CheckValidate.checkemptyDouble(edtOtherIIPer.getText().toString().trim());
-                                        if(OtherIIPer > 0)
-                                        {
-                                            double  tmpOtherII= (((Gross - Disc - DiscII - DiscIII + Other ) * OtherIIPer) / 100);
-                                            if(tmpOtherII > 0){
-                                                String txtOtherII = String.format("%.2f",tmpOtherII);
+                                        if (OtherIIPer > 0) {
+                                            double tmpOtherII = (((Gross - Disc - DiscII - DiscIII + Other) * OtherIIPer) / 100);
+                                            if (tmpOtherII > 0) {
+                                                String txtOtherII = String.format("%.2f", tmpOtherII);
                                                 edtOtherII.setText(txtOtherII);
-                                            }else{
+                                            } else {
                                                 edtOtherII.setText("");
                                             }
                                             OtherII = CheckValidate.checkemptyDouble(edtOtherII.getText().toString().trim());
-                                        }else
-                                        {
+                                        } else {
                                             OtherII = CheckValidate.checkemptyDouble(edtOtherII.getText().toString().trim());
                                         }
 
                                         double cgst = 0;
-                                        if(cgstP > 0) {
+                                        if (cgstP > 0) {
                                             double tmpCgst = (((Gross - Disc - DiscII - DiscIII + Other + OtherII) * cgstP) / 100);
-                                            String txtcgst = String.format("%.2f",tmpCgst);
+                                            String txtcgst = String.format("%.2f", tmpCgst);
                                             edtCGST.setText(txtcgst);
                                             cgst = CheckValidate.checkemptyDouble(edtCGST.getText().toString().trim());
-                                        }else{
+                                        } else {
                                             edtCGST.setText("");
                                         }
 
                                         double sgst = 0;
-                                        if(sgstP > 0) {
+                                        if (sgstP > 0) {
                                             double tmpSgst = (((Gross - Disc - DiscII - DiscIII + Other + OtherII) * sgstP) / 100);
-                                            String txtsgst = String.format("%.2f",tmpSgst);
+                                            String txtsgst = String.format("%.2f", tmpSgst);
                                             edtSGST.setText(txtsgst);
                                             sgst = CheckValidate.checkemptyDouble(edtSGST.getText().toString().trim());
-                                        }else{
+                                        } else {
                                             edtSGST.setText("");
                                         }
 
                                         double igst = 0;
-                                        if(igstP > 0){
+                                        if (igstP > 0) {
                                             double tmpIgst = (((Gross - Disc - DiscII - DiscIII + Other + OtherII) * igstP) / 100);
-                                            String txtigst = String.format("%.2f",tmpIgst);
+                                            String txtigst = String.format("%.2f", tmpIgst);
                                             edtIGST.setText(txtigst);
                                             igst = CheckValidate.checkemptyDouble(edtIGST.getText().toString().trim());
-                                        }else{
+                                        } else {
                                             edtIGST.setText("");
                                         }
 
                                         double totalAmount = (Gross - Disc - DiscII - DiscIII + Other + OtherII + cgst + sgst + igst);
-                                        String totalAmt = String.format("%.2f",totalAmount);
+                                        String totalAmt = String.format("%.2f", totalAmount);
                                         edtAmount.setText(totalAmt);
                                     }
 
 
-                                }catch (NumberFormatException e){
+                                } catch (NumberFormatException e) {
                                     Toast.makeText(AddInvoiceActivity.this, e.toString(), Toast.LENGTH_LONG).show();
                                 }
 
-                        }
+                            }
                         });
 
-                    btnCancel.setOnClickListener(new View.OnClickListener() {
+                        btnCancel.setOnClickListener(new View.OnClickListener() {
                             @Override
                             public void onClick(View v) {
 
                                 dialog.dismiss();
 
-                                }
-                    });
-
-                    btnOk.setOnClickListener(new View.OnClickListener() {
-                        @Override
-                        public void onClick(View v) {
-
-                            if (SelectedItem.getText().toString().trim().length() == 0 || SelectedItem.getText().toString().trim().equals("Select Item") ) {
-                                ShowAlert.ShowAlert(AddInvoiceActivity.this,"Alert...","Must select item.");
-                                return;
-                            }else if(SelectedMRP.getText().toString().length() <= 0 || SelectedItem.getText().toString().trim().equals("Select MRP")){
-                                ShowAlert.ShowAlert(AddInvoiceActivity.this,"Alert...","MRP zero not allow.");
-                                return;
-                            }else if(CheckValidate.checkemptyDouble(edtTotalQty.getText().toString().trim()) <= 0 && CheckValidate.checkemptyDouble(edtFreeQty.getText().toString().trim()) <= 0 ) {
-                                edtPrimaryUnitQty.setError("Qty Blank not allow.");
-                                return;
-                            }else if(CheckValidate.checkemptyDouble(edtTotalQty.getText().toString().trim()) > CheckValidate.checkemptyDouble(edtStock.getText().toString().trim())){
-                                edtPrimaryUnitQty.setError("Sale Qty not more then Stock.");
-                                return;
-                            }else if(edtRate.getText().toString().trim().length() == 0){
-                                edtRate.setError("Rate Blank not allow.");
-                                return;
-                            }else if(CheckValidate.checkemptyDouble(edtAmount.getText().toString().trim()) < 0 || edtAmount.getText().toString().trim().length() == 0){
-                                edtAmount.setError("Negative Billing not allow.");
-                                ShowAlert.ShowAlert(AddInvoiceActivity.this,"Alert...","Negative Billing not allow.");
-                                return;
                             }
-                            else{
+                        });
 
-                                String ItemID = null, MRPID = null, ITEMMRP=null, strPrimaryUnitId = null, strAltUnitId = null;
-                                for (int i = 0; i < jsonArrayItem.length(); i++) {
-                                    try {
-                                        if (jsonArrayItem.getJSONObject(i).getString("ItemName").equals(SelectedItem.getText().toString().trim())) {
+                        btnOk.setOnClickListener(new View.OnClickListener() {
+                            @Override
+                            public void onClick(View v) {
 
-                                            ItemID = jsonArrayItem.getJSONObject(i).getString("Id");
+                                if (SelectedItem.getText().toString().trim().length() == 0 || SelectedItem.getText().toString().trim().equals("Select Item")) {
+                                    ShowAlert.ShowAlert(AddInvoiceActivity.this, "Alert...", "Must select item.");
+                                    return;
+                                } else if (SelectedMRP.getText().toString().length() <= 0 || SelectedItem.getText().toString().trim().equals("Select MRP")) {
+                                    ShowAlert.ShowAlert(AddInvoiceActivity.this, "Alert...", "MRP zero not allow.");
+                                    return;
+                                } else if (CheckValidate.checkemptyDouble(edtTotalQty.getText().toString().trim()) <= 0 && CheckValidate.checkemptyDouble(edtFreeQty.getText().toString().trim()) <= 0) {
+                                    edtPrimaryUnitQty.setError("Qty Blank not allow.");
+                                    return;
+                                } else if (CheckValidate.checkemptyDouble(edtTotalQty.getText().toString().trim()) > CheckValidate.checkemptyDouble(edtStock.getText().toString().trim())) {
+                                    edtPrimaryUnitQty.setError("Sale Qty not more then Stock.");
+                                    return;
+                                } else if (edtRate.getText().toString().trim().length() == 0) {
+                                    edtRate.setError("Rate Blank not allow.");
+                                    return;
+                                } else if (CheckValidate.checkemptyDouble(edtAmount.getText().toString().trim()) < 0 || edtAmount.getText().toString().trim().length() == 0) {
+                                    edtAmount.setError("Negative Billing not allow.");
+                                    ShowAlert.ShowAlert(AddInvoiceActivity.this, "Alert...", "Negative Billing not allow.");
+                                    return;
+                                } else {
 
-                                        }
-                                    } catch (JSONException e) {
-                                        e.printStackTrace();
-                                    }
-                                }
+                                    String ItemID = null, MRPID = null, ITEMMRP = null, strPrimaryUnitId = null, strAltUnitId = null;
+                                    for (int i = 0; i < jsonArrayItem.length(); i++) {
+                                        try {
+                                            if (jsonArrayItem.getJSONObject(i).getString("ItemName").equals(SelectedItem.getText().toString().trim())) {
 
-                                for (int i = 0; i < jsonArrayUnits.length(); i++) {
-                                    try {
-                                        if (jsonArrayUnits.getJSONObject(i).getString("UnitAlias").equals(SelectedPrimaryUnit.getText().toString().trim())) {
-
-                                            strPrimaryUnitId = jsonArrayUnits.getJSONObject(i).getString("UnitID");
-
-                                        }
-                                    } catch (JSONException e) {
-                                        e.printStackTrace();
-                                    }
-                                }
-
-                                for (int i = 0; i < jsonArrayUnits.length(); i++) {
-                                    try {
-                                        if (jsonArrayUnits.getJSONObject(i).getString("UnitAlias").equals(SelectedAltUnit.getText().toString().trim())) {
-
-                                            strAltUnitId = jsonArrayUnits.getJSONObject(i).getString("UnitID");
-
-                                        }
-                                    } catch (JSONException e) {
-                                        e.printStackTrace();
-                                    }
-                                }
-
-                                for (int i = 0; i < jsonArrayMRP.length(); i++) {
-                                    try {
-                                        if (jsonArrayMRP.getJSONObject(i).getString("ItemName").equals(SelectedItem.getText().toString().trim()) && jsonArrayMRP.getJSONObject(i).getString("ItemType").equals("Batch")) {
-
-                                            if (jsonArrayMRP.getJSONObject(i).getString("ItemName").equals(SelectedItem.getText().toString().trim()) && jsonArrayMRP.getJSONObject(i).getString("ItemBATCH").equals(SelectedMRP.getText().toString().trim())) {
-
-                                                MRPID = jsonArrayMRP.getJSONObject(i).getString("MRPId");
-                                                ITEMMRP = jsonArrayMRP.getJSONObject(i).getString("ItemMRP");
+                                                ItemID = jsonArrayItem.getJSONObject(i).getString("Id");
 
                                             }
-                                        }else{
-                                            if (jsonArrayMRP.getJSONObject(i).getString("ItemName").equals(SelectedItem.getText().toString().trim()) && jsonArrayMRP.getJSONObject(i).getString("ItemMRP").equals(SelectedMRP.getText().toString().trim())) {
-
-                                                MRPID = jsonArrayMRP.getJSONObject(i).getString("MRPId");
-                                                ITEMMRP = jsonArrayMRP.getJSONObject(i).getString("ItemMRP");
-                                            }
+                                        } catch (JSONException e) {
+                                            e.printStackTrace();
                                         }
+                                    }
 
+                                    for (int i = 0; i < jsonArrayUnits.length(); i++) {
+                                        try {
+                                            if (jsonArrayUnits.getJSONObject(i).getString("UnitAlias").equals(SelectedPrimaryUnit.getText().toString().trim())) {
+
+                                                strPrimaryUnitId = jsonArrayUnits.getJSONObject(i).getString("UnitID");
+
+                                            }
+                                        } catch (JSONException e) {
+                                            e.printStackTrace();
+                                        }
+                                    }
+
+                                    for (int i = 0; i < jsonArrayUnits.length(); i++) {
+                                        try {
+                                            if (jsonArrayUnits.getJSONObject(i).getString("UnitAlias").equals(SelectedAltUnit.getText().toString().trim())) {
+
+                                                strAltUnitId = jsonArrayUnits.getJSONObject(i).getString("UnitID");
+
+                                            }
+                                        } catch (JSONException e) {
+                                            e.printStackTrace();
+                                        }
+                                    }
+
+                                    for (int i = 0; i < jsonArrayMRP.length(); i++) {
+                                        try {
+                                            if (jsonArrayMRP.getJSONObject(i).getString("ItemName").equals(SelectedItem.getText().toString().trim()) && jsonArrayMRP.getJSONObject(i).getString("ItemType").equals("Batch")) {
+
+                                                if (jsonArrayMRP.getJSONObject(i).getString("ItemName").equals(SelectedItem.getText().toString().trim()) && jsonArrayMRP.getJSONObject(i).getString("ItemBATCH").equals(SelectedMRP.getText().toString().trim())) {
+
+                                                    MRPID = jsonArrayMRP.getJSONObject(i).getString("MRPId");
+                                                    ITEMMRP = jsonArrayMRP.getJSONObject(i).getString("ItemMRP");
+
+                                                }
+                                            } else {
+                                                if (jsonArrayMRP.getJSONObject(i).getString("ItemName").equals(SelectedItem.getText().toString().trim()) && jsonArrayMRP.getJSONObject(i).getString("ItemMRP").equals(SelectedMRP.getText().toString().trim())) {
+
+                                                    MRPID = jsonArrayMRP.getJSONObject(i).getString("MRPId");
+                                                    ITEMMRP = jsonArrayMRP.getJSONObject(i).getString("ItemMRP");
+                                                }
+                                            }
+
+
+                                        } catch (JSONException e) {
+                                            e.printStackTrace();
+                                        }
+                                    }
+
+                                    try {
+                                        JSONObject jsonObject = new JSONObject();
+
+                                        jsonObject.put("ItemId", ItemID);
+                                        jsonObject.put("MRPId", MRPID);
+                                        jsonObject.put("ItemName", SelectedItem.getText().toString().trim());
+                                        jsonObject.put("ItemMRP", ITEMMRP);
+                                        jsonObject.put("AlternetUnitID", strAltUnitId);
+                                        jsonObject.put("AlternetUnit", SelectedAltUnit.getText().toString().trim());
+                                        jsonObject.put("AlternetUnitQty", edtAltUnitQty.getText().toString().trim());
+                                        jsonObject.put("PrimaryUnitID", strPrimaryUnitId);
+                                        jsonObject.put("PrimaryUnit", SelectedPrimaryUnit.getText().toString().trim());
+                                        jsonObject.put("PrimaryUnitQty", edtPrimaryUnitQty.getText().toString().trim());
+                                        jsonObject.put("TotalQty", edtTotalQty.getText().toString().trim());
+                                        jsonObject.put("FreeQty", edtFreeQty.getText().toString().trim());
+                                        jsonObject.put("Rate", edtRate.getText().toString().trim());
+                                        jsonObject.put("Gross", edtGross.getText().toString().trim());
+                                        jsonObject.put("DiscountPer", edtDiscPer.getText().toString());
+                                        jsonObject.put("Discount", edtDisc.getText().toString());
+                                        jsonObject.put("DiscountIIPer", edtDiscIIPer.getText().toString());
+                                        jsonObject.put("DiscountII", edtDiscII.getText().toString());
+                                        jsonObject.put("DiscountIIIPer", edtDiscIIIPer.getText().toString());
+                                        jsonObject.put("DiscountIII", edtDiscIII.getText().toString());
+                                        jsonObject.put("OtherPer", edtOtherPer.getText().toString().trim());
+                                        jsonObject.put("Other", edtOther.getText().toString().trim());
+                                        jsonObject.put("OtherIIPer", edtOtherIIPer.getText().toString().trim());
+                                        jsonObject.put("OtherII", edtOtherII.getText().toString().trim());
+                                        jsonObject.put("CGSTAccountID", edtCGSTACID.getText().toString().trim());
+                                        jsonObject.put("CGSTPer", edtCGSTP.getText().toString().trim());
+                                        jsonObject.put("CGSTAmt", edtCGST.getText().toString().trim());
+                                        jsonObject.put("SGSTAccountID", edtSGSTACID.getText().toString().trim());
+                                        jsonObject.put("SGSTPer", edtSGSTP.getText().toString().trim());
+                                        jsonObject.put("SGSTAmt", edtSGST.getText().toString().trim());
+                                        jsonObject.put("IGSTAccountID", edtIGSTACID.getText().toString().trim());
+                                        jsonObject.put("IGSTPer", edtIGSTP.getText().toString().trim());
+                                        jsonObject.put("IGSTAmt", edtIGST.getText().toString().trim());
+                                        jsonObject.put("NetAmount", edtAmount.getText().toString());
+                                        jsonArray.put(jsonArray.length(), jsonObject);
 
                                     } catch (JSONException e) {
                                         e.printStackTrace();
                                     }
+
+                                    adapter.notifyDataSetChanged();
+
+                                    calculateSum();
+                                    dialog.dismiss();
+
                                 }
-
-                                try {
-                                    JSONObject jsonObject = new JSONObject();
-
-                                    jsonObject.put("ItemId", ItemID);
-                                    jsonObject.put("MRPId", MRPID);
-                                    jsonObject.put("ItemName", SelectedItem.getText().toString().trim());
-                                    jsonObject.put("ItemMRP", ITEMMRP);
-                                    jsonObject.put("AlternetUnitID", strAltUnitId);
-                                    jsonObject.put("AlternetUnit", SelectedAltUnit.getText().toString().trim());
-                                    jsonObject.put("AlternetUnitQty", edtAltUnitQty.getText().toString().trim());
-                                    jsonObject.put("PrimaryUnitID", strPrimaryUnitId);
-                                    jsonObject.put("PrimaryUnit", SelectedPrimaryUnit.getText().toString().trim());
-                                    jsonObject.put("PrimaryUnitQty", edtPrimaryUnitQty.getText().toString().trim());
-                                    jsonObject.put("TotalQty", edtTotalQty.getText().toString().trim());
-                                    jsonObject.put("FreeQty", edtFreeQty.getText().toString().trim());
-                                    jsonObject.put("Rate", edtRate.getText().toString().trim());
-                                    jsonObject.put("Gross", edtGross.getText().toString().trim());
-                                    jsonObject.put("DiscountPer", edtDiscPer.getText().toString());
-                                    jsonObject.put("Discount", edtDisc.getText().toString());
-                                    jsonObject.put("DiscountIIPer", edtDiscIIPer.getText().toString());
-                                    jsonObject.put("DiscountII", edtDiscII.getText().toString());
-                                    jsonObject.put("DiscountIIIPer", edtDiscIIIPer.getText().toString());
-                                    jsonObject.put("DiscountIII", edtDiscIII.getText().toString());
-                                    jsonObject.put("OtherPer", edtOtherPer.getText().toString().trim());
-                                    jsonObject.put("Other", edtOther.getText().toString().trim());
-                                    jsonObject.put("OtherIIPer", edtOtherIIPer.getText().toString().trim());
-                                    jsonObject.put("OtherII", edtOtherII.getText().toString().trim());
-                                    jsonObject.put("CGSTAccountID", edtCGSTACID.getText().toString().trim());
-                                    jsonObject.put("CGSTPer", edtCGSTP.getText().toString().trim());
-                                    jsonObject.put("CGSTAmt", edtCGST.getText().toString().trim());
-                                    jsonObject.put("SGSTAccountID", edtSGSTACID.getText().toString().trim());
-                                    jsonObject.put("SGSTPer", edtSGSTP.getText().toString().trim());
-                                    jsonObject.put("SGSTAmt", edtSGST.getText().toString().trim());
-                                    jsonObject.put("IGSTAccountID", edtIGSTACID.getText().toString().trim());
-                                    jsonObject.put("IGSTPer", edtIGSTP.getText().toString().trim());
-                                    jsonObject.put("IGSTAmt", edtIGST.getText().toString().trim());
-                                    jsonObject.put("NetAmount", edtAmount.getText().toString());
-                                    jsonArray.put(jsonArray.length(), jsonObject);
-
-                                } catch (JSONException e) {
-                                    e.printStackTrace();
-                                }
-
-                                adapter.notifyDataSetChanged();
-
-                                calculateSum();
-                                dialog.dismiss();
-
                             }
-                        }
-                    });
+                        });
 
+                    }
+                } catch (Exception e) {
+                    Toast.makeText(AddInvoiceActivity.this, e.toString(), Toast.LENGTH_LONG).show();
                 }
-            }catch (Exception e)
-            {
-                Toast.makeText(AddInvoiceActivity.this, e.toString(), Toast.LENGTH_LONG).show();
-            }
 
             }
         });
@@ -3138,7 +2978,7 @@ public class AddInvoiceActivity extends Activity {
         if (NetworkUtils.isInternetAvailable(AddInvoiceActivity.this)) {
             getDivision();
         } else {
-            ShowAlert.ShowAlertOkCancle(AddInvoiceActivity.this,"No Internet !","Are Sure want Exit ?");
+            ShowAlert.ShowAlertOkCancle(AddInvoiceActivity.this, "No Internet !", "Are Sure want Exit ?");
         }
 
         //Listview onclick event START
@@ -3200,8 +3040,8 @@ public class AddInvoiceActivity extends Activity {
 
                     TextView title = mView.findViewById(R.id.titlePopup);
 
-                   // PrimaryUnitQty = CheckValidate.checkemptyDouble(tvPrimaryQty.getText().toString().trim());
-                  //  AltUnitQty = CheckValidate.checkemptyDouble(tvAlternetQty.getText().toString().trim());
+                    // PrimaryUnitQty = CheckValidate.checkemptyDouble(tvPrimaryQty.getText().toString().trim());
+                    //  AltUnitQty = CheckValidate.checkemptyDouble(tvAlternetQty.getText().toString().trim());
 
                     //Rate = CheckValidate.checkemptyDouble(tvRate.getText().toString().trim());
                     //Gross = CheckValidate.checkemptyDouble(tvGross.getText().toString().trim());
@@ -3267,57 +3107,54 @@ public class AddInvoiceActivity extends Activity {
                     edtIGST.setText(tvIGST.getText().toString().trim());
                     edtAmount.setText(tvAmount.getText().toString().trim());
 
-                    if(CheckValidate.checkemptyDouble(edtDiscPer.getText().toString().trim())  > 0){
+                    if (CheckValidate.checkemptyDouble(edtDiscPer.getText().toString().trim()) > 0) {
                         edtDisc.setEnabled(false);
-                    }else{
+                    } else {
                         edtDisc.setEnabled(true);
                     }
-                    if(CheckValidate.checkemptyDouble(edtDiscIIPer.getText().toString().trim())  > 0){
+                    if (CheckValidate.checkemptyDouble(edtDiscIIPer.getText().toString().trim()) > 0) {
                         edtDiscII.setEnabled(false);
-                    }else{
+                    } else {
                         edtDiscII.setEnabled(true);
                     }
-                    if(CheckValidate.checkemptyDouble(edtDiscIIIPer.getText().toString().trim())  > 0){
+                    if (CheckValidate.checkemptyDouble(edtDiscIIIPer.getText().toString().trim()) > 0) {
                         edtDiscIII.setEnabled(false);
-                    }else{
+                    } else {
                         edtDiscIII.setEnabled(true);
                     }
-                    if(CheckValidate.checkemptyDouble(edtOtherPer.getText().toString().trim())  > 0){
+                    if (CheckValidate.checkemptyDouble(edtOtherPer.getText().toString().trim()) > 0) {
                         edtOther.setEnabled(false);
-                    }else{
+                    } else {
                         edtOther.setEnabled(true);
                     }
-                    if(CheckValidate.checkemptyDouble(edtOtherIIPer.getText().toString().trim()) > 0){
+                    if (CheckValidate.checkemptyDouble(edtOtherIIPer.getText().toString().trim()) > 0) {
                         edtOtherII.setEnabled(false);
-                    }else{
+                    } else {
                         edtOtherII.setEnabled(true);
                     }
 
 
+                    edtRate.setFilters(new InputFilter[]{new InputFilterDecimal(12, 5)});
+                    edtDiscPer.setFilters(new InputFilter[]{new InputFilterDecimal(2, 2)});
+                    edtDisc.setFilters(new InputFilter[]{new InputFilterDecimal(12, 2)});
+                    edtDiscIIPer.setFilters(new InputFilter[]{new InputFilterDecimal(2, 2)});
+                    edtDiscII.setFilters(new InputFilter[]{new InputFilterDecimal(12, 2)});
+                    edtDiscIIIPer.setFilters(new InputFilter[]{new InputFilterDecimal(2, 2)});
+                    edtDiscIII.setFilters(new InputFilter[]{new InputFilterDecimal(12, 2)});
+                    edtOtherPer.setFilters(new InputFilter[]{new InputFilterDecimal(2, 2)});
+                    edtOther.setFilters(new InputFilter[]{new InputFilterDecimal(12, 2)});
+                    edtOtherIIPer.setFilters(new InputFilter[]{new InputFilterDecimal(2, 2)});
+                    edtOtherII.setFilters(new InputFilter[]{new InputFilterDecimal(12, 2)});
 
-                    edtRate.setFilters(new InputFilter[]{new InputFilterDecimal(12,5)});
-                    edtDiscPer.setFilters(new InputFilter[]{new InputFilterDecimal(2,2)});
-                    edtDisc.setFilters(new InputFilter[]{new InputFilterDecimal(12,2)});
-                    edtDiscIIPer.setFilters(new InputFilter[]{new InputFilterDecimal(2,2)});
-                    edtDiscII.setFilters(new InputFilter[]{new InputFilterDecimal(12,2)});
-                    edtDiscIIIPer.setFilters(new InputFilter[]{new InputFilterDecimal(2,2)});
-                    edtDiscIII.setFilters(new InputFilter[]{new InputFilterDecimal(12,2)});
-                    edtOtherPer.setFilters(new InputFilter[]{new InputFilterDecimal(2,2)});
-                    edtOther.setFilters(new InputFilter[]{new InputFilterDecimal(12,2)});
-                    edtOtherIIPer.setFilters(new InputFilter[]{new InputFilterDecimal(2,2)});
-                    edtOtherII.setFilters(new InputFilter[]{new InputFilterDecimal(12,2)});
-
-                    if(CheckValidate.checkemptyDouble(edtPrimaryUnitQty.getText().toString().trim()) >=0)
-                    {
+                    if (CheckValidate.checkemptyDouble(edtPrimaryUnitQty.getText().toString().trim()) >= 0) {
                         PrimaryUnitQty = CheckValidate.checkemptyDouble(edtPrimaryUnitQty.getText().toString().trim());
-                    }else{
+                    } else {
                         PrimaryUnitQty = 0;
                     }
 
-                    if(CheckValidate.checkemptyDouble(edtAltUnitQty.getText().toString().trim()) >=0)
-                    {
+                    if (CheckValidate.checkemptyDouble(edtAltUnitQty.getText().toString().trim()) >= 0) {
                         AltUnitQty = CheckValidate.checkemptyDouble(edtAltUnitQty.getText().toString().trim());
-                    }else{
+                    } else {
                         AltUnitQty = 0;
                     }
 
@@ -3329,7 +3166,7 @@ public class AddInvoiceActivity extends Activity {
                     final TextView SelectedMRP = mView.findViewById(R.id.selectMRP);
                     final SpinnerDialog spMRP;
 
-                    final TextView  SelectedAltUnit = mView.findViewById(R.id.selectAltUnit);
+                    final TextView SelectedAltUnit = mView.findViewById(R.id.selectAltUnit);
                     final SpinnerDialog spAltUnit;
 
 
@@ -3351,16 +3188,13 @@ public class AddInvoiceActivity extends Activity {
                         }
                     }
 
-                    if(CheckValidate.checkemptystring(tvAlternetQtyUnit.getText().toString())  == "")
-                    {
+                    if (CheckValidate.checkemptystring(tvAlternetQtyUnit.getText().toString()) == "") {
 
                         SelectedAltUnit.setText("");
                         SelectedAltUnit.setEnabled(false);
                         edtAltUnitQty.setEnabled(false);
 
-                    }
-                    else
-                    {
+                    } else {
 
                         SelectedAltUnit.setEnabled(true);
                         edtAltUnitQty.setEnabled(true);
@@ -3369,8 +3203,7 @@ public class AddInvoiceActivity extends Activity {
                             try {
                                 if (jsonArrayAlternetUnit.getJSONObject(i).getString("ItemID").equals(ITEMID)) {
 
-                                    if(!jsonArrayAlternetUnit.getJSONObject(i).getString("UnitAlias").isEmpty() || !jsonArrayAlternetUnit.getJSONObject(i).getString("UnitAlias").equals("null"))
-                                    {
+                                    if (!jsonArrayAlternetUnit.getJSONObject(i).getString("UnitAlias").isEmpty() || !jsonArrayAlternetUnit.getJSONObject(i).getString("UnitAlias").equals("null")) {
                                         ALTUNITARRAY.add(jsonArrayAlternetUnit.getJSONObject(i).getString("UnitAlias"));
                                     }
 
@@ -3380,8 +3213,7 @@ public class AddInvoiceActivity extends Activity {
                             }
                         }
 
-                        if(ALTUNITARRAY.size() > 0)
-                        {
+                        if (ALTUNITARRAY.size() > 0) {
                             SelectedAltUnit.setText(tvAlternetQtyUnit.getText().toString());
 
                             for (int i = 0; i < jsonArrayAlternetUnit.length(); i++) {
@@ -3395,9 +3227,7 @@ public class AddInvoiceActivity extends Activity {
                                     e.printStackTrace();
                                 }
                             }
-                        }
-                        else
-                        {
+                        } else {
                             AltUnitConversion = 0;
                         }
                     }
@@ -3407,27 +3237,21 @@ public class AddInvoiceActivity extends Activity {
                         try {
                             if (jsonArrayMRP.getJSONObject(i).getString("ItemId").equals(ITEMID) && CheckValidate.checkemptyDouble(jsonArrayMRP.getJSONObject(i).getString("Stock")) > 0) {
 
-                                if(jsonArrayMRP.getJSONObject(i).getString("ItemType").equals("Batch"))
-                                {
-                                    if(!jsonArrayMRP.getJSONObject(i).getString("ItemBATCH").isEmpty() || !jsonArrayMRP.getJSONObject(i).getString("ItemBATCH").equals("null"))
-                                    {
+                                if (jsonArrayMRP.getJSONObject(i).getString("ItemType").equals("Batch")) {
+                                    if (!jsonArrayMRP.getJSONObject(i).getString("ItemBATCH").isEmpty() || !jsonArrayMRP.getJSONObject(i).getString("ItemBATCH").equals("null")) {
                                         ITEMIDARRAY.add(jsonArrayMRP.getJSONObject(i).getString("ItemBATCH"));
                                         txtSetMRPTitle.setText("Batch");
                                     }
-                                    if(jsonArrayMRP.getJSONObject(i).getString("ItemMRP").equals(tvMRP.getText().toString()))
-                                    {
+                                    if (jsonArrayMRP.getJSONObject(i).getString("ItemMRP").equals(tvMRP.getText().toString())) {
                                         TMPSETMRP = jsonArrayMRP.getJSONObject(i).getString("ItemBATCH");
                                     }
 
-                                }else
-                                {
-                                    if(!jsonArrayMRP.getJSONObject(i).getString("ItemMRP").isEmpty() || !jsonArrayMRP.getJSONObject(i).getString("ItemMRP").equals("null"))
-                                    {
+                                } else {
+                                    if (!jsonArrayMRP.getJSONObject(i).getString("ItemMRP").isEmpty() || !jsonArrayMRP.getJSONObject(i).getString("ItemMRP").equals("null")) {
                                         ITEMIDARRAY.add(jsonArrayMRP.getJSONObject(i).getString("ItemMRP"));
                                         txtSetMRPTitle.setText("MRP");
                                     }
-                                    if(jsonArrayMRP.getJSONObject(i).getString("ItemMRP").equals(tvMRP.getText().toString()))
-                                    {
+                                    if (jsonArrayMRP.getJSONObject(i).getString("ItemMRP").equals(tvMRP.getText().toString())) {
                                         TMPSETMRP = jsonArrayMRP.getJSONObject(i).getString("ItemMRP");
                                     }
                                 }
@@ -3439,33 +3263,29 @@ public class AddInvoiceActivity extends Activity {
                     }
                     SelectedMRP.setText(TMPSETMRP);
 
-                    if(SelectedPrimaryUnit.getText().toString().trim().length() > 0)
-                    {
+                    if (SelectedPrimaryUnit.getText().toString().trim().length() > 0) {
                         UDP = GetUnitDecimalPlaces(SelectedPrimaryUnit.getText().toString().trim());
                         final int decPPU = GetUnitDecimalPlaces(SelectedPrimaryUnit.getText().toString().trim());
-                        edtPrimaryUnitQty.setFilters(new InputFilter[]{new InputFilterDecimal(12,decPPU)});
-                        edtFreeQty.setFilters(new InputFilter[]{new InputFilterDecimal(12,decPPU)});
+                        edtPrimaryUnitQty.setFilters(new InputFilter[]{new InputFilterDecimal(12, decPPU)});
+                        edtFreeQty.setFilters(new InputFilter[]{new InputFilterDecimal(12, decPPU)});
                     }
 
-                    if(SelectedAltUnit.getText().toString().trim().length() > 0)
-                    {
+                    if (SelectedAltUnit.getText().toString().trim().length() > 0) {
                         UDA = GetUnitDecimalPlaces(SelectedAltUnit.getText().toString().trim());
                         final int decPAU = GetUnitDecimalPlaces(SelectedPrimaryUnit.getText().toString().trim());
-                        edtAltUnitQty.setFilters(new InputFilter[]{new InputFilterDecimal(12,decPAU)});
+                        edtAltUnitQty.setFilters(new InputFilter[]{new InputFilterDecimal(12, decPAU)});
                     }
 
                     try {
                         for (int i = 0; i < jsonArrayMRP.length(); i++) {
                             if (jsonArrayMRP.getJSONObject(i).getString("ItemName").equals(SelectedItem.getText().toString()) && jsonArrayMRP.getJSONObject(i).getString("ItemType").equals("Batch")) {
                                 if (jsonArrayMRP.getJSONObject(i).getString("ItemBATCH").equals(SelectedMRP.getText().toString()) && jsonArrayMRP.getJSONObject(i).getString("ItemName").equals(SelectedItem.getText().toString())) {
-                                    getMRPDetails(jsonArrayMRP.getJSONObject(i).getString("ItemId"),jsonArrayMRP.getJSONObject(i).getString("MRPId"));
+                                    getMRPDetails(jsonArrayMRP.getJSONObject(i).getString("ItemId"), jsonArrayMRP.getJSONObject(i).getString("MRPId"));
                                     break;
                                 }
-                            }
-                            else
-                            {
+                            } else {
                                 if (jsonArrayMRP.getJSONObject(i).getString("ItemMRP").equals(SelectedMRP.getText().toString()) && jsonArrayMRP.getJSONObject(i).getString("ItemName").equals(SelectedItem.getText().toString())) {
-                                    getMRPDetails(jsonArrayMRP.getJSONObject(i).getString("ItemId"),jsonArrayMRP.getJSONObject(i).getString("MRPId"));
+                                    getMRPDetails(jsonArrayMRP.getJSONObject(i).getString("ItemId"), jsonArrayMRP.getJSONObject(i).getString("MRPId"));
                                     break;
                                 }
                             }
@@ -3492,20 +3312,17 @@ public class AddInvoiceActivity extends Activity {
                             ITEMIDARRAY.clear();
                             ALTUNITARRAY.clear();
                             ClearControl();
-                            if(CheckValidate.checkemptyDouble(edtPrimaryUnitQty.getText().toString().trim()) >=0)
-                            {
+                            if (CheckValidate.checkemptyDouble(edtPrimaryUnitQty.getText().toString().trim()) >= 0) {
                                 PrimaryUnitQty = CheckValidate.checkemptyDouble(edtPrimaryUnitQty.getText().toString().trim());
-                            }else{
+                            } else {
                                 PrimaryUnitQty = 0;
                             }
                             /*edtAltUnitQty.setText("");
                             edtFreeQty.setText("");*/
 
-                            if (null != item && item.length() > 0 )
-                            {
+                            if (null != item && item.length() > 0) {
                                 int endIndex = item.lastIndexOf(" || ");
-                                if (endIndex != -1)
-                                {
+                                if (endIndex != -1) {
                                     tmpSetItemId = item.substring(0, endIndex); // not forgot to put check if(endIndex != -1)
                                 }
                             }
@@ -3528,13 +3345,11 @@ public class AddInvoiceActivity extends Activity {
 
                             SelectedItem.setText(SetItemName);
 
-                            if(CheckValidate.checkemptystring(SetPrimaryUnit)  != "")
-                            {
+                            if (CheckValidate.checkemptystring(SetPrimaryUnit) != "") {
                                 SelectedPrimaryUnit.setText(CheckValidate.checkemptystring(SetPrimaryUnit));
                             }
 
-                            if(CheckValidate.checkemptystring(SetAltUnit)  == "")
-                            {
+                            if (CheckValidate.checkemptystring(SetAltUnit) == "") {
 
                                 SelectedAltUnit.setText("");
                                 edtAltUnitQty.setText("");
@@ -3543,17 +3358,14 @@ public class AddInvoiceActivity extends Activity {
                                 edtAltUnitQty.setEnabled(false);
 
 
-                            }
-                            else
-                            {
+                            } else {
 
                                 SelectedAltUnit.setEnabled(true);
                                 edtAltUnitQty.setEnabled(true);
 
-                                if(CheckValidate.checkemptyDouble(edtAltUnitQty.getText().toString().trim()) >=0)
-                                {
+                                if (CheckValidate.checkemptyDouble(edtAltUnitQty.getText().toString().trim()) >= 0) {
                                     AltUnitQty = CheckValidate.checkemptyDouble(edtAltUnitQty.getText().toString().trim());
-                                }else{
+                                } else {
                                     AltUnitQty = 0;
                                 }
 
@@ -3561,8 +3373,7 @@ public class AddInvoiceActivity extends Activity {
                                     try {
                                         if (jsonArrayAlternetUnit.getJSONObject(i).getString("ItemID").equals(ITEMID)) {
 
-                                            if(!jsonArrayAlternetUnit.getJSONObject(i).getString("UnitAlias").isEmpty() || !jsonArrayAlternetUnit.getJSONObject(i).getString("UnitAlias").equals("null"))
-                                            {
+                                            if (!jsonArrayAlternetUnit.getJSONObject(i).getString("UnitAlias").isEmpty() || !jsonArrayAlternetUnit.getJSONObject(i).getString("UnitAlias").equals("null")) {
                                                 ALTUNITARRAY.add(jsonArrayAlternetUnit.getJSONObject(i).getString("UnitAlias"));
                                             }
 
@@ -3572,8 +3383,7 @@ public class AddInvoiceActivity extends Activity {
                                     }
                                 }
 
-                                if(ALTUNITARRAY.size() > 0)
-                                {
+                                if (ALTUNITARRAY.size() > 0) {
                                     SelectedAltUnit.setText(CheckValidate.checkemptystring(SetAltUnit));
 
                                     for (int i = 0; i < jsonArrayAlternetUnit.length(); i++) {
@@ -3587,9 +3397,7 @@ public class AddInvoiceActivity extends Activity {
                                             e.printStackTrace();
                                         }
                                     }
-                                }
-                                else
-                                {
+                                } else {
                                     AltUnitConversion = 0;
                                 }
                             }
@@ -3598,17 +3406,13 @@ public class AddInvoiceActivity extends Activity {
                                 try {
                                     if (jsonArrayMRP.getJSONObject(i).getString("ItemId").equals(ITEMID) && CheckValidate.checkemptyDouble(jsonArrayMRP.getJSONObject(i).getString("Stock")) > 0) {
 
-                                        if(jsonArrayMRP.getJSONObject(i).getString("ItemType").equals("Batch"))
-                                        {
-                                            if(!jsonArrayMRP.getJSONObject(i).getString("ItemBATCH").isEmpty() || !jsonArrayMRP.getJSONObject(i).getString("ItemBATCH").equals("null"))
-                                            {
+                                        if (jsonArrayMRP.getJSONObject(i).getString("ItemType").equals("Batch")) {
+                                            if (!jsonArrayMRP.getJSONObject(i).getString("ItemBATCH").isEmpty() || !jsonArrayMRP.getJSONObject(i).getString("ItemBATCH").equals("null")) {
                                                 ITEMIDARRAY.add(jsonArrayMRP.getJSONObject(i).getString("ItemBATCH"));
                                                 txtSetMRPTitle.setText("Batch");
                                             }
-                                        }else
-                                        {
-                                            if(!jsonArrayMRP.getJSONObject(i).getString("ItemMRP").isEmpty() || !jsonArrayMRP.getJSONObject(i).getString("ItemMRP").equals("null"))
-                                            {
+                                        } else {
+                                            if (!jsonArrayMRP.getJSONObject(i).getString("ItemMRP").isEmpty() || !jsonArrayMRP.getJSONObject(i).getString("ItemMRP").equals("null")) {
                                                 ITEMIDARRAY.add(jsonArrayMRP.getJSONObject(i).getString("ItemMRP"));
                                                 txtSetMRPTitle.setText("MRP");
                                             }
@@ -3620,12 +3424,9 @@ public class AddInvoiceActivity extends Activity {
                                 }
                             }
 
-                            if(ITEMIDARRAY.size() > 0)
-                            {
+                            if (ITEMIDARRAY.size() > 0) {
                                 SelectedMRP.setText(ITEMIDARRAY.get(0));
-                            }
-                            else
-                            {
+                            } else {
                                 Toast.makeText(AddInvoiceActivity.this, "No stock available", Toast.LENGTH_LONG).show();
                                 SelectedMRP.setText("");
                                 edtStock.setText("");
@@ -3633,33 +3434,29 @@ public class AddInvoiceActivity extends Activity {
                                 return;
                             }
 
-                            if(SelectedPrimaryUnit.getText().toString().trim().length() > 0)
-                            {
+                            if (SelectedPrimaryUnit.getText().toString().trim().length() > 0) {
                                 UDP = GetUnitDecimalPlaces(SelectedPrimaryUnit.getText().toString().trim());
                                 final int decPPU = GetUnitDecimalPlaces(SelectedPrimaryUnit.getText().toString().trim());
-                                edtPrimaryUnitQty.setFilters(new InputFilter[]{new InputFilterDecimal(12,decPPU)});
-                                edtFreeQty.setFilters(new InputFilter[]{new InputFilterDecimal(12,decPPU)});
+                                edtPrimaryUnitQty.setFilters(new InputFilter[]{new InputFilterDecimal(12, decPPU)});
+                                edtFreeQty.setFilters(new InputFilter[]{new InputFilterDecimal(12, decPPU)});
                             }
 
-                            if(SelectedAltUnit.getText().toString().trim().length() > 0)
-                            {
+                            if (SelectedAltUnit.getText().toString().trim().length() > 0) {
                                 UDA = GetUnitDecimalPlaces(SelectedAltUnit.getText().toString().trim());
                                 final int decPAU = GetUnitDecimalPlaces(SelectedPrimaryUnit.getText().toString().trim());
-                                edtAltUnitQty.setFilters(new InputFilter[]{new InputFilterDecimal(12,decPAU)});
+                                edtAltUnitQty.setFilters(new InputFilter[]{new InputFilterDecimal(12, decPAU)});
                             }
 
                             try {
                                 for (int i = 0; i < jsonArrayMRP.length(); i++) {
                                     if (jsonArrayMRP.getJSONObject(i).getString("ItemName").equals(SelectedItem.getText().toString()) && jsonArrayMRP.getJSONObject(i).getString("ItemType").equals("Batch")) {
                                         if (jsonArrayMRP.getJSONObject(i).getString("ItemBATCH").equals(SelectedMRP.getText().toString()) && jsonArrayMRP.getJSONObject(i).getString("ItemName").equals(SelectedItem.getText().toString())) {
-                                            getMRPDetails(jsonArrayMRP.getJSONObject(i).getString("ItemId"),jsonArrayMRP.getJSONObject(i).getString("MRPId"));
+                                            getMRPDetails(jsonArrayMRP.getJSONObject(i).getString("ItemId"), jsonArrayMRP.getJSONObject(i).getString("MRPId"));
                                             break;
                                         }
-                                    }
-                                    else
-                                    {
+                                    } else {
                                         if (jsonArrayMRP.getJSONObject(i).getString("ItemMRP").equals(SelectedMRP.getText().toString()) && jsonArrayMRP.getJSONObject(i).getString("ItemName").equals(SelectedItem.getText().toString())) {
-                                            getMRPDetails(jsonArrayMRP.getJSONObject(i).getString("ItemId"),jsonArrayMRP.getJSONObject(i).getString("MRPId"));
+                                            getMRPDetails(jsonArrayMRP.getJSONObject(i).getString("ItemId"), jsonArrayMRP.getJSONObject(i).getString("MRPId"));
                                             break;
                                         }
                                     }
@@ -3692,21 +3489,18 @@ public class AddInvoiceActivity extends Activity {
                             ITEMIDARRAY.clear();
                             ALTUNITARRAY.clear();
 
-                            if (null != item && item.length() > 0 )
-                            {
+                            if (null != item && item.length() > 0) {
                                 int endIndex = item.lastIndexOf(" || ");
-                                if (endIndex != -1)
-                                {
+                                if (endIndex != -1) {
                                     SetItemName = item.substring(0, endIndex); // not forgot to put check if(endIndex != -1)
                                 }
                             }
                             SelectedItem.setText(SetItemName);
 
                             ClearControl();
-                            if(CheckValidate.checkemptyDouble(edtPrimaryUnitQty.getText().toString().trim()) >=0)
-                            {
+                            if (CheckValidate.checkemptyDouble(edtPrimaryUnitQty.getText().toString().trim()) >= 0) {
                                 PrimaryUnitQty = CheckValidate.checkemptyDouble(edtPrimaryUnitQty.getText().toString().trim());
-                            }else{
+                            } else {
                                 PrimaryUnitQty = 0;
                             }
 
@@ -3724,37 +3518,30 @@ public class AddInvoiceActivity extends Activity {
                                     e.printStackTrace();
                                 }
                             }
-                            if(!ITEMID.equals("0") || !ITEMID.isEmpty()) {
+                            if (!ITEMID.equals("0") || !ITEMID.isEmpty()) {
                                 SelectedItemId.setText(ITEMID);
-                            }
-                            else
-                            {
+                            } else {
                                 SelectedItemId.setText("Item ID");
                             }
 
-                            if(CheckValidate.checkemptystring(SetPrimaryUnit)  != "")
-                            {
+                            if (CheckValidate.checkemptystring(SetPrimaryUnit) != "") {
                                 SelectedPrimaryUnit.setText(CheckValidate.checkemptystring(SetPrimaryUnit));
                             }
 
-                            if(CheckValidate.checkemptystring(SetAltUnit)  == "")
-                            {
+                            if (CheckValidate.checkemptystring(SetAltUnit) == "") {
                                 SelectedAltUnit.setText("");
                                 edtAltUnitQty.setText("");
                                 AltUnitQty = CheckValidate.checkemptyDouble(edtAltUnitQty.getText().toString().trim());
                                 SelectedAltUnit.setEnabled(false);
                                 edtAltUnitQty.setEnabled(false);
 
-                            }
-                            else
-                            {
+                            } else {
 
                                 SelectedAltUnit.setEnabled(true);
                                 edtAltUnitQty.setEnabled(true);
-                                if(CheckValidate.checkemptyDouble(edtAltUnitQty.getText().toString().trim()) >=0)
-                                {
+                                if (CheckValidate.checkemptyDouble(edtAltUnitQty.getText().toString().trim()) >= 0) {
                                     AltUnitQty = CheckValidate.checkemptyDouble(edtAltUnitQty.getText().toString().trim());
-                                }else{
+                                } else {
                                     AltUnitQty = 0;
                                 }
 
@@ -3762,8 +3549,7 @@ public class AddInvoiceActivity extends Activity {
                                     try {
                                         if (jsonArrayAlternetUnit.getJSONObject(i).getString("ItemID").equals(ITEMID)) {
 
-                                            if(!jsonArrayAlternetUnit.getJSONObject(i).getString("UnitAlias").isEmpty() || !jsonArrayAlternetUnit.getJSONObject(i).getString("UnitAlias").equals("null"))
-                                            {
+                                            if (!jsonArrayAlternetUnit.getJSONObject(i).getString("UnitAlias").isEmpty() || !jsonArrayAlternetUnit.getJSONObject(i).getString("UnitAlias").equals("null")) {
                                                 ALTUNITARRAY.add(jsonArrayAlternetUnit.getJSONObject(i).getString("UnitAlias"));
                                             }
 
@@ -3773,8 +3559,7 @@ public class AddInvoiceActivity extends Activity {
                                     }
                                 }
 
-                                if(ALTUNITARRAY.size() > 0)
-                                {
+                                if (ALTUNITARRAY.size() > 0) {
                                     SelectedAltUnit.setText(CheckValidate.checkemptystring(SetAltUnit));
 
                                     for (int i = 0; i < jsonArrayAlternetUnit.length(); i++) {
@@ -3788,9 +3573,7 @@ public class AddInvoiceActivity extends Activity {
                                             e.printStackTrace();
                                         }
                                     }
-                                }
-                                else
-                                {
+                                } else {
                                     AltUnitConversion = 0;
                                 }
                             }
@@ -3799,17 +3582,13 @@ public class AddInvoiceActivity extends Activity {
                                 try {
                                     if (jsonArrayMRP.getJSONObject(i).getString("ItemId").equals(ITEMID) && CheckValidate.checkemptyDouble(jsonArrayMRP.getJSONObject(i).getString("Stock")) > 0) {
 
-                                        if(jsonArrayMRP.getJSONObject(i).getString("ItemType").equals("Batch"))
-                                        {
-                                            if(!jsonArrayMRP.getJSONObject(i).getString("ItemBATCH").isEmpty() || !jsonArrayMRP.getJSONObject(i).getString("ItemBATCH").equals("null"))
-                                            {
+                                        if (jsonArrayMRP.getJSONObject(i).getString("ItemType").equals("Batch")) {
+                                            if (!jsonArrayMRP.getJSONObject(i).getString("ItemBATCH").isEmpty() || !jsonArrayMRP.getJSONObject(i).getString("ItemBATCH").equals("null")) {
                                                 ITEMIDARRAY.add(jsonArrayMRP.getJSONObject(i).getString("ItemBATCH"));
                                                 txtSetMRPTitle.setText("Batch");
                                             }
-                                        }else
-                                        {
-                                            if(!jsonArrayMRP.getJSONObject(i).getString("ItemMRP").isEmpty() || !jsonArrayMRP.getJSONObject(i).getString("ItemMRP").equals("null"))
-                                            {
+                                        } else {
+                                            if (!jsonArrayMRP.getJSONObject(i).getString("ItemMRP").isEmpty() || !jsonArrayMRP.getJSONObject(i).getString("ItemMRP").equals("null")) {
                                                 ITEMIDARRAY.add(jsonArrayMRP.getJSONObject(i).getString("ItemMRP"));
                                                 txtSetMRPTitle.setText("MRP");
                                             }
@@ -3821,12 +3600,9 @@ public class AddInvoiceActivity extends Activity {
                                 }
                             }
 
-                            if(ITEMIDARRAY.size() > 0)
-                            {
+                            if (ITEMIDARRAY.size() > 0) {
                                 SelectedMRP.setText(ITEMIDARRAY.get(0));
-                            }
-                            else
-                            {
+                            } else {
                                 Toast.makeText(AddInvoiceActivity.this, "No stock available", Toast.LENGTH_LONG).show();
                                 SelectedMRP.setText("");
                                 edtStock.setText("");
@@ -3834,33 +3610,29 @@ public class AddInvoiceActivity extends Activity {
                                 return;
                             }
 
-                            if(SelectedPrimaryUnit.getText().toString().trim().length() > 0)
-                            {
+                            if (SelectedPrimaryUnit.getText().toString().trim().length() > 0) {
                                 UDP = GetUnitDecimalPlaces(SelectedPrimaryUnit.getText().toString().trim());
                                 final int decPPU = GetUnitDecimalPlaces(SelectedPrimaryUnit.getText().toString().trim());
-                                edtPrimaryUnitQty.setFilters(new InputFilter[]{new InputFilterDecimal(12,decPPU)});
-                                edtFreeQty.setFilters(new InputFilter[]{new InputFilterDecimal(12,decPPU)});
+                                edtPrimaryUnitQty.setFilters(new InputFilter[]{new InputFilterDecimal(12, decPPU)});
+                                edtFreeQty.setFilters(new InputFilter[]{new InputFilterDecimal(12, decPPU)});
                             }
 
-                            if(SelectedAltUnit.getText().toString().trim().length() > 0)
-                            {
+                            if (SelectedAltUnit.getText().toString().trim().length() > 0) {
                                 UDA = GetUnitDecimalPlaces(SelectedAltUnit.getText().toString().trim());
                                 final int decPAU = GetUnitDecimalPlaces(SelectedPrimaryUnit.getText().toString().trim());
-                                edtAltUnitQty.setFilters(new InputFilter[]{new InputFilterDecimal(12,decPAU)});
+                                edtAltUnitQty.setFilters(new InputFilter[]{new InputFilterDecimal(12, decPAU)});
                             }
 
                             try {
                                 for (int i = 0; i < jsonArrayMRP.length(); i++) {
                                     if (jsonArrayMRP.getJSONObject(i).getString("ItemName").equals(SelectedItem.getText().toString()) && jsonArrayMRP.getJSONObject(i).getString("ItemType").equals("Batch")) {
                                         if (jsonArrayMRP.getJSONObject(i).getString("ItemBATCH").equals(SelectedMRP.getText().toString()) && jsonArrayMRP.getJSONObject(i).getString("ItemName").equals(SelectedItem.getText().toString())) {
-                                            getMRPDetails(jsonArrayMRP.getJSONObject(i).getString("ItemId"),jsonArrayMRP.getJSONObject(i).getString("MRPId"));
+                                            getMRPDetails(jsonArrayMRP.getJSONObject(i).getString("ItemId"), jsonArrayMRP.getJSONObject(i).getString("MRPId"));
                                             break;
                                         }
-                                    }
-                                    else
-                                    {
+                                    } else {
                                         if (jsonArrayMRP.getJSONObject(i).getString("ItemMRP").equals(SelectedMRP.getText().toString()) && jsonArrayMRP.getJSONObject(i).getString("ItemName").equals(SelectedItem.getText().toString())) {
-                                            getMRPDetails(jsonArrayMRP.getJSONObject(i).getString("ItemId"),jsonArrayMRP.getJSONObject(i).getString("MRPId"));
+                                            getMRPDetails(jsonArrayMRP.getJSONObject(i).getString("ItemId"), jsonArrayMRP.getJSONObject(i).getString("MRPId"));
                                             break;
                                         }
                                     }
@@ -3892,49 +3664,43 @@ public class AddInvoiceActivity extends Activity {
                             SelectedMRP.setText(item);
 
                             ClearControl();
-                            if(CheckValidate.checkemptyDouble(edtPrimaryUnitQty.getText().toString().trim()) >=0)
-                            {
+                            if (CheckValidate.checkemptyDouble(edtPrimaryUnitQty.getText().toString().trim()) >= 0) {
                                 PrimaryUnitQty = CheckValidate.checkemptyDouble(edtPrimaryUnitQty.getText().toString().trim());
-                            }else{
+                            } else {
                                 PrimaryUnitQty = 0;
                             }
 
-                            if(CheckValidate.checkemptyDouble(edtAltUnitQty.getText().toString().trim()) >=0)
-                            {
+                            if (CheckValidate.checkemptyDouble(edtAltUnitQty.getText().toString().trim()) >= 0) {
                                 AltUnitQty = CheckValidate.checkemptyDouble(edtAltUnitQty.getText().toString().trim());
-                            }else{
+                            } else {
                                 AltUnitQty = 0;
                             }
 
                             ////start
 
-                            if(SelectedPrimaryUnit.getText().toString().trim().length() > 0)
-                            {
+                            if (SelectedPrimaryUnit.getText().toString().trim().length() > 0) {
                                 UDP = GetUnitDecimalPlaces(SelectedPrimaryUnit.getText().toString().trim());
                                 final int decPPU = GetUnitDecimalPlaces(SelectedPrimaryUnit.getText().toString().trim());
-                                edtPrimaryUnitQty.setFilters(new InputFilter[]{new InputFilterDecimal(12,decPPU)});
-                                edtFreeQty.setFilters(new InputFilter[]{new InputFilterDecimal(12,decPPU)});
+                                edtPrimaryUnitQty.setFilters(new InputFilter[]{new InputFilterDecimal(12, decPPU)});
+                                edtFreeQty.setFilters(new InputFilter[]{new InputFilterDecimal(12, decPPU)});
                             }
 
-                            if(SelectedAltUnit.getText().toString().trim().length() > 0)
-                            {
+                            if (SelectedAltUnit.getText().toString().trim().length() > 0) {
                                 UDA = GetUnitDecimalPlaces(SelectedAltUnit.getText().toString().trim());
                                 final int decPAU = GetUnitDecimalPlaces(SelectedPrimaryUnit.getText().toString().trim());
-                                edtAltUnitQty.setFilters(new InputFilter[]{new InputFilterDecimal(12,decPAU)});
+                                edtAltUnitQty.setFilters(new InputFilter[]{new InputFilterDecimal(12, decPAU)});
                             }
 
                             try {
                                 for (int i = 0; i < jsonArrayMRP.length(); i++) {
                                     if (jsonArrayMRP.getJSONObject(i).getString("ItemName").equals(SelectedItem.getText().toString()) && jsonArrayMRP.getJSONObject(i).getString("ItemType").equals("Batch")) {
                                         if (jsonArrayMRP.getJSONObject(i).getString("ItemBATCH").equals(SelectedMRP.getText().toString()) && jsonArrayMRP.getJSONObject(i).getString("ItemName").equals(SelectedItem.getText().toString())) {
-                                            getMRPDetails(jsonArrayMRP.getJSONObject(i).getString("ItemId"),jsonArrayMRP.getJSONObject(i).getString("MRPId"));
+                                            getMRPDetails(jsonArrayMRP.getJSONObject(i).getString("ItemId"), jsonArrayMRP.getJSONObject(i).getString("MRPId"));
                                             break;
                                         }
-                                    }
-                                    else
-                                    {
+                                    } else {
                                         if (jsonArrayMRP.getJSONObject(i).getString("ItemMRP").equals(SelectedMRP.getText().toString()) && jsonArrayMRP.getJSONObject(i).getString("ItemName").equals(SelectedItem.getText().toString())) {
-                                            getMRPDetails(jsonArrayMRP.getJSONObject(i).getString("ItemId"),jsonArrayMRP.getJSONObject(i).getString("MRPId"));
+                                            getMRPDetails(jsonArrayMRP.getJSONObject(i).getString("ItemId"), jsonArrayMRP.getJSONObject(i).getString("MRPId"));
                                             break;
                                         }
                                     }
@@ -3979,26 +3745,24 @@ public class AddInvoiceActivity extends Activity {
                                 }
                             }
 
-                            if(SelectedPrimaryUnit.getText().toString().trim().length() > 0)
-                            {
+                            if (SelectedPrimaryUnit.getText().toString().trim().length() > 0) {
                                 UDP = GetUnitDecimalPlaces(SelectedPrimaryUnit.getText().toString().trim());
                                 final int decPPU = GetUnitDecimalPlaces(SelectedPrimaryUnit.getText().toString().trim());
-                                edtPrimaryUnitQty.setFilters(new InputFilter[]{new InputFilterDecimal(12,decPPU)});
-                                edtFreeQty.setFilters(new InputFilter[]{new InputFilterDecimal(12,decPPU)});
+                                edtPrimaryUnitQty.setFilters(new InputFilter[]{new InputFilterDecimal(12, decPPU)});
+                                edtFreeQty.setFilters(new InputFilter[]{new InputFilterDecimal(12, decPPU)});
                             }
 
-                            if(SelectedAltUnit.getText().toString().trim().length() > 0)
-                            {
+                            if (SelectedAltUnit.getText().toString().trim().length() > 0) {
                                 UDA = GetUnitDecimalPlaces(SelectedAltUnit.getText().toString().trim());
                                 final int decPAU = GetUnitDecimalPlaces(SelectedPrimaryUnit.getText().toString().trim());
-                                edtAltUnitQty.setFilters(new InputFilter[]{new InputFilterDecimal(12,decPAU)});
+                                edtAltUnitQty.setFilters(new InputFilter[]{new InputFilterDecimal(12, decPAU)});
                             }
 
-                            try{
+                            try {
 
                                 edtAmount.setError(null);
-                                double tmpAltUnitQty =  CheckValidate.checkemptyDouble(edtAltUnitQty.getText().toString().trim());
-                                if(tmpAltUnitQty > 0) {
+                                double tmpAltUnitQty = CheckValidate.checkemptyDouble(edtAltUnitQty.getText().toString().trim());
+                                if (tmpAltUnitQty > 0) {
                                     if (UDA > 0) {
                                         edtAltUnitQty.setText(String.format("%." + UDA + "f", tmpAltUnitQty));
                                     } else {
@@ -4007,18 +3771,16 @@ public class AddInvoiceActivity extends Activity {
 
                                 }
                                 AltUnitQty = CheckValidate.checkemptyDouble(edtAltUnitQty.getText().toString().trim());
-                                PrimaryUnitQty =  CheckValidate.checkemptyDouble(edtPrimaryUnitQty.getText().toString().trim());
+                                PrimaryUnitQty = CheckValidate.checkemptyDouble(edtPrimaryUnitQty.getText().toString().trim());
 
                                 double tmpTotalQty;
-                                if(AltUnitQty <= 0)
-                                {
+                                if (AltUnitQty <= 0) {
                                     tmpTotalQty = PrimaryUnitQty;
 
-                                }else
-                                {
+                                } else {
                                     tmpTotalQty = (AltUnitQty * AltUnitConversion) + PrimaryUnitQty;
                                 }
-                                String strTotalQty = String.format("%."+UDP+"f",tmpTotalQty);
+                                String strTotalQty = String.format("%." + UDP + "f", tmpTotalQty);
                                 edtTotalQty.setText(strTotalQty);
                                 TotalQty = CheckValidate.checkemptyDouble(edtTotalQty.getText().toString().trim());
 
@@ -4072,11 +3834,9 @@ public class AddInvoiceActivity extends Activity {
                                 }
 
                                 TotalDisc = Disc + DiscII + DiscIII;
-                                if(CheckValidate.checkemptyDouble(String.valueOf(TotalDisc)) > 0)
-                                {
-                                    edtTotalDisc.setText(String.format("%.2f",TotalDisc));
-                                }else
-                                {
+                                if (CheckValidate.checkemptyDouble(String.valueOf(TotalDisc)) > 0) {
+                                    edtTotalDisc.setText(String.format("%.2f", TotalDisc));
+                                } else {
                                     edtTotalDisc.setText("");
                                 }
 
@@ -4146,7 +3906,7 @@ public class AddInvoiceActivity extends Activity {
                                 String totalAmt = String.format("%.2f", totalAmount);
                                 edtAmount.setText(totalAmt);
 
-                            }catch (NumberFormatException e){
+                            } catch (NumberFormatException e) {
                                 Toast.makeText(AddInvoiceActivity.this, e.toString(), Toast.LENGTH_LONG).show();
                             }
                         }
@@ -4169,26 +3929,24 @@ public class AddInvoiceActivity extends Activity {
 
                         @Override
                         public void onTextChanged(CharSequence s, int start, int before, int count) {
-                            try{
+                            try {
 
                                 edtAmount.setError(null);
-                                if (s.toString().trim().length() == 0 ) {
+                                if (s.toString().trim().length() == 0) {
                                 }
 
 
-                                AltUnitQty =  CheckValidate.checkemptyDouble(s.toString());
-                                PrimaryUnitQty =  CheckValidate.checkemptyDouble(edtPrimaryUnitQty.getText().toString().trim());
+                                AltUnitQty = CheckValidate.checkemptyDouble(s.toString());
+                                PrimaryUnitQty = CheckValidate.checkemptyDouble(edtPrimaryUnitQty.getText().toString().trim());
 
                                 double tmpTotalQty;
-                                if(AltUnitQty <= 0)
-                                {
+                                if (AltUnitQty <= 0) {
                                     tmpTotalQty = PrimaryUnitQty;
 
-                                }else
-                                {
+                                } else {
                                     tmpTotalQty = (AltUnitQty * AltUnitConversion) + PrimaryUnitQty;
                                 }
-                                String strTotalQty = String.format("%."+UDP+"f",tmpTotalQty);
+                                String strTotalQty = String.format("%." + UDP + "f", tmpTotalQty);
                                 edtTotalQty.setText(strTotalQty);
                                 TotalQty = CheckValidate.checkemptyDouble(edtTotalQty.getText().toString().trim());
 
@@ -4242,11 +4000,9 @@ public class AddInvoiceActivity extends Activity {
                                 }
 
                                 TotalDisc = Disc + DiscII + DiscIII;
-                                if(CheckValidate.checkemptyDouble(String.valueOf(TotalDisc)) > 0)
-                                {
-                                    edtTotalDisc.setText(String.format("%.2f",TotalDisc));
-                                }else
-                                {
+                                if (CheckValidate.checkemptyDouble(String.valueOf(TotalDisc)) > 0) {
+                                    edtTotalDisc.setText(String.format("%.2f", TotalDisc));
+                                } else {
                                     edtTotalDisc.setText("");
                                 }
 
@@ -4316,7 +4072,7 @@ public class AddInvoiceActivity extends Activity {
                                 String totalAmt = String.format("%.2f", totalAmount);
                                 edtAmount.setText(totalAmt);
 
-                            }catch (NumberFormatException e){
+                            } catch (NumberFormatException e) {
                                 Toast.makeText(AddInvoiceActivity.this, e.toString(), Toast.LENGTH_LONG).show();
                             }
 
@@ -4345,25 +4101,23 @@ public class AddInvoiceActivity extends Activity {
 
                         @Override
                         public void onTextChanged(CharSequence s, int start, int before, int count) {
-                            try{
+                            try {
 
                                 edtAmount.setError(null);
-                                if (s.toString().trim().length() == 0 ) {
+                                if (s.toString().trim().length() == 0) {
                                 }
 
                                 PrimaryUnitQty = CheckValidate.checkemptyDouble(s.toString());
                                 AltUnitQty = CheckValidate.checkemptyDouble(edtAltUnitQty.getText().toString().trim());
 
                                 double tmpTotalQty;
-                                if(AltUnitQty <= 0)
-                                {
+                                if (AltUnitQty <= 0) {
                                     tmpTotalQty = PrimaryUnitQty;
 
-                                }else
-                                {
+                                } else {
                                     tmpTotalQty = (AltUnitQty * AltUnitConversion) + PrimaryUnitQty;
                                 }
-                                String strTotalQty = String.format("%."+UDP+"f",tmpTotalQty);
+                                String strTotalQty = String.format("%." + UDP + "f", tmpTotalQty);
                                 edtTotalQty.setText(strTotalQty);
                                 TotalQty = CheckValidate.checkemptyDouble(edtTotalQty.getText().toString().trim());
 
@@ -4417,11 +4171,9 @@ public class AddInvoiceActivity extends Activity {
                                 }
 
                                 TotalDisc = Disc + DiscII + DiscIII;
-                                if(CheckValidate.checkemptyDouble(String.valueOf(TotalDisc)) > 0)
-                                {
-                                    edtTotalDisc.setText(String.format("%.2f",TotalDisc));
-                                }else
-                                {
+                                if (CheckValidate.checkemptyDouble(String.valueOf(TotalDisc)) > 0) {
+                                    edtTotalDisc.setText(String.format("%.2f", TotalDisc));
+                                } else {
                                     edtTotalDisc.setText("");
                                 }
 
@@ -4491,7 +4243,7 @@ public class AddInvoiceActivity extends Activity {
                                 String totalAmt = String.format("%.2f", totalAmount);
                                 edtAmount.setText(totalAmt);
 
-                            }catch (NumberFormatException e){
+                            } catch (NumberFormatException e) {
                                 Toast.makeText(AddInvoiceActivity.this, e.toString(), Toast.LENGTH_LONG).show();
                             }
 
@@ -4510,153 +4262,141 @@ public class AddInvoiceActivity extends Activity {
 
                         @Override
                         public void onTextChanged(CharSequence s, int start, int before, int count) {
-                          try
-                          {
-                            edtAmount.setError(null);
-                            if (s.toString().trim().length() == 0 || CheckValidate.checkemptyDouble(s.toString()) < 0 ) {
-                                edtRate.setError("Rate blank not allowed");
-                            }
-                            else {
-                                edtRate.setError(null);
-                                edtRate.setCompoundDrawables(null, null, null, null);
-                            }
-
-                            double TotalQty = CheckValidate.checkemptyDouble(edtTotalQty.getText().toString().trim());
-                            Rate = CheckValidate.checkemptyDouble(s.toString());
-                            double tmpGross = TotalQty * Rate;
-                            String gross = String.format("%.2f",tmpGross);
-                            edtGross.setText(gross);
-                            Gross = CheckValidate.checkemptyDouble(edtGross.getText().toString().trim());
-
-                            DiscPer = CheckValidate.checkemptyDouble(edtDiscPer.getText().toString().trim());
-                            if(DiscPer > 0)
-                            {
-                                double  tmpDisc = ((Gross * DiscPer) / 100);
-                                if(tmpDisc > 0 ){
-                                    String txtDisc = String.format("%.2f",tmpDisc);
-                                    edtDisc.setText(txtDisc);
-                                }else{
-                                    edtDisc.setText("");
+                            try {
+                                edtAmount.setError(null);
+                                if (s.toString().trim().length() == 0 || CheckValidate.checkemptyDouble(s.toString()) < 0) {
+                                    edtRate.setError("Rate blank not allowed");
+                                } else {
+                                    edtRate.setError(null);
+                                    edtRate.setCompoundDrawables(null, null, null, null);
                                 }
-                                Disc = CheckValidate.checkemptyDouble(edtDisc.getText().toString().trim());
-                            }else
-                            {
-                                Disc = CheckValidate.checkemptyDouble(edtDisc.getText().toString().trim());
-                            }
 
-                            DiscIIPer = CheckValidate.checkemptyDouble(edtDiscIIPer.getText().toString().trim());
-                            if(DiscIIPer > 0)
-                            {
-                                double  tmpDiscII = (((Gross-Disc) * DiscIIPer) / 100);
-                                if(tmpDiscII > 0){
-                                    String txtDiscII = String.format("%.2f",tmpDiscII);
-                                    edtDiscII.setText(txtDiscII);
+                                double TotalQty = CheckValidate.checkemptyDouble(edtTotalQty.getText().toString().trim());
+                                Rate = CheckValidate.checkemptyDouble(s.toString());
+                                double tmpGross = TotalQty * Rate;
+                                String gross = String.format("%.2f", tmpGross);
+                                edtGross.setText(gross);
+                                Gross = CheckValidate.checkemptyDouble(edtGross.getText().toString().trim());
 
-                                }else{
-                                    edtDiscII.setText("");
+                                DiscPer = CheckValidate.checkemptyDouble(edtDiscPer.getText().toString().trim());
+                                if (DiscPer > 0) {
+                                    double tmpDisc = ((Gross * DiscPer) / 100);
+                                    if (tmpDisc > 0) {
+                                        String txtDisc = String.format("%.2f", tmpDisc);
+                                        edtDisc.setText(txtDisc);
+                                    } else {
+                                        edtDisc.setText("");
+                                    }
+                                    Disc = CheckValidate.checkemptyDouble(edtDisc.getText().toString().trim());
+                                } else {
+                                    Disc = CheckValidate.checkemptyDouble(edtDisc.getText().toString().trim());
                                 }
-                                DiscII = CheckValidate.checkemptyDouble(edtDiscII.getText().toString().trim());
-                            }else
-                            {
-                                DiscII = CheckValidate.checkemptyDouble(edtDiscII.getText().toString().trim());
-                            }
 
-                            DiscIIIPer = CheckValidate.checkemptyDouble(edtDiscIIIPer.getText().toString().trim());
-                            if (DiscIIIPer > 0) {
+                                DiscIIPer = CheckValidate.checkemptyDouble(edtDiscIIPer.getText().toString().trim());
+                                if (DiscIIPer > 0) {
+                                    double tmpDiscII = (((Gross - Disc) * DiscIIPer) / 100);
+                                    if (tmpDiscII > 0) {
+                                        String txtDiscII = String.format("%.2f", tmpDiscII);
+                                        edtDiscII.setText(txtDiscII);
 
-                                double tmpDiscIII = (((Gross - Disc - DiscII) * DiscIIIPer) / 100);
-                                if(tmpDiscIII > 0){
-                                    String txtDiscIII = String.format("%.2f",tmpDiscIII);
-                                    edtDiscIII.setText(txtDiscIII);
-                                }else{
-                                    edtDiscIII.setText("");
+                                    } else {
+                                        edtDiscII.setText("");
+                                    }
+                                    DiscII = CheckValidate.checkemptyDouble(edtDiscII.getText().toString().trim());
+                                } else {
+                                    DiscII = CheckValidate.checkemptyDouble(edtDiscII.getText().toString().trim());
                                 }
-                                DiscIII = CheckValidate.checkemptyDouble(edtDiscIII.getText().toString().trim());
-                            }else
-                            {
-                                DiscIII = CheckValidate.checkemptyDouble(edtDiscIII.getText().toString().trim());
-                            }
 
-                              TotalDisc = Disc + DiscII + DiscIII;
-                              if(CheckValidate.checkemptyDouble(String.valueOf(TotalDisc)) > 0)
-                              {
-                                  edtTotalDisc.setText(String.format("%.2f",TotalDisc));
-                              }else
-                              {
-                                  edtTotalDisc.setText("");
-                              }
+                                DiscIIIPer = CheckValidate.checkemptyDouble(edtDiscIIIPer.getText().toString().trim());
+                                if (DiscIIIPer > 0) {
 
-                            OtherPer = CheckValidate.checkemptyDouble(edtOtherPer.getText().toString().trim());
-                            if(OtherPer > 0){
-                                double  tmpOther= (((Gross - Disc - DiscII - DiscIII) * OtherPer) / 100);
-                                if(tmpOther > 0){
-                                    String txtOther = String.format("%.2f",tmpOther);
-                                    edtOther.setText(txtOther);
-                                }else{
-                                    edtOther.setText("");
+                                    double tmpDiscIII = (((Gross - Disc - DiscII) * DiscIIIPer) / 100);
+                                    if (tmpDiscIII > 0) {
+                                        String txtDiscIII = String.format("%.2f", tmpDiscIII);
+                                        edtDiscIII.setText(txtDiscIII);
+                                    } else {
+                                        edtDiscIII.setText("");
+                                    }
+                                    DiscIII = CheckValidate.checkemptyDouble(edtDiscIII.getText().toString().trim());
+                                } else {
+                                    DiscIII = CheckValidate.checkemptyDouble(edtDiscIII.getText().toString().trim());
                                 }
-                                Other = CheckValidate.checkemptyDouble(edtOther.getText().toString().trim());
-                            }else
-                            {
-                                Other = CheckValidate.checkemptyDouble(edtOther.getText().toString().trim());
-                            }
 
-                            OtherIIPer = CheckValidate.checkemptyDouble(edtOtherIIPer.getText().toString().trim());
-                            if(OtherIIPer > 0)
-                            {
-                                double  tmpOtherII= (((Gross - Disc - DiscII - DiscIII + Other ) * OtherIIPer) / 100);
-                                if(tmpOtherII > 0){
-                                    String txtOtherII = String.format("%.2f",tmpOtherII);
-                                    edtOtherII.setText(txtOtherII);
-                                }else{
-                                    edtOtherII.setText("");
+                                TotalDisc = Disc + DiscII + DiscIII;
+                                if (CheckValidate.checkemptyDouble(String.valueOf(TotalDisc)) > 0) {
+                                    edtTotalDisc.setText(String.format("%.2f", TotalDisc));
+                                } else {
+                                    edtTotalDisc.setText("");
                                 }
-                                OtherII = CheckValidate.checkemptyDouble(edtOtherII.getText().toString().trim());
-                            }else
-                            {
-                                OtherII = CheckValidate.checkemptyDouble(edtOtherII.getText().toString().trim());
+
+                                OtherPer = CheckValidate.checkemptyDouble(edtOtherPer.getText().toString().trim());
+                                if (OtherPer > 0) {
+                                    double tmpOther = (((Gross - Disc - DiscII - DiscIII) * OtherPer) / 100);
+                                    if (tmpOther > 0) {
+                                        String txtOther = String.format("%.2f", tmpOther);
+                                        edtOther.setText(txtOther);
+                                    } else {
+                                        edtOther.setText("");
+                                    }
+                                    Other = CheckValidate.checkemptyDouble(edtOther.getText().toString().trim());
+                                } else {
+                                    Other = CheckValidate.checkemptyDouble(edtOther.getText().toString().trim());
+                                }
+
+                                OtherIIPer = CheckValidate.checkemptyDouble(edtOtherIIPer.getText().toString().trim());
+                                if (OtherIIPer > 0) {
+                                    double tmpOtherII = (((Gross - Disc - DiscII - DiscIII + Other) * OtherIIPer) / 100);
+                                    if (tmpOtherII > 0) {
+                                        String txtOtherII = String.format("%.2f", tmpOtherII);
+                                        edtOtherII.setText(txtOtherII);
+                                    } else {
+                                        edtOtherII.setText("");
+                                    }
+                                    OtherII = CheckValidate.checkemptyDouble(edtOtherII.getText().toString().trim());
+                                } else {
+                                    OtherII = CheckValidate.checkemptyDouble(edtOtherII.getText().toString().trim());
+                                }
+
+                                cgstP = CheckValidate.checkemptyDouble(edtCGSTP.getText().toString().trim());
+                                sgstP = CheckValidate.checkemptyDouble(edtSGSTP.getText().toString().trim());
+                                igstP = CheckValidate.checkemptyDouble(edtIGSTP.getText().toString().trim());
+
+                                double cgst = 0;
+                                if (cgstP > 0) {
+                                    double tmpCgst = (((Gross - Disc - DiscII - DiscIII + Other + OtherII) * cgstP) / 100);
+                                    String txtcgst = String.format("%.2f", tmpCgst);
+                                    edtCGST.setText(txtcgst);
+                                    cgst = CheckValidate.checkemptyDouble(edtCGST.getText().toString().trim());
+                                } else {
+                                    edtCGST.setText("");
+                                }
+
+                                double sgst = 0;
+                                if (sgstP > 0) {
+                                    double tmpSgst = (((Gross - Disc - DiscII - DiscIII + Other + OtherII) * sgstP) / 100);
+                                    String txtsgst = String.format("%.2f", tmpSgst);
+                                    edtSGST.setText(txtsgst);
+                                    sgst = CheckValidate.checkemptyDouble(edtSGST.getText().toString().trim());
+                                } else {
+                                    edtSGST.setText("");
+                                }
+
+                                double igst = 0;
+                                if (igstP > 0) {
+                                    double tmpIgst = (((Gross - Disc - DiscII - DiscIII + Other + OtherII) * igstP) / 100);
+                                    String txtigst = String.format("%.2f", tmpIgst);
+                                    edtIGST.setText(txtigst);
+                                    igst = CheckValidate.checkemptyDouble(edtIGST.getText().toString().trim());
+                                } else {
+                                    edtIGST.setText("");
+                                }
+
+                                double totalAmount = (Gross - Disc - DiscII - DiscIII + Other + OtherII + cgst + sgst + igst);
+                                String totalAmt = String.format("%.2f", totalAmount);
+                                edtAmount.setText(totalAmt);
+                            } catch (NumberFormatException e) {
+                                Toast.makeText(AddInvoiceActivity.this, e.toString(), Toast.LENGTH_LONG).show();
                             }
-
-                            cgstP = CheckValidate.checkemptyDouble(edtCGSTP.getText().toString().trim());
-                            sgstP = CheckValidate.checkemptyDouble(edtSGSTP.getText().toString().trim());
-                            igstP = CheckValidate.checkemptyDouble(edtIGSTP.getText().toString().trim());
-
-                            double cgst = 0;
-                            if(cgstP > 0) {
-                                double tmpCgst = (((Gross - Disc - DiscII - DiscIII + Other + OtherII) * cgstP) / 100);
-                                String txtcgst = String.format("%.2f",tmpCgst);
-                                edtCGST.setText(txtcgst);
-                                cgst = CheckValidate.checkemptyDouble(edtCGST.getText().toString().trim());
-                            }else{
-                                edtCGST.setText("");
-                            }
-
-                            double sgst = 0;
-                            if(sgstP > 0) {
-                                double tmpSgst = (((Gross - Disc - DiscII - DiscIII + Other + OtherII) * sgstP) / 100);
-                                String txtsgst = String.format("%.2f",tmpSgst);
-                                edtSGST.setText(txtsgst);
-                                sgst = CheckValidate.checkemptyDouble(edtSGST.getText().toString().trim());
-                            }else{
-                                edtSGST.setText("");
-                            }
-
-                            double igst = 0;
-                            if(igstP > 0){
-                                double tmpIgst = (((Gross - Disc - DiscII - DiscIII + Other + OtherII) * igstP) / 100);
-                                String txtigst = String.format("%.2f",tmpIgst);
-                                edtIGST.setText(txtigst);
-                                igst = CheckValidate.checkemptyDouble(edtIGST.getText().toString().trim());
-                            }else{
-                                edtIGST.setText("");
-                            }
-
-                            double totalAmount = (Gross - Disc - DiscII - DiscIII + Other + OtherII + cgst + sgst + igst);
-                            String totalAmt = String.format("%.2f",totalAmount);
-                            edtAmount.setText(totalAmt);
-                          }catch (NumberFormatException e){
-                              Toast.makeText(AddInvoiceActivity.this, e.toString(), Toast.LENGTH_LONG).show();
-                          }
                         }
 
                         @Override
@@ -4672,144 +4412,134 @@ public class AddInvoiceActivity extends Activity {
 
                         @Override
                         public void onTextChanged(CharSequence s, int start, int before, int count) {
-                           try
-                           {
-                            edtAmount.setError(null);
-                            if (s.toString().trim().length()!=0) {
+                            try {
+                                edtAmount.setError(null);
+                                if (s.toString().trim().length() != 0) {
 
-                                edtDisc.setEnabled(false);
-                            }
-                            else {
-                                edtDisc.setEnabled(true);
-                            }
-
-                            Gross = CheckValidate.checkemptyDouble(edtGross.getText().toString().trim());
-
-                            DiscPer = CheckValidate.checkemptyDouble(s.toString());
-                            double  tmpDisc = ((Gross * DiscPer) / 100);
-                            if(tmpDisc > 0){
-                                String txtDisc = String.format("%.2f",tmpDisc);
-                                edtDisc.setText(txtDisc);
-                            }else{
-                                edtDisc.setText("");
-                            }
-                            Disc = CheckValidate.checkemptyDouble(edtDisc.getText().toString().trim());
-
-                            DiscIIPer = CheckValidate.checkemptyDouble(edtDiscIIPer.getText().toString().trim());
-                            if(DiscIIPer > 0)
-                            {
-                                double  tmpDiscII = (((Gross-Disc) * DiscIIPer) / 100);
-                                if(tmpDiscII > 0){
-                                    String txtDiscII = String.format("%.2f",tmpDiscII);
-                                    edtDiscII.setText(txtDiscII);
-
-                                }else{
-                                    edtDiscII.setText("");
+                                    edtDisc.setEnabled(false);
+                                } else {
+                                    edtDisc.setEnabled(true);
                                 }
-                                DiscII = CheckValidate.checkemptyDouble(edtDiscII.getText().toString().trim());
-                            }else
-                            {
-                                DiscII = CheckValidate.checkemptyDouble(edtDiscII.getText().toString().trim());
-                            }
 
-                            DiscIIIPer = CheckValidate.checkemptyDouble(edtDiscIIIPer.getText().toString().trim());
-                            if (DiscIIIPer > 0) {
+                                Gross = CheckValidate.checkemptyDouble(edtGross.getText().toString().trim());
 
-                                double tmpDiscIII = (((Gross - Disc - DiscII) * DiscIIIPer) / 100);
-                                if(tmpDiscIII > 0){
-                                    String txtDiscIII = String.format("%.2f",tmpDiscIII);
-                                    edtDiscIII.setText(txtDiscIII);
-                                }else{
-                                    edtDiscIII.setText("");
+                                DiscPer = CheckValidate.checkemptyDouble(s.toString());
+                                double tmpDisc = ((Gross * DiscPer) / 100);
+                                if (tmpDisc > 0) {
+                                    String txtDisc = String.format("%.2f", tmpDisc);
+                                    edtDisc.setText(txtDisc);
+                                } else {
+                                    edtDisc.setText("");
                                 }
-                                DiscIII = CheckValidate.checkemptyDouble(edtDiscIII.getText().toString().trim());
-                            }else
-                            {
-                                DiscIII = CheckValidate.checkemptyDouble(edtDiscIII.getText().toString().trim());
-                            }
+                                Disc = CheckValidate.checkemptyDouble(edtDisc.getText().toString().trim());
 
-                               TotalDisc = Disc + DiscII + DiscIII;
-                               if(CheckValidate.checkemptyDouble(String.valueOf(TotalDisc)) > 0)
-                               {
-                                   edtTotalDisc.setText(String.format("%.2f",TotalDisc));
-                               }else
-                               {
-                                   edtTotalDisc.setText("");
-                               }
+                                DiscIIPer = CheckValidate.checkemptyDouble(edtDiscIIPer.getText().toString().trim());
+                                if (DiscIIPer > 0) {
+                                    double tmpDiscII = (((Gross - Disc) * DiscIIPer) / 100);
+                                    if (tmpDiscII > 0) {
+                                        String txtDiscII = String.format("%.2f", tmpDiscII);
+                                        edtDiscII.setText(txtDiscII);
 
-                            OtherPer = CheckValidate.checkemptyDouble(edtOtherPer.getText().toString().trim());
-                            if(OtherPer > 0){
-                                double  tmpOther= (((Gross - Disc - DiscII - DiscIII) * OtherPer) / 100);
-                                if(tmpOther > 0){
-                                    String txtOther = String.format("%.2f",tmpOther);
-                                    edtOther.setText(txtOther);
-                                }else{
-                                    edtOther.setText("");
+                                    } else {
+                                        edtDiscII.setText("");
+                                    }
+                                    DiscII = CheckValidate.checkemptyDouble(edtDiscII.getText().toString().trim());
+                                } else {
+                                    DiscII = CheckValidate.checkemptyDouble(edtDiscII.getText().toString().trim());
                                 }
-                                Other = CheckValidate.checkemptyDouble(edtOther.getText().toString().trim());
-                            }else
-                            {
-                                Other = CheckValidate.checkemptyDouble(edtOther.getText().toString().trim());
-                            }
 
-                            OtherIIPer = CheckValidate.checkemptyDouble(edtOtherIIPer.getText().toString().trim());
-                            if(OtherIIPer > 0)
-                            {
-                                double  tmpOtherII= (((Gross - Disc - DiscII - DiscIII + Other ) * OtherIIPer) / 100);
-                                if(tmpOtherII > 0){
-                                    String txtOtherII = String.format("%.2f",tmpOtherII);
-                                    edtOtherII.setText(txtOtherII);
-                                }else{
-                                    edtOtherII.setText("");
+                                DiscIIIPer = CheckValidate.checkemptyDouble(edtDiscIIIPer.getText().toString().trim());
+                                if (DiscIIIPer > 0) {
+
+                                    double tmpDiscIII = (((Gross - Disc - DiscII) * DiscIIIPer) / 100);
+                                    if (tmpDiscIII > 0) {
+                                        String txtDiscIII = String.format("%.2f", tmpDiscIII);
+                                        edtDiscIII.setText(txtDiscIII);
+                                    } else {
+                                        edtDiscIII.setText("");
+                                    }
+                                    DiscIII = CheckValidate.checkemptyDouble(edtDiscIII.getText().toString().trim());
+                                } else {
+                                    DiscIII = CheckValidate.checkemptyDouble(edtDiscIII.getText().toString().trim());
                                 }
-                                OtherII = CheckValidate.checkemptyDouble(edtOtherII.getText().toString().trim());
-                            }else
-                            {
-                                OtherII = CheckValidate.checkemptyDouble(edtOtherII.getText().toString().trim());
+
+                                TotalDisc = Disc + DiscII + DiscIII;
+                                if (CheckValidate.checkemptyDouble(String.valueOf(TotalDisc)) > 0) {
+                                    edtTotalDisc.setText(String.format("%.2f", TotalDisc));
+                                } else {
+                                    edtTotalDisc.setText("");
+                                }
+
+                                OtherPer = CheckValidate.checkemptyDouble(edtOtherPer.getText().toString().trim());
+                                if (OtherPer > 0) {
+                                    double tmpOther = (((Gross - Disc - DiscII - DiscIII) * OtherPer) / 100);
+                                    if (tmpOther > 0) {
+                                        String txtOther = String.format("%.2f", tmpOther);
+                                        edtOther.setText(txtOther);
+                                    } else {
+                                        edtOther.setText("");
+                                    }
+                                    Other = CheckValidate.checkemptyDouble(edtOther.getText().toString().trim());
+                                } else {
+                                    Other = CheckValidate.checkemptyDouble(edtOther.getText().toString().trim());
+                                }
+
+                                OtherIIPer = CheckValidate.checkemptyDouble(edtOtherIIPer.getText().toString().trim());
+                                if (OtherIIPer > 0) {
+                                    double tmpOtherII = (((Gross - Disc - DiscII - DiscIII + Other) * OtherIIPer) / 100);
+                                    if (tmpOtherII > 0) {
+                                        String txtOtherII = String.format("%.2f", tmpOtherII);
+                                        edtOtherII.setText(txtOtherII);
+                                    } else {
+                                        edtOtherII.setText("");
+                                    }
+                                    OtherII = CheckValidate.checkemptyDouble(edtOtherII.getText().toString().trim());
+                                } else {
+                                    OtherII = CheckValidate.checkemptyDouble(edtOtherII.getText().toString().trim());
+                                }
+
+                                cgstP = CheckValidate.checkemptyDouble(edtCGSTP.getText().toString().trim());
+                                sgstP = CheckValidate.checkemptyDouble(edtSGSTP.getText().toString().trim());
+                                igstP = CheckValidate.checkemptyDouble(edtIGSTP.getText().toString().trim());
+
+                                double cgst = 0;
+                                if (cgstP > 0) {
+                                    double tmpCgst = (((Gross - Disc - DiscII - DiscIII + Other + OtherII) * cgstP) / 100);
+                                    String txtcgst = String.format("%.2f", tmpCgst);
+                                    edtCGST.setText(txtcgst);
+                                    cgst = CheckValidate.checkemptyDouble(edtCGST.getText().toString().trim());
+                                } else {
+                                    edtCGST.setText("");
+                                }
+
+                                double sgst = 0;
+                                if (sgstP > 0) {
+                                    double tmpSgst = (((Gross - Disc - DiscII - DiscIII + Other + OtherII) * sgstP) / 100);
+                                    String txtsgst = String.format("%.2f", tmpSgst);
+                                    edtSGST.setText(txtsgst);
+                                    sgst = CheckValidate.checkemptyDouble(edtSGST.getText().toString().trim());
+                                } else {
+                                    edtSGST.setText("");
+                                }
+
+                                double igst = 0;
+                                if (igstP > 0) {
+                                    double tmpIgst = (((Gross - Disc - DiscII - DiscIII + Other + OtherII) * igstP) / 100);
+                                    String txtigst = String.format("%.2f", tmpIgst);
+                                    edtIGST.setText(txtigst);
+                                    igst = CheckValidate.checkemptyDouble(edtIGST.getText().toString().trim());
+                                } else {
+                                    edtIGST.setText("");
+                                }
+
+                                double totalAmount = (Gross - Disc - DiscII - DiscIII + Other + OtherII + cgst + sgst + igst);
+                                String totalAmt = String.format("%.2f", totalAmount);
+                                edtAmount.setText(totalAmt);
+
+                            } catch (NumberFormatException e) {
+                                Toast.makeText(AddInvoiceActivity.this, e.toString(), Toast.LENGTH_LONG).show();
                             }
-
-                            cgstP = CheckValidate.checkemptyDouble(edtCGSTP.getText().toString().trim());
-                            sgstP = CheckValidate.checkemptyDouble(edtSGSTP.getText().toString().trim());
-                            igstP = CheckValidate.checkemptyDouble(edtIGSTP.getText().toString().trim());
-
-                            double cgst = 0;
-                            if(cgstP > 0) {
-                                double tmpCgst = (((Gross - Disc - DiscII - DiscIII + Other + OtherII) * cgstP) / 100);
-                                String txtcgst = String.format("%.2f",tmpCgst);
-                                edtCGST.setText(txtcgst);
-                                cgst = CheckValidate.checkemptyDouble(edtCGST.getText().toString().trim());
-                            }else{
-                                edtCGST.setText("");
-                            }
-
-                            double sgst = 0;
-                            if(sgstP > 0) {
-                                double tmpSgst = (((Gross - Disc - DiscII - DiscIII + Other + OtherII) * sgstP) / 100);
-                                String txtsgst = String.format("%.2f",tmpSgst);
-                                edtSGST.setText(txtsgst);
-                                sgst = CheckValidate.checkemptyDouble(edtSGST.getText().toString().trim());
-                            }else{
-                                edtSGST.setText("");
-                            }
-
-                            double igst = 0;
-                            if(igstP > 0){
-                                double tmpIgst = (((Gross - Disc - DiscII - DiscIII + Other + OtherII) * igstP) / 100);
-                                String txtigst = String.format("%.2f",tmpIgst);
-                                edtIGST.setText(txtigst);
-                                igst = CheckValidate.checkemptyDouble(edtIGST.getText().toString().trim());
-                            }else{
-                                edtIGST.setText("");
-                            }
-
-                            double totalAmount = (Gross - Disc - DiscII - DiscIII + Other + OtherII + cgst + sgst + igst);
-                            String totalAmt = String.format("%.2f",totalAmount);
-                            edtAmount.setText(totalAmt);
-
-                           }catch (NumberFormatException e){
-                               Toast.makeText(AddInvoiceActivity.this, e.toString(), Toast.LENGTH_LONG).show();
-                           }
-                         }
+                        }
 
                         @Override
                         public void afterTextChanged(Editable s) {
@@ -4825,130 +4555,121 @@ public class AddInvoiceActivity extends Activity {
 
                         @Override
                         public void onTextChanged(CharSequence s, int start, int before, int count) {
-                          try
-                          {
-                            edtAmount.setError(null);
-                            if (s.toString().trim().length()!=0) {
-                            }
-
-                            Gross = CheckValidate.checkemptyDouble(edtGross.getText().toString().trim());
-
-                            DiscPer = CheckValidate.checkemptyDouble(edtDiscPer.getText().toString().trim());
-                            Disc = CheckValidate.checkemptyDouble(s.toString());
-
-                            DiscIIPer = CheckValidate.checkemptyDouble(edtDiscIIPer.getText().toString().trim());
-                            if(DiscIIPer > 0)
-                            {
-                                double  tmpDiscII = (((Gross-Disc) * DiscIIPer) / 100);
-                                if(tmpDiscII > 0){
-                                    String txtDiscII = String.format("%.2f",tmpDiscII);
-                                    edtDiscII.setText(txtDiscII);
-
-                                }else{
-                                    edtDiscII.setText("");
+                            try {
+                                edtAmount.setError(null);
+                                if (s.toString().trim().length() != 0) {
                                 }
-                                DiscII = CheckValidate.checkemptyDouble(edtDiscII.getText().toString().trim());
-                            }else
-                            {
-                                DiscII = CheckValidate.checkemptyDouble(edtDiscII.getText().toString().trim());
-                            }
 
-                            DiscIIIPer = CheckValidate.checkemptyDouble(edtDiscIIIPer.getText().toString().trim());
-                            if (DiscIIIPer > 0) {
+                                Gross = CheckValidate.checkemptyDouble(edtGross.getText().toString().trim());
 
-                                double tmpDiscIII = (((Gross - Disc - DiscII) * DiscIIIPer) / 100);
-                                if(tmpDiscIII > 0){
-                                    String txtDiscIII = String.format("%.2f",tmpDiscIII);
-                                    edtDiscIII.setText(txtDiscIII);
-                                }else{
-                                    edtDiscIII.setText("");
+                                DiscPer = CheckValidate.checkemptyDouble(edtDiscPer.getText().toString().trim());
+                                Disc = CheckValidate.checkemptyDouble(s.toString());
+
+                                DiscIIPer = CheckValidate.checkemptyDouble(edtDiscIIPer.getText().toString().trim());
+                                if (DiscIIPer > 0) {
+                                    double tmpDiscII = (((Gross - Disc) * DiscIIPer) / 100);
+                                    if (tmpDiscII > 0) {
+                                        String txtDiscII = String.format("%.2f", tmpDiscII);
+                                        edtDiscII.setText(txtDiscII);
+
+                                    } else {
+                                        edtDiscII.setText("");
+                                    }
+                                    DiscII = CheckValidate.checkemptyDouble(edtDiscII.getText().toString().trim());
+                                } else {
+                                    DiscII = CheckValidate.checkemptyDouble(edtDiscII.getText().toString().trim());
                                 }
-                                DiscIII = CheckValidate.checkemptyDouble(edtDiscIII.getText().toString().trim());
-                            }else
-                            {
-                                DiscIII = CheckValidate.checkemptyDouble(edtDiscIII.getText().toString().trim());
-                            }
 
-                              TotalDisc = Disc + DiscII + DiscIII;
-                              if(CheckValidate.checkemptyDouble(String.valueOf(TotalDisc)) > 0)
-                              {
-                                  edtTotalDisc.setText(String.format("%.2f",TotalDisc));
-                              }else
-                              {
-                                  edtTotalDisc.setText("");
-                              }
+                                DiscIIIPer = CheckValidate.checkemptyDouble(edtDiscIIIPer.getText().toString().trim());
+                                if (DiscIIIPer > 0) {
 
-                            OtherPer = CheckValidate.checkemptyDouble(edtOtherPer.getText().toString().trim());
-                            if(OtherPer > 0){
-                                double  tmpOther= (((Gross - Disc - DiscII - DiscIII) * OtherPer) / 100);
-                                if(tmpOther > 0){
-                                    String txtOther = String.format("%.2f",tmpOther);
-                                    edtOther.setText(txtOther);
-                                }else{
-                                    edtOther.setText("");
+                                    double tmpDiscIII = (((Gross - Disc - DiscII) * DiscIIIPer) / 100);
+                                    if (tmpDiscIII > 0) {
+                                        String txtDiscIII = String.format("%.2f", tmpDiscIII);
+                                        edtDiscIII.setText(txtDiscIII);
+                                    } else {
+                                        edtDiscIII.setText("");
+                                    }
+                                    DiscIII = CheckValidate.checkemptyDouble(edtDiscIII.getText().toString().trim());
+                                } else {
+                                    DiscIII = CheckValidate.checkemptyDouble(edtDiscIII.getText().toString().trim());
                                 }
-                                Other = CheckValidate.checkemptyDouble(edtOther.getText().toString().trim());
-                            }else
-                            {
-                                Other = CheckValidate.checkemptyDouble(edtOther.getText().toString().trim());
-                            }
 
-                            OtherIIPer = CheckValidate.checkemptyDouble(edtOtherIIPer.getText().toString().trim());
-                            if(OtherIIPer > 0)
-                            {
-                                double  tmpOtherII= (((Gross - Disc - DiscII - DiscIII + Other ) * OtherIIPer) / 100);
-                                if(tmpOtherII > 0){
-                                    String txtOtherII = String.format("%.2f",tmpOtherII);
-                                    edtOtherII.setText(txtOtherII);
-                                }else{
-                                    edtOtherII.setText("");
+                                TotalDisc = Disc + DiscII + DiscIII;
+                                if (CheckValidate.checkemptyDouble(String.valueOf(TotalDisc)) > 0) {
+                                    edtTotalDisc.setText(String.format("%.2f", TotalDisc));
+                                } else {
+                                    edtTotalDisc.setText("");
                                 }
-                                OtherII = CheckValidate.checkemptyDouble(edtOtherII.getText().toString().trim());
-                            }else
-                            {
-                                OtherII = CheckValidate.checkemptyDouble(edtOtherII.getText().toString().trim());
+
+                                OtherPer = CheckValidate.checkemptyDouble(edtOtherPer.getText().toString().trim());
+                                if (OtherPer > 0) {
+                                    double tmpOther = (((Gross - Disc - DiscII - DiscIII) * OtherPer) / 100);
+                                    if (tmpOther > 0) {
+                                        String txtOther = String.format("%.2f", tmpOther);
+                                        edtOther.setText(txtOther);
+                                    } else {
+                                        edtOther.setText("");
+                                    }
+                                    Other = CheckValidate.checkemptyDouble(edtOther.getText().toString().trim());
+                                } else {
+                                    Other = CheckValidate.checkemptyDouble(edtOther.getText().toString().trim());
+                                }
+
+                                OtherIIPer = CheckValidate.checkemptyDouble(edtOtherIIPer.getText().toString().trim());
+                                if (OtherIIPer > 0) {
+                                    double tmpOtherII = (((Gross - Disc - DiscII - DiscIII + Other) * OtherIIPer) / 100);
+                                    if (tmpOtherII > 0) {
+                                        String txtOtherII = String.format("%.2f", tmpOtherII);
+                                        edtOtherII.setText(txtOtherII);
+                                    } else {
+                                        edtOtherII.setText("");
+                                    }
+                                    OtherII = CheckValidate.checkemptyDouble(edtOtherII.getText().toString().trim());
+                                } else {
+                                    OtherII = CheckValidate.checkemptyDouble(edtOtherII.getText().toString().trim());
+                                }
+
+                                cgstP = CheckValidate.checkemptyDouble(edtCGSTP.getText().toString().trim());
+                                sgstP = CheckValidate.checkemptyDouble(edtSGSTP.getText().toString().trim());
+                                igstP = CheckValidate.checkemptyDouble(edtIGSTP.getText().toString().trim());
+
+                                double cgst = 0;
+                                if (cgstP > 0) {
+                                    double tmpCgst = (((Gross - Disc - DiscII - DiscIII + Other + OtherII) * cgstP) / 100);
+                                    String txtcgst = String.format("%.2f", tmpCgst);
+                                    edtCGST.setText(txtcgst);
+                                    cgst = CheckValidate.checkemptyDouble(edtCGST.getText().toString().trim());
+                                } else {
+                                    edtCGST.setText("");
+                                }
+
+                                double sgst = 0;
+                                if (sgstP > 0) {
+                                    double tmpSgst = (((Gross - Disc - DiscII - DiscIII + Other + OtherII) * sgstP) / 100);
+                                    String txtsgst = String.format("%.2f", tmpSgst);
+                                    edtSGST.setText(txtsgst);
+                                    sgst = CheckValidate.checkemptyDouble(edtSGST.getText().toString().trim());
+                                } else {
+                                    edtSGST.setText("");
+                                }
+
+                                double igst = 0;
+                                if (igstP > 0) {
+                                    double tmpIgst = (((Gross - Disc - DiscII - DiscIII + Other + OtherII) * igstP) / 100);
+                                    String txtigst = String.format("%.2f", tmpIgst);
+                                    edtIGST.setText(txtigst);
+                                    igst = CheckValidate.checkemptyDouble(edtIGST.getText().toString().trim());
+                                } else {
+                                    edtIGST.setText("");
+                                }
+
+                                double totalAmount = (Gross - Disc - DiscII - DiscIII + Other + OtherII + cgst + sgst + igst);
+                                String totalAmt = String.format("%.2f", totalAmount);
+                                edtAmount.setText(totalAmt);
+                            } catch (NumberFormatException e) {
+                                Toast.makeText(AddInvoiceActivity.this, e.toString(), Toast.LENGTH_LONG).show();
                             }
-
-                            cgstP = CheckValidate.checkemptyDouble(edtCGSTP.getText().toString().trim());
-                            sgstP = CheckValidate.checkemptyDouble(edtSGSTP.getText().toString().trim());
-                            igstP = CheckValidate.checkemptyDouble(edtIGSTP.getText().toString().trim());
-
-                            double cgst = 0;
-                            if(cgstP > 0) {
-                                double tmpCgst = (((Gross - Disc - DiscII - DiscIII + Other + OtherII) * cgstP) / 100);
-                                String txtcgst = String.format("%.2f",tmpCgst);
-                                edtCGST.setText(txtcgst);
-                                cgst = CheckValidate.checkemptyDouble(edtCGST.getText().toString().trim());
-                            }else{
-                                edtCGST.setText("");
-                            }
-
-                            double sgst = 0;
-                            if(sgstP > 0) {
-                                double tmpSgst = (((Gross - Disc - DiscII - DiscIII + Other + OtherII) * sgstP) / 100);
-                                String txtsgst = String.format("%.2f",tmpSgst);
-                                edtSGST.setText(txtsgst);
-                                sgst = CheckValidate.checkemptyDouble(edtSGST.getText().toString().trim());
-                            }else{
-                                edtSGST.setText("");
-                            }
-
-                            double igst = 0;
-                            if(igstP > 0){
-                                double tmpIgst = (((Gross - Disc - DiscII - DiscIII + Other + OtherII) * igstP) / 100);
-                                String txtigst = String.format("%.2f",tmpIgst);
-                                edtIGST.setText(txtigst);
-                                igst = CheckValidate.checkemptyDouble(edtIGST.getText().toString().trim());
-                            }else{
-                                edtIGST.setText("");
-                            }
-
-                            double totalAmount = (Gross - Disc - DiscII - DiscIII + Other + OtherII + cgst + sgst + igst);
-                            String totalAmt = String.format("%.2f",totalAmount);
-                            edtAmount.setText(totalAmt);
-                          }catch (NumberFormatException e){
-                              Toast.makeText(AddInvoiceActivity.this, e.toString(), Toast.LENGTH_LONG).show();
-                          }
                         }
 
                         @Override
@@ -4964,129 +4685,121 @@ public class AddInvoiceActivity extends Activity {
 
                         @Override
                         public void onTextChanged(CharSequence s, int start, int before, int count) {
-                          try
-                          {
-                            edtAmount.setError(null);
-                            if (s.toString().trim().length()!=0) {
+                            try {
+                                edtAmount.setError(null);
+                                if (s.toString().trim().length() != 0) {
 
-                                edtDiscII.setEnabled(false);
-                            }
-                            else {
-                                edtDiscII.setEnabled(true);
-                            }
-
-                            Gross = CheckValidate.checkemptyDouble(edtGross.getText().toString().trim());
-
-                            DiscPer = CheckValidate.checkemptyDouble(edtDiscPer.getText().toString().trim());
-                            Disc = CheckValidate.checkemptyDouble(edtDisc.getText().toString().trim());
-
-                            DiscIIPer = CheckValidate.checkemptyDouble(s.toString());
-                            double  tmpDiscII = (((Gross - Disc) * DiscIIPer) / 100);
-                            if(tmpDiscII > 0){
-                                String txtDiscII = String.format("%.2f",tmpDiscII);
-                                edtDiscII.setText(txtDiscII);
-                            }else{
-                                edtDiscII.setText("");
-                            }
-
-                            DiscII = CheckValidate.checkemptyDouble(edtDiscII.getText().toString().trim());
-
-                            DiscIIIPer = CheckValidate.checkemptyDouble(edtDiscIIIPer.getText().toString().trim());
-                            if (DiscIIIPer > 0) {
-
-                                double tmpDiscIII = (((Gross - Disc - DiscII) * DiscIIIPer) / 100);
-                                if(tmpDiscIII > 0){
-                                    String txtDiscIII = String.format("%.2f",tmpDiscIII);
-                                    edtDiscIII.setText(txtDiscIII);
-                                }else{
-                                    edtDiscIII.setText("");
+                                    edtDiscII.setEnabled(false);
+                                } else {
+                                    edtDiscII.setEnabled(true);
                                 }
-                                DiscIII = CheckValidate.checkemptyDouble(edtDiscIII.getText().toString().trim());
-                            }else
-                            {
-                                DiscIII = CheckValidate.checkemptyDouble(edtDiscIII.getText().toString().trim());
-                            }
 
-                              TotalDisc = Disc + DiscII + DiscIII;
-                              if(CheckValidate.checkemptyDouble(String.valueOf(TotalDisc)) > 0)
-                              {
-                                  edtTotalDisc.setText(String.format("%.2f",TotalDisc));
-                              }else
-                              {
-                                  edtTotalDisc.setText("");
-                              }
+                                Gross = CheckValidate.checkemptyDouble(edtGross.getText().toString().trim());
 
-                            OtherPer = CheckValidate.checkemptyDouble(edtOtherPer.getText().toString().trim());
-                            if(OtherPer > 0){
-                                double  tmpOther= (((Gross - Disc - DiscII - DiscIII) * OtherPer) / 100);
-                                if(tmpOther > 0){
-                                    String txtOther = String.format("%.2f",tmpOther);
-                                    edtOther.setText(txtOther);
-                                }else{
-                                    edtOther.setText("");
+                                DiscPer = CheckValidate.checkemptyDouble(edtDiscPer.getText().toString().trim());
+                                Disc = CheckValidate.checkemptyDouble(edtDisc.getText().toString().trim());
+
+                                DiscIIPer = CheckValidate.checkemptyDouble(s.toString());
+                                double tmpDiscII = (((Gross - Disc) * DiscIIPer) / 100);
+                                if (tmpDiscII > 0) {
+                                    String txtDiscII = String.format("%.2f", tmpDiscII);
+                                    edtDiscII.setText(txtDiscII);
+                                } else {
+                                    edtDiscII.setText("");
                                 }
-                                Other = CheckValidate.checkemptyDouble(edtOther.getText().toString().trim());
-                            }else
-                            {
-                                Other = CheckValidate.checkemptyDouble(edtOther.getText().toString().trim());
-                            }
 
-                            OtherIIPer = CheckValidate.checkemptyDouble(edtOtherIIPer.getText().toString().trim());
-                            if(OtherIIPer > 0)
-                            {
-                                double  tmpOtherII= (((Gross - Disc - DiscII - DiscIII + Other ) * OtherIIPer) / 100);
-                                if(tmpOtherII > 0){
-                                    String txtOtherII = String.format("%.2f",tmpOtherII);
-                                    edtOtherII.setText(txtOtherII);
-                                }else{
-                                    edtOtherII.setText("");
+                                DiscII = CheckValidate.checkemptyDouble(edtDiscII.getText().toString().trim());
+
+                                DiscIIIPer = CheckValidate.checkemptyDouble(edtDiscIIIPer.getText().toString().trim());
+                                if (DiscIIIPer > 0) {
+
+                                    double tmpDiscIII = (((Gross - Disc - DiscII) * DiscIIIPer) / 100);
+                                    if (tmpDiscIII > 0) {
+                                        String txtDiscIII = String.format("%.2f", tmpDiscIII);
+                                        edtDiscIII.setText(txtDiscIII);
+                                    } else {
+                                        edtDiscIII.setText("");
+                                    }
+                                    DiscIII = CheckValidate.checkemptyDouble(edtDiscIII.getText().toString().trim());
+                                } else {
+                                    DiscIII = CheckValidate.checkemptyDouble(edtDiscIII.getText().toString().trim());
                                 }
-                                OtherII = CheckValidate.checkemptyDouble(edtOtherII.getText().toString().trim());
-                            }else
-                            {
-                                OtherII = CheckValidate.checkemptyDouble(edtOtherII.getText().toString().trim());
+
+                                TotalDisc = Disc + DiscII + DiscIII;
+                                if (CheckValidate.checkemptyDouble(String.valueOf(TotalDisc)) > 0) {
+                                    edtTotalDisc.setText(String.format("%.2f", TotalDisc));
+                                } else {
+                                    edtTotalDisc.setText("");
+                                }
+
+                                OtherPer = CheckValidate.checkemptyDouble(edtOtherPer.getText().toString().trim());
+                                if (OtherPer > 0) {
+                                    double tmpOther = (((Gross - Disc - DiscII - DiscIII) * OtherPer) / 100);
+                                    if (tmpOther > 0) {
+                                        String txtOther = String.format("%.2f", tmpOther);
+                                        edtOther.setText(txtOther);
+                                    } else {
+                                        edtOther.setText("");
+                                    }
+                                    Other = CheckValidate.checkemptyDouble(edtOther.getText().toString().trim());
+                                } else {
+                                    Other = CheckValidate.checkemptyDouble(edtOther.getText().toString().trim());
+                                }
+
+                                OtherIIPer = CheckValidate.checkemptyDouble(edtOtherIIPer.getText().toString().trim());
+                                if (OtherIIPer > 0) {
+                                    double tmpOtherII = (((Gross - Disc - DiscII - DiscIII + Other) * OtherIIPer) / 100);
+                                    if (tmpOtherII > 0) {
+                                        String txtOtherII = String.format("%.2f", tmpOtherII);
+                                        edtOtherII.setText(txtOtherII);
+                                    } else {
+                                        edtOtherII.setText("");
+                                    }
+                                    OtherII = CheckValidate.checkemptyDouble(edtOtherII.getText().toString().trim());
+                                } else {
+                                    OtherII = CheckValidate.checkemptyDouble(edtOtherII.getText().toString().trim());
+                                }
+
+                                cgstP = CheckValidate.checkemptyDouble(edtCGSTP.getText().toString().trim());
+                                sgstP = CheckValidate.checkemptyDouble(edtSGSTP.getText().toString().trim());
+                                igstP = CheckValidate.checkemptyDouble(edtIGSTP.getText().toString().trim());
+
+                                double cgst = 0;
+                                if (cgstP > 0) {
+                                    double tmpCgst = (((Gross - Disc - DiscII - DiscIII + Other + OtherII) * cgstP) / 100);
+                                    String txtcgst = String.format("%.2f", tmpCgst);
+                                    edtCGST.setText(txtcgst);
+                                    cgst = CheckValidate.checkemptyDouble(edtCGST.getText().toString().trim());
+                                } else {
+                                    edtCGST.setText("");
+                                }
+
+                                double sgst = 0;
+                                if (sgstP > 0) {
+                                    double tmpSgst = (((Gross - Disc - DiscII - DiscIII + Other + OtherII) * sgstP) / 100);
+                                    String txtsgst = String.format("%.2f", tmpSgst);
+                                    edtSGST.setText(txtsgst);
+                                    sgst = CheckValidate.checkemptyDouble(edtSGST.getText().toString().trim());
+                                } else {
+                                    edtSGST.setText("");
+                                }
+
+                                double igst = 0;
+                                if (igstP > 0) {
+                                    double tmpIgst = (((Gross - Disc - DiscII - DiscIII + Other + OtherII) * igstP) / 100);
+                                    String txtigst = String.format("%.2f", tmpIgst);
+                                    edtIGST.setText(txtigst);
+                                    igst = CheckValidate.checkemptyDouble(edtIGST.getText().toString().trim());
+                                } else {
+                                    edtIGST.setText("");
+                                }
+
+                                double totalAmount = (Gross - Disc - DiscII - DiscIII + Other + OtherII + cgst + sgst + igst);
+                                String totalAmt = String.format("%.2f", totalAmount);
+                                edtAmount.setText(totalAmt);
+                            } catch (NumberFormatException e) {
+                                Toast.makeText(AddInvoiceActivity.this, e.toString(), Toast.LENGTH_LONG).show();
                             }
-
-                            cgstP = CheckValidate.checkemptyDouble(edtCGSTP.getText().toString().trim());
-                            sgstP = CheckValidate.checkemptyDouble(edtSGSTP.getText().toString().trim());
-                            igstP = CheckValidate.checkemptyDouble(edtIGSTP.getText().toString().trim());
-
-                            double cgst = 0;
-                            if(cgstP > 0) {
-                                double tmpCgst = (((Gross - Disc - DiscII - DiscIII + Other + OtherII) * cgstP) / 100);
-                                String txtcgst = String.format("%.2f",tmpCgst);
-                                edtCGST.setText(txtcgst);
-                                cgst = CheckValidate.checkemptyDouble(edtCGST.getText().toString().trim());
-                            }else{
-                                edtCGST.setText("");
-                            }
-
-                            double sgst = 0;
-                            if(sgstP > 0) {
-                                double tmpSgst = (((Gross - Disc - DiscII - DiscIII + Other + OtherII) * sgstP) / 100);
-                                String txtsgst = String.format("%.2f",tmpSgst);
-                                edtSGST.setText(txtsgst);
-                                sgst = CheckValidate.checkemptyDouble(edtSGST.getText().toString().trim());
-                            }else{
-                                edtSGST.setText("");
-                            }
-
-                            double igst = 0;
-                            if(igstP > 0){
-                                double tmpIgst = (((Gross - Disc - DiscII - DiscIII + Other + OtherII) * igstP) / 100);
-                                String txtigst = String.format("%.2f",tmpIgst);
-                                edtIGST.setText(txtigst);
-                                igst = CheckValidate.checkemptyDouble(edtIGST.getText().toString().trim());
-                            }else{
-                                edtIGST.setText("");
-                            }
-
-                            double totalAmount = (Gross - Disc - DiscII - DiscIII + Other + OtherII + cgst + sgst + igst);
-                            String totalAmt = String.format("%.2f",totalAmount);
-                            edtAmount.setText(totalAmt);
-                          }catch (NumberFormatException e){
-                              Toast.makeText(AddInvoiceActivity.this, e.toString(), Toast.LENGTH_LONG).show();
-                          }
                         }
 
                         @Override
@@ -5103,114 +4816,107 @@ public class AddInvoiceActivity extends Activity {
 
                         @Override
                         public void onTextChanged(CharSequence s, int start, int before, int count) {
-                            try
-                            {
-                            edtAmount.setError(null);
-                            if (s.toString().trim().length()!=0) {
-                            }
-
-                            Gross = CheckValidate.checkemptyDouble(edtGross.getText().toString().trim());
-
-                            DiscPer = CheckValidate.checkemptyDouble(edtDiscPer.getText().toString().trim());
-                            Disc = CheckValidate.checkemptyDouble(edtDisc.getText().toString().trim());
-
-                            DiscIIPer = CheckValidate.checkemptyDouble(edtDiscIIPer.getText().toString().trim());
-                            DiscII = CheckValidate.checkemptyDouble(s.toString());
-
-                            DiscIIIPer = CheckValidate.checkemptyDouble(edtDiscIIIPer.getText().toString().trim());
-                            if (DiscIIIPer > 0) {
-
-                                double tmpDiscIII = (((Gross - Disc - DiscII) * DiscIIIPer) / 100);
-                                if(tmpDiscIII > 0){
-                                    String txtDiscIII = String.format("%.2f",tmpDiscIII);
-                                    edtDiscIII.setText(txtDiscIII);
-                                }else{
-                                    edtDiscIII.setText("");
+                            try {
+                                edtAmount.setError(null);
+                                if (s.toString().trim().length() != 0) {
                                 }
-                                DiscIII = CheckValidate.checkemptyDouble(edtDiscIII.getText().toString().trim());
-                            }else
-                            {
-                                DiscIII = CheckValidate.checkemptyDouble(edtDiscIII.getText().toString().trim());
-                            }
+
+                                Gross = CheckValidate.checkemptyDouble(edtGross.getText().toString().trim());
+
+                                DiscPer = CheckValidate.checkemptyDouble(edtDiscPer.getText().toString().trim());
+                                Disc = CheckValidate.checkemptyDouble(edtDisc.getText().toString().trim());
+
+                                DiscIIPer = CheckValidate.checkemptyDouble(edtDiscIIPer.getText().toString().trim());
+                                DiscII = CheckValidate.checkemptyDouble(s.toString());
+
+                                DiscIIIPer = CheckValidate.checkemptyDouble(edtDiscIIIPer.getText().toString().trim());
+                                if (DiscIIIPer > 0) {
+
+                                    double tmpDiscIII = (((Gross - Disc - DiscII) * DiscIIIPer) / 100);
+                                    if (tmpDiscIII > 0) {
+                                        String txtDiscIII = String.format("%.2f", tmpDiscIII);
+                                        edtDiscIII.setText(txtDiscIII);
+                                    } else {
+                                        edtDiscIII.setText("");
+                                    }
+                                    DiscIII = CheckValidate.checkemptyDouble(edtDiscIII.getText().toString().trim());
+                                } else {
+                                    DiscIII = CheckValidate.checkemptyDouble(edtDiscIII.getText().toString().trim());
+                                }
 
                                 TotalDisc = Disc + DiscII + DiscIII;
-                                if(CheckValidate.checkemptyDouble(String.valueOf(TotalDisc)) > 0)
-                                {
-                                    edtTotalDisc.setText(String.format("%.2f",TotalDisc));
-                                }else
-                                {
+                                if (CheckValidate.checkemptyDouble(String.valueOf(TotalDisc)) > 0) {
+                                    edtTotalDisc.setText(String.format("%.2f", TotalDisc));
+                                } else {
                                     edtTotalDisc.setText("");
                                 }
 
-                            OtherPer = CheckValidate.checkemptyDouble(edtOtherPer.getText().toString().trim());
-                            if(OtherPer > 0){
-                                double  tmpOther= (((Gross - Disc - DiscII - DiscIII) * OtherPer) / 100);
-                                if(tmpOther > 0){
-                                    String txtOther = String.format("%.2f",tmpOther);
-                                    edtOther.setText(txtOther);
-                                }else{
-                                    edtOther.setText("");
+                                OtherPer = CheckValidate.checkemptyDouble(edtOtherPer.getText().toString().trim());
+                                if (OtherPer > 0) {
+                                    double tmpOther = (((Gross - Disc - DiscII - DiscIII) * OtherPer) / 100);
+                                    if (tmpOther > 0) {
+                                        String txtOther = String.format("%.2f", tmpOther);
+                                        edtOther.setText(txtOther);
+                                    } else {
+                                        edtOther.setText("");
+                                    }
+                                    Other = CheckValidate.checkemptyDouble(edtOther.getText().toString().trim());
+                                } else {
+                                    Other = CheckValidate.checkemptyDouble(edtOther.getText().toString().trim());
                                 }
-                                Other = CheckValidate.checkemptyDouble(edtOther.getText().toString().trim());
-                            }else
-                            {
-                                Other = CheckValidate.checkemptyDouble(edtOther.getText().toString().trim());
-                            }
 
-                            OtherIIPer = CheckValidate.checkemptyDouble(edtOtherIIPer.getText().toString().trim());
-                            if(OtherIIPer > 0)
-                            {
-                                double  tmpOtherII= (((Gross - Disc - DiscII - DiscIII + Other ) * OtherIIPer) / 100);
-                                if(tmpOtherII > 0){
-                                    String txtOtherII = String.format("%.2f",tmpOtherII);
-                                    edtOtherII.setText(txtOtherII);
-                                }else{
-                                    edtOtherII.setText("");
+                                OtherIIPer = CheckValidate.checkemptyDouble(edtOtherIIPer.getText().toString().trim());
+                                if (OtherIIPer > 0) {
+                                    double tmpOtherII = (((Gross - Disc - DiscII - DiscIII + Other) * OtherIIPer) / 100);
+                                    if (tmpOtherII > 0) {
+                                        String txtOtherII = String.format("%.2f", tmpOtherII);
+                                        edtOtherII.setText(txtOtherII);
+                                    } else {
+                                        edtOtherII.setText("");
+                                    }
+                                    OtherII = CheckValidate.checkemptyDouble(edtOtherII.getText().toString().trim());
+                                } else {
+                                    OtherII = CheckValidate.checkemptyDouble(edtOtherII.getText().toString().trim());
                                 }
-                                OtherII = CheckValidate.checkemptyDouble(edtOtherII.getText().toString().trim());
-                            }else
-                            {
-                                OtherII = CheckValidate.checkemptyDouble(edtOtherII.getText().toString().trim());
-                            }
 
-                            cgstP = CheckValidate.checkemptyDouble(edtCGSTP.getText().toString().trim());
-                            sgstP = CheckValidate.checkemptyDouble(edtSGSTP.getText().toString().trim());
-                            igstP = CheckValidate.checkemptyDouble(edtIGSTP.getText().toString().trim());
+                                cgstP = CheckValidate.checkemptyDouble(edtCGSTP.getText().toString().trim());
+                                sgstP = CheckValidate.checkemptyDouble(edtSGSTP.getText().toString().trim());
+                                igstP = CheckValidate.checkemptyDouble(edtIGSTP.getText().toString().trim());
 
-                            double cgst = 0;
-                            if(cgstP > 0) {
-                                double tmpCgst = (((Gross - Disc - DiscII - DiscIII + Other + OtherII) * cgstP) / 100);
-                                String txtcgst = String.format("%.2f",tmpCgst);
-                                edtCGST.setText(txtcgst);
-                                cgst = CheckValidate.checkemptyDouble(edtCGST.getText().toString().trim());
-                            }else{
-                                edtCGST.setText("");
-                            }
+                                double cgst = 0;
+                                if (cgstP > 0) {
+                                    double tmpCgst = (((Gross - Disc - DiscII - DiscIII + Other + OtherII) * cgstP) / 100);
+                                    String txtcgst = String.format("%.2f", tmpCgst);
+                                    edtCGST.setText(txtcgst);
+                                    cgst = CheckValidate.checkemptyDouble(edtCGST.getText().toString().trim());
+                                } else {
+                                    edtCGST.setText("");
+                                }
 
-                            double sgst = 0;
-                            if(sgstP > 0) {
-                                double tmpSgst = (((Gross - Disc - DiscII - DiscIII + Other + OtherII) * sgstP) / 100);
-                                String txtsgst = String.format("%.2f",tmpSgst);
-                                edtSGST.setText(txtsgst);
-                                sgst = CheckValidate.checkemptyDouble(edtSGST.getText().toString().trim());
-                            }else{
-                                edtSGST.setText("");
-                            }
+                                double sgst = 0;
+                                if (sgstP > 0) {
+                                    double tmpSgst = (((Gross - Disc - DiscII - DiscIII + Other + OtherII) * sgstP) / 100);
+                                    String txtsgst = String.format("%.2f", tmpSgst);
+                                    edtSGST.setText(txtsgst);
+                                    sgst = CheckValidate.checkemptyDouble(edtSGST.getText().toString().trim());
+                                } else {
+                                    edtSGST.setText("");
+                                }
 
-                            double igst = 0;
-                            if(igstP > 0){
-                                double tmpIgst = (((Gross - Disc - DiscII - DiscIII + Other + OtherII) * igstP) / 100);
-                                String txtigst = String.format("%.2f",tmpIgst);
-                                edtIGST.setText(txtigst);
-                                igst = CheckValidate.checkemptyDouble(edtIGST.getText().toString().trim());
-                            }else{
-                                edtIGST.setText("");
-                            }
+                                double igst = 0;
+                                if (igstP > 0) {
+                                    double tmpIgst = (((Gross - Disc - DiscII - DiscIII + Other + OtherII) * igstP) / 100);
+                                    String txtigst = String.format("%.2f", tmpIgst);
+                                    edtIGST.setText(txtigst);
+                                    igst = CheckValidate.checkemptyDouble(edtIGST.getText().toString().trim());
+                                } else {
+                                    edtIGST.setText("");
+                                }
 
-                            double totalAmount = (Gross - Disc - DiscII - DiscIII + Other + OtherII + cgst + sgst + igst);
-                            String totalAmt = String.format("%.2f",totalAmount);
-                            edtAmount.setText(totalAmt);
-                            }catch (NumberFormatException e){
+                                double totalAmount = (Gross - Disc - DiscII - DiscIII + Other + OtherII + cgst + sgst + igst);
+                                String totalAmt = String.format("%.2f", totalAmount);
+                                edtAmount.setText(totalAmt);
+                            } catch (NumberFormatException e) {
                                 Toast.makeText(AddInvoiceActivity.this, e.toString(), Toast.LENGTH_LONG).show();
                             }
                         }
@@ -5228,114 +4934,107 @@ public class AddInvoiceActivity extends Activity {
 
                         @Override
                         public void onTextChanged(CharSequence s, int start, int before, int count) {
-                          try
-                          {
-                            edtAmount.setError(null);
-                            if (s.toString().trim().length()!=0) {
-                                edtDiscIII.setEnabled(false);
-                            }
-                            else {
-                                edtDiscIII.setEnabled(true);
-                            }
-
-                            Gross = CheckValidate.checkemptyDouble(edtGross.getText().toString().trim());
-
-                            DiscPer = CheckValidate.checkemptyDouble(edtDiscPer.getText().toString().trim());
-                            Disc = CheckValidate.checkemptyDouble(edtDisc.getText().toString().trim());
-
-                            DiscIIPer = CheckValidate.checkemptyDouble(edtDiscIIPer.getText().toString().trim());
-                            DiscII = CheckValidate.checkemptyDouble(edtDiscII.getText().toString().trim());
-
-                            DiscIIIPer = CheckValidate.checkemptyDouble(s.toString());
-                            double  tmpDiscIII = (((Gross - Disc - DiscII) * DiscIIIPer) / 100);
-                            if(tmpDiscIII > 0){
-                                String txtDiscIII = String.format("%.2f",tmpDiscIII);
-                                edtDiscIII.setText(txtDiscIII);
-                            }else{
-                                edtDiscIII.setText("");
-                            }
-                            DiscIII = CheckValidate.checkemptyDouble(edtDiscIII.getText().toString().trim());
-
-                              TotalDisc = Disc + DiscII + DiscIII;
-                              if(CheckValidate.checkemptyDouble(String.valueOf(TotalDisc)) > 0)
-                              {
-                                  edtTotalDisc.setText(String.format("%.2f",TotalDisc));
-                              }else
-                              {
-                                  edtTotalDisc.setText("");
-                              }
-
-                            OtherPer = CheckValidate.checkemptyDouble(edtOtherPer.getText().toString().trim());
-                            if(OtherPer > 0){
-                                double  tmpOther= (((Gross - Disc - DiscII - DiscIII) * OtherPer) / 100);
-                                if(tmpOther > 0){
-                                    String txtOther = String.format("%.2f",tmpOther);
-                                    edtOther.setText(txtOther);
-                                }else{
-                                    edtOther.setText("");
+                            try {
+                                edtAmount.setError(null);
+                                if (s.toString().trim().length() != 0) {
+                                    edtDiscIII.setEnabled(false);
+                                } else {
+                                    edtDiscIII.setEnabled(true);
                                 }
-                                Other = CheckValidate.checkemptyDouble(edtOther.getText().toString().trim());
-                            }else
-                            {
-                                Other = CheckValidate.checkemptyDouble(edtOther.getText().toString().trim());
-                            }
 
-                            OtherIIPer = CheckValidate.checkemptyDouble(edtOtherIIPer.getText().toString().trim());
-                            if(OtherIIPer > 0)
-                            {
-                                double  tmpOtherII= (((Gross - Disc - DiscII - DiscIII + Other ) * OtherIIPer) / 100);
-                                if(tmpOtherII > 0){
-                                    String txtOtherII = String.format("%.2f",tmpOtherII);
-                                    edtOtherII.setText(txtOtherII);
-                                }else{
-                                    edtOtherII.setText("");
+                                Gross = CheckValidate.checkemptyDouble(edtGross.getText().toString().trim());
+
+                                DiscPer = CheckValidate.checkemptyDouble(edtDiscPer.getText().toString().trim());
+                                Disc = CheckValidate.checkemptyDouble(edtDisc.getText().toString().trim());
+
+                                DiscIIPer = CheckValidate.checkemptyDouble(edtDiscIIPer.getText().toString().trim());
+                                DiscII = CheckValidate.checkemptyDouble(edtDiscII.getText().toString().trim());
+
+                                DiscIIIPer = CheckValidate.checkemptyDouble(s.toString());
+                                double tmpDiscIII = (((Gross - Disc - DiscII) * DiscIIIPer) / 100);
+                                if (tmpDiscIII > 0) {
+                                    String txtDiscIII = String.format("%.2f", tmpDiscIII);
+                                    edtDiscIII.setText(txtDiscIII);
+                                } else {
+                                    edtDiscIII.setText("");
                                 }
-                                OtherII = CheckValidate.checkemptyDouble(edtOtherII.getText().toString().trim());
-                            }else
-                            {
-                                OtherII = CheckValidate.checkemptyDouble(edtOtherII.getText().toString().trim());
+                                DiscIII = CheckValidate.checkemptyDouble(edtDiscIII.getText().toString().trim());
+
+                                TotalDisc = Disc + DiscII + DiscIII;
+                                if (CheckValidate.checkemptyDouble(String.valueOf(TotalDisc)) > 0) {
+                                    edtTotalDisc.setText(String.format("%.2f", TotalDisc));
+                                } else {
+                                    edtTotalDisc.setText("");
+                                }
+
+                                OtherPer = CheckValidate.checkemptyDouble(edtOtherPer.getText().toString().trim());
+                                if (OtherPer > 0) {
+                                    double tmpOther = (((Gross - Disc - DiscII - DiscIII) * OtherPer) / 100);
+                                    if (tmpOther > 0) {
+                                        String txtOther = String.format("%.2f", tmpOther);
+                                        edtOther.setText(txtOther);
+                                    } else {
+                                        edtOther.setText("");
+                                    }
+                                    Other = CheckValidate.checkemptyDouble(edtOther.getText().toString().trim());
+                                } else {
+                                    Other = CheckValidate.checkemptyDouble(edtOther.getText().toString().trim());
+                                }
+
+                                OtherIIPer = CheckValidate.checkemptyDouble(edtOtherIIPer.getText().toString().trim());
+                                if (OtherIIPer > 0) {
+                                    double tmpOtherII = (((Gross - Disc - DiscII - DiscIII + Other) * OtherIIPer) / 100);
+                                    if (tmpOtherII > 0) {
+                                        String txtOtherII = String.format("%.2f", tmpOtherII);
+                                        edtOtherII.setText(txtOtherII);
+                                    } else {
+                                        edtOtherII.setText("");
+                                    }
+                                    OtherII = CheckValidate.checkemptyDouble(edtOtherII.getText().toString().trim());
+                                } else {
+                                    OtherII = CheckValidate.checkemptyDouble(edtOtherII.getText().toString().trim());
+                                }
+
+                                cgstP = CheckValidate.checkemptyDouble(edtCGSTP.getText().toString().trim());
+                                sgstP = CheckValidate.checkemptyDouble(edtSGSTP.getText().toString().trim());
+                                igstP = CheckValidate.checkemptyDouble(edtIGSTP.getText().toString().trim());
+
+                                double cgst = 0;
+                                if (cgstP > 0) {
+                                    double tmpCgst = (((Gross - Disc - DiscII - DiscIII + Other + OtherII) * cgstP) / 100);
+                                    String txtcgst = String.format("%.2f", tmpCgst);
+                                    edtCGST.setText(txtcgst);
+                                    cgst = CheckValidate.checkemptyDouble(edtCGST.getText().toString().trim());
+                                } else {
+                                    edtCGST.setText("");
+                                }
+
+                                double sgst = 0;
+                                if (sgstP > 0) {
+                                    double tmpSgst = (((Gross - Disc - DiscII - DiscIII + Other + OtherII) * sgstP) / 100);
+                                    String txtsgst = String.format("%.2f", tmpSgst);
+                                    edtSGST.setText(txtsgst);
+                                    sgst = CheckValidate.checkemptyDouble(edtSGST.getText().toString().trim());
+                                } else {
+                                    edtSGST.setText("");
+                                }
+
+                                double igst = 0;
+                                if (igstP > 0) {
+                                    double tmpIgst = (((Gross - Disc - DiscII - DiscIII + Other + OtherII) * igstP) / 100);
+                                    String txtigst = String.format("%.2f", tmpIgst);
+                                    edtIGST.setText(txtigst);
+                                    igst = CheckValidate.checkemptyDouble(edtIGST.getText().toString().trim());
+                                } else {
+                                    edtIGST.setText("");
+                                }
+
+                                double totalAmount = (Gross - Disc - DiscII - DiscIII + Other + OtherII + cgst + sgst + igst);
+                                String totalAmt = String.format("%.2f", totalAmount);
+                                edtAmount.setText(totalAmt);
+                            } catch (NumberFormatException e) {
+                                Toast.makeText(AddInvoiceActivity.this, e.toString(), Toast.LENGTH_LONG).show();
                             }
-
-                            cgstP = CheckValidate.checkemptyDouble(edtCGSTP.getText().toString().trim());
-                            sgstP = CheckValidate.checkemptyDouble(edtSGSTP.getText().toString().trim());
-                            igstP = CheckValidate.checkemptyDouble(edtIGSTP.getText().toString().trim());
-
-                            double cgst = 0;
-                            if(cgstP > 0) {
-                                double tmpCgst = (((Gross - Disc - DiscII - DiscIII + Other + OtherII) * cgstP) / 100);
-                                String txtcgst = String.format("%.2f",tmpCgst);
-                                edtCGST.setText(txtcgst);
-                                cgst = CheckValidate.checkemptyDouble(edtCGST.getText().toString().trim());
-                            }else{
-                                edtCGST.setText("");
-                            }
-
-                            double sgst = 0;
-                            if(sgstP > 0) {
-                                double tmpSgst = (((Gross - Disc - DiscII - DiscIII + Other + OtherII) * sgstP) / 100);
-                                String txtsgst = String.format("%.2f",tmpSgst);
-                                edtSGST.setText(txtsgst);
-                                sgst = CheckValidate.checkemptyDouble(edtSGST.getText().toString().trim());
-                            }else{
-                                edtSGST.setText("");
-                            }
-
-                            double igst = 0;
-                            if(igstP > 0){
-                                double tmpIgst = (((Gross - Disc - DiscII - DiscIII + Other + OtherII) * igstP) / 100);
-                                String txtigst = String.format("%.2f",tmpIgst);
-                                edtIGST.setText(txtigst);
-                                igst = CheckValidate.checkemptyDouble(edtIGST.getText().toString().trim());
-                            }else{
-                                edtIGST.setText("");
-                            }
-
-                            double totalAmount = (Gross - Disc - DiscII - DiscIII + Other + OtherII + cgst + sgst + igst);
-                            String totalAmt = String.format("%.2f",totalAmount);
-                            edtAmount.setText(totalAmt);
-                          }catch (NumberFormatException e){
-                              Toast.makeText(AddInvoiceActivity.this, e.toString(), Toast.LENGTH_LONG).show();
-                          }
                         }
 
                         @Override
@@ -5351,103 +5050,97 @@ public class AddInvoiceActivity extends Activity {
 
                         @Override
                         public void onTextChanged(CharSequence s, int start, int before, int count) {
-                          try
-                          {
-                            edtAmount.setError(null);
-                            if (s.toString().trim().length()!=0) {
-                            }
-
-                            Gross = CheckValidate.checkemptyDouble(edtGross.getText().toString().trim());
-
-                            DiscPer = CheckValidate.checkemptyDouble(edtDiscPer.getText().toString().trim());
-                            Disc = CheckValidate.checkemptyDouble(edtDisc.getText().toString().trim());
-
-                            DiscIIPer = CheckValidate.checkemptyDouble(edtDiscIIPer.getText().toString().trim());
-                            DiscII = CheckValidate.checkemptyDouble(edtDiscII.getText().toString().trim());
-
-                            DiscIIIPer = CheckValidate.checkemptyDouble(edtDiscIIIPer.getText().toString().trim());
-                            DiscIII = CheckValidate.checkemptyDouble(s.toString());
-
-                              TotalDisc = Disc + DiscII + DiscIII;
-                              if(CheckValidate.checkemptyDouble(String.valueOf(TotalDisc)) > 0)
-                              {
-                                  edtTotalDisc.setText(String.format("%.2f",TotalDisc));
-                              }else
-                              {
-                                  edtTotalDisc.setText("");
-                              }
-
-                            OtherPer = CheckValidate.checkemptyDouble(edtOtherPer.getText().toString().trim());
-                            if(OtherPer > 0){
-                                double  tmpOther= (((Gross - Disc - DiscII - DiscIII) * OtherPer) / 100);
-                                if(tmpOther > 0){
-                                    String txtOther = String.format("%.2f",tmpOther);
-                                    edtOther.setText(txtOther);
-                                }else{
-                                    edtOther.setText("");
+                            try {
+                                edtAmount.setError(null);
+                                if (s.toString().trim().length() != 0) {
                                 }
-                                Other = CheckValidate.checkemptyDouble(edtOther.getText().toString().trim());
-                            }else
-                            {
-                                Other = CheckValidate.checkemptyDouble(edtOther.getText().toString().trim());
-                            }
 
-                            OtherIIPer = CheckValidate.checkemptyDouble(edtOtherIIPer.getText().toString().trim());
-                            if(OtherIIPer > 0)
-                            {
-                                double  tmpOtherII= (((Gross - Disc - DiscII - DiscIII + Other ) * OtherIIPer) / 100);
-                                if(tmpOtherII > 0){
-                                    String txtOtherII = String.format("%.2f",tmpOtherII);
-                                    edtOtherII.setText(txtOtherII);
-                                }else{
-                                    edtOtherII.setText("");
+                                Gross = CheckValidate.checkemptyDouble(edtGross.getText().toString().trim());
+
+                                DiscPer = CheckValidate.checkemptyDouble(edtDiscPer.getText().toString().trim());
+                                Disc = CheckValidate.checkemptyDouble(edtDisc.getText().toString().trim());
+
+                                DiscIIPer = CheckValidate.checkemptyDouble(edtDiscIIPer.getText().toString().trim());
+                                DiscII = CheckValidate.checkemptyDouble(edtDiscII.getText().toString().trim());
+
+                                DiscIIIPer = CheckValidate.checkemptyDouble(edtDiscIIIPer.getText().toString().trim());
+                                DiscIII = CheckValidate.checkemptyDouble(s.toString());
+
+                                TotalDisc = Disc + DiscII + DiscIII;
+                                if (CheckValidate.checkemptyDouble(String.valueOf(TotalDisc)) > 0) {
+                                    edtTotalDisc.setText(String.format("%.2f", TotalDisc));
+                                } else {
+                                    edtTotalDisc.setText("");
                                 }
-                                OtherII = CheckValidate.checkemptyDouble(edtOtherII.getText().toString().trim());
-                            }else
-                            {
-                                OtherII = CheckValidate.checkemptyDouble(edtOtherII.getText().toString().trim());
+
+                                OtherPer = CheckValidate.checkemptyDouble(edtOtherPer.getText().toString().trim());
+                                if (OtherPer > 0) {
+                                    double tmpOther = (((Gross - Disc - DiscII - DiscIII) * OtherPer) / 100);
+                                    if (tmpOther > 0) {
+                                        String txtOther = String.format("%.2f", tmpOther);
+                                        edtOther.setText(txtOther);
+                                    } else {
+                                        edtOther.setText("");
+                                    }
+                                    Other = CheckValidate.checkemptyDouble(edtOther.getText().toString().trim());
+                                } else {
+                                    Other = CheckValidate.checkemptyDouble(edtOther.getText().toString().trim());
+                                }
+
+                                OtherIIPer = CheckValidate.checkemptyDouble(edtOtherIIPer.getText().toString().trim());
+                                if (OtherIIPer > 0) {
+                                    double tmpOtherII = (((Gross - Disc - DiscII - DiscIII + Other) * OtherIIPer) / 100);
+                                    if (tmpOtherII > 0) {
+                                        String txtOtherII = String.format("%.2f", tmpOtherII);
+                                        edtOtherII.setText(txtOtherII);
+                                    } else {
+                                        edtOtherII.setText("");
+                                    }
+                                    OtherII = CheckValidate.checkemptyDouble(edtOtherII.getText().toString().trim());
+                                } else {
+                                    OtherII = CheckValidate.checkemptyDouble(edtOtherII.getText().toString().trim());
+                                }
+
+                                cgstP = CheckValidate.checkemptyDouble(edtCGSTP.getText().toString().trim());
+                                sgstP = CheckValidate.checkemptyDouble(edtSGSTP.getText().toString().trim());
+                                igstP = CheckValidate.checkemptyDouble(edtIGSTP.getText().toString().trim());
+
+                                double cgst = 0;
+                                if (cgstP > 0) {
+                                    double tmpCgst = (((Gross - Disc - DiscII - DiscIII + Other + OtherII) * cgstP) / 100);
+                                    String txtcgst = String.format("%.2f", tmpCgst);
+                                    edtCGST.setText(txtcgst);
+                                    cgst = CheckValidate.checkemptyDouble(edtCGST.getText().toString().trim());
+                                } else {
+                                    edtCGST.setText("");
+                                }
+
+                                double sgst = 0;
+                                if (sgstP > 0) {
+                                    double tmpSgst = (((Gross - Disc - DiscII - DiscIII + Other + OtherII) * sgstP) / 100);
+                                    String txtsgst = String.format("%.2f", tmpSgst);
+                                    edtSGST.setText(txtsgst);
+                                    sgst = CheckValidate.checkemptyDouble(edtSGST.getText().toString().trim());
+                                } else {
+                                    edtSGST.setText("");
+                                }
+
+                                double igst = 0;
+                                if (igstP > 0) {
+                                    double tmpIgst = (((Gross - Disc - DiscII - DiscIII + Other + OtherII) * igstP) / 100);
+                                    String txtigst = String.format("%.2f", tmpIgst);
+                                    edtIGST.setText(txtigst);
+                                    igst = CheckValidate.checkemptyDouble(edtIGST.getText().toString().trim());
+                                } else {
+                                    edtIGST.setText("");
+                                }
+
+                                double totalAmount = (Gross - Disc - DiscII - DiscIII + Other + OtherII + cgst + sgst + igst);
+                                String totalAmt = String.format("%.2f", totalAmount);
+                                edtAmount.setText(totalAmt);
+                            } catch (NumberFormatException e) {
+                                Toast.makeText(AddInvoiceActivity.this, e.toString(), Toast.LENGTH_LONG).show();
                             }
-
-                            cgstP = CheckValidate.checkemptyDouble(edtCGSTP.getText().toString().trim());
-                            sgstP = CheckValidate.checkemptyDouble(edtSGSTP.getText().toString().trim());
-                            igstP = CheckValidate.checkemptyDouble(edtIGSTP.getText().toString().trim());
-
-                            double cgst = 0;
-                            if(cgstP > 0) {
-                                double tmpCgst = (((Gross - Disc - DiscII - DiscIII + Other + OtherII) * cgstP) / 100);
-                                String txtcgst = String.format("%.2f",tmpCgst);
-                                edtCGST.setText(txtcgst);
-                                cgst = CheckValidate.checkemptyDouble(edtCGST.getText().toString().trim());
-                            }else{
-                                edtCGST.setText("");
-                            }
-
-                            double sgst = 0;
-                            if(sgstP > 0) {
-                                double tmpSgst = (((Gross - Disc - DiscII - DiscIII + Other + OtherII) * sgstP) / 100);
-                                String txtsgst = String.format("%.2f",tmpSgst);
-                                edtSGST.setText(txtsgst);
-                                sgst = CheckValidate.checkemptyDouble(edtSGST.getText().toString().trim());
-                            }else{
-                                edtSGST.setText("");
-                            }
-
-                            double igst = 0;
-                            if(igstP > 0){
-                                double tmpIgst = (((Gross - Disc - DiscII - DiscIII + Other + OtherII) * igstP) / 100);
-                                String txtigst = String.format("%.2f",tmpIgst);
-                                edtIGST.setText(txtigst);
-                                igst = CheckValidate.checkemptyDouble(edtIGST.getText().toString().trim());
-                            }else{
-                                edtIGST.setText("");
-                            }
-
-                            double totalAmount = (Gross - Disc - DiscII - DiscIII + Other + OtherII + cgst + sgst + igst);
-                            String totalAmt = String.format("%.2f",totalAmount);
-                            edtAmount.setText(totalAmt);
-                          }catch (NumberFormatException e){
-                              Toast.makeText(AddInvoiceActivity.this, e.toString(), Toast.LENGTH_LONG).show();
-                          }
                         }
 
                         @Override
@@ -5463,95 +5156,91 @@ public class AddInvoiceActivity extends Activity {
 
                         @Override
                         public void onTextChanged(CharSequence s, int start, int before, int count) {
-                          try
-                          {
-                            edtAmount.setError(null);
-                            if (s.toString().trim().length()!=0) {
+                            try {
+                                edtAmount.setError(null);
+                                if (s.toString().trim().length() != 0) {
 
-                                edtOther.setEnabled(false);
+                                    edtOther.setEnabled(false);
 
-                            }
-                            else {
-                                edtOther.setEnabled(true);
-                            }
-
-                            Gross = CheckValidate.checkemptyDouble(edtGross.getText().toString().trim());
-
-                            DiscPer = CheckValidate.checkemptyDouble(edtDiscPer.getText().toString().trim());
-                            Disc = CheckValidate.checkemptyDouble(edtDisc.getText().toString().trim());
-
-                            DiscIIPer = CheckValidate.checkemptyDouble(edtDiscIIPer.getText().toString().trim());
-                            DiscII = CheckValidate.checkemptyDouble(edtDiscII.getText().toString().trim());
-
-                            DiscIIIPer = CheckValidate.checkemptyDouble(edtDiscIIIPer.getText().toString().trim());
-                            DiscIII = CheckValidate.checkemptyDouble(edtDiscIII.getText().toString().trim());
-
-                            OtherPer = CheckValidate.checkemptyDouble(s.toString());
-                            double  tmpOther= (((Gross - Disc - DiscII - DiscIII) * OtherPer) / 100);
-                            if(tmpOther> 0) {
-                                String txtOther = String.format("%.2f",tmpOther);
-                                edtOther.setText(txtOther);
-                            }else{
-                                edtOther.setText("");
-                            }
-                            Other = CheckValidate.checkemptyDouble(edtOther.getText().toString().trim());
-
-                            OtherIIPer = CheckValidate.checkemptyDouble(edtOtherIIPer.getText().toString().trim());
-                            if(OtherIIPer > 0)
-                            {
-                                double  tmpOtherII= (((Gross - Disc - DiscII - DiscIII + Other ) * OtherIIPer) / 100);
-                                if(tmpOtherII > 0){
-                                    String txtOtherII = String.format("%.2f",tmpOtherII);
-                                    edtOtherII.setText(txtOtherII);
-                                }else{
-                                    edtOtherII.setText("");
+                                } else {
+                                    edtOther.setEnabled(true);
                                 }
-                                OtherII = CheckValidate.checkemptyDouble(edtOtherII.getText().toString().trim());
-                            }else
-                            {
-                                OtherII = CheckValidate.checkemptyDouble(edtOtherII.getText().toString().trim());
+
+                                Gross = CheckValidate.checkemptyDouble(edtGross.getText().toString().trim());
+
+                                DiscPer = CheckValidate.checkemptyDouble(edtDiscPer.getText().toString().trim());
+                                Disc = CheckValidate.checkemptyDouble(edtDisc.getText().toString().trim());
+
+                                DiscIIPer = CheckValidate.checkemptyDouble(edtDiscIIPer.getText().toString().trim());
+                                DiscII = CheckValidate.checkemptyDouble(edtDiscII.getText().toString().trim());
+
+                                DiscIIIPer = CheckValidate.checkemptyDouble(edtDiscIIIPer.getText().toString().trim());
+                                DiscIII = CheckValidate.checkemptyDouble(edtDiscIII.getText().toString().trim());
+
+                                OtherPer = CheckValidate.checkemptyDouble(s.toString());
+                                double tmpOther = (((Gross - Disc - DiscII - DiscIII) * OtherPer) / 100);
+                                if (tmpOther > 0) {
+                                    String txtOther = String.format("%.2f", tmpOther);
+                                    edtOther.setText(txtOther);
+                                } else {
+                                    edtOther.setText("");
+                                }
+                                Other = CheckValidate.checkemptyDouble(edtOther.getText().toString().trim());
+
+                                OtherIIPer = CheckValidate.checkemptyDouble(edtOtherIIPer.getText().toString().trim());
+                                if (OtherIIPer > 0) {
+                                    double tmpOtherII = (((Gross - Disc - DiscII - DiscIII + Other) * OtherIIPer) / 100);
+                                    if (tmpOtherII > 0) {
+                                        String txtOtherII = String.format("%.2f", tmpOtherII);
+                                        edtOtherII.setText(txtOtherII);
+                                    } else {
+                                        edtOtherII.setText("");
+                                    }
+                                    OtherII = CheckValidate.checkemptyDouble(edtOtherII.getText().toString().trim());
+                                } else {
+                                    OtherII = CheckValidate.checkemptyDouble(edtOtherII.getText().toString().trim());
+                                }
+
+                                cgstP = CheckValidate.checkemptyDouble(edtCGSTP.getText().toString().trim());
+                                sgstP = CheckValidate.checkemptyDouble(edtSGSTP.getText().toString().trim());
+                                igstP = CheckValidate.checkemptyDouble(edtIGSTP.getText().toString().trim());
+
+                                double cgst = 0;
+                                if (cgstP > 0) {
+                                    double tmpCgst = (((Gross - Disc - DiscII - DiscIII + Other + OtherII) * cgstP) / 100);
+                                    String txtcgst = String.format("%.2f", tmpCgst);
+                                    edtCGST.setText(txtcgst);
+                                    cgst = CheckValidate.checkemptyDouble(edtCGST.getText().toString().trim());
+                                } else {
+                                    edtCGST.setText("");
+                                }
+
+                                double sgst = 0;
+                                if (sgstP > 0) {
+                                    double tmpSgst = (((Gross - Disc - DiscII - DiscIII + Other + OtherII) * sgstP) / 100);
+                                    String txtsgst = String.format("%.2f", tmpSgst);
+                                    edtSGST.setText(txtsgst);
+                                    sgst = CheckValidate.checkemptyDouble(edtSGST.getText().toString().trim());
+                                } else {
+                                    edtSGST.setText("");
+                                }
+
+                                double igst = 0;
+                                if (igstP > 0) {
+                                    double tmpIgst = (((Gross - Disc - DiscII - DiscIII + Other + OtherII) * igstP) / 100);
+                                    String txtigst = String.format("%.2f", tmpIgst);
+                                    edtIGST.setText(txtigst);
+                                    igst = CheckValidate.checkemptyDouble(edtIGST.getText().toString().trim());
+                                } else {
+                                    edtIGST.setText("");
+                                }
+
+                                double totalAmount = (Gross - Disc - DiscII - DiscIII + Other + OtherII + cgst + sgst + igst);
+                                String totalAmt = String.format("%.2f", totalAmount);
+                                edtAmount.setText(totalAmt);
+                            } catch (NumberFormatException e) {
+                                Toast.makeText(AddInvoiceActivity.this, e.toString(), Toast.LENGTH_LONG).show();
                             }
-
-                            cgstP = CheckValidate.checkemptyDouble(edtCGSTP.getText().toString().trim());
-                            sgstP = CheckValidate.checkemptyDouble(edtSGSTP.getText().toString().trim());
-                            igstP = CheckValidate.checkemptyDouble(edtIGSTP.getText().toString().trim());
-
-                            double cgst = 0;
-                            if(cgstP > 0) {
-                                double tmpCgst = (((Gross - Disc - DiscII - DiscIII + Other + OtherII) * cgstP) / 100);
-                                String txtcgst = String.format("%.2f",tmpCgst);
-                                edtCGST.setText(txtcgst);
-                                cgst = CheckValidate.checkemptyDouble(edtCGST.getText().toString().trim());
-                            }else{
-                                edtCGST.setText("");
-                            }
-
-                            double sgst = 0;
-                            if(sgstP > 0) {
-                                double tmpSgst = (((Gross - Disc - DiscII - DiscIII + Other + OtherII) * sgstP) / 100);
-                                String txtsgst = String.format("%.2f",tmpSgst);
-                                edtSGST.setText(txtsgst);
-                                sgst = CheckValidate.checkemptyDouble(edtSGST.getText().toString().trim());
-                            }else{
-                                edtSGST.setText("");
-                            }
-
-                            double igst = 0;
-                            if(igstP > 0){
-                                double tmpIgst = (((Gross - Disc - DiscII - DiscIII + Other + OtherII) * igstP) / 100);
-                                String txtigst = String.format("%.2f",tmpIgst);
-                                edtIGST.setText(txtigst);
-                                igst = CheckValidate.checkemptyDouble(edtIGST.getText().toString().trim());
-                            }else{
-                                edtIGST.setText("");
-                            }
-
-                            double totalAmount = (Gross - Disc - DiscII - DiscIII + Other + OtherII + cgst + sgst + igst);
-                            String totalAmt = String.format("%.2f",totalAmount);
-                            edtAmount.setText(totalAmt);
-                          }catch (NumberFormatException e){
-                              Toast.makeText(AddInvoiceActivity.this, e.toString(), Toast.LENGTH_LONG).show();
-                          }
                         }
 
                         @Override
@@ -5568,80 +5257,77 @@ public class AddInvoiceActivity extends Activity {
 
                         @Override
                         public void onTextChanged(CharSequence s, int start, int before, int count) {
-                            try
-                            {
-                            edtAmount.setError(null);
-                            if (s.toString().trim().length()!=0) {
-                            }
-
-                            Gross = CheckValidate.checkemptyDouble(edtGross.getText().toString().trim());
-
-                            DiscPer = CheckValidate.checkemptyDouble(edtDiscPer.getText().toString().trim());
-                            Disc = CheckValidate.checkemptyDouble(edtDisc.getText().toString().trim());
-
-                            DiscIIPer = CheckValidate.checkemptyDouble(edtDiscIIPer.getText().toString().trim());
-                            DiscII = CheckValidate.checkemptyDouble(edtDiscII.getText().toString().trim());
-
-                            DiscIIIPer = CheckValidate.checkemptyDouble(edtDiscIIIPer.getText().toString().trim());
-                            DiscIII = CheckValidate.checkemptyDouble(edtDiscIII.getText().toString().trim());
-
-                            OtherPer = CheckValidate.checkemptyDouble(edtOtherPer.getText().toString().trim());
-                            Other = CheckValidate.checkemptyDouble(s.toString());
-
-                            OtherIIPer = CheckValidate.checkemptyDouble(edtOtherIIPer.getText().toString().trim());
-                            if(OtherIIPer > 0)
-                            {
-                                double  tmpOtherII= (((Gross - Disc - DiscII - DiscIII + Other ) * OtherIIPer) / 100);
-                                if(tmpOtherII > 0){
-                                    String txtOtherII = String.format("%.2f",tmpOtherII);
-                                    edtOtherII.setText(txtOtherII);
-                                }else{
-                                    edtOtherII.setText("");
+                            try {
+                                edtAmount.setError(null);
+                                if (s.toString().trim().length() != 0) {
                                 }
-                                OtherII = CheckValidate.checkemptyDouble(edtOtherII.getText().toString().trim());
-                            }else
-                            {
-                                OtherII = CheckValidate.checkemptyDouble(edtOtherII.getText().toString().trim());
-                            }
 
-                            cgstP = CheckValidate.checkemptyDouble(edtCGSTP.getText().toString().trim());
-                            sgstP = CheckValidate.checkemptyDouble(edtSGSTP.getText().toString().trim());
-                            igstP = CheckValidate.checkemptyDouble(edtIGSTP.getText().toString().trim());
+                                Gross = CheckValidate.checkemptyDouble(edtGross.getText().toString().trim());
 
-                            double cgst = 0;
-                            if(cgstP > 0) {
-                                double tmpCgst = (((Gross - Disc - DiscII - DiscIII + Other + OtherII) * cgstP) / 100);
-                                String txtcgst = String.format("%.2f",tmpCgst);
-                                edtCGST.setText(txtcgst);
-                                cgst = CheckValidate.checkemptyDouble(edtCGST.getText().toString().trim());
-                            }else{
-                                edtCGST.setText("");
-                            }
+                                DiscPer = CheckValidate.checkemptyDouble(edtDiscPer.getText().toString().trim());
+                                Disc = CheckValidate.checkemptyDouble(edtDisc.getText().toString().trim());
 
-                            double sgst = 0;
-                            if(sgstP > 0) {
-                                double tmpSgst = (((Gross - Disc - DiscII - DiscIII + Other + OtherII) * sgstP) / 100);
-                                String txtsgst = String.format("%.2f",tmpSgst);
-                                edtSGST.setText(txtsgst);
-                                sgst = CheckValidate.checkemptyDouble(edtSGST.getText().toString().trim());
-                            }else{
-                                edtSGST.setText("");
-                            }
+                                DiscIIPer = CheckValidate.checkemptyDouble(edtDiscIIPer.getText().toString().trim());
+                                DiscII = CheckValidate.checkemptyDouble(edtDiscII.getText().toString().trim());
 
-                            double igst = 0;
-                            if(igstP > 0){
-                                double tmpIgst = (((Gross - Disc - DiscII - DiscIII + Other + OtherII) * igstP) / 100);
-                                String txtigst = String.format("%.2f",tmpIgst);
-                                edtIGST.setText(txtigst);
-                                igst = CheckValidate.checkemptyDouble(edtIGST.getText().toString().trim());
-                            }else{
-                                edtIGST.setText("");
-                            }
+                                DiscIIIPer = CheckValidate.checkemptyDouble(edtDiscIIIPer.getText().toString().trim());
+                                DiscIII = CheckValidate.checkemptyDouble(edtDiscIII.getText().toString().trim());
 
-                            double totalAmount = (Gross - Disc - DiscII - DiscIII + Other + OtherII + cgst + sgst + igst);
-                            String totalAmt = String.format("%.2f",totalAmount);
-                            edtAmount.setText(totalAmt);
-                            }catch (NumberFormatException e){
+                                OtherPer = CheckValidate.checkemptyDouble(edtOtherPer.getText().toString().trim());
+                                Other = CheckValidate.checkemptyDouble(s.toString());
+
+                                OtherIIPer = CheckValidate.checkemptyDouble(edtOtherIIPer.getText().toString().trim());
+                                if (OtherIIPer > 0) {
+                                    double tmpOtherII = (((Gross - Disc - DiscII - DiscIII + Other) * OtherIIPer) / 100);
+                                    if (tmpOtherII > 0) {
+                                        String txtOtherII = String.format("%.2f", tmpOtherII);
+                                        edtOtherII.setText(txtOtherII);
+                                    } else {
+                                        edtOtherII.setText("");
+                                    }
+                                    OtherII = CheckValidate.checkemptyDouble(edtOtherII.getText().toString().trim());
+                                } else {
+                                    OtherII = CheckValidate.checkemptyDouble(edtOtherII.getText().toString().trim());
+                                }
+
+                                cgstP = CheckValidate.checkemptyDouble(edtCGSTP.getText().toString().trim());
+                                sgstP = CheckValidate.checkemptyDouble(edtSGSTP.getText().toString().trim());
+                                igstP = CheckValidate.checkemptyDouble(edtIGSTP.getText().toString().trim());
+
+                                double cgst = 0;
+                                if (cgstP > 0) {
+                                    double tmpCgst = (((Gross - Disc - DiscII - DiscIII + Other + OtherII) * cgstP) / 100);
+                                    String txtcgst = String.format("%.2f", tmpCgst);
+                                    edtCGST.setText(txtcgst);
+                                    cgst = CheckValidate.checkemptyDouble(edtCGST.getText().toString().trim());
+                                } else {
+                                    edtCGST.setText("");
+                                }
+
+                                double sgst = 0;
+                                if (sgstP > 0) {
+                                    double tmpSgst = (((Gross - Disc - DiscII - DiscIII + Other + OtherII) * sgstP) / 100);
+                                    String txtsgst = String.format("%.2f", tmpSgst);
+                                    edtSGST.setText(txtsgst);
+                                    sgst = CheckValidate.checkemptyDouble(edtSGST.getText().toString().trim());
+                                } else {
+                                    edtSGST.setText("");
+                                }
+
+                                double igst = 0;
+                                if (igstP > 0) {
+                                    double tmpIgst = (((Gross - Disc - DiscII - DiscIII + Other + OtherII) * igstP) / 100);
+                                    String txtigst = String.format("%.2f", tmpIgst);
+                                    edtIGST.setText(txtigst);
+                                    igst = CheckValidate.checkemptyDouble(edtIGST.getText().toString().trim());
+                                } else {
+                                    edtIGST.setText("");
+                                }
+
+                                double totalAmount = (Gross - Disc - DiscII - DiscIII + Other + OtherII + cgst + sgst + igst);
+                                String totalAmt = String.format("%.2f", totalAmount);
+                                edtAmount.setText(totalAmt);
+                            } catch (NumberFormatException e) {
                                 Toast.makeText(AddInvoiceActivity.this, e.toString(), Toast.LENGTH_LONG).show();
                             }
                         }
@@ -5659,79 +5345,77 @@ public class AddInvoiceActivity extends Activity {
 
                         @Override
                         public void onTextChanged(CharSequence s, int start, int before, int count) {
-                            try
-                            {
-                            edtAmount.setError(null);
-                            if (s.toString().trim().length()!=0) {
+                            try {
+                                edtAmount.setError(null);
+                                if (s.toString().trim().length() != 0) {
 
-                                edtOtherII.setEnabled(false);
-                            }
-                            else {
-                                edtOtherII.setEnabled(true);
-                            }
+                                    edtOtherII.setEnabled(false);
+                                } else {
+                                    edtOtherII.setEnabled(true);
+                                }
 
-                            Gross = CheckValidate.checkemptyDouble(edtGross.getText().toString().trim());
+                                Gross = CheckValidate.checkemptyDouble(edtGross.getText().toString().trim());
 
-                            DiscPer = CheckValidate.checkemptyDouble(edtDiscPer.getText().toString().trim());
-                            Disc = CheckValidate.checkemptyDouble(edtDisc.getText().toString().trim());
+                                DiscPer = CheckValidate.checkemptyDouble(edtDiscPer.getText().toString().trim());
+                                Disc = CheckValidate.checkemptyDouble(edtDisc.getText().toString().trim());
 
-                            DiscIIPer = CheckValidate.checkemptyDouble(edtDiscIIPer.getText().toString().trim());
-                            DiscII = CheckValidate.checkemptyDouble(edtDiscII.getText().toString().trim());
+                                DiscIIPer = CheckValidate.checkemptyDouble(edtDiscIIPer.getText().toString().trim());
+                                DiscII = CheckValidate.checkemptyDouble(edtDiscII.getText().toString().trim());
 
-                            DiscIIIPer = CheckValidate.checkemptyDouble(edtDiscIIIPer.getText().toString().trim());
-                            DiscIII = CheckValidate.checkemptyDouble(edtDiscIII.getText().toString().trim());
+                                DiscIIIPer = CheckValidate.checkemptyDouble(edtDiscIIIPer.getText().toString().trim());
+                                DiscIII = CheckValidate.checkemptyDouble(edtDiscIII.getText().toString().trim());
 
-                            OtherPer = CheckValidate.checkemptyDouble(edtOtherPer.getText().toString().trim());
-                            Other = CheckValidate.checkemptyDouble(edtOther.getText().toString().trim());
+                                OtherPer = CheckValidate.checkemptyDouble(edtOtherPer.getText().toString().trim());
+                                Other = CheckValidate.checkemptyDouble(edtOther.getText().toString().trim());
 
-                            OtherIIPer = CheckValidate.checkemptyDouble(s.toString());
-                            double  tmpOtherII= (((Gross - Disc - DiscII - DiscIII + Other ) * OtherIIPer) / 100);
-                            if(tmpOtherII > 0){
-                                String txtOtherII = String.format("%.2f",tmpOtherII);
-                                edtOtherII.setText(txtOtherII);
-                            }else{
-                                edtOtherII.setText("");
-                            }
-                            OtherII = CheckValidate.checkemptyDouble(edtOtherII.getText().toString().trim());
+                                OtherIIPer = CheckValidate.checkemptyDouble(s.toString());
+                                double tmpOtherII = (((Gross - Disc - DiscII - DiscIII + Other) * OtherIIPer) / 100);
+                                if (tmpOtherII > 0) {
+                                    String txtOtherII = String.format("%.2f", tmpOtherII);
+                                    edtOtherII.setText(txtOtherII);
+                                } else {
+                                    edtOtherII.setText("");
+                                }
+                                OtherII = CheckValidate.checkemptyDouble(edtOtherII.getText().toString().trim());
 
-                            cgstP = CheckValidate.checkemptyDouble(edtCGSTP.getText().toString().trim());
-                            sgstP = CheckValidate.checkemptyDouble(edtSGSTP.getText().toString().trim());
-                            igstP = CheckValidate.checkemptyDouble(edtIGSTP.getText().toString().trim());
+                                cgstP = CheckValidate.checkemptyDouble(edtCGSTP.getText().toString().trim());
+                                sgstP = CheckValidate.checkemptyDouble(edtSGSTP.getText().toString().trim());
+                                igstP = CheckValidate.checkemptyDouble(edtIGSTP.getText().toString().trim());
 
-                            double cgst = 0;
-                            if(cgstP > 0) {
-                                double tmpCgst = (((Gross - Disc - DiscII - DiscIII + Other + OtherII) * cgstP) / 100);
-                                String txtcgst = String.format("%.2f",tmpCgst);
-                                edtCGST.setText(txtcgst);
-                                cgst = CheckValidate.checkemptyDouble(edtCGST.getText().toString().trim());
-                            }else{
-                                edtCGST.setText("");
-                            }
+                                double cgst = 0;
+                                if (cgstP > 0) {
+                                    double tmpCgst = (((Gross - Disc - DiscII - DiscIII + Other + OtherII) * cgstP) / 100);
+                                    String txtcgst = String.format("%.2f", tmpCgst);
+                                    edtCGST.setText(txtcgst);
+                                    cgst = CheckValidate.checkemptyDouble(edtCGST.getText().toString().trim());
+                                } else {
+                                    edtCGST.setText("");
+                                }
 
-                            double sgst = 0;
-                            if(sgstP > 0) {
-                                double tmpSgst = (((Gross - Disc - DiscII - DiscIII + Other + OtherII) * sgstP) / 100);
-                                String txtsgst = String.format("%.2f",tmpSgst);
-                                edtSGST.setText(txtsgst);
-                                sgst = CheckValidate.checkemptyDouble(edtSGST.getText().toString().trim());
-                            }else{
-                                edtSGST.setText("");
-                            }
+                                double sgst = 0;
+                                if (sgstP > 0) {
+                                    double tmpSgst = (((Gross - Disc - DiscII - DiscIII + Other + OtherII) * sgstP) / 100);
+                                    String txtsgst = String.format("%.2f", tmpSgst);
+                                    edtSGST.setText(txtsgst);
+                                    sgst = CheckValidate.checkemptyDouble(edtSGST.getText().toString().trim());
+                                } else {
+                                    edtSGST.setText("");
+                                }
 
-                            double igst = 0;
-                            if(igstP > 0){
-                                double tmpIgst = (((Gross - Disc - DiscII - DiscIII + Other + OtherII) * igstP) / 100);
-                                String txtigst = String.format("%.2f",tmpIgst);
-                                edtIGST.setText(txtigst);
-                                igst = CheckValidate.checkemptyDouble(edtIGST.getText().toString().trim());
-                            }else{
-                                edtIGST.setText("");
-                            }
+                                double igst = 0;
+                                if (igstP > 0) {
+                                    double tmpIgst = (((Gross - Disc - DiscII - DiscIII + Other + OtherII) * igstP) / 100);
+                                    String txtigst = String.format("%.2f", tmpIgst);
+                                    edtIGST.setText(txtigst);
+                                    igst = CheckValidate.checkemptyDouble(edtIGST.getText().toString().trim());
+                                } else {
+                                    edtIGST.setText("");
+                                }
 
-                            double totalAmount = (Gross - Disc - DiscII - DiscIII + Other + OtherII + cgst + sgst + igst);
-                            String totalAmt = String.format("%.2f",totalAmount);
-                            edtAmount.setText(totalAmt);
-                            }catch (NumberFormatException e){
+                                double totalAmount = (Gross - Disc - DiscII - DiscIII + Other + OtherII + cgst + sgst + igst);
+                                String totalAmt = String.format("%.2f", totalAmount);
+                                edtAmount.setText(totalAmt);
+                            } catch (NumberFormatException e) {
                                 Toast.makeText(AddInvoiceActivity.this, e.toString(), Toast.LENGTH_LONG).show();
                             }
                         }
@@ -5749,67 +5433,66 @@ public class AddInvoiceActivity extends Activity {
 
                         @Override
                         public void onTextChanged(CharSequence s, int start, int before, int count) {
-                            try
-                            {
-                            edtAmount.setError(null);
-                            if (s.toString().trim().length()!=0) {
-                            }
+                            try {
+                                edtAmount.setError(null);
+                                if (s.toString().trim().length() != 0) {
+                                }
 
-                            Gross = CheckValidate.checkemptyDouble(edtGross.getText().toString().trim());
+                                Gross = CheckValidate.checkemptyDouble(edtGross.getText().toString().trim());
 
-                            DiscPer = CheckValidate.checkemptyDouble(edtDiscPer.getText().toString().trim());
-                            Disc = CheckValidate.checkemptyDouble(edtDisc.getText().toString().trim());
+                                DiscPer = CheckValidate.checkemptyDouble(edtDiscPer.getText().toString().trim());
+                                Disc = CheckValidate.checkemptyDouble(edtDisc.getText().toString().trim());
 
-                            DiscIIPer = CheckValidate.checkemptyDouble(edtDiscIIPer.getText().toString().trim());
-                            DiscII = CheckValidate.checkemptyDouble(edtDiscII.getText().toString().trim());
+                                DiscIIPer = CheckValidate.checkemptyDouble(edtDiscIIPer.getText().toString().trim());
+                                DiscII = CheckValidate.checkemptyDouble(edtDiscII.getText().toString().trim());
 
-                            DiscIIIPer = CheckValidate.checkemptyDouble(edtDiscIIIPer.getText().toString().trim());
-                            DiscIII = CheckValidate.checkemptyDouble(edtDiscIII.getText().toString().trim());
+                                DiscIIIPer = CheckValidate.checkemptyDouble(edtDiscIIIPer.getText().toString().trim());
+                                DiscIII = CheckValidate.checkemptyDouble(edtDiscIII.getText().toString().trim());
 
-                            OtherPer = CheckValidate.checkemptyDouble(edtOtherPer.getText().toString().trim());
-                            Other = CheckValidate.checkemptyDouble(edtOther.getText().toString().trim());
+                                OtherPer = CheckValidate.checkemptyDouble(edtOtherPer.getText().toString().trim());
+                                Other = CheckValidate.checkemptyDouble(edtOther.getText().toString().trim());
 
-                            OtherIIPer = CheckValidate.checkemptyDouble(edtOtherIIPer.getText().toString().trim());
-                            OtherII = CheckValidate.checkemptyDouble(s.toString());
+                                OtherIIPer = CheckValidate.checkemptyDouble(edtOtherIIPer.getText().toString().trim());
+                                OtherII = CheckValidate.checkemptyDouble(s.toString());
 
-                            cgstP = CheckValidate.checkemptyDouble(edtCGSTP.getText().toString().trim());
-                            sgstP = CheckValidate.checkemptyDouble(edtSGSTP.getText().toString().trim());
-                            igstP = CheckValidate.checkemptyDouble(edtIGSTP.getText().toString().trim());
+                                cgstP = CheckValidate.checkemptyDouble(edtCGSTP.getText().toString().trim());
+                                sgstP = CheckValidate.checkemptyDouble(edtSGSTP.getText().toString().trim());
+                                igstP = CheckValidate.checkemptyDouble(edtIGSTP.getText().toString().trim());
 
-                            double cgst = 0;
-                            if(cgstP > 0) {
-                                double tmpCgst = (((Gross - Disc - DiscII - DiscIII + Other + OtherII) * cgstP) / 100);
-                                String txtcgst = String.format("%.2f",tmpCgst);
-                                edtCGST.setText(txtcgst);
-                                cgst = CheckValidate.checkemptyDouble(edtCGST.getText().toString().trim());
-                            }else{
-                                edtCGST.setText("");
-                            }
+                                double cgst = 0;
+                                if (cgstP > 0) {
+                                    double tmpCgst = (((Gross - Disc - DiscII - DiscIII + Other + OtherII) * cgstP) / 100);
+                                    String txtcgst = String.format("%.2f", tmpCgst);
+                                    edtCGST.setText(txtcgst);
+                                    cgst = CheckValidate.checkemptyDouble(edtCGST.getText().toString().trim());
+                                } else {
+                                    edtCGST.setText("");
+                                }
 
-                            double sgst = 0;
-                            if(sgstP > 0) {
-                                double tmpSgst = (((Gross - Disc - DiscII - DiscIII + Other + OtherII) * sgstP) / 100);
-                                String txtsgst = String.format("%.2f",tmpSgst);
-                                edtSGST.setText(txtsgst);
-                                sgst = CheckValidate.checkemptyDouble(edtSGST.getText().toString().trim());
-                            }else{
-                                edtSGST.setText("");
-                            }
+                                double sgst = 0;
+                                if (sgstP > 0) {
+                                    double tmpSgst = (((Gross - Disc - DiscII - DiscIII + Other + OtherII) * sgstP) / 100);
+                                    String txtsgst = String.format("%.2f", tmpSgst);
+                                    edtSGST.setText(txtsgst);
+                                    sgst = CheckValidate.checkemptyDouble(edtSGST.getText().toString().trim());
+                                } else {
+                                    edtSGST.setText("");
+                                }
 
-                            double igst = 0;
-                            if(igstP > 0){
-                                double tmpIgst = (((Gross - Disc - DiscII - DiscIII + Other + OtherII) * igstP) / 100);
-                                String txtigst = String.format("%.2f",tmpIgst);
-                                edtIGST.setText(txtigst);
-                                igst = CheckValidate.checkemptyDouble(edtIGST.getText().toString().trim());
-                            }else{
-                                edtIGST.setText("");
-                            }
+                                double igst = 0;
+                                if (igstP > 0) {
+                                    double tmpIgst = (((Gross - Disc - DiscII - DiscIII + Other + OtherII) * igstP) / 100);
+                                    String txtigst = String.format("%.2f", tmpIgst);
+                                    edtIGST.setText(txtigst);
+                                    igst = CheckValidate.checkemptyDouble(edtIGST.getText().toString().trim());
+                                } else {
+                                    edtIGST.setText("");
+                                }
 
-                            double totalAmount = (Gross - Disc - DiscII - DiscIII + Other + OtherII + cgst + sgst + igst);
-                            String totalAmt = String.format("%.2f",totalAmount);
-                            edtAmount.setText(totalAmt);
-                            }catch (NumberFormatException e){
+                                double totalAmount = (Gross - Disc - DiscII - DiscIII + Other + OtherII + cgst + sgst + igst);
+                                String totalAmt = String.format("%.2f", totalAmount);
+                                edtAmount.setText(totalAmt);
+                            } catch (NumberFormatException e) {
                                 Toast.makeText(AddInvoiceActivity.this, e.toString(), Toast.LENGTH_LONG).show();
                             }
                         }
@@ -5823,56 +5506,48 @@ public class AddInvoiceActivity extends Activity {
                         @Override
                         public void onClick(View v) {
 
-                            try
-                            {
+                            try {
                                 edtAmount.setError(null);
 
                                 DiscPer = CheckValidate.checkemptyDouble(edtDiscPer.getText().toString().trim());
-                                if(DiscPer == 0)
-                                {
+                                if (DiscPer == 0) {
                                     Gross = CheckValidate.checkemptyDouble(edtGross.getText().toString().trim());
                                     Disc = CheckValidate.checkemptyDouble(edtDisc.getText().toString().trim());
                                     cgstP = CheckValidate.checkemptyDouble(edtCGSTP.getText().toString().trim());
                                     sgstP = CheckValidate.checkemptyDouble(edtSGSTP.getText().toString().trim());
                                     igstP = CheckValidate.checkemptyDouble(edtIGSTP.getText().toString().trim());
                                     double tmpgstPer = 0;
-                                    if(cgstP > 0 && sgstP > 0)
-                                    {
-                                        tmpgstPer = cgstP+sgstP;
-                                    }
-                                    else
-                                    {
+                                    if (cgstP > 0 && sgstP > 0) {
+                                        tmpgstPer = cgstP + sgstP;
+                                    } else {
                                         tmpgstPer = igstP;
                                     }
 
-                                    if(tmpgstPer > 0)
-                                    {
-                                        double  tmpDisc = (Disc /((1+(tmpgstPer/100)))) ;
+                                    if (tmpgstPer > 0) {
+                                        double tmpDisc = (Disc / ((1 + (tmpgstPer / 100))));
 
-                                        if(tmpDisc > 0){
-                                            String txtDisc= String.format("%.2f",tmpDisc);
+                                        if (tmpDisc > 0) {
+                                            String txtDisc = String.format("%.2f", tmpDisc);
                                             edtDisc.setText(txtDisc);
 
-                                        }else{
+                                        } else {
                                             edtDisc.setText("");
                                         }
                                     }
                                     Disc = CheckValidate.checkemptyDouble(edtDisc.getText().toString().trim());
 
                                     DiscIIPer = CheckValidate.checkemptyDouble(edtDiscIIPer.getText().toString().trim());
-                                    if(DiscIIPer > 0)
-                                    {
-                                        double  tmpDiscII = (((Gross-Disc) * DiscIIPer) / 100);
-                                        if(tmpDiscII > 0){
-                                            String txtDiscII = String.format("%.2f",tmpDiscII);
+                                    if (DiscIIPer > 0) {
+                                        double tmpDiscII = (((Gross - Disc) * DiscIIPer) / 100);
+                                        if (tmpDiscII > 0) {
+                                            String txtDiscII = String.format("%.2f", tmpDiscII);
                                             edtDiscII.setText(txtDiscII);
 
-                                        }else{
+                                        } else {
                                             edtDiscII.setText("");
                                         }
                                         DiscII = CheckValidate.checkemptyDouble(edtDiscII.getText().toString().trim());
-                                    }else
-                                    {
+                                    } else {
                                         DiscII = CheckValidate.checkemptyDouble(edtDiscII.getText().toString().trim());
                                     }
 
@@ -5880,95 +5555,89 @@ public class AddInvoiceActivity extends Activity {
                                     if (DiscIIIPer > 0) {
 
                                         double tmpDiscIII = (((Gross - Disc - DiscII) * DiscIIIPer) / 100);
-                                        if(tmpDiscIII > 0){
-                                            String txtDiscIII = String.format("%.2f",tmpDiscIII);
+                                        if (tmpDiscIII > 0) {
+                                            String txtDiscIII = String.format("%.2f", tmpDiscIII);
                                             edtDiscIII.setText(txtDiscIII);
-                                        }else{
+                                        } else {
                                             edtDiscIII.setText("");
                                         }
                                         DiscIII = CheckValidate.checkemptyDouble(edtDiscIII.getText().toString().trim());
-                                    }else
-                                    {
+                                    } else {
                                         DiscIII = CheckValidate.checkemptyDouble(edtDiscIII.getText().toString().trim());
                                     }
 
                                     TotalDisc = Disc + DiscII + DiscIII;
-                                    if(CheckValidate.checkemptyDouble(String.valueOf(TotalDisc)) > 0)
-                                    {
-                                        edtTotalDisc.setText(String.format("%.2f",TotalDisc));
-                                    }else
-                                    {
+                                    if (CheckValidate.checkemptyDouble(String.valueOf(TotalDisc)) > 0) {
+                                        edtTotalDisc.setText(String.format("%.2f", TotalDisc));
+                                    } else {
                                         edtTotalDisc.setText("");
                                     }
 
                                     OtherPer = CheckValidate.checkemptyDouble(edtOtherPer.getText().toString().trim());
-                                    if(OtherPer > 0){
-                                        double  tmpOther= (((Gross - Disc - DiscII - DiscIII) * OtherPer) / 100);
-                                        if(tmpOther > 0){
-                                            String txtOther = String.format("%.2f",tmpOther);
+                                    if (OtherPer > 0) {
+                                        double tmpOther = (((Gross - Disc - DiscII - DiscIII) * OtherPer) / 100);
+                                        if (tmpOther > 0) {
+                                            String txtOther = String.format("%.2f", tmpOther);
                                             edtOther.setText(txtOther);
-                                        }else{
+                                        } else {
                                             edtOther.setText("");
                                         }
                                         Other = CheckValidate.checkemptyDouble(edtOther.getText().toString().trim());
-                                    }else
-                                    {
+                                    } else {
                                         Other = CheckValidate.checkemptyDouble(edtOther.getText().toString().trim());
                                     }
 
                                     OtherIIPer = CheckValidate.checkemptyDouble(edtOtherIIPer.getText().toString().trim());
-                                    if(OtherIIPer > 0)
-                                    {
-                                        double  tmpOtherII= (((Gross - Disc - DiscII - DiscIII + Other ) * OtherIIPer) / 100);
-                                        if(tmpOtherII > 0){
-                                            String txtOtherII = String.format("%.2f",tmpOtherII);
+                                    if (OtherIIPer > 0) {
+                                        double tmpOtherII = (((Gross - Disc - DiscII - DiscIII + Other) * OtherIIPer) / 100);
+                                        if (tmpOtherII > 0) {
+                                            String txtOtherII = String.format("%.2f", tmpOtherII);
                                             edtOtherII.setText(txtOtherII);
-                                        }else{
+                                        } else {
                                             edtOtherII.setText("");
                                         }
                                         OtherII = CheckValidate.checkemptyDouble(edtOtherII.getText().toString().trim());
-                                    }else
-                                    {
+                                    } else {
                                         OtherII = CheckValidate.checkemptyDouble(edtOtherII.getText().toString().trim());
                                     }
 
                                     double cgst = 0;
-                                    if(cgstP > 0) {
+                                    if (cgstP > 0) {
                                         double tmpCgst = (((Gross - Disc - DiscII - DiscIII + Other + OtherII) * cgstP) / 100);
-                                        String txtcgst = String.format("%.2f",tmpCgst);
+                                        String txtcgst = String.format("%.2f", tmpCgst);
                                         edtCGST.setText(txtcgst);
                                         cgst = CheckValidate.checkemptyDouble(edtCGST.getText().toString().trim());
-                                    }else{
+                                    } else {
                                         edtCGST.setText("");
                                     }
 
                                     double sgst = 0;
-                                    if(sgstP > 0) {
+                                    if (sgstP > 0) {
                                         double tmpSgst = (((Gross - Disc - DiscII - DiscIII + Other + OtherII) * sgstP) / 100);
-                                        String txtsgst = String.format("%.2f",tmpSgst);
+                                        String txtsgst = String.format("%.2f", tmpSgst);
                                         edtSGST.setText(txtsgst);
                                         sgst = CheckValidate.checkemptyDouble(edtSGST.getText().toString().trim());
-                                    }else{
+                                    } else {
                                         edtSGST.setText("");
                                     }
 
                                     double igst = 0;
-                                    if(igstP > 0){
+                                    if (igstP > 0) {
                                         double tmpIgst = (((Gross - Disc - DiscII - DiscIII + Other + OtherII) * igstP) / 100);
-                                        String txtigst = String.format("%.2f",tmpIgst);
+                                        String txtigst = String.format("%.2f", tmpIgst);
                                         edtIGST.setText(txtigst);
                                         igst = CheckValidate.checkemptyDouble(edtIGST.getText().toString().trim());
-                                    }else{
+                                    } else {
                                         edtIGST.setText("");
                                     }
 
                                     double totalAmount = (Gross - Disc - DiscII - DiscIII + Other + OtherII + cgst + sgst + igst);
-                                    String totalAmt = String.format("%.2f",totalAmount);
+                                    String totalAmt = String.format("%.2f", totalAmount);
                                     edtAmount.setText(totalAmt);
                                 }
 
 
-                            }catch (NumberFormatException e){
+                            } catch (NumberFormatException e) {
                                 Toast.makeText(AddInvoiceActivity.this, e.toString(), Toast.LENGTH_LONG).show();
                             }
 
@@ -5988,28 +5657,27 @@ public class AddInvoiceActivity extends Activity {
                         @Override
                         public void onClick(View v) {
 
-                            if (SelectedItem.getText().toString().trim().length() == 0 || SelectedItem.getText().toString().trim().equals("Select Item") ) {
-                                ShowAlert.ShowAlert(AddInvoiceActivity.this,"Alert...","Must select item.");
+                            if (SelectedItem.getText().toString().trim().length() == 0 || SelectedItem.getText().toString().trim().equals("Select Item")) {
+                                ShowAlert.ShowAlert(AddInvoiceActivity.this, "Alert...", "Must select item.");
                                 return;
-                            }else if(SelectedMRP.getText().toString().length() <= 0 || SelectedItem.getText().toString().trim().equals("Select MRP")){
-                                ShowAlert.ShowAlert(AddInvoiceActivity.this,"Alert...","MRP zero not allow.");
+                            } else if (SelectedMRP.getText().toString().length() <= 0 || SelectedItem.getText().toString().trim().equals("Select MRP")) {
+                                ShowAlert.ShowAlert(AddInvoiceActivity.this, "Alert...", "MRP zero not allow.");
                                 return;
-                            }else if(CheckValidate.checkemptyDouble(edtTotalQty.getText().toString().trim()) <= 0 && CheckValidate.checkemptyDouble(edtFreeQty.getText().toString().trim()) <= 0 ) {
+                            } else if (CheckValidate.checkemptyDouble(edtTotalQty.getText().toString().trim()) <= 0 && CheckValidate.checkemptyDouble(edtFreeQty.getText().toString().trim()) <= 0) {
                                 edtPrimaryUnitQty.setError("Qty Blank not allow.");
                                 return;
-                            }else if(CheckValidate.checkemptyDouble(edtTotalQty.getText().toString().trim()) > CheckValidate.checkemptyDouble(edtStock.getText().toString().trim())){
+                            } else if (CheckValidate.checkemptyDouble(edtTotalQty.getText().toString().trim()) > CheckValidate.checkemptyDouble(edtStock.getText().toString().trim())) {
                                 edtPrimaryUnitQty.setError("Sale Qty not more then Stock.");
                                 return;
-                            }else if(edtRate.getText().toString().trim().length() == 0){
+                            } else if (edtRate.getText().toString().trim().length() == 0) {
                                 edtRate.setError("Rate Blank not allow.");
                                 return;
-                            }else if(CheckValidate.checkemptyDouble(edtAmount.getText().toString().trim()) < 0 || edtAmount.getText().toString().trim().length() == 0){
+                            } else if (CheckValidate.checkemptyDouble(edtAmount.getText().toString().trim()) < 0 || edtAmount.getText().toString().trim().length() == 0) {
                                 edtAmount.setError("Negative Billing not allow.");
-                                ShowAlert.ShowAlert(AddInvoiceActivity.this,"Alert...","Negative Billing not allow.");
+                                ShowAlert.ShowAlert(AddInvoiceActivity.this, "Alert...", "Negative Billing not allow.");
                                 return;
-                            }
-                            else{
-                                String ItemID = null, MRPID = null, ITEMMRP=null, strPrimaryUnitId = null, strAltUnitId = null;
+                            } else {
+                                String ItemID = null, MRPID = null, ITEMMRP = null, strPrimaryUnitId = null, strAltUnitId = null;
                                 for (int i = 0; i < jsonArrayItem.length(); i++) {
                                     try {
                                         if (jsonArrayItem.getJSONObject(i).getString("ItemName").equals(SelectedItem.getText().toString().trim())) {
@@ -6056,7 +5724,7 @@ public class AddInvoiceActivity extends Activity {
                                                 ITEMMRP = jsonArrayMRP.getJSONObject(i).getString("ItemMRP");
 
                                             }
-                                        }else{
+                                        } else {
                                             if (jsonArrayMRP.getJSONObject(i).getString("ItemName").equals(SelectedItem.getText().toString().trim()) && jsonArrayMRP.getJSONObject(i).getString("ItemMRP").equals(SelectedMRP.getText().toString().trim())) {
 
                                                 MRPID = jsonArrayMRP.getJSONObject(i).getString("MRPId");
@@ -6108,7 +5776,6 @@ public class AddInvoiceActivity extends Activity {
                                     jobjPerticularPosition.put("NetAmount", edtAmount.getText().toString());
 
 
-
                                 } catch (JSONException e) {
                                     e.printStackTrace();
                                 }
@@ -6152,8 +5819,7 @@ public class AddInvoiceActivity extends Activity {
                         }
                     });
 
-                }
-                catch (Exception e) {
+                } catch (Exception e) {
                     ToastUtils.showErrorToast(AddInvoiceActivity.this, "Item detail filling error ");
                 }
             }
@@ -6173,7 +5839,7 @@ public class AddInvoiceActivity extends Activity {
         final int deletePosition = position;
 
         AlertDialog.Builder alert = new AlertDialog.Builder(
-                AddInvoiceActivity.this,R.style.CustomDialogTheme);
+                AddInvoiceActivity.this, R.style.CustomDialogTheme);
 
         alert.setTitle("Delete");
         alert.setMessage("Do you want delete this item?");
@@ -6187,7 +5853,6 @@ public class AddInvoiceActivity extends Activity {
                 adapter.notifyDataSetChanged();
                 calculateSum();
                 recyclerView.setAdapter(adapter);
-
 
 
             }
@@ -6205,10 +5870,8 @@ public class AddInvoiceActivity extends Activity {
     }
 
 
-
     //start clear control
-    public void ClearControl()
-    {
+    public void ClearControl() {
 
         edtRate.setText("");
         edtDiscPer.setText("");
@@ -6283,13 +5946,13 @@ public class AddInvoiceActivity extends Activity {
                         if (ErrorMessage.equalsIgnoreCase("")) {
                             DIVISIONLIST.clear();
                             jsonArrayDivision = jRootObject.getJSONArray("Divisions");
-                            Log.d("array",jsonArrayDivision.toString());
+                            Log.d("array", jsonArrayDivision.toString());
 
-                            for(int i = 0;i<jsonArrayDivision.length();i++){
+                            for (int i = 0; i < jsonArrayDivision.length(); i++) {
                                 DIVISIONLIST.add(jsonArrayDivision.getJSONObject(i).getString("DivisionName"));
 
                                 try {
-                                    if(jsonArrayDivision.getJSONObject(i).getString("DivisionName").equals(SelectedItemDivision.getText().toString())){
+                                    if (jsonArrayDivision.getJSONObject(i).getString("DivisionName").equals(SelectedItemDivision.getText().toString())) {
                                         DivisionID = jsonArrayDivision.getJSONObject(i).getString("Id");
                                     }
                                 } catch (JSONException e) {
@@ -6309,9 +5972,9 @@ public class AddInvoiceActivity extends Activity {
                                 @Override
                                 public void onClick(String item, int position) {
                                     SelectedItemDivision.setText(item);
-                                    for(int i = 0;i < jsonArrayDivision.length();i++){
+                                    for (int i = 0; i < jsonArrayDivision.length(); i++) {
                                         try {
-                                            if(jsonArrayDivision.getJSONObject(i).getString("DivisionName").equals(SelectedItemDivision.getText().toString())){
+                                            if (jsonArrayDivision.getJSONObject(i).getString("DivisionName").equals(SelectedItemDivision.getText().toString())) {
                                                 DivisionID = jsonArrayDivision.getJSONObject(i).getString("Id");
                                             }
                                         } catch (JSONException e) {
@@ -6319,9 +5982,8 @@ public class AddInvoiceActivity extends Activity {
                                         }
                                     }
 
-                                    getClient(DivisionID,RoutID);
+                                    getClient(DivisionID, RoutID);
                                     SelectedItemClient.setText("Select Client");
-
 
 
                                 }
@@ -6386,11 +6048,11 @@ public class AddInvoiceActivity extends Activity {
                         if (ErrorMessage.equalsIgnoreCase("")) {
                             ROUTELIST.clear();
                             jsonArrayRoute = jRootObject.getJSONArray("Routes");
-                            for(int i = 0;i<jsonArrayRoute.length();i++){
+                            for (int i = 0; i < jsonArrayRoute.length(); i++) {
                                 ROUTELIST.add(jsonArrayRoute.getJSONObject(i).getString("RouteName"));
 
                                 try {
-                                    if(jsonArrayRoute.getJSONObject(i).getString("RouteName").equals(SelectedItemRoute.getText().toString())){
+                                    if (jsonArrayRoute.getJSONObject(i).getString("RouteName").equals(SelectedItemRoute.getText().toString())) {
                                         RoutID = jsonArrayRoute.getJSONObject(i).getString("Id");
                                     }
                                 } catch (JSONException e) {
@@ -6403,11 +6065,10 @@ public class AddInvoiceActivity extends Activity {
                             Route.setCancellable(true);
                             Route.setShowKeyboard(false);
 
-                            if(DivisionID == "0" || RoutID =="0"){
+                            if (DivisionID == "0" || RoutID == "0") {
                                 ToastUtils.showErrorToast(AddInvoiceActivity.this, "Please Select Division First ");
-                            }
-                            else {
-                                getClient(DivisionID,RoutID);
+                            } else {
+                                getClient(DivisionID, RoutID);
                             }
 
                             SelectedItemClient.setText("Select Client");
@@ -6416,9 +6077,9 @@ public class AddInvoiceActivity extends Activity {
                                 @Override
                                 public void onClick(String item, int position) {
                                     SelectedItemRoute.setText(item);
-                                    for(int i = 0;i < jsonArrayRoute.length();i++){
+                                    for (int i = 0; i < jsonArrayRoute.length(); i++) {
                                         try {
-                                            if(jsonArrayRoute.getJSONObject(i).getString("RouteName").equals(SelectedItemRoute.getText().toString())){
+                                            if (jsonArrayRoute.getJSONObject(i).getString("RouteName").equals(SelectedItemRoute.getText().toString())) {
                                                 RoutID = jsonArrayRoute.getJSONObject(i).getString("Id");
                                             }
                                         } catch (JSONException e) {
@@ -6426,11 +6087,10 @@ public class AddInvoiceActivity extends Activity {
                                         }
                                     }
 
-                                    if(DivisionID == "" || DivisionID =="0"){
+                                    if (DivisionID == "" || DivisionID == "0") {
                                         ToastUtils.showErrorToast(AddInvoiceActivity.this, "Please Select Division First ");
-                                    }
-                                    else {
-                                        getClient(DivisionID,RoutID);
+                                    } else {
+                                        getClient(DivisionID, RoutID);
                                     }
 
                                     SelectedItemClient.setText("Select Client");
@@ -6474,8 +6134,8 @@ public class AddInvoiceActivity extends Activity {
         });
 
     }
-    private void getSalemen() {
 
+    private void getSalemen() {
 
 
         AQuery aq;
@@ -6498,7 +6158,7 @@ public class AddInvoiceActivity extends Activity {
                             SALEMENLIST.clear();
 
                             jsonArraySalesmen = jRootObject.getJSONArray("Salesmans");
-                            for(int i = 0;i<jsonArraySalesmen.length();i++){
+                            for (int i = 0; i < jsonArraySalesmen.length(); i++) {
                                 SALEMENLIST.add(jsonArraySalesmen.getJSONObject(i).getString("SalesmanName"));
                             }
                             Salemen = new SpinnerDialog(AddInvoiceActivity.this, SALEMENLIST,
@@ -6555,7 +6215,7 @@ public class AddInvoiceActivity extends Activity {
 
     }
 
-    private void getClient(String divId,String routeId) {
+    private void getClient(String divId, String routeId) {
 
 
         AQuery aq;
@@ -6576,53 +6236,51 @@ public class AddInvoiceActivity extends Activity {
                         String ErrorMessage = "";
                         ErrorMessage = jRootObject.getString("ErrorMessage");
                         if (ErrorMessage.equalsIgnoreCase("")) {
-                                CLIENTCODELIST.clear();
-                                SelectedItemACGSTType = "";
-                                jsonArrayClient = jRootObject.getJSONArray("AccountMasters");
-                                for (int i = 0; i < jsonArrayClient.length(); i++) {
-                                    CLIENTCODELIST.add(jsonArrayClient.getJSONObject(i).getString("AccountName"));
-                                }
-                                Client = new SpinnerDialog(AddInvoiceActivity.this, CLIENTCODELIST,
-                                        "Select or Search Client");
+                            CLIENTCODELIST.clear();
+                            SelectedItemACGSTType = "";
+                            jsonArrayClient = jRootObject.getJSONArray("AccountMasters");
+                            for (int i = 0; i < jsonArrayClient.length(); i++) {
+                                CLIENTCODELIST.add(jsonArrayClient.getJSONObject(i).getString("AccountName"));
+                            }
+                            Client = new SpinnerDialog(AddInvoiceActivity.this, CLIENTCODELIST,
+                                    "Select or Search Client");
 
-                                Client.setCancellable(true);
-                                Client.setShowKeyboard(false);
+                            Client.setCancellable(true);
+                            Client.setShowKeyboard(false);
 
-                                Client.bindOnSpinerListener(new OnSpinerItemClick() {
-                                    @Override
-                                    public void onClick(String item, int position) {
-                                        SelectedItemClient.setText(item);
-                                        SelectedItemACGSTType = "";
-
-
-                                        for (int i = 0; i < jsonArrayClient.length(); i++) {
-                                            try {
-                                                if (jsonArrayClient.getJSONObject(i).getString("AccountName").equals(SelectedItemClient.getText().toString().trim())) {
-
-                                                    if(CheckValidate.checkemptystring(jsonArrayClient.getJSONObject(i).getString("AccountGSTType")) != "")
-                                                    {
-                                                        SelectedItemACGSTType = CheckValidate.checkemptystring(jsonArrayClient.getJSONObject(i).getString("AccountGSTType"));
-                                                    }
-                                                    else {
-                                                        SelectedItemACGSTType = "NA";
-                                                    }
+                            Client.bindOnSpinerListener(new OnSpinerItemClick() {
+                                @Override
+                                public void onClick(String item, int position) {
+                                    SelectedItemClient.setText(item);
+                                    SelectedItemACGSTType = "";
 
 
+                                    for (int i = 0; i < jsonArrayClient.length(); i++) {
+                                        try {
+                                            if (jsonArrayClient.getJSONObject(i).getString("AccountName").equals(SelectedItemClient.getText().toString().trim())) {
+
+                                                if (CheckValidate.checkemptystring(jsonArrayClient.getJSONObject(i).getString("AccountGSTType")) != "") {
+                                                    SelectedItemACGSTType = CheckValidate.checkemptystring(jsonArrayClient.getJSONObject(i).getString("AccountGSTType"));
+                                                } else {
+                                                    SelectedItemACGSTType = "NA";
                                                 }
-                                            } catch (JSONException e) {
-                                                e.printStackTrace();
+
+
                                             }
+                                        } catch (JSONException e) {
+                                            e.printStackTrace();
                                         }
-
                                     }
-                                });
 
-                                findViewById(R.id.layoutClient).setOnClickListener(new View.OnClickListener() {
-                                    @Override
-                                    public void onClick(View v) {
-                                        Client.showSpinerDialog();
-                                    }
-                                });
+                                }
+                            });
+
+                            findViewById(R.id.layoutClient).setOnClickListener(new View.OnClickListener() {
+                                @Override
+                                public void onClick(View v) {
+                                    Client.showSpinerDialog();
+                                }
+                            });
 
 
                         } else {
@@ -6654,7 +6312,7 @@ public class AddInvoiceActivity extends Activity {
 
     }
 
-    private void GetItemUnits(String itemId ) {
+    private void GetItemUnits(String itemId) {
 
         AQuery aq;
         aq = new AQuery(this);
@@ -6862,7 +6520,7 @@ public class AddInvoiceActivity extends Activity {
                         String ErrorMessage = "";
                         ErrorMessage = jRootObject.getString("ErrorMessage");
                         if (ErrorMessage.equalsIgnoreCase("")) {
-                            editorUserAuthKey.putString("SELECTVALUE","3");
+                            editorUserAuthKey.putString("SELECTVALUE", "3");
                             editorUserAuthKey.apply();
 
                             editorDEFHEADDATA.putString("divison", SelectedItemDivision.getText().toString());
@@ -6875,7 +6533,7 @@ public class AddInvoiceActivity extends Activity {
                             Intent intent = new Intent(getApplicationContext(), NavigationDrawerActivity.class);
                             startActivity(intent);
                             CustomProcessbar.hideProcessBar();
-                            ToastUtils.showErrorToast(AddInvoiceActivity.this,  jRootObject.getString("Status"));
+                            ToastUtils.showErrorToast(AddInvoiceActivity.this, jRootObject.getString("Status"));
 
 
                         } else {
@@ -6972,7 +6630,7 @@ public class AddInvoiceActivity extends Activity {
     }
 
 
-    private void getMRPDetails(String itemId,String mrpId) {
+    private void getMRPDetails(String itemId, String mrpId) {
 
         try {
             CustomProcessbar.showProcessBar(this, false, getString(R.string.please_wait));
@@ -7000,14 +6658,12 @@ public class AddInvoiceActivity extends Activity {
                         if (ErrorMessage.equalsIgnoreCase("")) {
 
                             jsonObjMRPDetails = jRootObject.getJSONObject("MRPDetail");
-                            if(edtRate.getText().toString().trim().equals(""))
-                            {
+                            if (edtRate.getText().toString().trim().equals("")) {
                                 edtRate.setText(jsonObjMRPDetails.getString("SalesRate"));
                             }
                             edtStock.setText(jsonObjMRPDetails.getString("Stock"));
 
-                            if(SelectedItemACGSTType.trim().equals("B2BWS")  || SelectedItemACGSTType.trim().equals("B2CWS")|| SelectedItemACGSTType.trim().equals("NA")|| SelectedItemACGSTType.trim().isEmpty())
-                            {
+                            if (SelectedItemACGSTType.trim().equals("B2BWS") || SelectedItemACGSTType.trim().equals("B2CWS") || SelectedItemACGSTType.trim().equals("NA") || SelectedItemACGSTType.trim().isEmpty()) {
 
                                 edtCGSTACID.setText(CheckValidate.checkemptyTV(jsonObjMRPDetails.getString("CGSTAccountID")));
                                 edtCGSTP.setText(CheckValidate.checkemptyTV(jsonObjMRPDetails.getString("CGSTPerc")));
@@ -7016,9 +6672,7 @@ public class AddInvoiceActivity extends Activity {
                                 edtIGSTACID.setText("");
                                 edtIGSTP.setText("");
 
-                            }
-                            else
-                            {
+                            } else {
                                 edtCGSTACID.setText("");
                                 edtCGSTP.setText("");
                                 edtSGSTACID.setText("");
@@ -7029,31 +6683,27 @@ public class AddInvoiceActivity extends Activity {
 
                             Rate = CheckValidate.checkemptyDouble(edtRate.getText().toString());
                             //edtPrimaryUnitQty.setText(String.format("%."+UDP+"f",PrimaryUnitQty));
-                            if(PrimaryUnitQty > 0)
-                            {
-                                edtPrimaryUnitQty.setText(String.format("%."+UDP+"f",PrimaryUnitQty));
-                            }
-                            else{
+                            if (PrimaryUnitQty > 0) {
+                                edtPrimaryUnitQty.setText(String.format("%." + UDP + "f", PrimaryUnitQty));
+                            } else {
                                 edtPrimaryUnitQty.setText("");
                             }
 
                             double tmpTotalQty;
-                            if(CheckValidate.checkemptyDouble(String.valueOf(AltUnitQty)) <= 0)
-                            {
+                            if (CheckValidate.checkemptyDouble(String.valueOf(AltUnitQty)) <= 0) {
                                 edtAltUnitQty.setText("");
-                                tmpTotalQty =  CheckValidate.checkemptyDouble(edtPrimaryUnitQty.getText().toString().trim());
-                            }else
-                            {
-                                edtAltUnitQty.setText(String.format("%."+UDA+"f",AltUnitQty));
+                                tmpTotalQty = CheckValidate.checkemptyDouble(edtPrimaryUnitQty.getText().toString().trim());
+                            } else {
+                                edtAltUnitQty.setText(String.format("%." + UDA + "f", AltUnitQty));
                                 tmpTotalQty = (AltUnitQty * AltUnitConversion) + PrimaryUnitQty;
                             }
 
-                            edtTotalQty.setText(String.format("%."+UDP+"f",tmpTotalQty));
+                            edtTotalQty.setText(String.format("%." + UDP + "f", tmpTotalQty));
                             TotalQty = CheckValidate.checkemptyDouble(edtTotalQty.getText().toString().trim());
 
 
-                            double   tmpGross =  TotalQty * Rate;
-                            String gross =  String.format("%.2f",tmpGross);
+                            double tmpGross = TotalQty * Rate;
+                            String gross = String.format("%.2f", tmpGross);
                             edtGross.setText(gross);
 
                             Gross = CheckValidate.checkemptyDouble(edtGross.getText().toString().trim());
@@ -7071,11 +6721,9 @@ public class AddInvoiceActivity extends Activity {
                             DiscIII = CheckValidate.checkemptyDouble(edtDiscIII.getText().toString().trim());
 
                             TotalDisc = Disc + DiscII + DiscIII;
-                            if(CheckValidate.checkemptyDouble(String.valueOf(TotalDisc)) > 0)
-                            {
-                                edtTotalDisc.setText(String.format("%.2f",TotalDisc));
-                            }else
-                            {
+                            if (CheckValidate.checkemptyDouble(String.valueOf(TotalDisc)) > 0) {
+                                edtTotalDisc.setText(String.format("%.2f", TotalDisc));
+                            } else {
                                 edtTotalDisc.setText("");
                             }
 
@@ -7086,40 +6734,40 @@ public class AddInvoiceActivity extends Activity {
                             OtherII = CheckValidate.checkemptyDouble(edtOtherII.getText().toString().trim());
 
                             double cgst = 0;
-                            if(cgstP > 0) {
+                            if (cgstP > 0) {
                                 double tmpCgst = (((Gross - Disc - DiscII - DiscIII + Other + OtherII) * cgstP) / 100);
-                                String txtcgst = String.format("%.2f",tmpCgst);
+                                String txtcgst = String.format("%.2f", tmpCgst);
                                 edtCGST.setText(txtcgst);
                                 cgst = CheckValidate.checkemptyDouble(edtCGST.getText().toString().trim());
-                            }else{
+                            } else {
 
                                 edtCGST.setText("");
                             }
 
                             double sgst = 0;
-                            if(sgstP > 0) {
+                            if (sgstP > 0) {
                                 double tmpSgst = (((Gross - Disc - DiscII - DiscIII + Other + OtherII) * sgstP) / 100);
-                                String txtsgst = String.format("%.2f",tmpSgst);
+                                String txtsgst = String.format("%.2f", tmpSgst);
                                 edtSGST.setText(txtsgst);
                                 sgst = CheckValidate.checkemptyDouble(edtSGST.getText().toString().trim());
-                            }else{
+                            } else {
 
                                 edtSGST.setText("");
                             }
 
                             double igst = 0;
-                            if(igstP > 0){
+                            if (igstP > 0) {
                                 double tmpIgst = (((Gross - Disc - DiscII - DiscIII + Other + OtherII) * igstP) / 100);
-                                String txtigst = String.format("%.2f",tmpIgst);
+                                String txtigst = String.format("%.2f", tmpIgst);
                                 edtIGST.setText(txtigst);
                                 igst = CheckValidate.checkemptyDouble(edtIGST.getText().toString().trim());
-                            }else{
+                            } else {
 
                                 edtIGST.setText("");
                             }
 
                             double totalAmount = (Gross - Disc - DiscII - DiscIII + Other + OtherII + cgst + sgst + igst);
-                            String totalAmt = String.format("%.2f",totalAmount);
+                            String totalAmt = String.format("%.2f", totalAmount);
                             edtAmount.setText(totalAmt);
                             CustomProcessbar.hideProcessBar();
 
@@ -7153,15 +6801,15 @@ public class AddInvoiceActivity extends Activity {
 
     }
 
-    class RecyclerTouchListener implements RecyclerView.OnItemTouchListener{
+    class RecyclerTouchListener implements RecyclerView.OnItemTouchListener {
 
         private ClickListener clicklistener;
         private GestureDetector gestureDetector;
 
-        public RecyclerTouchListener(Context context, final RecyclerView recycleView, final ClickListener clicklistener){
+        public RecyclerTouchListener(Context context, final RecyclerView recycleView, final ClickListener clicklistener) {
 
-            this.clicklistener=clicklistener;
-            gestureDetector=new GestureDetector(context,new GestureDetector.SimpleOnGestureListener(){
+            this.clicklistener = clicklistener;
+            gestureDetector = new GestureDetector(context, new GestureDetector.SimpleOnGestureListener() {
                 @Override
                 public boolean onSingleTapUp(MotionEvent e) {
                     return true;
@@ -7169,9 +6817,9 @@ public class AddInvoiceActivity extends Activity {
 
                 @Override
                 public void onLongPress(MotionEvent e) {
-                    View child=recycleView.findChildViewUnder(e.getX(),e.getY());
-                    if(child!=null && clicklistener!=null){
-                        clicklistener.onLongClick(child,recycleView.getChildAdapterPosition(child));
+                    View child = recycleView.findChildViewUnder(e.getX(), e.getY());
+                    if (child != null && clicklistener != null) {
+                        clicklistener.onLongClick(child, recycleView.getChildAdapterPosition(child));
                     }
                 }
             });
@@ -7179,9 +6827,9 @@ public class AddInvoiceActivity extends Activity {
 
         @Override
         public boolean onInterceptTouchEvent(RecyclerView rv, MotionEvent e) {
-            View child=rv.findChildViewUnder(e.getX(),e.getY());
-            if(child!=null && clicklistener!=null && gestureDetector.onTouchEvent(e)){
-                clicklistener.onClick(child,rv.getChildAdapterPosition(child));
+            View child = rv.findChildViewUnder(e.getX(), e.getY());
+            if (child != null && clicklistener != null && gestureDetector.onTouchEvent(e)) {
+                clicklistener.onClick(child, rv.getChildAdapterPosition(child));
             }
 
             return false;

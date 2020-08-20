@@ -4,248 +4,247 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".MainActivity"
     android:background="@color/White"
-    >
+    tools:context=".MainActivity">
 
 
     <!--<LinearLayout-->
-        <!--android:background="@color/colorPrimary"-->
-        <!--android:layout_width="match_parent"-->
-        <!--android:layout_height="@dimen/_35sdp">-->
+    <!--android:background="@color/colorPrimary"-->
+    <!--android:layout_width="match_parent"-->
+    <!--android:layout_height="@dimen/_35sdp">-->
 
-        <!--<com.score3s.android.fontStyle.TextViewRegular-->
-            <!--android:layout_width="match_parent"-->
-            <!--android:layout_height="wrap_content"-->
-            <!--android:text="Login"-->
-            <!--android:textColor="#FFF"-->
-            <!--android:textSize="@dimen/_20sdp"-->
-            <!--android:layout_gravity="center"-->
-            <!--android:gravity="center"/>-->
+    <!--<com.score3s.android.fontStyle.TextViewRegular-->
+    <!--android:layout_width="match_parent"-->
+    <!--android:layout_height="wrap_content"-->
+    <!--android:text="Login"-->
+    <!--android:textColor="#FFF"-->
+    <!--android:textSize="@dimen/_20sdp"-->
+    <!--android:layout_gravity="center"-->
+    <!--android:gravity="center"/>-->
 
     <!--</LinearLayout>-->
 
     <RelativeLayout
-        android:orientation="vertical"
         android:layout_width="match_parent"
-        android:layout_height="match_parent">
+        android:layout_height="match_parent"
+        android:orientation="vertical">
 
         <ScrollView
-            android:layout_centerInParent="true"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content">
-
-        <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_centerInParent="true"
-            android:orientation="vertical">
-
-            <ImageView
-                android:layout_marginTop="@dimen/_10sdp"
-                android:layout_width="match_parent"
-                android:layout_height="@dimen/_100sdp"
-                android:layout_gravity="center"
-                android:src="@drawable/logo" />
-
-
-            <com.score3s.android.fontStyle.TextViewBold
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_gravity="center"
-                android:layout_marginBottom="@dimen/_15sdp"
-                android:gravity="center"
-                android:text="LOGIN"
-                android:textColor="@color/colorPrimary"
-                android:textSize="@dimen/_25sdp" />
+            android:layout_centerInParent="true">
 
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_margin="@dimen/_8sdp"
+                android:layout_centerInParent="true"
                 android:orientation="vertical">
 
-
-                <com.score3s.android.fontStyle.TextViewRegular
+                <ImageView
                     android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:padding="@dimen/_2sdp"
-                    android:text="CLIENT ID"
-                    android:textSize="@dimen/_10sdp"
-                    android:textColor="@color/colorPrimary" />
+                    android:layout_height="@dimen/_100sdp"
+                    android:layout_gravity="center"
+                    android:layout_marginTop="@dimen/_10sdp"
+                    android:src="@drawable/logo" />
 
-
-                <com.score3s.android.fontStyle.EdittextRegular
-                    android:id="@+id/edtClientID"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:background="@null"
-                    android:hint="Please enter Client ID"
-                    android:padding="@dimen/_2sdp"
-                    android:singleLine="true"
-                    android:textColor="@color/colorPrimary"
-                    android:textColorHint="@color/grey" />
-
-                <LinearLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="1dp"
-                    android:layout_margin="@dimen/_2sdp"
-                    android:background="@color/colorPrimary" />
-
-
-            </LinearLayout>
-
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_margin="@dimen/_8sdp"
-                android:orientation="vertical">
-
-
-                <com.score3s.android.fontStyle.TextViewRegular
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:padding="@dimen/_2sdp"
-                    android:text="MOBILE NO"
-                    android:textSize="@dimen/_10sdp"
-                    android:textColor="@color/colorPrimary" />
-
-
-                <com.score3s.android.fontStyle.EdittextRegular
-                    android:id="@+id/edtMobileNo"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:background="@null"
-                    android:hint="Please enter Mobile Number"
-                    android:inputType="number"
-                    android:maxLength="10"
-                    android:padding="@dimen/_2sdp"
-                    android:singleLine="true"
-                    android:textColor="@color/colorPrimary"
-                    android:textColorHint="@color/grey" />
-
-                <LinearLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="1dp"
-                    android:layout_margin="@dimen/_2sdp"
-                    android:background="@color/colorPrimary" />
-
-
-            </LinearLayout>
-
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_margin="@dimen/_8sdp"
-                android:orientation="vertical">
-
-
-                <com.score3s.android.fontStyle.TextViewRegular
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:padding="@dimen/_2sdp"
-                    android:textSize="@dimen/_10sdp"
-                    android:text="USERNAME"
-                    android:textColor="@color/colorPrimary" />
-
-
-                <com.score3s.android.fontStyle.EdittextRegular
-                    android:id="@+id/edtUserID"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:background="@null"
-                    android:hint="Please enter User Name"
-                    android:padding="@dimen/_2sdp"
-                    android:singleLine="true"
-                    android:textColor="@color/colorPrimary"
-                    android:textColorHint="@color/grey" />
-
-                <LinearLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="1dp"
-                    android:layout_margin="@dimen/_2sdp"
-                    android:background="@color/colorPrimary" />
-
-
-            </LinearLayout>
-
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_margin="@dimen/_8sdp"
-                android:orientation="vertical">
-
-
-                <com.score3s.android.fontStyle.TextViewRegular
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:padding="@dimen/_2sdp"
-                    android:textSize="@dimen/_10sdp"
-                    android:text="USER PASSWORD"
-                    android:textColor="@color/colorPrimary" />
-
-
-                <com.score3s.android.fontStyle.EdittextRegular
-                    android:id="@+id/edtPassword"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:background="@null"
-                    android:hint="Please enter User Password"
-                    android:inputType="textPassword"
-                    android:padding="@dimen/_2sdp"
-                    android:singleLine="true"
-                    android:textColor="@color/colorPrimary"
-                    android:textColorHint="@color/grey" />
-
-                <LinearLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="1dp"
-                    android:layout_margin="@dimen/_2sdp"
-                    android:background="@color/colorPrimary" />
-
-
-            </LinearLayout>
-
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:weightSum="2"
-                android:layout_marginTop="@dimen/_10sdp"
-                android:orientation="vertical">
-
-
-                <com.score3s.android.fontStyle.ButtonRegular
-                    android:id="@+id/btnLogin"
-                    android:layout_weight="2"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:background="@drawable/button_background"
-                    android:minHeight="@dimen/_35sdp"
-                    android:layout_marginRight="@dimen/_80sdp"
-                    android:layout_marginLeft="@dimen/_80sdp"
-                    android:text="Login"
-                    android:textAllCaps="false"
-                    android:textStyle="bold|italic"
-                    android:textColor="@color/appbarTitleTVtextColor"
-                    android:textSize="@dimen/_15sdp" />
 
                 <com.score3s.android.fontStyle.TextViewBold
-                    android:id="@+id/tvDemoRequest"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_gravity="center"
-                    android:layout_marginTop="@dimen/_20sdp"
-                    android:textColorLink="@color/colorPrimary"
+                    android:layout_marginBottom="@dimen/_15sdp"
                     android:gravity="center"
-                    android:layout_marginLeft="@dimen/_6sdp"
-                    android:layout_marginRight="@dimen/_6sdp"
+                    android:text="LOGIN"
                     android:textColor="@color/colorPrimary"
-                    android:textStyle="bold|italic"
-                    android:textSize="@dimen/_12sdp" />
+                    android:textSize="@dimen/_25sdp" />
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="@dimen/_8sdp"
+                    android:orientation="vertical">
+
+
+                    <com.score3s.android.fontStyle.TextViewRegular
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:padding="@dimen/_2sdp"
+                        android:text="CLIENT ID"
+                        android:textColor="@color/colorPrimary"
+                        android:textSize="@dimen/_10sdp" />
+
+
+                    <com.score3s.android.fontStyle.EdittextRegular
+                        android:id="@+id/edtClientID"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:background="@null"
+                        android:hint="Please enter Client ID"
+                        android:padding="@dimen/_2sdp"
+                        android:singleLine="true"
+                        android:textColor="@color/colorPrimary"
+                        android:textColorHint="@color/grey" />
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="1dp"
+                        android:layout_margin="@dimen/_2sdp"
+                        android:background="@color/colorPrimary" />
+
+
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="@dimen/_8sdp"
+                    android:orientation="vertical">
+
+
+                    <com.score3s.android.fontStyle.TextViewRegular
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:padding="@dimen/_2sdp"
+                        android:text="MOBILE NO"
+                        android:textColor="@color/colorPrimary"
+                        android:textSize="@dimen/_10sdp" />
+
+
+                    <com.score3s.android.fontStyle.EdittextRegular
+                        android:id="@+id/edtMobileNo"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:background="@null"
+                        android:hint="Please enter Mobile Number"
+                        android:inputType="number"
+                        android:maxLength="10"
+                        android:padding="@dimen/_2sdp"
+                        android:singleLine="true"
+                        android:textColor="@color/colorPrimary"
+                        android:textColorHint="@color/grey" />
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="1dp"
+                        android:layout_margin="@dimen/_2sdp"
+                        android:background="@color/colorPrimary" />
+
+
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="@dimen/_8sdp"
+                    android:orientation="vertical">
+
+
+                    <com.score3s.android.fontStyle.TextViewRegular
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:padding="@dimen/_2sdp"
+                        android:text="USERNAME"
+                        android:textColor="@color/colorPrimary"
+                        android:textSize="@dimen/_10sdp" />
+
+
+                    <com.score3s.android.fontStyle.EdittextRegular
+                        android:id="@+id/edtUserID"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:background="@null"
+                        android:hint="Please enter User Name"
+                        android:padding="@dimen/_2sdp"
+                        android:singleLine="true"
+                        android:textColor="@color/colorPrimary"
+                        android:textColorHint="@color/grey" />
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="1dp"
+                        android:layout_margin="@dimen/_2sdp"
+                        android:background="@color/colorPrimary" />
+
+
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="@dimen/_8sdp"
+                    android:orientation="vertical">
+
+
+                    <com.score3s.android.fontStyle.TextViewRegular
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:padding="@dimen/_2sdp"
+                        android:text="USER PASSWORD"
+                        android:textColor="@color/colorPrimary"
+                        android:textSize="@dimen/_10sdp" />
+
+
+                    <com.score3s.android.fontStyle.EdittextRegular
+                        android:id="@+id/edtPassword"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:background="@null"
+                        android:hint="Please enter User Password"
+                        android:inputType="textPassword"
+                        android:padding="@dimen/_2sdp"
+                        android:singleLine="true"
+                        android:textColor="@color/colorPrimary"
+                        android:textColorHint="@color/grey" />
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="1dp"
+                        android:layout_margin="@dimen/_2sdp"
+                        android:background="@color/colorPrimary" />
+
+
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/_10sdp"
+                    android:orientation="vertical"
+                    android:weightSum="2">
+
+
+                    <com.score3s.android.fontStyle.ButtonRegular
+                        android:id="@+id/btnLogin"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="@dimen/_80sdp"
+                        android:layout_marginRight="@dimen/_80sdp"
+                        android:layout_weight="2"
+                        android:background="@drawable/button_background"
+                        android:minHeight="@dimen/_35sdp"
+                        android:text="Login"
+                        android:textAllCaps="false"
+                        android:textColor="@color/appbarTitleTVtextColor"
+                        android:textSize="@dimen/_15sdp"
+                        android:textStyle="bold|italic" />
+
+                    <com.score3s.android.fontStyle.TextViewBold
+                        android:id="@+id/tvDemoRequest"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center"
+                        android:layout_marginLeft="@dimen/_6sdp"
+                        android:layout_marginTop="@dimen/_20sdp"
+                        android:layout_marginRight="@dimen/_6sdp"
+                        android:gravity="center"
+                        android:textColor="@color/colorPrimary"
+                        android:textColorLink="@color/colorPrimary"
+                        android:textSize="@dimen/_12sdp"
+                        android:textStyle="bold|italic" />
+
+                </LinearLayout>
 
             </LinearLayout>
-
-        </LinearLayout>
         </ScrollView>
     </RelativeLayout>
 </RelativeLayout>

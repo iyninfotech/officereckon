@@ -10,7 +10,6 @@ import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.Message;
-import androidx.recyclerview.widget.RecyclerView;
 import android.util.Log;
 import android.view.View;
 import android.view.Window;
@@ -20,6 +19,8 @@ import android.widget.ImageView;
 import android.widget.ScrollView;
 import android.widget.TextView;
 import android.widget.Toast;
+
+import androidx.recyclerview.widget.RecyclerView;
 
 import com.androidquery.AQuery;
 import com.androidquery.callback.AjaxCallback;
@@ -49,16 +50,16 @@ import java.util.UUID;
 import static com.score3s.android.AddInvoiceActivity.DEFHEADDATA;
 import static com.score3s.android.MainActivity.AUTHKEY;
 
-public class PrintBt extends Activity implements Runnable{
-///start
-    ImageView btnBack,btnCancel;
+public class PrintBt extends Activity implements Runnable {
+    ///start
+    ImageView btnBack, btnCancel;
     TextView tvTotalAmt, tvPointValue;
     TextView tvDate;
     AdapterInvoiceDetails adapter;
 
-    double AltUnitQty,PrimaryUnitQty,TotalQty,Gross,cgstP = 0,sgstP = 0,igstP = 0,Rate,StockQty,CurrentQty;
-    double DiscPer = 0,Disc = 0 ,DiscIIPer = 0,DiscII = 0,DiscIIIPer = 0,DiscIII = 0,TotalDisc = 0,OtherPer = 0,Other = 0,OtherIIPer = 0,OtherII = 0,AltUnitConversion=0  ;
-    int UnitDecimalPlaces = 0,UDP=0,UDA=0;
+    double AltUnitQty, PrimaryUnitQty, TotalQty, Gross, cgstP = 0, sgstP = 0, igstP = 0, Rate, StockQty, CurrentQty;
+    double DiscPer = 0, Disc = 0, DiscIIPer = 0, DiscII = 0, DiscIIIPer = 0, DiscIII = 0, TotalDisc = 0, OtherPer = 0, Other = 0, OtherIIPer = 0, OtherII = 0, AltUnitConversion = 0;
+    int UnitDecimalPlaces = 0, UDP = 0, UDA = 0;
     ArrayList<String> DIVISIONLIST = new ArrayList<>();
     ArrayList<String> ROUTELIST = new ArrayList<>();
     ArrayList<String> SALEMENLIST = new ArrayList<>();
@@ -71,9 +72,9 @@ public class PrintBt extends Activity implements Runnable{
     JSONObject jsonObject2 = new JSONObject();
     JSONObject jsonObjMRPDetails;
 
-    Button btnUpdate,btnAdd,btnOk;
+    Button btnUpdate, btnAdd, btnOk;
     SpinnerDialog Division, Route, Salemen, Client;
-    JSONArray jsonArrayDivision, jsonArrayRoute, jsonArraySalesmen, jsonArrayClient, jsonArrayItem, jsonArrayMRP,jsonArrayInvoiceDetails,jsonArrayUnits,jsonArrayAlternetUnit;
+    JSONArray jsonArrayDivision, jsonArrayRoute, jsonArraySalesmen, jsonArrayClient, jsonArrayItem, jsonArrayMRP, jsonArrayInvoiceDetails, jsonArrayUnits, jsonArrayAlternetUnit;
 
     JSONObject jobjPerticularPosition;
     JSONObject jsonObjectAddValues;
@@ -85,11 +86,11 @@ public class PrintBt extends Activity implements Runnable{
     SharedPreferences.Editor editorUserAuthKey;
     String AuthKey;
     TextView SelectedItemDivision, SelectedItemRoute, SelectedItemSaleman, SelectedItemClient;
-    int edtInvHeadId ;
+    int edtInvHeadId;
     ScrollView ScrollView;
     RecyclerView recyclerView;
 
-    String CompanyName,Salesman,InvoiceDate,InvoiceNum,roundoff,totalAmount;
+    String CompanyName, Salesman, InvoiceDate, InvoiceNum, roundoff, totalAmount;
     /////end
 
     protected static final String TAG = "TAG";
@@ -156,8 +157,8 @@ public class PrintBt extends Activity implements Runnable{
                             BILL = BILL + "\n";
                             BILL = BILL + "----------Tax Invoice---------";
                             BILL = BILL + "\n";
-                            BILL = BILL +"Invoice No:   " +InvoiceNum+"\n";
-                            BILL = BILL +"Invoice Date:" +InvoiceDate+"\n";
+                            BILL = BILL + "Invoice No:   " + InvoiceNum + "\n";
+                            BILL = BILL + "Invoice Date:" + InvoiceDate + "\n";
                             BILL = BILL + "------------------------------";
                             BILL = BILL + "\n";
                             BILL = BILL + "Item" + "          " + "Rate\n";
@@ -165,9 +166,9 @@ public class PrintBt extends Activity implements Runnable{
                             BILL = BILL + "\n";
                             BILL = BILL + "Total Qty:" + "     " + "2.0\n";
 
-                            BILL = BILL + "Round Off:" + "  "+ roundoff +"\n";
-                            BILL = BILL + "Total Value:" + "  "+ totalAmount +"\n";
-                            BILL = BILL + "Salesman" + "  "+ Salesman +"\n";
+                            BILL = BILL + "Round Off:" + "  " + roundoff + "\n";
+                            BILL = BILL + "Total Value:" + "  " + totalAmount + "\n";
+                            BILL = BILL + "Salesman" + "  " + Salesman + "\n";
                             BILL = BILL + "------------------------------\n\n";
                             os.write(BILL.getBytes());
 
@@ -226,7 +227,6 @@ public class PrintBt extends Activity implements Runnable{
         });
 
 
-
     }
     // END ON Create
 
@@ -270,7 +270,7 @@ public class PrintBt extends Activity implements Runnable{
                                 InvoiceNum = jsonObject.getString("InvId").toString();
                                 InvoiceDate = sd2.format(dt);
 
-                                Salesman=jsonObject.getString("SalesMan").toString();
+                                Salesman = jsonObject.getString("SalesMan").toString();
 
                             }
 
@@ -322,12 +322,12 @@ public class PrintBt extends Activity implements Runnable{
         try {
             if (mBluetoothSocket != null)
                 mBluetoothSocket.close();
-                super.onBackPressed();
+            super.onBackPressed();
         } catch (Exception e) {
             Log.e("Tag", "Exe ", e);
         }
         setResult(RESULT_CANCELED);
-       finish();
+        finish();
     }
 
     public void onActivityResult(int mRequestCode, int mResultCode,

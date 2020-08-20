@@ -1,12 +1,13 @@
 package com.score3s.android.asynctasks;
+
 import android.app.Activity;
 import android.content.pm.PackageInfo;
 import android.content.pm.PackageManager;
-import android.text.TextUtils;
+
 public class getAppVersion {
-    static  String versionName = "";
+    static String versionName = "";
     static int versionCode = -1;
-    static  Activity NewActivity;
+    static Activity NewActivity;
 
     public static final String getVersionInfo(Activity mctx) {
 
@@ -18,9 +19,9 @@ public class getAppVersion {
         } catch (PackageManager.NameNotFoundException e) {
             e.printStackTrace();
         }
-       // tvVersionDetails.setText(String.format("Version code = %d  \nVersion name = %s", versionCode, versionName));
+        // tvVersionDetails.setText(String.format("Version code = %d  \nVersion name = %s", versionCode, versionName));
 
-            return String.valueOf(versionCode);
+        return String.valueOf(versionCode);
 
     }
 

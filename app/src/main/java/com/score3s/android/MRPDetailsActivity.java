@@ -30,7 +30,7 @@ public class MRPDetailsActivity extends Activity {
     SharedPreferences preferencesUserAuthKey;
     SharedPreferences.Editor editorUserAuthKey;
     String AuthKey;
-    TextView tvItemId,tvMRPId,tvItemCode,tvItemname,tvBrand,tvCategory,tvmainGroup,tvDivision,tvMRP,tvSalesRate,tvSalesRateWithtax,tvbottomSalesRate,tvStock,tvCGSTP,tvSGSTP,tvIGSTP;
+    TextView tvItemId, tvMRPId, tvItemCode, tvItemname, tvBrand, tvCategory, tvmainGroup, tvDivision, tvMRP, tvSalesRate, tvSalesRateWithtax, tvbottomSalesRate, tvStock, tvCGSTP, tvSGSTP, tvIGSTP;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -58,7 +58,6 @@ public class MRPDetailsActivity extends Activity {
         tvCGSTP = findViewById(R.id.tvCGSTP);
         tvSGSTP = findViewById(R.id.tvSGSTP);
         tvIGSTP = findViewById(R.id.tvIGSTP);
-
 
 
         getMRPDetails();

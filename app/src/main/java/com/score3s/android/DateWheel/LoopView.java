@@ -182,7 +182,7 @@ public class LoopView extends View {
     }
 
     public void cancelFuture() {
-        if (mFuture!=null&&!mFuture.isCancelled()) {
+        if (mFuture != null && !mFuture.isCancelled()) {
             mFuture.cancel(true);
             mFuture = null;
         }
@@ -305,7 +305,7 @@ public class LoopView extends View {
         }
 //        int left = paddingLeft;
         //auto calculate the text's left value when draw
-        int left = (measuredWidth - maxTextWidth)/2;
+        int left = (measuredWidth - maxTextWidth) / 2;
 //        Log.e("measuredWidth","onDraw:"+measuredWidth);
 //        Log.e("measuredWidth","onDraw / 2:"+ (measuredWidth - maxTextWidth)/2);
 

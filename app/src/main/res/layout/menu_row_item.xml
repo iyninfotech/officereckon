@@ -1,65 +1,69 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:layout_width="match_parent"
-    android:layout_height="wrap_content"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    android:id="@+id/rootRL">
-        <LinearLayout
+    android:id="@+id/rootRL"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:weightSum="1">
+
+        <androidx.cardview.widget.CardView
+            android:id="@+id/backgroundCV"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:weightSum="1"
-            android:orientation="horizontal">
-            <androidx.cardview.widget.CardView
+            android:layout_marginLeft="-20dp"
+            android:layout_marginTop="@dimen/_8sdp"
+            android:layout_marginRight="@dimen/_15sdp"
+            android:layout_marginBottom="@dimen/_8sdp"
+            android:layout_weight="1"
+            android:visibility="visible"
+            app:cardCornerRadius="@dimen/_8sdp"
+            app:cardElevation="@dimen/_8sdp">
+
+            <ImageView
+                android:id="@+id/backgroundIV"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_weight="1"
-                app:cardCornerRadius="@dimen/_8sdp"
-                android:layout_marginLeft="-20dp"
-                android:layout_marginRight="@dimen/_15sdp"
-                android:layout_marginBottom="@dimen/_8sdp"
-                android:visibility="visible"
-                android:layout_marginTop="@dimen/_8sdp"
-                app:cardElevation="@dimen/_8sdp"
-                android:id="@+id/backgroundCV"
-                >
-                <ImageView
-                    android:layout_width="match_parent"
-                    android:scaleType="centerCrop"
-                    android:layout_height="@dimen/_40sdp"
-                    android:id="@+id/backgroundIV"/>
-                <View
-                    android:layout_width="match_parent"
-                    android:id="@+id/tintView"
-                    android:layout_height="@dimen/_40sdp"/>
-                <com.score3s.android.fontStyle.TextViewRegular
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_gravity="center"
-                    android:gravity="right|center"
-                    android:layout_marginLeft="@dimen/_20sdp"
-                    android:textSize="@dimen/_14sdp"
-                    android:textStyle="bold"
-                    android:id="@+id/titleTV1"
-                    android:textColor="@color/appbarTitleTVtextColor"
-                    android:layout_marginRight="@dimen/_15sdp"
-                    android:maxLines="1"
-                    android:ellipsize="end"/>
-            </androidx.cardview.widget.CardView>
+                android:layout_height="@dimen/_40sdp"
+                android:scaleType="centerCrop" />
+
+            <View
+                android:id="@+id/tintView"
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/_40sdp" />
 
             <com.score3s.android.fontStyle.TextViewRegular
+                android:id="@+id/titleTV1"
                 android:layout_width="match_parent"
-                android:layout_weight="1"
-                android:layout_height="@dimen/_40sdp"
-                android:layout_marginLeft="@dimen/_8sdp"
-                android:layout_marginRight="@dimen/_20sdp"
-                android:layout_marginBottom="@dimen/_8sdp"
-                android:layout_marginTop="@dimen/_8sdp"
-                android:id="@+id/titleTV"
-                android:visibility="gone"
-                android:textSize="@dimen/_15sdp"
-                android:textColor="@color/colorPrimary"
+                android:layout_height="wrap_content"
                 android:layout_gravity="center"
-                android:gravity="center|left"
-                android:textStyle="bold"/>
-        </LinearLayout>
+                android:layout_marginLeft="@dimen/_20sdp"
+                android:layout_marginRight="@dimen/_15sdp"
+                android:ellipsize="end"
+                android:gravity="right|center"
+                android:maxLines="1"
+                android:textColor="@color/appbarTitleTVtextColor"
+                android:textSize="@dimen/_14sdp"
+                android:textStyle="bold" />
+        </androidx.cardview.widget.CardView>
+
+        <com.score3s.android.fontStyle.TextViewRegular
+            android:id="@+id/titleTV"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/_40sdp"
+            android:layout_gravity="center"
+            android:layout_marginLeft="@dimen/_8sdp"
+            android:layout_marginTop="@dimen/_8sdp"
+            android:layout_marginRight="@dimen/_20sdp"
+            android:layout_marginBottom="@dimen/_8sdp"
+            android:layout_weight="1"
+            android:gravity="center|left"
+            android:textColor="@color/colorPrimary"
+            android:textSize="@dimen/_15sdp"
+            android:textStyle="bold"
+            android:visibility="gone" />
+    </LinearLayout>
 </RelativeLayout>
