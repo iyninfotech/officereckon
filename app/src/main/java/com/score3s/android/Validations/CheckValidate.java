@@ -30,6 +30,8 @@ public class CheckValidate {
         }
     }
 
+
+
     public static final String checkemptyTV(String string) {
         if (string.equals("0") || string.equals("0.0") || string.equals("0.00") || string.equals("null") || string.equals("NULL")) {
             string = "";
@@ -61,18 +63,6 @@ public class CheckValidate {
         }
     }
 
-    public static final Boolean CheckValidData(String edtTotalQty, String edtFreeQty) {
 
-        if (!TextUtils.isEmpty(edtTotalQty)) {
-
-            if (checkemptyDouble(edtTotalQty) == 0) {
-                return false;
-            } else {
-                return true;
-            }
-
-        }
-        return false;
-    }
 
 }

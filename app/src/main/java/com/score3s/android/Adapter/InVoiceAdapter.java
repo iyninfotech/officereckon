@@ -16,6 +16,7 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.score3s.android.InVoiceDetailsActivity;
 import com.score3s.android.R;
+import com.score3s.android.ViewinvoiceActivity;
 
 import org.json.JSONArray;
 import org.json.JSONException;
@@ -70,6 +71,16 @@ public class InVoiceAdapter extends RecyclerView.Adapter<InVoiceAdapter.ViewHold
                     @Override
                     public boolean onMenuItemClick(MenuItem item) {
                         switch (item.getItemId()) {
+
+                            case R.id.mnuShare:
+                                Intent pdfcreate = new Intent(context, ViewinvoiceActivity.class);
+                                try {
+                                    pdfcreate.putExtra("id", jsonArray.getJSONObject(position).getString("InvId"));
+                                } catch (JSONException e) {
+                                    e.printStackTrace();
+                                }
+                                context.startActivity(pdfcreate);
+                                break;
 
                             case R.id.mnuView:
 

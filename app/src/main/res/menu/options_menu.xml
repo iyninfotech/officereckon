@@ -2,11 +2,12 @@
 <menu xmlns:android="http://schemas.android.com/apk/res/android">
 
     <item
+        android:id="@+id/mnuShare"
+        android:title="View &amp; Share" />
+
+    <item
         android:id="@+id/mnuView"
-        android:title="View" />
-    <!--<item
-        android:id="@+id/mnuPrint"
-        android:title="Print" />-->
+        android:title="Veryfy" />
     <item
         android:id="@+id/mnuEdit"
         android:title="Edit" />
@@ -14,11 +15,5 @@
     <item
         android:id="@+id/mnuDelete"
         android:title="Delete" />
-
-
-    <!-- <item
-         android:id="@+id/mnuShare"
-         android:title="Share" />-->
-
 
 </menu>
