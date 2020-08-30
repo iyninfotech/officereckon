@@ -121,8 +121,8 @@ public class NavigationDrawerActivity extends AppCompatActivity {
         menuItems.add(new MenuItem("Outlet", R.drawable.button_background));
         menuItems.add(new MenuItem("MRP", R.drawable.button_background));
         menuItems.add(new MenuItem("Invoice", R.drawable.button_background));
-        menuItems.add(new MenuItem("Need help ?", R.drawable.button_background));
-        menuItems.add(new MenuItem("Aboutus", R.drawable.button_background));
+        menuItems.add(new MenuItem("Want Support", R.drawable.button_background));
+        menuItems.add(new MenuItem("About us", R.drawable.button_background));
         menuItems.add(new MenuItem("Logout", R.drawable.button_background));
         sNavigationDrawer.setMenuItemList(menuItems);
 
@@ -181,13 +181,11 @@ public class NavigationDrawerActivity extends AppCompatActivity {
                     }
 
                     case 4: {
-                        //fragmentClass = SettingFragment.class;
-                        fragmentClass = AboutusFragment.class;
+                        fragmentClass = HelpFragment.class;
                         break;
                     }
                     case 5: {
                         fragmentClass = AboutusFragment.class;
-                        ////fragmentClass = DashBoardFragment.class;
                         break;
                     }
 

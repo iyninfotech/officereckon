@@ -29,10 +29,10 @@ public class RegisterActivity extends Activity {
 
 
     Button btnRegister;
-    EditText edtAgencyName, edtOwnerName, edtContactNo, edtEmailID;
+    EditText edtAgencyName, edtOwnerName, edtContactNo, edtEmailID, edtDesc;
     TextView tvDemoRequest;
 
-    String AgencyName, OwnerName, ContactNo, EmailID;
+    String AgencyName, OwnerName, ContactNo, EmailID, Desc;
 
     public String EmailSubjectTxt, EmailBodymsgTxt;
 
@@ -47,6 +47,7 @@ public class RegisterActivity extends Activity {
         edtOwnerName = findViewById(R.id.edtOwnerName);
         edtContactNo = findViewById(R.id.edtContactNo);
         edtEmailID = findViewById(R.id.edtEmailID);
+        edtDesc = findViewById(R.id.edtDesc);
         tvDemoRequest = findViewById(R.id.tvDemoRequest);
 
 
@@ -111,11 +112,11 @@ public class RegisterActivity extends Activity {
     public void attemptLogin() {
 
         // Store values at the time of the login attempt.
-        AgencyName = edtAgencyName.getText().toString();
-        OwnerName = edtOwnerName.getText().toString();
-        ContactNo = edtContactNo.getText().toString();
-        EmailID = edtEmailID.getText().toString();
-
+        AgencyName = edtAgencyName.getText().toString().trim();
+        OwnerName = edtOwnerName.getText().toString().trim();
+        ContactNo = edtContactNo.getText().toString().trim();
+        EmailID = edtEmailID.getText().toString().trim();
+        Desc = edtDesc.getText().toString().trim();
 
         if (StringUtils.isBlank(AgencyName)) {
             edtAgencyName.requestFocus();
@@ -132,13 +133,17 @@ public class RegisterActivity extends Activity {
         } else if (!emailValidator(EmailID)) {
             edtEmailID.requestFocus();
             ToastUtils.showErrorToast(this, "Please enter valid Email Id");
+        } else if (StringUtils.isBlank(Desc)) {
+            edtDesc.requestFocus();
+            ToastUtils.showErrorToast(this, "Please enter about your business and need");
         } else {
             if (NetworkUtils.isInternetAvailable(this)) {
                 EmailSubjectTxt = "Contact To " + OwnerName.trim() + " for Software & Mobile App Demonstration(Socre 3S FMCG Mobile App)";
                 EmailBodymsgTxt = "<div><i>Company Name:</i>&nbsp;<b>" + AgencyName.trim() + "</b></div><br />" +
                         "<div><i>Contact Person:</i>&nbsp;<b>" + OwnerName.trim() + "</b></div><br />" +
                         "<div><i>Contact Number:</i>&nbsp;<b>" + ContactNo.trim() + "</b></div><br />" +
-                        "<div><i>Email Address:</i>&nbsp;<b>" + EmailID.trim() + "</b></div>";
+                        "<div><i>Email Address:</i>&nbsp;<b>" + EmailID.trim() + "</b></div><br />" +
+                        "<div><i>About business or requirement:</i>&nbsp;<b>" + Desc.trim() + "</b></div>";
                 sendEmailtoInfozeal(EmailSubjectTxt, EmailBodymsgTxt);
 
             } else {
@@ -152,6 +157,7 @@ public class RegisterActivity extends Activity {
         BackgroundMail.newBuilder(this)
                 .withUsername("sales@infozeal.co.in")
                 .withPassword("google@206")
+                .withMailTo("sales@infozeal.co.in")
                 .withMailBcc("support.infozeal@gmail.com")
                 .withSubject(mailSubject)
                 .withBody(msgBody)

@@ -1,8 +1,8 @@
 package com.score3s.android.Constant;
 
 public class APIURL {
-    //public static final String BASE_URL = "http://score3s.com/api/";
-    public static final String BASE_URL = "http://test.score3s.com/api/";
+    public static final String BASE_URL = "http://score3s.com/api/";
+    //public static final String BASE_URL = "http://test.score3s.com/api/";
     public static final String PERFORM_LOGIN = "PerformLogin";
     public static final String LOGIN_AUTH = "LoginAuth";
     public static final String OUTLET = "GetOutlet";
