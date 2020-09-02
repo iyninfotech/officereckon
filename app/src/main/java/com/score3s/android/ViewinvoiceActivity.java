@@ -494,8 +494,8 @@ public class ViewinvoiceActivity extends Activity {
             document.addCreator("Score 3s mobile application");
             document.open();
 
-            BlackBorder event = new BlackBorder();
-            writer.setPageEvent(event);
+           /* BlackBorder event = new BlackBorder();
+            writer.setPageEvent(event);*/
 
             LineDash solid = new SolidLine();
             LineDash dotted = new DottedLine();
@@ -580,12 +580,13 @@ public class ViewinvoiceActivity extends Activity {
             Parentcell.setCellEvent(new CustomBorder(dashed, null, null, null));
             parentTable.addCell(Parentcell);
 
+            document.add(parentTable);
             //create InvoiceDetail table
             float[] pointColumnWidths = {50F, 350F, 100F, 100F, 100F, 100F, 200F};
 
             PdfPTable table = new PdfPTable(pointColumnWidths);
             PdfPCell invdetailcell;
-            table.setWidthPercentage(95);
+            table.setWidthPercentage(96);
 
             for (int i = 0; i < 1; i++) {
 
@@ -973,15 +974,13 @@ public class ViewinvoiceActivity extends Activity {
             invdetailcell.setColspan(1);
             table.addCell(invdetailcell);
 
-            //adding invoice table here in main
-            Parentcell = new PdfPCell(table);
-            Parentcell.setBorder(PdfPCell.NO_BORDER);
-            Parentcell.setColspan(2);
-            parentTable.addCell(Parentcell);
+            document.add(table);
+
 
             //table for sign portion
             float[] pointColumnWidthstermANDsigntable = {80F,240F, 260F, 420F};
             PdfPTable termANDsigntable = new PdfPTable(pointColumnWidthstermANDsigntable);
+            termANDsigntable.setWidthPercentage(96);
             PdfPCell termANDsignCell;
 
             //first row
@@ -1010,7 +1009,7 @@ public class ViewinvoiceActivity extends Activity {
             termANDsignCell.setColspan(4);
             termANDsignCell.setPadding(10);
             termANDsigntable.addCell(termANDsignCell);
-            //Last row
+            //sign row
             termANDsignCell = new PdfPCell(new Phrase("E. & O. E.", NormalFont));
             termANDsignCell.setHorizontalAlignment(Element.ALIGN_LEFT);
             termANDsignCell.setBorder(PdfPCell.NO_BORDER);
@@ -1030,25 +1029,20 @@ public class ViewinvoiceActivity extends Activity {
             termANDsignCell.setColspan(1);
             termANDsigntable.addCell(termANDsignCell);
 
-            //adding termANDsigntable table here in main
-            Parentcell = new PdfPCell(termANDsigntable);
-            Parentcell.setBorder(PdfPCell.NO_BORDER);
-            Parentcell.setPaddingBottom(5);
-            Parentcell.setCellEvent(new CustomBorder(null, null, null, dashed));
-            Parentcell.setColspan(2);
-            parentTable.addCell(Parentcell);
 
-            //Last row of parent table
-            Parentcell = new PdfPCell(new Phrase("This is a Computer generated document and does not require any signature.",NormalFont));
-            Parentcell.setHorizontalAlignment(Element.ALIGN_CENTER);
-            Parentcell.setBorder(PdfPCell.NO_BORDER);
-            Parentcell.setPadding(2);
-            Parentcell.setCellEvent(new CustomBorder(null, null, null, null));
-            Parentcell.setColspan(2);
-            parentTable.addCell(Parentcell);
+            //Last row
+            termANDsignCell = new PdfPCell(new Phrase("This is a Computer generated document and does not require any signature.",NormalFont));
+            termANDsignCell.setHorizontalAlignment(Element.ALIGN_CENTER);
+            termANDsignCell.setBorder(PdfPCell.NO_BORDER);
+            termANDsignCell.setPadding(2);
+            termANDsignCell.setCellEvent(new CustomBorder(null, null, dashed, null));
+            termANDsignCell.setColspan(4);
+            termANDsigntable.addCell(termANDsignCell);
+            document.add(termANDsigntable);
 
-            // Adding Table to document
-            document.add(parentTable);
+
+
+
             //last page footer
             /*PdfPTable datatablebottom = new PdfPTable(1);
             PdfPCell cell;

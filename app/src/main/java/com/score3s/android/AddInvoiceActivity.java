@@ -2,6 +2,7 @@ package com.score3s.android;
 
 import android.app.Activity;
 import android.app.AlertDialog;
+import android.app.ProgressDialog;
 import android.content.Context;
 import android.content.DialogInterface;
 import android.content.DialogInterface.OnClickListener;
@@ -11,11 +12,8 @@ import android.graphics.Color;
 import android.net.ConnectivityManager;
 import android.net.NetworkInfo;
 import android.os.Bundle;
+import android.os.CountDownTimer;
 import android.os.Handler;
-
-import androidx.recyclerview.widget.LinearLayoutManager;
-import androidx.recyclerview.widget.RecyclerView;
-
 import android.text.Editable;
 import android.text.InputFilter;
 import android.text.TextWatcher;
@@ -30,6 +28,9 @@ import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 import android.widget.Toast;
+
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
 
 import com.androidquery.AQuery;
 import com.androidquery.callback.AjaxCallback;
@@ -70,6 +71,10 @@ public class AddInvoiceActivity extends Activity {
     String SetDivision;
     String SetRoute;
     String SetSalesman;
+
+    ProgressDialog TempDialog;
+    public int counter;
+    CountDownTimer countdowntimer;
 
     private static NumberFormat newnumformat = new DecimalFormat("##.00");
     // private static DecimalFormat dfd = new DecimalFormat("#.00");
@@ -6558,9 +6563,48 @@ public class AddInvoiceActivity extends Activity {
                     }
                 } else {
                     CustomProcessbar.hideProcessBar();
+                    ToastUtils.showErrorToast(AddInvoiceActivity.this, "Due to law network or more items in invoice its take more time.");
 
-                    ToastUtils.showErrorToast(AddInvoiceActivity.this, "Error ");
-                    return;
+                    counter =120;
+                    TempDialog = new ProgressDialog(AddInvoiceActivity.this);
+                    TempDialog.setMessage("Please wait...");
+                    TempDialog.setCancelable(false);
+                    TempDialog.setProgress(counter);
+                    TempDialog.show();
+
+                    countdowntimer = new CountDownTimer(120000, 1000)
+                    {
+                        public void onTick(long millisUntilFinished)
+                        {
+                            TempDialog.setMessage("Please wait.." + counter + " sec");
+                            counter--;
+                        }
+
+                        public void onFinish()
+                        {
+                            androidx.appcompat.app.AlertDialog.Builder builder = new androidx.appcompat.app.AlertDialog.Builder(AddInvoiceActivity.this);
+                            builder.setCancelable(false);
+                            builder.setTitle("Warning...!");
+                            builder.setMessage("Save done, But please ones veryfy after 1 minute.");
+                            builder.setPositiveButton("OK", new DialogInterface.OnClickListener() {
+                                @Override
+                                public void onClick(DialogInterface dialog, int which) {
+                                    //if user pressed "yes", then he is allowed to exit from application
+
+                                    editorUserAuthKey.putString("SELECTVALUE", "3");
+                                    editorUserAuthKey.apply();
+
+                                    finish();
+                                    Intent intent = new Intent(getApplicationContext(), NavigationDrawerActivity.class);
+                                    startActivity(intent);
+                                    TempDialog.dismiss();
+                                }
+                            });
+                            androidx.appcompat.app.AlertDialog alert = builder.create();
+                            alert.show();
+
+                        }
+                    }.start();
                 }
                 super.callback(url, jRootObject, status);
             }

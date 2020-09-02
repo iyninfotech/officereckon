@@ -2,6 +2,7 @@ package com.score3s.android;
 
 import android.app.Activity;
 import android.app.AlertDialog;
+import android.app.ProgressDialog;
 import android.content.Context;
 import android.content.DialogInterface;
 import android.content.DialogInterface.OnClickListener;
@@ -9,6 +10,7 @@ import android.content.Intent;
 import android.content.SharedPreferences;
 import android.graphics.Color;
 import android.os.Bundle;
+import android.os.CountDownTimer;
 import android.text.Editable;
 import android.text.InputFilter;
 import android.text.TextWatcher;
@@ -57,8 +59,9 @@ import java.util.Map;
 import static com.score3s.android.MainActivity.AUTHKEY;
 
 public class InVoiceDetailsActivity extends Activity {
-
-
+    ProgressDialog TempDialog;
+    public int counter;
+    CountDownTimer countdowntimer;
     ImageView btnBack, btnCancel;
     TextView tvTotalAmt, tvPointValue;
     TextView tvDate;
@@ -6651,10 +6654,12 @@ public class InVoiceDetailsActivity extends Activity {
                             editorUserAuthKey.putString("SELECTVALUE", "3");
                             editorUserAuthKey.apply();
 
+                            finish();
                             Intent intent = new Intent(getApplicationContext(), NavigationDrawerActivity.class);
                             startActivity(intent);
                             CustomProcessbar.hideProcessBar();
                             ToastUtils.showErrorToast(InVoiceDetailsActivity.this, jRootObject.getString("Status"));
+
 
                         } else {
                             CustomProcessbar.hideProcessBar();
@@ -6679,8 +6684,50 @@ public class InVoiceDetailsActivity extends Activity {
                     }
                 } else {
                     CustomProcessbar.hideProcessBar();
-                    ToastUtils.showErrorToast(InVoiceDetailsActivity.this, "Error3 ");
-                    return;
+                    ToastUtils.showErrorToast(InVoiceDetailsActivity.this, "Due to law network or more items in invoice its take more time.");
+
+                    counter =60;
+                    TempDialog = new ProgressDialog(InVoiceDetailsActivity.this);
+                    TempDialog.setMessage("Please wait...");
+                    TempDialog.setCancelable(false);
+                    TempDialog.setProgress(counter);
+                    TempDialog.show();
+
+                    countdowntimer = new CountDownTimer(60000, 1000)
+                    {
+                        public void onTick(long millisUntilFinished)
+                        {
+                            TempDialog.setMessage("Please wait.." + counter + " sec");
+                            counter--;
+                        }
+
+                        public void onFinish()
+                        {
+                            androidx.appcompat.app.AlertDialog.Builder builder = new androidx.appcompat.app.AlertDialog.Builder(InVoiceDetailsActivity.this);
+                            builder.setCancelable(false);
+                            builder.setTitle("Warning...!");
+                            builder.setMessage("Save done, But please ones veryfy after 1 minute.");
+                            builder.setPositiveButton("OK", new DialogInterface.OnClickListener() {
+                                @Override
+                                public void onClick(DialogInterface dialog, int which) {
+                                    //if user pressed "yes", then he is allowed to exit from application
+
+                                    editorUserAuthKey.putString("SELECTVALUE", "3");
+                                    editorUserAuthKey.apply();
+                                    finish();
+                                    Intent intent = new Intent(getApplicationContext(), NavigationDrawerActivity.class);
+                                    startActivity(intent);
+                                    TempDialog.dismiss();
+
+
+                                }
+                            });
+                            androidx.appcompat.app.AlertDialog alert = builder.create();
+                            alert.show();
+
+                        }
+                    }.start();
+                    //return;
                 }
                 super.callback(url, jRootObject, status);
             }
