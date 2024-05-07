@@ -13,7 +13,7 @@
     <!--android:layout_width="match_parent"-->
     <!--android:layout_height="@dimen/_35sdp">-->
 
-    <!--<com.score3s.android.fontStyle.TextViewRegular-->
+    <!--<com.infozealrecon.android.fontStyle.TextViewRegular-->
     <!--android:layout_width="match_parent"-->
     <!--android:layout_height="wrap_content"-->
     <!--android:text="Login"-->
@@ -45,244 +45,119 @@
                     android:layout_height="@dimen/_60sdp"
                     android:layout_gravity="center"
                     android:layout_marginTop="@dimen/_5sdp"
-                    android:src="@drawable/logo" />
+                    android:layout_marginBottom="@dimen/_6sdp"
+                    android:src="@drawable/logo_app" />
 
 
-                <com.score3s.android.fontStyle.TextViewBold
+                <com.infozealrecon.android.fontStyle.TextViewBold
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_gravity="center"
                     android:layout_marginBottom="@dimen/_15sdp"
                     android:gravity="center"
-                    android:text="Demo Request"
+                    android:text="Customer Data"
                     android:textColor="@color/colorPrimary"
                     android:textSize="@dimen/_20sdp" />
 
                 <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_margin="@dimen/_8sdp"
-                    android:orientation="vertical">
+                    android:layout_margin="@dimen/_2sdp"
+                    android:weightSum="2"
+                    android:orientation="horizontal">
 
 
-                    <com.score3s.android.fontStyle.TextViewRegular
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:padding="@dimen/_2sdp"
-                        android:text="Agency/Company Name"
-                        android:textColor="@color/colorPrimary"
-                        android:textSize="@dimen/_10sdp" />
-
-
-                    <com.score3s.android.fontStyle.EdittextRegular
-                        android:id="@+id/edtAgencyName"
-                        android:layout_width="match_parent"
+                    <com.infozealrecon.android.fontStyle.EdittextRegular
+                        android:id="@+id/edtCustomerID"
+                        android:layout_width="0dp"
                         android:layout_height="wrap_content"
                         android:background="@null"
-                        android:hint="Enter Your Agency/Company Name"
+                        android:hint="Enter Customer ID"
                         android:inputType="textCapWords"
                         android:padding="@dimen/_2sdp"
+                        android:layout_weight="1.8"
                         android:singleLine="true"
                         android:textColor="@color/colorPrimary"
                         android:textColorHint="@color/grey" />
 
-                    <LinearLayout
-                        android:layout_width="match_parent"
-                        android:layout_height="1dp"
-                        android:layout_margin="@dimen/_2sdp"
-                        android:background="@color/colorPrimary" />
+
+                    <ImageView
+                        android:id="@+id/ivSearch"
+                        android:background="@color/transparent_black_percent_60"
+                        android:padding="2dp"
+                        android:layout_weight="0.2"
+                        android:layout_width="wrap_content"
+                        android:src="@android:drawable/ic_menu_search"
+                        android:layout_height="wrap_content"
+                        tools:ignore="contentDescription" />
+
+
 
 
                 </LinearLayout>
 
                 <LinearLayout
                     android:layout_width="match_parent"
+                    android:layout_height="1dp"
+                    android:layout_margin="@dimen/_5sdp"
+                    android:background="@color/colorPrimary" />
+
+                <LinearLayout
+                    android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_margin="@dimen/_8sdp"
+                    android:layout_margin="@dimen/_2sdp"
                     android:orientation="vertical">
 
 
-                    <com.score3s.android.fontStyle.TextViewRegular
+                    <br.com.sapereaude.maskedEditText.MaskedEditText
+                        android:hint="##/##/####"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:padding="@dimen/_2sdp"
-                        android:text="Owner/Contact Person Name"
-                        android:textColor="@color/colorPrimary"
-                        android:textSize="@dimen/_10sdp" />
-
-
-                    <com.score3s.android.fontStyle.EdittextRegular
-                        android:id="@+id/edtOwnerName"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:background="@null"
-                        android:hint="Enter Owner/Contact Person Name"
-                        android:inputType="textCapWords"
-                        android:padding="@dimen/_2sdp"
-                        android:singleLine="true"
-                        android:textColor="@color/colorPrimary"
-                        android:textColorHint="@color/grey" />
-
-                    <LinearLayout
-                        android:layout_width="match_parent"
-                        android:layout_height="1dp"
                         android:layout_margin="@dimen/_2sdp"
-                        android:background="@color/colorPrimary" />
-
+                        android:id="@+id/edtDate"
+                        android:inputType="date"
+                        app:mask="##/##/####"/>
 
                 </LinearLayout>
+
 
                 <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_margin="@dimen/_8sdp"
-                    android:orientation="vertical">
-
-
-                    <com.score3s.android.fontStyle.TextViewRegular
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:padding="@dimen/_2sdp"
-                        android:text="Contact Number"
-                        android:textColor="@color/colorPrimary"
-                        android:textSize="@dimen/_10sdp" />
-
-
-                    <com.score3s.android.fontStyle.EdittextRegular
-                        android:id="@+id/edtContactNo"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:background="@null"
-                        android:hint="Enter Contact Number(Mobile)"
-                        android:inputType="phone"
-                        android:maxLength="10"
-                        android:padding="@dimen/_2sdp"
-                        android:singleLine="true"
-                        android:textColor="@color/colorPrimary"
-                        android:textColorHint="@color/grey" />
-
-                    <LinearLayout
-                        android:layout_width="match_parent"
-                        android:layout_height="1dp"
-                        android:layout_margin="@dimen/_2sdp"
-                        android:background="@color/colorPrimary" />
-
-
-                </LinearLayout>
-
-                <LinearLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_margin="@dimen/_8sdp"
-                    android:orientation="vertical">
-
-
-                    <com.score3s.android.fontStyle.TextViewRegular
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:padding="@dimen/_2sdp"
-                        android:text="Email Id"
-                        android:textColor="@color/colorPrimary"
-                        android:textSize="@dimen/_10sdp" />
-
-
-                    <com.score3s.android.fontStyle.EdittextRegular
-                        android:id="@+id/edtEmailID"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:background="@null"
-                        android:hint="Enter Email Id"
-                        android:inputType="textEmailAddress"
-                        android:maxLength="100"
-                        android:padding="@dimen/_2sdp"
-                        android:singleLine="true"
-                        android:textColor="@color/colorPrimary"
-                        android:textColorHint="@color/grey" />
-
-                    <LinearLayout
-                        android:layout_width="match_parent"
-                        android:layout_height="1dp"
-                        android:layout_margin="@dimen/_2sdp"
-                        android:background="@color/colorPrimary" />
-
-
-                </LinearLayout>
-                <LinearLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_margin="@dimen/_8sdp"
-                    android:orientation="vertical">
-
-
-                    <com.score3s.android.fontStyle.TextViewRegular
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:padding="@dimen/_2sdp"
-                        android:text="Business &amp; Requirement"
-                        android:textColor="@color/colorPrimary"
-                        android:textSize="@dimen/_10sdp" />
-
-
-                    <com.score3s.android.fontStyle.EdittextRegular
-                        android:id="@+id/edtDesc"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:background="@null"
-                        android:hint="Enter about your business &amp; requirement"
-                        android:inputType="textMultiLine"
-                        android:maxLength="1000"
-                        android:minLines="2"
-                        android:maxLines="3"
-                        android:padding="@dimen/_2sdp"
-                        android:textColor="@color/colorPrimary"
-                        android:textColorHint="@color/grey" />
-
-                    <LinearLayout
-                        android:layout_width="match_parent"
-                        android:layout_height="1dp"
-                        android:layout_margin="@dimen/_2sdp"
-                        android:background="@color/colorPrimary" />
-
-
-                </LinearLayout>
-
-                <LinearLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="@dimen/_10sdp"
-                    android:orientation="vertical"
+                    android:layout_marginTop="@dimen/_30sdp"
+                    android:orientation="horizontal"
                     android:weightSum="2">
 
 
-                    <com.score3s.android.fontStyle.ButtonRegular
+                    <com.infozealrecon.android.fontStyle.ButtonRegular
                         android:id="@+id/btnRegister"
-                        android:layout_width="match_parent"
+                        android:layout_width="0dp"
                         android:layout_height="wrap_content"
-                        android:layout_marginLeft="@dimen/_80sdp"
-                        android:layout_marginRight="@dimen/_80sdp"
                         android:layout_weight="1"
+                        android:layout_margin="@dimen/_10sdp"
                         android:background="@drawable/button_background"
                         android:minHeight="@dimen/_35sdp"
-                        android:text="Register"
+                        android:text="Submit"
                         android:textAllCaps="false"
                         android:textColor="@color/appbarTitleTVtextColor"
                         android:textSize="@dimen/_14sdp"
                         android:textStyle="bold|italic" />
 
-                    <com.score3s.android.fontStyle.TextViewBold
-                        android:id="@+id/tvDemoRequest"
-                        android:layout_width="match_parent"
+                    <com.infozealrecon.android.fontStyle.ButtonRegular
+                        android:id="@+id/btnDelete"
+                        android:layout_width="0dp"
                         android:layout_height="wrap_content"
-                        android:layout_gravity="center"
-                        android:layout_marginLeft="@dimen/_6sdp"
-                        android:layout_marginTop="@dimen/_20sdp"
-                        android:layout_marginRight="@dimen/_6sdp"
-                        android:gravity="center"
                         android:layout_weight="1"
-                        android:textColor="@color/colorPrimary"
-                        android:textColorLink="@color/colorPrimary"
-                        android:textSize="@dimen/_12sdp"
+                        android:background="@drawable/button_background"
+                        android:minHeight="@dimen/_35sdp"
+                        android:layout_margin="@dimen/_10sdp"
+                        android:text="Delete"
+                        android:textAllCaps="false"
+                        android:textColor="@color/appbarTitleTVtextColor"
+                        android:textSize="@dimen/_14sdp"
                         android:textStyle="bold|italic" />
+
+
 
                 </LinearLayout>
 

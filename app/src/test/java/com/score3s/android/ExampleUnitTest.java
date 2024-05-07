@@ -1,4 +1,4 @@
-package com.score3s.android;
+package com.infozealrecon.android;
 
 import org.junit.Test;
 

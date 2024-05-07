@@ -15,7 +15,7 @@
         android:gravity="center"
         android:orientation="horizontal">
 
-        <com.score3s.android.fontStyle.ButtonBold
+        <com.infozealrecon.android.fontStyle.ButtonBold
             android:id="@+id/btnShare"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -37,7 +37,7 @@
             android:src="@drawable/avd_pathmorph_drawer_arrow_to_hamburger"
             android:tint="@android:color/white" />
 
-        <com.score3s.android.fontStyle.TextViewBlack
+        <com.infozealrecon.android.fontStyle.TextViewBlack
             android:id="@+id/title"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"

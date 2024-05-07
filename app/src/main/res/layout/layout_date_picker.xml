@@ -26,7 +26,7 @@
                 android:layout_weight="1"
                 android:orientation="horizontal">
 
-                <com.score3s.android.fontStyle.ButtonRegular
+                <com.infozealrecon.android.fontStyle.ButtonRegular
                     android:id="@+id/btn_cancel"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
@@ -41,7 +41,7 @@
                 android:gravity="right"
                 android:orientation="horizontal">
 
-                <com.score3s.android.fontStyle.ButtonRegular
+                <com.infozealrecon.android.fontStyle.ButtonRegular
                     android:id="@+id/btn_confirm"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
@@ -54,19 +54,19 @@
             android:layout_height="200dp"
             android:orientation="horizontal">
 
-            <com.score3s.android.DateWheel.LoopView
+            <com.infozealrecon.android.DateWheel.LoopView
                 android:id="@+id/picker_day"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_weight="1" />
 
-            <com.score3s.android.DateWheel.LoopView
+            <com.infozealrecon.android.DateWheel.LoopView
                 android:id="@+id/picker_month"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_weight="1" />
 
-            <com.score3s.android.DateWheel.LoopView
+            <com.infozealrecon.android.DateWheel.LoopView
                 android:id="@+id/picker_year"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"

@@ -1,0 +1,424 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent" >
+
+    <!-- Header aligned to top -->
+    <RelativeLayout
+        android:id="@+id/header"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentTop="true"
+        android:background="@color/colorPrimary">
+
+        <ImageView
+            android:id="@+id/btnBack"
+            android:layout_width="@dimen/_30sdp"
+            android:layout_height="@dimen/_30sdp"
+            android:layout_margin="@dimen/_5sdp"
+            android:src="@drawable/avd_pathmorph_drawer_arrow_to_hamburger"
+            android:tint="@android:color/white" />
+
+        <com.infozealrecon.android.fontStyle.TextViewBlack
+            android:id="@+id/title"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerHorizontal="true"
+            android:layout_centerVertical="true"
+            android:layout_gravity="center"
+            android:layout_marginLeft="@dimen/_30sdp"
+            android:layout_marginRight="@dimen/_30sdp"
+            android:gravity="center"
+            android:text="Inquiry Details"
+            android:textColor="@android:color/white"
+            android:textSize="@dimen/_14sdp"
+            android:textStyle="bold" />
+    </RelativeLayout>
+
+   <!--  Footer aligned to bottom
+    <RelativeLayout
+        android:id="@+id/footer"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:background="#FC0"
+        android:gravity="center" >
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_margin="5dp"
+            android:text="Fixed Footer"
+            android:textColor="#000"
+            android:textSize="20sp" />
+    </RelativeLayout>-->
+
+    <!-- Scrollable Item below header and above footer -->
+    <ScrollView
+        android:id="@+id/scrollableContents"
+        android:layout_width="fill_parent"
+        android:layout_height="fill_parent"
+        android:background="@color/White"
+        android:layout_below="@id/header" >
+
+        <LinearLayout
+            android:id="@+id/rootContainerMain"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center_horizontal"
+            android:layout_marginRight="@dimen/_15sdp"
+            android:orientation="vertical" >
+
+            <com.infozealrecon.android.fontStyle.TextViewBold
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:background="@drawable/bg_rounded_tv"
+                android:layout_marginTop="@dimen/_1sdp"
+                android:gravity="center"
+                android:text="Inquiry Number"
+                android:textColor="@color/White"
+                android:textSize="@dimen/_14sdp" />
+            <com.infozealrecon.android.fontStyle.TextViewBold
+                android:id="@+id/tvInquiryID"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:layout_marginLeft="@dimen/_4sdp"
+                android:gravity="center"
+                android:text=""
+                android:textColor="@color/Black"
+                android:textSize="@dimen/_14sdp" />
+
+            <com.infozealrecon.android.fontStyle.TextViewBold
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:background="@drawable/bg_rounded_tv"
+                android:layout_marginTop="@dimen/_1sdp"
+                android:gravity="center"
+                android:text="Inquiry Date"
+                android:textColor="@color/White"
+                android:textSize="@dimen/_14sdp" />
+            <com.infozealrecon.android.fontStyle.TextViewBold
+                android:id="@+id/tvInquiryDate"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:layout_marginLeft="@dimen/_4sdp"
+                android:gravity="center"
+                android:text=""
+                android:textColor="@color/Black"
+                android:textSize="@dimen/_14sdp" />
+
+            <com.infozealrecon.android.fontStyle.TextViewBold
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:background="@drawable/bg_rounded_tv"
+                android:gravity="center"
+                android:text="Company Name"
+                android:textColor="@color/White"
+                android:textSize="@dimen/_14sdp" />
+            <com.infozealrecon.android.fontStyle.TextViewBold
+                android:id="@+id/tvInquiryName"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:layout_marginLeft="@dimen/_4sdp"
+                android:gravity="center"
+                android:text=""
+                android:textColor="@color/Black"
+                android:textIsSelectable="true"
+                android:textSize="@dimen/_14sdp" />
+
+            <com.infozealrecon.android.fontStyle.TextViewBold
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:background="@drawable/bg_rounded_tv"
+                android:gravity="center"
+                android:text="Contact Person"
+                android:textColor="@color/White"
+                android:textSize="@dimen/_14sdp" />
+            <com.infozealrecon.android.fontStyle.TextViewBold
+                android:id="@+id/tvInquiryContactPer"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:layout_marginLeft="@dimen/_4sdp"
+                android:gravity="center"
+                android:text=""
+                android:textAllCaps="true"
+                android:textColor="@color/Black"
+                android:textIsSelectable="true"
+                android:textSize="@dimen/_14sdp" />
+
+            <com.infozealrecon.android.fontStyle.TextViewBold
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:background="@drawable/bg_rounded_tv"
+                android:gravity="center"
+                android:text="Address"
+                android:textColor="@color/White"
+                android:textSize="@dimen/_14sdp" />
+            <com.infozealrecon.android.fontStyle.TextViewBold
+                android:id="@+id/tvInquiryaddress"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:layout_marginLeft="@dimen/_4sdp"
+                android:gravity="center"
+                android:text=""
+                android:textColor="@color/Black"
+                android:textIsSelectable="true"
+                android:textSize="@dimen/_14sdp" />
+
+            <com.infozealrecon.android.fontStyle.TextViewBold
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:background="@drawable/bg_rounded_tv"
+                android:gravity="center"
+                android:text="Contact Details"
+                android:textColor="@color/White"
+                android:textSize="@dimen/_14sdp" />
+            <com.infozealrecon.android.fontStyle.TextViewBold
+                android:id="@+id/tvInquiryContactNumber"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:layout_marginLeft="@dimen/_4sdp"
+                android:gravity="center"
+                android:text=""
+                android:textColor="@color/Black"
+                android:textIsSelectable="true"
+                android:textSize="@dimen/_14sdp" />
+
+            <com.infozealrecon.android.fontStyle.TextViewBold
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:background="@drawable/bg_rounded_tv"
+                android:gravity="center"
+                android:text="Area"
+                android:textColor="@color/White"
+                android:textSize="@dimen/_14sdp" />
+            <com.infozealrecon.android.fontStyle.TextViewBold
+                android:id="@+id/tvInquiryArea"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:layout_marginLeft="@dimen/_4sdp"
+                android:gravity="center"
+                android:text=""
+                android:textColor="@color/Black"
+                android:textIsSelectable="true"
+                android:textSize="@dimen/_14sdp" />
+
+            <com.infozealrecon.android.fontStyle.TextViewBold
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:background="@drawable/bg_rounded_tv"
+                android:gravity="center"
+                android:text="City"
+                android:textColor="@color/White"
+                android:textSize="@dimen/_14sdp" />
+            <com.infozealrecon.android.fontStyle.TextViewBold
+                android:id="@+id/tvInquiryCity"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:layout_marginLeft="@dimen/_4sdp"
+                android:gravity="center"
+                android:text=""
+                android:textColor="@color/Black"
+                android:textIsSelectable="true"
+                android:textSize="@dimen/_14sdp" />
+
+            <com.infozealrecon.android.fontStyle.TextViewBold
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:background="@drawable/bg_rounded_tv"
+                android:gravity="center"
+                android:text="State"
+                android:textColor="@color/White"
+                android:textSize="@dimen/_14sdp" />
+            <com.infozealrecon.android.fontStyle.TextViewBold
+                android:id="@+id/tvInquiryState"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:layout_marginLeft="@dimen/_4sdp"
+                android:gravity="center"
+                android:text=""
+                android:textColor="@color/Black"
+                android:textIsSelectable="true"
+                android:textSize="@dimen/_14sdp" />
+
+            <com.infozealrecon.android.fontStyle.TextViewBold
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:background="@drawable/bg_rounded_tv"
+                android:gravity="center"
+                android:text="Email ID"
+                android:textColor="@color/White"
+                android:textSize="@dimen/_14sdp" />
+            <com.infozealrecon.android.fontStyle.TextViewBold
+                android:id="@+id/tvInquiryEmailID"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:layout_marginLeft="@dimen/_4sdp"
+                android:gravity="center"
+                android:text=""
+                android:textColor="@color/Black"
+                android:textIsSelectable="true"
+                android:textSize="@dimen/_14sdp" />
+
+            <com.infozealrecon.android.fontStyle.TextViewBold
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:background="@drawable/bg_rounded_tv"
+                android:gravity="center"
+                android:text="Referance By"
+                android:textColor="@color/White"
+                android:textSize="@dimen/_14sdp" />
+            <com.infozealrecon.android.fontStyle.TextViewBold
+                android:id="@+id/tvInq_Reference"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:layout_marginLeft="@dimen/_4sdp"
+                android:gravity="center"
+                android:text=""
+                android:textColor="@color/Black"
+                android:textIsSelectable="true"
+                android:textSize="@dimen/_14sdp" />
+
+            <com.infozealrecon.android.fontStyle.TextViewBold
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:background="@drawable/bg_rounded_tv"
+                android:gravity="center"
+                android:text="Passon To"
+                android:textColor="@color/White"
+                android:textSize="@dimen/_14sdp" />
+            <com.infozealrecon.android.fontStyle.TextViewBold
+                android:id="@+id/tvInq_Passon"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:layout_marginLeft="@dimen/_4sdp"
+                android:gravity="center"
+                android:text=""
+                android:textColor="@color/Black"
+                android:textSize="@dimen/_14sdp" />
+
+            <com.infozealrecon.android.fontStyle.TextViewBold
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:background="@drawable/bg_rounded_tv"
+                android:gravity="center"
+                android:text="Remarks"
+                android:textColor="@color/White"
+                android:textIsSelectable="true"
+                android:textSize="@dimen/_14sdp" />
+            <com.infozealrecon.android.fontStyle.TextViewBold
+                android:id="@+id/tvRemarks"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:layout_marginLeft="@dimen/_4sdp"
+                android:gravity="center"
+                android:text=""
+                android:textColor="@color/Black"
+                android:textSize="@dimen/_14sdp" />
+
+            <com.infozealrecon.android.fontStyle.TextViewBold
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:background="@drawable/bg_rounded_tv"
+                android:gravity="center"
+                android:text="Special Remarks"
+                android:textColor="@color/White"
+                android:textSize="@dimen/_14sdp" />
+            <com.infozealrecon.android.fontStyle.TextViewBold
+                android:id="@+id/tvSpecialRemark"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:layout_marginLeft="@dimen/_4sdp"
+                android:gravity="center"
+                android:text=""
+                android:textColor="@color/Black"
+                android:textIsSelectable="true"
+                android:textSize="@dimen/_14sdp" />
+
+            <com.infozealrecon.android.fontStyle.TextViewBold
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:background="@drawable/bg_rounded_tv"
+                android:gravity="center"
+                android:text="Inquiry For"
+                android:textColor="@color/White"
+                android:textSize="@dimen/_14sdp" />
+
+            <LinearLayout
+                android:id="@+id/rootInquiryForchBox"
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="@dimen/_60sdp"
+                android:orientation="vertical" >
+
+            </LinearLayout>
+
+            <com.infozealrecon.android.fontStyle.TextViewBold
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:background="@drawable/bg_rounded_tv"
+                android:gravity="center"
+                android:text="Inquiry Stage"
+                android:textColor="@color/White"
+                android:textSize="@dimen/_14sdp" />
+
+            <LinearLayout
+                android:id="@+id/rootInquiryStageBox"
+                android:layout_width="fill_parent"
+                android:layout_height="match_parent"
+                android:layout_marginLeft="@dimen/_60sdp"
+                android:orientation="vertical" >
+
+            </LinearLayout>
+
+            <com.infozealrecon.android.fontStyle.TextViewBold
+                android:id="@+id/listViewFollowuptitle"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:background="@drawable/bg_rounded_tv"
+                android:gravity="center"
+                android:text="Follow up Details"
+                android:textColor="@color/White"
+                android:textSize="@dimen/_14sdp" />
+
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/listViewFollowup"
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/_250sdp"
+                android:layout_marginBottom="@dimen/_8sdp">
+            </androidx.recyclerview.widget.RecyclerView>
+
+        </LinearLayout>
+    </ScrollView>
+</RelativeLayout>

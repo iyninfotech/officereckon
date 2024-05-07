@@ -15,7 +15,7 @@
         android:gravity="center"
         android:orientation="horizontal">
 
-        <com.score3s.android.fontStyle.ButtonBold
+        <com.infozealrecon.android.fontStyle.ButtonBold
             android:id="@+id/btnUpdate"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -37,7 +37,7 @@
             android:src="@drawable/avd_pathmorph_drawer_arrow_to_hamburger"
             android:tint="@android:color/white" />
 
-        <com.score3s.android.fontStyle.TextViewBlack
+        <com.infozealrecon.android.fontStyle.TextViewBlack
             android:id="@+id/title"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -89,7 +89,7 @@
                         android:layout_height="wrap_content"
                         android:onClick="openDatePickerDialog">
 
-                        <com.score3s.android.fontStyle.TextViewMedium
+                        <com.infozealrecon.android.fontStyle.TextViewMedium
                             android:id="@+id/selectDate"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
@@ -123,7 +123,7 @@
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content">
 
-                        <com.score3s.android.fontStyle.TextViewMedium
+                        <com.infozealrecon.android.fontStyle.TextViewMedium
                             android:id="@+id/tvDivision"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
@@ -158,7 +158,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content">
 
-                <com.score3s.android.fontStyle.TextViewMedium
+                <com.infozealrecon.android.fontStyle.TextViewMedium
                     android:id="@+id/tvRoute"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
@@ -187,7 +187,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content">
 
-                <com.score3s.android.fontStyle.TextViewMedium
+                <com.infozealrecon.android.fontStyle.TextViewMedium
                     android:id="@+id/tvSaleman"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
@@ -216,7 +216,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content">
 
-                <com.score3s.android.fontStyle.TextViewMedium
+                <com.infozealrecon.android.fontStyle.TextViewMedium
                     android:id="@+id/tvClient"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
@@ -240,7 +240,7 @@
                 android:layout_height="1dp"
                 android:background="#C8C8C8" />
 
-            <com.score3s.android.fontStyle.ButtonBold
+            <com.infozealrecon.android.fontStyle.ButtonBold
                 android:id="@+id/btnAdd"
                 android:layout_width="@dimen/_65sdp"
                 android:layout_height="@dimen/_30sdp"
@@ -271,7 +271,7 @@
             android:orientation="horizontal"
             android:weightSum="4">
 
-            <com.score3s.android.fontStyle.TextViewMedium
+            <com.infozealrecon.android.fontStyle.TextViewMedium
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"
@@ -282,7 +282,7 @@
                 android:textSize="@dimen/_10sdp" />
 
 
-            <com.score3s.android.fontStyle.TextViewBold
+            <com.infozealrecon.android.fontStyle.TextViewBold
                 android:id="@+id/tvPointValue"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
@@ -293,7 +293,7 @@
                 android:textColor="@color/White"
                 android:textSize="@dimen/_10sdp" />
 
-            <com.score3s.android.fontStyle.TextViewBold
+            <com.infozealrecon.android.fontStyle.TextViewBold
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"
@@ -304,7 +304,7 @@
                 android:textSize="@dimen/_10sdp" />
 
 
-            <com.score3s.android.fontStyle.TextViewBold
+            <com.infozealrecon.android.fontStyle.TextViewBold
                 android:id="@+id/totalamt"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"

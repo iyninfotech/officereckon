@@ -24,7 +24,7 @@
             android:id="@+id/btnBack"
             android:src="@drawable/avd_pathmorph_drawer_arrow_to_hamburger"
             android:layout_margin="@dimen/_5sdp"/>
-        <com.score3s.android.fontStyle.TextViewBlack
+        <com.infozealrecon.android.fontStyle.TextViewBlack
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_centerHorizontal="true"
@@ -62,7 +62,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content">
 
-                <com.score3s.android.fontStyle.TextViewMedium
+                <com.infozealrecon.android.fontStyle.TextViewMedium
                     android:id="@+id/tvDivision"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
@@ -91,7 +91,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content">
 
-                <com.score3s.android.fontStyle.TextViewMedium
+                <com.infozealrecon.android.fontStyle.TextViewMedium
                     android:id="@+id/tvRoute"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
@@ -120,7 +120,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content">
 
-                <com.score3s.android.fontStyle.TextViewMedium
+                <com.infozealrecon.android.fontStyle.TextViewMedium
                     android:id="@+id/tvSaleman"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
@@ -149,7 +149,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content">
 
-                <com.score3s.android.fontStyle.TextViewMedium
+                <com.infozealrecon.android.fontStyle.TextViewMedium
                     android:id="@+id/tvGodown"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
@@ -174,7 +174,7 @@
                 android:background="#C8C8C8" />
 
 
-            <com.score3s.android.fontStyle.ButtonBold
+            <com.infozealrecon.android.fontStyle.ButtonBold
                 android:id="@+id/btnSubmit"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"

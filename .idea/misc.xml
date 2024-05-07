@@ -1,6 +1,31 @@
-<?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
-  <component name="ProjectRootManager" version="2" languageLevel="JDK_1_7" project-jdk-name="1.8" project-jdk-type="JavaSDK">
+  <component name="DesignSurface">
+    <option name="filePathToZoomLevelMap">
+      <map>
+        <entry key="..\:/InfozealMobileApps/InfozealNew/Recon/app/src/main/res/drawable/background_dialog.xml" value="0.2055" />
+        <entry key="..\:/InfozealMobileApps/InfozealNew/Recon/app/src/main/res/drawable/background_outlet_cell.xml" value="0.2055" />
+        <entry key="..\:/InfozealMobileApps/InfozealNew/Recon/app/src/main/res/drawable/bg_rounded_tv.xml" value="0.2055" />
+        <entry key="..\:/InfozealMobileApps/InfozealNew/Recon/app/src/main/res/layout/activity_inquiry_details.xml" value="0.22" />
+        <entry key="..\:/InfozealMobileApps/InfozealNew/Recon/app/src/main/res/layout/activity_inquiry_details_new.xml" value="0.1782106782106782" />
+        <entry key="..\:/InfozealMobileApps/InfozealNew/Recon/app/src/main/res/layout/activity_main.xml" value="0.2427536231884058" />
+        <entry key="..\:/InfozealMobileApps/InfozealNew/Recon/app/src/main/res/layout/activity_outlet_details.xml" value="0.2427536231884058" />
+        <entry key="..\:/InfozealMobileApps/InfozealNew/Recon/app/src/main/res/layout/activity_splash.xml" value="0.278125" />
+        <entry key="..\:/InfozealMobileApps/InfozealNew/Recon/app/src/main/res/layout/activity_viewinvoice.xml" value="0.278125" />
+        <entry key="..\:/InfozealMobileApps/InfozealNew/Recon/app/src/main/res/layout/editable_invoice_list.xml" value="0.2427536231884058" />
+        <entry key="..\:/InfozealMobileApps/InfozealNew/Recon/app/src/main/res/layout/fragment_aboutus.xml" value="0.2427536231884058" />
+        <entry key="..\:/InfozealMobileApps/InfozealNew/Recon/app/src/main/res/layout/fragment_inquiry.xml" value="0.1838768115942029" />
+        <entry key="..\:/InfozealMobileApps/InfozealNew/Recon/app/src/main/res/layout/fragment_invoicegrid.xml" value="0.278125" />
+        <entry key="..\:/InfozealMobileApps/InfozealNew/Recon/app/src/main/res/layout/fragment_outlet.xml" value="0.2427536231884058" />
+        <entry key="..\:/InfozealMobileApps/InfozealNew/Recon/app/src/main/res/layout/inquiry_cell_design.xml" value="0.278125" />
+        <entry key="..\:/InfozealMobileApps/InfozealNew/Recon/app/src/main/res/layout/inquiry_outlet.xml" value="0.278125" />
+        <entry key="..\:/InfozealMobileApps/InfozealNew/Recon/app/src/main/res/layout/inquiryfollowp_cell_design.xml" value="0.278125" />
+        <entry key="..\:/InfozealMobileApps/InfozealNew/Recon/app/src/main/res/layout/invoice_cell_design.xml" value="0.278125" />
+        <entry key="..\:/InfozealMobileApps/InfozealNew/Recon/app/src/main/res/layout/navigation_drawer.xml" value="0.278125" />
+        <entry key="..\:/InfozealMobileApps/InfozealNew/Recon/app/src/main/res/layout/outlet_cell_design.xml" value="0.2427536231884058" />
+      </map>
+    </option>
+  </component>
+  <component name="ProjectRootManager" version="2" languageLevel="JDK_17" default="true" project-jdk-name="jbr-17" project-jdk-type="JavaSDK">
     <output url="file://$PROJECT_DIR$/build/classes" />
   </component>
   <component name="ProjectType">

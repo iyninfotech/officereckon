@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    package="com.score3s.android">
+    package="com.infozealrecon.android">
 
     <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
     <uses-permission android:name="android.permission.BLUETOOTH_ADMIN" />
@@ -44,6 +44,9 @@
             android:screenOrientation="portrait" />
         <activity
             android:name=".OutletDetailsActivity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".InquiryDetailsActivity"
             android:screenOrientation="portrait" />
         <activity
             android:name=".MRPDetailsActivity"

@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 
-    <com.score3s.android.NavigationCustom.widget.SNavigationDrawer
+    <com.infozealrecon.android.NavigationCustom.widget.SNavigationDrawer
         android:id="@+id/navigationDrawer"
         android:layout_width="match_parent"
         android:layout_height="match_parent">
@@ -16,5 +16,5 @@
             android:layout_width="match_parent"
             android:layout_height="match_parent" />
 
-    </com.score3s.android.NavigationCustom.widget.SNavigationDrawer>
+    </com.infozealrecon.android.NavigationCustom.widget.SNavigationDrawer>
 </RelativeLayout>

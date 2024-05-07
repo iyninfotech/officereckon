@@ -1,8 +1,8 @@
 <resources>
-    <string name="app_name">Score 3s Cloud</string>
+    <string name="app_name">InfozealERP</string>
     <string name="app_id">1</string>
     <string name="company_name">Infozeal eSolutions Private Limited</string>
-    <string name="software_name">Score 3s Cloud .net</string>
+    <string name="software_name">Reckon</string>
     <string name="about_us">About us:</string>
     <string name="contact_us">Contact us:</string>
     <string name="contact_us_support">Contact for support:</string>

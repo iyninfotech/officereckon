@@ -79,7 +79,7 @@
                     android:tint="@android:color/white"
                     android:visibility="gone" />
 
-                <com.score3s.android.fontStyle.TextViewBlack
+                <com.infozealrecon.android.fontStyle.TextViewBlack
                     android:id="@+id/appBarTitleTV"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"

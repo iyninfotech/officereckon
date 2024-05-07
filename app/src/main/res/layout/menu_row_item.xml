@@ -35,7 +35,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="@dimen/_40sdp" />
 
-            <com.score3s.android.fontStyle.TextViewRegular
+            <com.infozealrecon.android.fontStyle.TextViewRegular
                 android:id="@+id/titleTV1"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
@@ -50,7 +50,7 @@
                 android:textStyle="bold" />
         </androidx.cardview.widget.CardView>
 
-        <com.score3s.android.fontStyle.TextViewRegular
+        <com.infozealrecon.android.fontStyle.TextViewRegular
             android:id="@+id/titleTV"
             android:layout_width="match_parent"
             android:layout_height="@dimen/_40sdp"

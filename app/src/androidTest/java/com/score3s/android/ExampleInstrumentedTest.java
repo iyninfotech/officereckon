@@ -1,4 +1,4 @@
-package com.score3s.android;
+package com.infozealrecon.android;
 
 import android.content.Context;
 import androidx.test.platform.app.InstrumentationRegistry;
@@ -21,6 +21,6 @@ public class ExampleInstrumentedTest {
         // Context of the app under test.
         Context appContext = InstrumentationRegistry.getTargetContext();
 
-        assertEquals("com.score3s.android", appContext.getPackageName());
+        assertEquals("com.infozealrecon.android", appContext.getPackageName());
     }
 }

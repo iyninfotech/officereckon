@@ -50,7 +50,7 @@
                         android:src="@drawable/call"
                         android:tint="@color/White" />
 
-                    <com.score3s.android.fontStyle.TextViewRegular
+                    <com.infozealrecon.android.fontStyle.TextViewRegular
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:padding="@dimen/_10sdp"
@@ -58,7 +58,7 @@
                         android:textColor="@color/White"
                         android:textSize="@dimen/_15sdp" />
 
-                    <com.score3s.android.fontStyle.TextViewRegular
+                    <com.infozealrecon.android.fontStyle.TextViewRegular
                         android:id="@+id/tvTotalCalls"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
@@ -109,7 +109,7 @@
                             android:src="@drawable/call"
                             android:tint="@color/White" />
 
-                        <com.score3s.android.fontStyle.TextViewRegular
+                        <com.infozealrecon.android.fontStyle.TextViewRegular
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:padding="@dimen/_10sdp"
@@ -117,7 +117,7 @@
                             android:textColor="@color/White"
                             android:textSize="@dimen/_15sdp" />
 
-                        <com.score3s.android.fontStyle.TextViewRegular
+                        <com.infozealrecon.android.fontStyle.TextViewRegular
                             android:id="@+id/tvprodectiveCalls"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
@@ -158,7 +158,7 @@
                             android:src="@drawable/sold"
                             android:tint="@color/White" />
 
-                        <com.score3s.android.fontStyle.TextViewRegular
+                        <com.infozealrecon.android.fontStyle.TextViewRegular
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:padding="@dimen/_10sdp"
@@ -166,7 +166,7 @@
                             android:textColor="@color/White"
                             android:textSize="@dimen/_15sdp" />
 
-                        <com.score3s.android.fontStyle.TextViewRegular
+                        <com.infozealrecon.android.fontStyle.TextViewRegular
                             android:id="@+id/tvLineSold"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
@@ -219,7 +219,7 @@
                             android:src="@drawable/target"
                             android:tint="@color/White" />
 
-                        <com.score3s.android.fontStyle.TextViewRegular
+                        <com.infozealrecon.android.fontStyle.TextViewRegular
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:padding="@dimen/_10sdp"
@@ -227,7 +227,7 @@
                             android:textColor="@color/White"
                             android:textSize="@dimen/_15sdp" />
 
-                        <com.score3s.android.fontStyle.TextViewRegular
+                        <com.infozealrecon.android.fontStyle.TextViewRegular
                             android:id="@+id/tvTarget"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
@@ -267,7 +267,7 @@
                             android:src="@drawable/achivement"
                             android:tint="@color/White" />
 
-                        <com.score3s.android.fontStyle.TextViewRegular
+                        <com.infozealrecon.android.fontStyle.TextViewRegular
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:padding="@dimen/_10sdp"
@@ -275,7 +275,7 @@
                             android:textColor="@color/White"
                             android:textSize="@dimen/_15sdp" />
 
-                        <com.score3s.android.fontStyle.TextViewRegular
+                        <com.infozealrecon.android.fontStyle.TextViewRegular
                             android:id="@+id/tvAchivement"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"

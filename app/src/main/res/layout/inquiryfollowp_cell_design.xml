@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/mainLayoutfollowp"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:background="@drawable/background_outlet_cell"
+    android:layout_marginLeft="@dimen/_8sdp"
+    android:layout_marginTop="@dimen/_4sdp"
+    android:layout_marginRight="@dimen/_8sdp"
+    android:orientation="vertical">
+
+    <com.infozealrecon.android.fontStyle.TextViewMedium
+        android:id="@+id/tvInquiryID"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:layout_marginLeft="@dimen/_4sdp"
+        android:gravity="left"
+        android:text="Details::"
+        android:textColor="@color/Black"
+        android:textSize="@dimen/_14sdp" />
+
+
+</LinearLayout>
+

@@ -13,7 +13,7 @@
     <!--android:layout_width="match_parent"-->
     <!--android:layout_height="@dimen/_35sdp">-->
 
-    <!--<com.score3s.android.fontStyle.TextViewRegular-->
+    <!--<com.infozealrecon.android.fontStyle.TextViewRegular-->
     <!--android:layout_width="match_parent"-->
     <!--android:layout_height="wrap_content"-->
     <!--android:text="Login"-->
@@ -44,55 +44,22 @@
                     android:layout_width="match_parent"
                     android:layout_height="@dimen/_100sdp"
                     android:layout_gravity="center"
-                    android:layout_marginTop="@dimen/_10sdp"
-                    android:src="@drawable/logo" />
+                    android:layout_marginTop="@dimen/_20sdp"
+                    android:src="@drawable/logo_app" />
 
 
-                <com.score3s.android.fontStyle.TextViewBold
+                <com.infozealrecon.android.fontStyle.TextViewBold
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_gravity="center"
-                    android:layout_marginBottom="@dimen/_15sdp"
+                    android:layout_marginTop="@dimen/_25sdp"
+                    android:layout_marginBottom="@dimen/_25sdp"
                     android:gravity="center"
                     android:text="LOGIN"
                     android:textColor="@color/colorPrimary"
                     android:textSize="@dimen/_25sdp" />
 
-                <LinearLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_margin="@dimen/_8sdp"
-                    android:orientation="vertical">
 
-
-                    <com.score3s.android.fontStyle.TextViewRegular
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:padding="@dimen/_2sdp"
-                        android:text="CLIENT ID"
-                        android:textColor="@color/colorPrimary"
-                        android:textSize="@dimen/_10sdp" />
-
-
-                    <com.score3s.android.fontStyle.EdittextRegular
-                        android:id="@+id/edtClientID"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:background="@null"
-                        android:hint="Please enter Client ID"
-                        android:padding="@dimen/_2sdp"
-                        android:singleLine="true"
-                        android:textColor="@color/colorPrimary"
-                        android:textColorHint="@color/grey" />
-
-                    <LinearLayout
-                        android:layout_width="match_parent"
-                        android:layout_height="1dp"
-                        android:layout_margin="@dimen/_2sdp"
-                        android:background="@color/colorPrimary" />
-
-
-                </LinearLayout>
 
                 <LinearLayout
                     android:layout_width="match_parent"
@@ -101,45 +68,7 @@
                     android:orientation="vertical">
 
 
-                    <com.score3s.android.fontStyle.TextViewRegular
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:padding="@dimen/_2sdp"
-                        android:text="MOBILE NO"
-                        android:textColor="@color/colorPrimary"
-                        android:textSize="@dimen/_10sdp" />
-
-
-                    <com.score3s.android.fontStyle.EdittextRegular
-                        android:id="@+id/edtMobileNo"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:background="@null"
-                        android:hint="Please enter Mobile Number"
-                        android:inputType="number"
-                        android:maxLength="10"
-                        android:padding="@dimen/_2sdp"
-                        android:singleLine="true"
-                        android:textColor="@color/colorPrimary"
-                        android:textColorHint="@color/grey" />
-
-                    <LinearLayout
-                        android:layout_width="match_parent"
-                        android:layout_height="1dp"
-                        android:layout_margin="@dimen/_2sdp"
-                        android:background="@color/colorPrimary" />
-
-
-                </LinearLayout>
-
-                <LinearLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_margin="@dimen/_8sdp"
-                    android:orientation="vertical">
-
-
-                    <com.score3s.android.fontStyle.TextViewRegular
+                    <com.infozealrecon.android.fontStyle.TextViewRegular
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:padding="@dimen/_2sdp"
@@ -148,7 +77,7 @@
                         android:textSize="@dimen/_10sdp" />
 
 
-                    <com.score3s.android.fontStyle.EdittextRegular
+                    <com.infozealrecon.android.fontStyle.EdittextRegular
                         android:id="@+id/edtUserID"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
@@ -175,7 +104,7 @@
                     android:orientation="vertical">
 
 
-                    <com.score3s.android.fontStyle.TextViewRegular
+                    <com.infozealrecon.android.fontStyle.TextViewRegular
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:padding="@dimen/_2sdp"
@@ -184,7 +113,7 @@
                         android:textSize="@dimen/_10sdp" />
 
 
-                    <com.score3s.android.fontStyle.EdittextRegular
+                    <com.infozealrecon.android.fontStyle.EdittextRegular
                         android:id="@+id/edtPassword"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
@@ -213,7 +142,7 @@
                     android:weightSum="2">
 
 
-                    <com.score3s.android.fontStyle.ButtonRegular
+                    <com.infozealrecon.android.fontStyle.ButtonRegular
                         android:id="@+id/btnLogin"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
@@ -228,7 +157,7 @@
                         android:textSize="@dimen/_15sdp"
                         android:textStyle="bold|italic" />
 
-                    <com.score3s.android.fontStyle.TextViewBold
+                    <com.infozealrecon.android.fontStyle.TextViewBold
                         android:id="@+id/tvDemoRequest"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"

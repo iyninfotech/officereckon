@@ -12,7 +12,7 @@
         android:background="@drawable/background_outlet_cell"
         android:orientation="vertical">
 
-        <com.score3s.android.fontStyle.TextViewMedium
+        <com.infozealrecon.android.fontStyle.TextViewMedium
             android:id="@+id/spinerTitle"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -61,7 +61,7 @@
             android:dividerHeight="0.1dp"
             android:listSelector="@drawable/listviewselector" />
 
-        <com.score3s.android.fontStyle.TextViewBold
+        <com.infozealrecon.android.fontStyle.TextViewBold
             android:id="@+id/close"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"

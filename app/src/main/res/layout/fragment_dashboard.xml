@@ -39,7 +39,7 @@
                     android:layout_gravity="center"
                     android:background="@drawable/imagess2">
 
-                    <com.score3s.android.fontStyle.TextViewBold
+                    <com.infozealrecon.android.fontStyle.TextViewBold
                         android:id="@+id/tvUserName"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
@@ -95,7 +95,7 @@
 
                             />
 
-                        <com.score3s.android.fontStyle.TextViewRegular
+                        <com.infozealrecon.android.fontStyle.TextViewRegular
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:padding="@dimen/_10sdp"
@@ -103,7 +103,7 @@
                             android:textColor="@color/colorPrimary"
                             android:textSize="@dimen/_15sdp" />
 
-                        <com.score3s.android.fontStyle.TextViewRegular
+                        <com.infozealrecon.android.fontStyle.TextViewRegular
                             android:id="@+id/tvTotalInvoice"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
@@ -144,7 +144,7 @@
                             android:src="@drawable/achivement"
                             android:tint="@color/colorPrimary" />
 
-                        <com.score3s.android.fontStyle.TextViewRegular
+                        <com.infozealrecon.android.fontStyle.TextViewRegular
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:padding="@dimen/_10sdp"
@@ -152,7 +152,7 @@
                             android:textColor="@color/colorPrimary"
                             android:textSize="@dimen/_15sdp" />
 
-                        <com.score3s.android.fontStyle.TextViewRegular
+                        <com.infozealrecon.android.fontStyle.TextViewRegular
                             android:id="@+id/tvTotalSalesAmt"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
@@ -191,7 +191,7 @@
                     android:layout_height="match_parent"
                     android:layout_gravity="center">
 
-                    <com.score3s.android.fontStyle.TextViewBold
+                    <com.infozealrecon.android.fontStyle.TextViewBold
                         android:id="@+id/tvSoftwareName"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
@@ -202,7 +202,7 @@
                         android:textSize="@dimen/_16sdp"
                         android:textStyle="bold" />
 
-                    <com.score3s.android.fontStyle.TextViewBold
+                    <com.infozealrecon.android.fontStyle.TextViewBold
                         android:id="@+id/tvDevloperInfoDetails"
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
@@ -219,7 +219,7 @@
                         android:textSize="@dimen/_10sdp"
                         android:textStyle="normal" />
 
-                    <com.score3s.android.fontStyle.TextViewBold
+                    <com.infozealrecon.android.fontStyle.TextViewBold
                         android:id="@+id/AppVersionInfo"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"

@@ -20,7 +20,7 @@
             android:weightSum="6.0">
 
 
-            <com.score3s.android.fontStyle.TextViewBlack
+            <com.infozealrecon.android.fontStyle.TextViewBlack
 
                 android:id="@+id/title"
                 android:layout_width="0dp"
@@ -34,7 +34,7 @@
                 android:textSize="@dimen/_10sdp"
                 android:textStyle="normal" />
 
-            <!-- <com.score3s.android.fontStyle.TextViewBold
+            <!-- <com.infozealrecon.android.fontStyle.TextViewBold
                  android:layout_width="0dp"
                  android:layout_height="wrap_content"
                  android:layout_gravity="center"
@@ -46,7 +46,7 @@
                  android:textSize="@dimen/_10sdp" />-->
 
 
-            <com.score3s.android.fontStyle.TextViewBold
+            <com.infozealrecon.android.fontStyle.TextViewBold
                 android:id="@+id/tvItem"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
@@ -57,7 +57,7 @@
                 android:textColor="@color/White"
                 android:textSize="@dimen/_10sdp" />
 
-            <com.score3s.android.fontStyle.TextViewBold
+            <com.infozealrecon.android.fontStyle.TextViewBold
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_alignParentEnd="true"
@@ -68,7 +68,7 @@
                 android:textSize="@dimen/_10sdp" />
 
 
-            <com.score3s.android.fontStyle.TextViewBold
+            <com.infozealrecon.android.fontStyle.TextViewBold
                 android:id="@+id/tvMRP"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
@@ -96,7 +96,7 @@
             android:padding="@dimen/_3sdp"
             android:weightSum="6.0">
 
-            <com.score3s.android.fontStyle.TextViewBold
+            <com.infozealrecon.android.fontStyle.TextViewBold
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"
@@ -106,7 +106,7 @@
                 android:textSize="@dimen/_10sdp" />
 
 
-            <com.score3s.android.fontStyle.TextViewBold
+            <com.infozealrecon.android.fontStyle.TextViewBold
                 android:id="@+id/tvAlternetQtyUnit"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
@@ -116,7 +116,7 @@
                 android:textColor="@color/Black"
                 android:textSize="@dimen/_10sdp" />
 
-            <com.score3s.android.fontStyle.TextViewBold
+            <com.infozealrecon.android.fontStyle.TextViewBold
                 android:id="@+id/tvAlternetQty"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
@@ -126,7 +126,7 @@
                 android:textColor="@color/Black"
                 android:textSize="@dimen/_10sdp" />
 
-            <com.score3s.android.fontStyle.TextViewBold
+            <com.infozealrecon.android.fontStyle.TextViewBold
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"
@@ -136,7 +136,7 @@
                 android:textSize="@dimen/_10sdp" />
 
 
-            <com.score3s.android.fontStyle.TextViewBold
+            <com.infozealrecon.android.fontStyle.TextViewBold
                 android:id="@+id/tvPrimaryQtyUnit"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
@@ -146,7 +146,7 @@
                 android:textColor="@color/Black"
                 android:textSize="@dimen/_10sdp" />
 
-            <com.score3s.android.fontStyle.TextViewBold
+            <com.infozealrecon.android.fontStyle.TextViewBold
                 android:id="@+id/tvPrimaryQty"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
@@ -166,7 +166,7 @@
             android:padding="@dimen/_3sdp"
             android:weightSum="6.0">
 
-            <com.score3s.android.fontStyle.TextViewBold
+            <com.infozealrecon.android.fontStyle.TextViewBold
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"
@@ -176,7 +176,7 @@
                 android:textSize="@dimen/_10sdp" />
 
 
-            <com.score3s.android.fontStyle.TextViewBold
+            <com.infozealrecon.android.fontStyle.TextViewBold
                 android:id="@+id/tvTotalQty"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
@@ -186,7 +186,7 @@
                 android:textColor="@color/Black"
                 android:textSize="@dimen/_10sdp" />
 
-            <com.score3s.android.fontStyle.TextViewBold
+            <com.infozealrecon.android.fontStyle.TextViewBold
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"
@@ -196,7 +196,7 @@
                 android:textSize="@dimen/_10sdp" />
 
 
-            <com.score3s.android.fontStyle.TextViewBold
+            <com.infozealrecon.android.fontStyle.TextViewBold
                 android:id="@+id/tvFreeQty"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
@@ -206,7 +206,7 @@
                 android:textColor="@color/Black"
                 android:textSize="@dimen/_10sdp" />
 
-            <com.score3s.android.fontStyle.TextViewBold
+            <com.infozealrecon.android.fontStyle.TextViewBold
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"
@@ -216,7 +216,7 @@
                 android:textSize="@dimen/_10sdp" />
 
 
-            <com.score3s.android.fontStyle.TextViewBold
+            <com.infozealrecon.android.fontStyle.TextViewBold
                 android:id="@+id/tvRate"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
@@ -236,7 +236,7 @@
             android:padding="@dimen/_3sdp"
             android:weightSum="6.0">
 
-            <com.score3s.android.fontStyle.TextViewBold
+            <com.infozealrecon.android.fontStyle.TextViewBold
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"
@@ -246,7 +246,7 @@
                 android:textSize="@dimen/_10sdp" />
 
 
-            <com.score3s.android.fontStyle.TextViewBold
+            <com.infozealrecon.android.fontStyle.TextViewBold
                 android:id="@+id/tvGross"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
@@ -257,7 +257,7 @@
                 android:textSize="@dimen/_10sdp" />
 
 
-            <com.score3s.android.fontStyle.TextViewBold
+            <com.infozealrecon.android.fontStyle.TextViewBold
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"
@@ -266,7 +266,7 @@
                 android:textColor="@color/colorPrimary"
                 android:textSize="@dimen/_10sdp" />
 
-            <com.score3s.android.fontStyle.TextViewBold
+            <com.infozealrecon.android.fontStyle.TextViewBold
                 android:id="@+id/tvDiscPer"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
@@ -277,7 +277,7 @@
                 android:textSize="@dimen/_10sdp" />
 
 
-            <com.score3s.android.fontStyle.TextViewBold
+            <com.infozealrecon.android.fontStyle.TextViewBold
                 android:id="@+id/tvDisc"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
@@ -297,7 +297,7 @@
             android:padding="@dimen/_3sdp"
             android:weightSum="6.0">
 
-            <com.score3s.android.fontStyle.TextViewBold
+            <com.infozealrecon.android.fontStyle.TextViewBold
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"
@@ -306,7 +306,7 @@
                 android:textColor="@color/colorPrimary"
                 android:textSize="@dimen/_10sdp" />
 
-            <com.score3s.android.fontStyle.TextViewBold
+            <com.infozealrecon.android.fontStyle.TextViewBold
                 android:id="@+id/tvDiscIIPer"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
@@ -317,7 +317,7 @@
                 android:textSize="@dimen/_10sdp" />
 
 
-            <com.score3s.android.fontStyle.TextViewBold
+            <com.infozealrecon.android.fontStyle.TextViewBold
                 android:id="@+id/tvDiscII"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
@@ -327,7 +327,7 @@
                 android:textColor="@color/Black"
                 android:textSize="@dimen/_10sdp" />
 
-            <com.score3s.android.fontStyle.TextViewBold
+            <com.infozealrecon.android.fontStyle.TextViewBold
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"
@@ -336,7 +336,7 @@
                 android:textColor="@color/colorPrimary"
                 android:textSize="@dimen/_10sdp" />
 
-            <com.score3s.android.fontStyle.TextViewBold
+            <com.infozealrecon.android.fontStyle.TextViewBold
                 android:id="@+id/tvDiscIIIPer"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
@@ -347,7 +347,7 @@
                 android:textSize="@dimen/_10sdp" />
 
 
-            <com.score3s.android.fontStyle.TextViewBold
+            <com.infozealrecon.android.fontStyle.TextViewBold
                 android:id="@+id/tvDiscIII"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
@@ -368,7 +368,7 @@
             android:padding="@dimen/_3sdp"
             android:weightSum="6.0">
 
-            <com.score3s.android.fontStyle.TextViewBold
+            <com.infozealrecon.android.fontStyle.TextViewBold
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"
@@ -377,7 +377,7 @@
                 android:textColor="@color/colorPrimary"
                 android:textSize="@dimen/_10sdp" />
 
-            <com.score3s.android.fontStyle.TextViewBold
+            <com.infozealrecon.android.fontStyle.TextViewBold
                 android:id="@+id/tvOtherPer"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
@@ -388,7 +388,7 @@
                 android:textSize="@dimen/_10sdp" />
 
 
-            <com.score3s.android.fontStyle.TextViewBold
+            <com.infozealrecon.android.fontStyle.TextViewBold
                 android:id="@+id/tvOther"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
@@ -398,7 +398,7 @@
                 android:textColor="@color/Black"
                 android:textSize="@dimen/_10sdp" />
 
-            <com.score3s.android.fontStyle.TextViewBold
+            <com.infozealrecon.android.fontStyle.TextViewBold
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"
@@ -407,7 +407,7 @@
                 android:textColor="@color/colorPrimary"
                 android:textSize="@dimen/_10sdp" />
 
-            <com.score3s.android.fontStyle.TextViewBold
+            <com.infozealrecon.android.fontStyle.TextViewBold
                 android:id="@+id/tvOtherIIPer"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
@@ -418,7 +418,7 @@
                 android:textSize="@dimen/_10sdp" />
 
 
-            <com.score3s.android.fontStyle.TextViewBold
+            <com.infozealrecon.android.fontStyle.TextViewBold
                 android:id="@+id/tvOtherII"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
@@ -438,7 +438,7 @@
             android:padding="@dimen/_3sdp"
             android:weightSum="6.0">
 
-            <com.score3s.android.fontStyle.TextViewBold
+            <com.infozealrecon.android.fontStyle.TextViewBold
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"
@@ -447,7 +447,7 @@
                 android:textColor="@color/colorPrimary"
                 android:textSize="@dimen/_10sdp" />
 
-            <com.score3s.android.fontStyle.TextViewBold
+            <com.infozealrecon.android.fontStyle.TextViewBold
                 android:id="@+id/tvCGSTACID"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
@@ -457,7 +457,7 @@
                 android:textSize="@dimen/_10sdp"
                 android:visibility="gone" />
 
-            <com.score3s.android.fontStyle.TextViewBold
+            <com.infozealrecon.android.fontStyle.TextViewBold
                 android:id="@+id/tvCGSTP"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
@@ -467,7 +467,7 @@
                 android:textColor="@color/Black"
                 android:textSize="@dimen/_10sdp" />
 
-            <com.score3s.android.fontStyle.TextViewBold
+            <com.infozealrecon.android.fontStyle.TextViewBold
                 android:id="@+id/tvCGST"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
@@ -477,7 +477,7 @@
                 android:textColor="@color/Black"
                 android:textSize="@dimen/_10sdp" />
 
-            <com.score3s.android.fontStyle.TextViewBold
+            <com.infozealrecon.android.fontStyle.TextViewBold
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"
@@ -486,7 +486,7 @@
                 android:textColor="@color/colorPrimary"
                 android:textSize="@dimen/_10sdp" />
 
-            <com.score3s.android.fontStyle.TextViewBold
+            <com.infozealrecon.android.fontStyle.TextViewBold
                 android:id="@+id/tvSGSTACID"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
@@ -496,7 +496,7 @@
                 android:textSize="@dimen/_10sdp"
                 android:visibility="gone" />
 
-            <com.score3s.android.fontStyle.TextViewBold
+            <com.infozealrecon.android.fontStyle.TextViewBold
                 android:id="@+id/tvSGSTP"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
@@ -506,7 +506,7 @@
                 android:textColor="@color/Black"
                 android:textSize="@dimen/_10sdp" />
 
-            <com.score3s.android.fontStyle.TextViewBold
+            <com.infozealrecon.android.fontStyle.TextViewBold
                 android:id="@+id/tvSGST"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
@@ -525,7 +525,7 @@
             android:padding="@dimen/_3sdp"
             android:weightSum="6.0">
 
-            <com.score3s.android.fontStyle.TextViewBold
+            <com.infozealrecon.android.fontStyle.TextViewBold
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"
@@ -534,7 +534,7 @@
                 android:textColor="@color/colorPrimary"
                 android:textSize="@dimen/_10sdp" />
 
-            <com.score3s.android.fontStyle.TextViewBold
+            <com.infozealrecon.android.fontStyle.TextViewBold
                 android:id="@+id/tvIGSTACID"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
@@ -544,7 +544,7 @@
                 android:textSize="@dimen/_10sdp"
                 android:visibility="gone" />
 
-            <com.score3s.android.fontStyle.TextViewBold
+            <com.infozealrecon.android.fontStyle.TextViewBold
                 android:id="@+id/tvIGSTP"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
@@ -554,7 +554,7 @@
                 android:textColor="@color/Black"
                 android:textSize="@dimen/_10sdp" />
 
-            <com.score3s.android.fontStyle.TextViewBold
+            <com.infozealrecon.android.fontStyle.TextViewBold
                 android:id="@+id/tvIGST"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
@@ -564,7 +564,7 @@
                 android:textColor="@color/Black"
                 android:textSize="@dimen/_10sdp" />
 
-            <com.score3s.android.fontStyle.TextViewBold
+            <com.infozealrecon.android.fontStyle.TextViewBold
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"
@@ -574,7 +574,7 @@
                 android:textSize="@dimen/_10sdp" />
 
 
-            <com.score3s.android.fontStyle.TextViewBold
+            <com.infozealrecon.android.fontStyle.TextViewBold
                 android:id="@+id/tvAmount"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"

@@ -17,7 +17,7 @@
         android:gravity="center"
         android:orientation="horizontal">
 
-        <com.score3s.android.fontStyle.ButtonBold
+        <com.infozealrecon.android.fontStyle.ButtonBold
             android:id="@+id/btnOk"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -39,7 +39,7 @@
             android:src="@drawable/avd_pathmorph_drawer_arrow_to_hamburger"
             android:tint="@android:color/white" />
 
-        <com.score3s.android.fontStyle.TextViewBlack
+        <com.infozealrecon.android.fontStyle.TextViewBlack
             android:id="@+id/titlePopup"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -97,7 +97,7 @@
                             android:padding="@dimen/_5sdp">
 
 
-                            <com.score3s.android.fontStyle.TextViewMedium
+                            <com.infozealrecon.android.fontStyle.TextViewMedium
                                 android:id="@+id/selectItemId"
                                 android:layout_width="match_parent"
                                 android:layout_height="wrap_content"
@@ -136,7 +136,7 @@
                             android:padding="@dimen/_5sdp">
 
 
-                            <com.score3s.android.fontStyle.TextViewMedium
+                            <com.infozealrecon.android.fontStyle.TextViewMedium
                                 android:id="@+id/selectItem"
                                 android:layout_width="match_parent"
                                 android:layout_height="wrap_content"
@@ -175,7 +175,7 @@
                         android:layout_height="wrap_content"
                         android:layout_weight="1.0">
 
-                        <com.score3s.android.fontStyle.TextViewMedium
+                        <com.infozealrecon.android.fontStyle.TextViewMedium
                             android:id="@+id/txtSetMRPTitle"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
@@ -199,7 +199,7 @@
                             android:layout_height="wrap_content">
 
 
-                            <com.score3s.android.fontStyle.TextViewMedium
+                            <com.infozealrecon.android.fontStyle.TextViewMedium
                                 android:id="@+id/selectMRP"
                                 android:layout_width="match_parent"
                                 android:layout_height="wrap_content"
@@ -231,7 +231,7 @@
                         android:layout_height="wrap_content"
                         android:layout_weight="1.0">
 
-                        <com.score3s.android.fontStyle.TextViewMedium
+                        <com.infozealrecon.android.fontStyle.TextViewMedium
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
                             android:layout_gravity="center"
@@ -248,7 +248,7 @@
                         android:layout_height="wrap_content"
                         android:layout_weight="2.0">
 
-                        <com.score3s.android.fontStyle.EdittextBold
+                        <com.infozealrecon.android.fontStyle.EdittextBold
                             android:id="@+id/edtStock"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
@@ -279,7 +279,7 @@
                         android:layout_height="wrap_content"
                         android:layout_weight="1.0">
 
-                        <com.score3s.android.fontStyle.TextViewMedium
+                        <com.infozealrecon.android.fontStyle.TextViewMedium
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
                             android:layout_gravity="center"
@@ -302,7 +302,7 @@
                             android:layout_height="wrap_content">
 
 
-                            <com.score3s.android.fontStyle.TextViewMedium
+                            <com.infozealrecon.android.fontStyle.TextViewMedium
                                 android:id="@+id/selectAltUnit"
                                 android:layout_width="match_parent"
                                 android:layout_height="wrap_content"
@@ -334,7 +334,7 @@
                         android:layout_height="wrap_content"
                         android:layout_weight="1.0">
 
-                        <com.score3s.android.fontStyle.EdittextBold
+                        <com.infozealrecon.android.fontStyle.EdittextBold
                             android:id="@+id/edtAltUnitQty"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
@@ -354,7 +354,7 @@
                         android:layout_height="wrap_content"
                         android:layout_weight="1.0">
 
-                        <com.score3s.android.fontStyle.TextViewMedium
+                        <com.infozealrecon.android.fontStyle.TextViewMedium
                             android:id="@+id/selectPrimaryUnit"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
@@ -372,7 +372,7 @@
                         android:layout_height="wrap_content"
                         android:layout_weight="2.0">
 
-                        <com.score3s.android.fontStyle.EdittextBold
+                        <com.infozealrecon.android.fontStyle.EdittextBold
                             android:id="@+id/edtPrimaryUnitQty"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
@@ -398,7 +398,7 @@
                     android:padding="@dimen/_1sdp"
                     android:weightSum="6.0">
 
-                    <com.score3s.android.fontStyle.TextViewMedium
+                    <com.infozealrecon.android.fontStyle.TextViewMedium
                         android:id="@+id/tvTotalQty"
                         android:layout_width="0dp"
                         android:layout_height="wrap_content"
@@ -410,7 +410,7 @@
                         android:textSize="@dimen/_10sdp" />
 
 
-                    <!-- <com.score3s.android.fontStyle.EdittextBold
+                    <!-- <com.infozealrecon.android.fontStyle.EdittextBold
                          android:id="@+id/edtTotalQty"
                          android:layout_width="0dp"
                          android:layout_height="wrap_content"
@@ -424,7 +424,7 @@
                          android:textColor="@color/Black"
                          android:textSize="@dimen/_8sdp" />-->
 
-                    <com.score3s.android.fontStyle.EdittextBold
+                    <com.infozealrecon.android.fontStyle.EdittextBold
                         android:id="@+id/edtTotalQty"
                         android:layout_width="0dp"
                         android:layout_height="wrap_content"
@@ -441,7 +441,7 @@
                         android:textColor="@color/Black"
                         android:textSize="@dimen/_8sdp" />
 
-                    <com.score3s.android.fontStyle.TextViewMedium
+                    <com.infozealrecon.android.fontStyle.TextViewMedium
                         android:layout_width="0dp"
                         android:layout_height="wrap_content"
                         android:layout_gravity="center"
@@ -451,7 +451,7 @@
                         android:textColor="@color/colorPrimary"
                         android:textSize="@dimen/_10sdp" />
 
-                    <com.score3s.android.fontStyle.EdittextBold
+                    <com.infozealrecon.android.fontStyle.EdittextBold
                         android:id="@+id/edtFreeQty"
                         android:layout_width="0dp"
                         android:layout_height="wrap_content"
@@ -475,7 +475,7 @@
                     android:padding="@dimen/_1sdp"
                     android:weightSum="6.0">
 
-                    <com.score3s.android.fontStyle.TextViewMedium
+                    <com.infozealrecon.android.fontStyle.TextViewMedium
                         android:id="@+id/tvRateper"
                         android:layout_width="0dp"
                         android:layout_height="wrap_content"
@@ -487,7 +487,7 @@
                         android:textSize="@dimen/_10sdp" />
 
 
-                    <com.score3s.android.fontStyle.EdittextBold
+                    <com.infozealrecon.android.fontStyle.EdittextBold
                         android:id="@+id/edtRate"
                         android:layout_width="0dp"
                         android:layout_height="wrap_content"
@@ -501,7 +501,7 @@
                         android:textColor="@color/Black"
                         android:textSize="@dimen/_8sdp" />
 
-                    <com.score3s.android.fontStyle.TextViewMedium
+                    <com.infozealrecon.android.fontStyle.TextViewMedium
                         android:layout_width="0dp"
                         android:layout_height="wrap_content"
                         android:layout_gravity="center"
@@ -512,7 +512,7 @@
                         android:textSize="@dimen/_10sdp" />
 
 
-                    <com.score3s.android.fontStyle.EdittextBold
+                    <com.infozealrecon.android.fontStyle.EdittextBold
                         android:id="@+id/edtGross"
                         android:layout_width="0dp"
                         android:layout_height="wrap_content"
@@ -538,7 +538,7 @@
                     android:weightSum="6.0">
 
 
-                    <com.score3s.android.fontStyle.TextViewMedium
+                    <com.infozealrecon.android.fontStyle.TextViewMedium
                         android:layout_width="0dp"
                         android:layout_height="wrap_content"
                         android:layout_gravity="center"
@@ -548,7 +548,7 @@
                         android:textColor="@color/colorPrimary"
                         android:textSize="@dimen/_10sdp" />
 
-                    <com.score3s.android.fontStyle.EdittextBold
+                    <com.infozealrecon.android.fontStyle.EdittextBold
                         android:id="@+id/edtDiscPer"
                         android:layout_width="0dp"
                         android:layout_height="wrap_content"
@@ -562,7 +562,7 @@
                         android:textColor="@color/Black"
                         android:textSize="@dimen/_8sdp" />
 
-                    <com.score3s.android.fontStyle.EdittextBold
+                    <com.infozealrecon.android.fontStyle.EdittextBold
                         android:id="@+id/edtDisc"
                         android:layout_width="0dp"
                         android:layout_height="wrap_content"
@@ -576,7 +576,7 @@
                         android:textColor="@color/Black"
                         android:textSize="@dimen/_8sdp" />
 
-                    <com.score3s.android.fontStyle.TextViewMedium
+                    <com.infozealrecon.android.fontStyle.TextViewMedium
                         android:layout_width="0dp"
                         android:layout_height="wrap_content"
                         android:layout_gravity="center"
@@ -586,7 +586,7 @@
                         android:textColor="@color/colorPrimary"
                         android:textSize="@dimen/_10sdp" />
 
-                    <com.score3s.android.fontStyle.EdittextBold
+                    <com.infozealrecon.android.fontStyle.EdittextBold
                         android:id="@+id/edtDiscIIPer"
                         android:layout_width="0dp"
                         android:layout_height="wrap_content"
@@ -600,7 +600,7 @@
                         android:textColor="@color/Black"
                         android:textSize="@dimen/_8sdp" />
 
-                    <com.score3s.android.fontStyle.EdittextBold
+                    <com.infozealrecon.android.fontStyle.EdittextBold
                         android:id="@+id/edtDiscII"
                         android:layout_width="0dp"
                         android:layout_height="wrap_content"
@@ -624,7 +624,7 @@
                     android:padding="@dimen/_1sdp"
                     android:weightSum="6.0">
 
-                    <com.score3s.android.fontStyle.TextViewMedium
+                    <com.infozealrecon.android.fontStyle.TextViewMedium
                         android:layout_width="0dp"
                         android:layout_height="wrap_content"
                         android:layout_gravity="center"
@@ -634,7 +634,7 @@
                         android:textColor="@color/colorPrimary"
                         android:textSize="@dimen/_10sdp" />
 
-                    <com.score3s.android.fontStyle.EdittextBold
+                    <com.infozealrecon.android.fontStyle.EdittextBold
                         android:id="@+id/edtDiscIIIPer"
                         android:layout_width="0dp"
                         android:layout_height="wrap_content"
@@ -648,7 +648,7 @@
                         android:textColor="@color/Black"
                         android:textSize="@dimen/_8sdp" />
 
-                    <com.score3s.android.fontStyle.EdittextBold
+                    <com.infozealrecon.android.fontStyle.EdittextBold
                         android:id="@+id/edtDiscIII"
                         android:layout_width="0dp"
                         android:layout_height="wrap_content"
@@ -662,7 +662,7 @@
                         android:textColor="@color/Black"
                         android:textSize="@dimen/_8sdp" />
 
-                    <com.score3s.android.fontStyle.TextViewMedium
+                    <com.infozealrecon.android.fontStyle.TextViewMedium
                         android:layout_width="0dp"
                         android:layout_height="wrap_content"
                         android:layout_gravity="center"
@@ -673,7 +673,7 @@
                         android:textSize="@dimen/_10sdp" />
 
 
-                    <com.score3s.android.fontStyle.EdittextBold
+                    <com.infozealrecon.android.fontStyle.EdittextBold
                         android:id="@+id/edtTotalDisc"
                         android:layout_width="0dp"
                         android:layout_height="wrap_content"
@@ -687,7 +687,7 @@
                         android:textColor="@color/grey"
                         android:textSize="@dimen/_8sdp" />
 
-                    <com.score3s.android.fontStyle.ButtonBold
+                    <com.infozealrecon.android.fontStyle.ButtonBold
                         android:id="@+id/btnMGDisc"
                         android:layout_width="0dp"
                         android:layout_height="@dimen/_20sdp"
@@ -711,7 +711,7 @@
                     android:padding="@dimen/_1sdp"
                     android:weightSum="6.0">
 
-                    <com.score3s.android.fontStyle.TextViewMedium
+                    <com.infozealrecon.android.fontStyle.TextViewMedium
                         android:layout_width="0dp"
                         android:layout_height="wrap_content"
                         android:layout_gravity="center"
@@ -721,7 +721,7 @@
                         android:textColor="@color/colorPrimary"
                         android:textSize="@dimen/_10sdp" />
 
-                    <com.score3s.android.fontStyle.EdittextBold
+                    <com.infozealrecon.android.fontStyle.EdittextBold
                         android:id="@+id/edtOtherPer"
                         android:layout_width="0dp"
                         android:layout_height="wrap_content"
@@ -736,7 +736,7 @@
                         android:textSize="@dimen/_8sdp" />
 
 
-                    <com.score3s.android.fontStyle.EdittextBold
+                    <com.infozealrecon.android.fontStyle.EdittextBold
                         android:id="@+id/edtOther"
                         android:layout_width="0dp"
                         android:layout_height="wrap_content"
@@ -750,7 +750,7 @@
                         android:textColor="@color/Black"
                         android:textSize="@dimen/_8sdp" />
 
-                    <com.score3s.android.fontStyle.TextViewMedium
+                    <com.infozealrecon.android.fontStyle.TextViewMedium
                         android:layout_width="0dp"
                         android:layout_height="wrap_content"
                         android:layout_gravity="center"
@@ -760,7 +760,7 @@
                         android:textColor="@color/colorPrimary"
                         android:textSize="@dimen/_10sdp" />
 
-                    <com.score3s.android.fontStyle.EdittextBold
+                    <com.infozealrecon.android.fontStyle.EdittextBold
                         android:id="@+id/edtOtherIIPer"
                         android:layout_width="0dp"
                         android:layout_height="wrap_content"
@@ -775,7 +775,7 @@
                         android:textSize="@dimen/_8sdp" />
 
 
-                    <com.score3s.android.fontStyle.EdittextBold
+                    <com.infozealrecon.android.fontStyle.EdittextBold
                         android:id="@+id/edtOtherII"
                         android:layout_width="0dp"
                         android:layout_height="wrap_content"
@@ -800,7 +800,7 @@
                     android:padding="@dimen/_1sdp"
                     android:weightSum="6.0">
 
-                    <com.score3s.android.fontStyle.TextViewMedium
+                    <com.infozealrecon.android.fontStyle.TextViewMedium
                         android:layout_width="0dp"
                         android:layout_height="wrap_content"
                         android:layout_gravity="center"
@@ -810,7 +810,7 @@
                         android:textColor="@color/colorPrimary"
                         android:textSize="@dimen/_10sdp" />
 
-                    <com.score3s.android.fontStyle.EdittextBold
+                    <com.infozealrecon.android.fontStyle.EdittextBold
                         android:id="@+id/edtCGSTACID"
                         android:layout_width="0dp"
                         android:layout_height="wrap_content"
@@ -820,7 +820,7 @@
                         android:textSize="@dimen/_8sdp"
                         android:visibility="gone" />
 
-                    <com.score3s.android.fontStyle.EdittextBold
+                    <com.infozealrecon.android.fontStyle.EdittextBold
                         android:id="@+id/edtCGSTP"
                         android:layout_width="0dp"
                         android:layout_height="wrap_content"
@@ -835,7 +835,7 @@
                         android:textColor="@color/grey"
                         android:textSize="@dimen/_8sdp" />
 
-                    <com.score3s.android.fontStyle.EdittextBold
+                    <com.infozealrecon.android.fontStyle.EdittextBold
                         android:id="@+id/edtCGST"
                         android:layout_width="0dp"
                         android:layout_height="wrap_content"
@@ -850,7 +850,7 @@
                         android:textColor="@color/grey"
                         android:textSize="@dimen/_8sdp" />
 
-                    <com.score3s.android.fontStyle.TextViewMedium
+                    <com.infozealrecon.android.fontStyle.TextViewMedium
                         android:layout_width="0dp"
                         android:layout_height="wrap_content"
                         android:layout_gravity="center"
@@ -860,7 +860,7 @@
                         android:textColor="@color/colorPrimary"
                         android:textSize="@dimen/_10sdp" />
 
-                    <com.score3s.android.fontStyle.EdittextBold
+                    <com.infozealrecon.android.fontStyle.EdittextBold
                         android:id="@+id/edtSGSTACID"
                         android:layout_width="0dp"
                         android:layout_height="wrap_content"
@@ -870,7 +870,7 @@
                         android:textSize="@dimen/_8sdp"
                         android:visibility="gone" />
 
-                    <com.score3s.android.fontStyle.EdittextBold
+                    <com.infozealrecon.android.fontStyle.EdittextBold
                         android:id="@+id/edtSGSTP"
                         android:layout_width="0dp"
                         android:layout_height="wrap_content"
@@ -885,7 +885,7 @@
                         android:textColor="@color/grey"
                         android:textSize="@dimen/_8sdp" />
 
-                    <com.score3s.android.fontStyle.EdittextBold
+                    <com.infozealrecon.android.fontStyle.EdittextBold
                         android:id="@+id/edtSGST"
                         android:layout_width="0dp"
                         android:layout_height="wrap_content"
@@ -911,7 +911,7 @@
                     android:padding="@dimen/_1sdp"
                     android:weightSum="6.0">
 
-                    <com.score3s.android.fontStyle.TextViewMedium
+                    <com.infozealrecon.android.fontStyle.TextViewMedium
                         android:layout_width="0dp"
                         android:layout_height="wrap_content"
                         android:layout_gravity="center"
@@ -921,7 +921,7 @@
                         android:textColor="@color/colorPrimary"
                         android:textSize="@dimen/_10sdp" />
 
-                    <com.score3s.android.fontStyle.EdittextBold
+                    <com.infozealrecon.android.fontStyle.EdittextBold
                         android:id="@+id/edtIGSTACID"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
@@ -931,7 +931,7 @@
                         android:textSize="@dimen/_8sdp"
                         android:visibility="gone" />
 
-                    <com.score3s.android.fontStyle.EdittextBold
+                    <com.infozealrecon.android.fontStyle.EdittextBold
                         android:id="@+id/edtIGSTP"
                         android:layout_width="0dp"
                         android:layout_height="wrap_content"
@@ -946,7 +946,7 @@
                         android:textColor="@color/grey"
                         android:textSize="@dimen/_8sdp" />
 
-                    <com.score3s.android.fontStyle.EdittextBold
+                    <com.infozealrecon.android.fontStyle.EdittextBold
                         android:id="@+id/edtIGST"
                         android:layout_width="0dp"
                         android:layout_height="wrap_content"
@@ -986,7 +986,7 @@
             android:weightSum="6.0">
 
 
-            <com.score3s.android.fontStyle.TextViewBold
+            <com.infozealrecon.android.fontStyle.TextViewBold
                 android:layout_width="match_parent"
                 android:layout_height="@dimen/_30sdp"
                 android:layout_gravity="center"
@@ -996,7 +996,7 @@
                 android:textColor="@color/White"
                 android:textSize="@dimen/_11sdp" />
 
-            <com.score3s.android.fontStyle.EdittextBold
+            <com.infozealrecon.android.fontStyle.EdittextBold
                 android:id="@+id/edtAmount"
                 android:layout_width="match_parent"
                 android:layout_height="@dimen/_30sdp"

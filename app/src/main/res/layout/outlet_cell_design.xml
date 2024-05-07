@@ -1,47 +1,61 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:id="@+id/mainLayout"
-    android:layout_width="match_parent"
-    android:layout_height="@dimen/_40sdp"
+   android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:background="@drawable/background_outlet_cell"
     android:layout_marginLeft="@dimen/_8sdp"
     android:layout_marginTop="@dimen/_4sdp"
     android:layout_marginRight="@dimen/_8sdp"
-    android:background="@drawable/background_outlet_cell"
-    android:orientation="horizontal"
-    android:weightSum="3">
+    android:weightSum="4"
+    android:orientation="horizontal">
 
-    <com.score3s.android.fontStyle.TextViewMedium
+    <com.infozealrecon.android.fontStyle.TextViewMedium
         android:id="@+id/tvOutletID"
-        android:layout_width="match_parent"
+        android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_gravity="center"
-        android:layout_weight="1"
-        android:gravity="center"
+        android:layout_weight="0.3"
+        android:layout_marginLeft="@dimen/_4sdp"
+        android:gravity="left"
         android:text="ID"
         android:textColor="@color/Black"
         android:textSize="@dimen/_8sdp" />
 
 
-    <com.score3s.android.fontStyle.TextViewMedium
+    <com.infozealrecon.android.fontStyle.TextViewMedium
         android:id="@+id/tvOutletName"
-        android:layout_width="match_parent"
+        android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_gravity="center"
-        android:layout_weight="1"
-        android:gravity="center"
-        android:text="Outlet Name"
+        android:layout_weight="1.7"
+        android:gravity="left"
+        android:text="Client Name"
+        android:layout_marginLeft="@dimen/_4sdp"
         android:textColor="@color/Black"
         android:textSize="@dimen/_8sdp" />
 
-
-    <com.score3s.android.fontStyle.TextViewMedium
-        android:id="@+id/tvOutletArea"
-        android:layout_width="match_parent"
+    <com.infozealrecon.android.fontStyle.TextViewMedium
+        android:id="@+id/tvMobileNumber"
+        android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_gravity="center"
         android:layout_weight="1"
-        android:gravity="center"
-        android:text="Area"
+        android:gravity="left"
+        android:text="Monile No."
+        android:layout_marginLeft="@dimen/_4sdp"
+        android:textColor="@color/Black"
+        android:textSize="@dimen/_8sdp" />
+
+    <com.infozealrecon.android.fontStyle.TextViewMedium
+        android:id="@+id/tvOutletArea"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:layout_marginLeft="@dimen/_4sdp"
+        android:layout_weight="1"
+        android:gravity="left"
+        android:text="City"
         android:textColor="@color/Black"
         android:textSize="@dimen/_8sdp" />
 
