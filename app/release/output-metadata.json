@@ -1,0 +1,20 @@
+{
+  "version": 3,
+  "artifactType": {
+    "type": "APK",
+    "kind": "Directory"
+  },
+  "applicationId": "com.infozealrecon.android",
+  "variantName": "release",
+  "elements": [
+    {
+      "type": "SINGLE",
+      "filters": [],
+      "attributes": [],
+      "versionCode": 714,
+      "versionName": "714.014.014.014",
+      "outputFile": "app-release.apk"
+    }
+  ],
+  "elementType": "File"
+}
